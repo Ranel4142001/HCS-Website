@@ -1,0 +1,5 @@
+# Keep line endings consistent between Windows and Linux (GitHub, Vercel)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.mp4 binary

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { envConfig } from '@/shared/config/env.config';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -454,9 +455,11 @@ export const Navbar: React.FC = () => {
 
               <div className="mdl-nav__divider" />
 
-              <Link href="/login" className="mdl-nav__signin" onClick={closeAll}>
-                Sign In
-              </Link>
+              {envConfig.portalUrl && (
+                <a href={envConfig.portalUrl} className="mdl-nav__signin" onClick={closeAll}>
+                  Sign In
+                </a>
+              )}
 
               <Link href="/#contact" className="mdl-nav__btn-touch" onClick={closeAll}>
                 GET IN TOUCH

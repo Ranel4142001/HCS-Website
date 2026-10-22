@@ -11,5 +11,8 @@
     "start": "npm run start --workspace=apps/frontend",
     "lint": "npm run lint --workspace=apps/frontend",
     "install:all": "npm install --workspace=apps/frontend"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

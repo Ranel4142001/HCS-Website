@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Icon from '@/shared/components/ui/Icon';
+import { envConfig } from '@/shared/config/env.config';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -101,7 +102,7 @@ export const Footer: React.FC = () => {
               <li><Link href="/company/newsroom">Newsroom</Link></li>
               <li><Link href="/company/compliance">Compliance &amp; security</Link></li>
               <li><Link href="/company/careers">Careers &mdash; We&rsquo;re hiring!</Link></li>
-              <li><Link href="/login">Portal login</Link></li>
+              {envConfig.portalUrl && <li><a href={envConfig.portalUrl}>Portal login</a></li>}
             </ul>
           </div>
         </div>
