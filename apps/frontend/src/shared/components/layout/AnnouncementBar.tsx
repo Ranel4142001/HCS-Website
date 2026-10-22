@@ -31,10 +31,10 @@ export const AnnouncementBar: React.FC = () => {
       <div className="announcement-inner">
         <div className="announcement-content">
           <span className="announcement-msg-full">
-            HealthCredSTAT launches Real-Time CVO &amp; Autonomous Agent Workflows for provider enrollment.
+            New providers starting soon? See how long credentialing and payer enrollment will take.
           </span>
-          <a href="#workflows" className="announcement-cta">
-            <span>Explore features</span>
+          <a href="#estimator" className="announcement-cta">
+            <span>Estimate your timeline</span>
             <span aria-hidden="true" className="announcement-arrow">&rarr;</span>
           </a>
         </div>

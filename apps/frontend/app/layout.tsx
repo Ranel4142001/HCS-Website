@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Sora, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
+import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
+import JsonLd from '@/shared/components/seo/JsonLd';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -18,8 +20,6 @@ const instrumentSerif = Instrument_Serif({
   display: 'swap',
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://healthcredstat.com';
-
 export const viewport: Viewport = {
   themeColor: '#07192f',
   width: 'device-width',
@@ -27,32 +27,20 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+const DEFAULT_TITLE = 'Medical Credentialing & Payer Enrollment Services | HealthCredSTAT';
+const DEFAULT_DESCRIPTION =
+  'Medical credentialing and payer enrollment services for practices, health systems and health plans. Get providers verified, in-network and billing sooner.';
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'HealthCredSTAT | Healthcare Credentialing & Real-Time CVO Platform',
+    default: DEFAULT_TITLE,
     template: '%s | HealthCredSTAT',
   },
-  description:
-    'HealthCredSTAT is the AI operations partner powering healthcare\'s first real-time CVO. Accelerate clinician enrollment, automate NCQA-aligned primary source verification, and eliminate revenue delays.',
-  keywords: [
-    'medical credentialing',
-    'CVO credentialing',
-    'provider enrollment',
-    'healthcare credentialing software',
-    'primary source verification',
-    'delegated credentialing',
-    'roster management',
-    'cross-state licensing',
-    'NCQA credentialing',
-    'payer enrollment',
-    'HIPAA compliant credentialing',
-    'HealthCredSTAT',
-  ],
-  authors: [{ name: 'HealthCredSTAT Team', url: SITE_URL }],
-  creator: 'HealthCredSTAT',
-  publisher: 'HealthCredSTAT Services Portal',
-  applicationName: 'HealthCredSTAT',
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   formatDetection: {
     email: false,
     address: false,
@@ -72,27 +60,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: SITE_URL,
-    siteName: 'HealthCredSTAT',
-    title: 'HealthCredSTAT | Better Outcomes for Healthcare Credentialing',
-    description:
-      'The AI operations partner powering healthcare\'s first real-time CVO. Faster paths to billable providers and seamless primary source verification.',
-    images: [
-      {
-        url: '/healthcredstat-logo.png',
-        width: 752,
-        height: 189,
-        alt: 'HealthCredSTAT — Credentialing Simplified. Accelerated. Secured.',
-      },
-    ],
+    url: '/',
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HealthCredSTAT | Healthcare Credentialing & Real-Time CVO',
-    description:
-      'Better outcomes for credentialing. Faster paths to billable providers with real-time NCQA-aligned CVO workflows.',
-    images: ['/healthcredstat-logo.png'],
-    creator: '@HealthCredSTAT',
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
   },
   robots: {
     index: true,
@@ -105,17 +81,17 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  category: 'Healthcare Technology',
+  category: 'Healthcare',
 };
 
-// JSON-LD Structured Data Schema for Search Engines
+// Site-wide structured data. Page-specific schema (FAQ, services, breadcrumbs) lives on each page.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
+      '@type': ['Organization', 'ProfessionalService'],
       '@id': `${SITE_URL}/#organization`,
-      name: 'HealthCredSTAT',
+      name: SITE_NAME,
       url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
@@ -123,46 +99,29 @@ const jsonLd = {
         width: 752,
         height: 189,
       },
+      image: `${SITE_URL}/opengraph-image`,
       description:
-        'HealthCredSTAT is an enterprise healthcare credentialing platform and real-time CVO providing automated provider enrollment, primary source verification, and delegated roster management.',
-      slogan: 'Credentialing - Simplified. Accelerated. Secured.',
+        'HealthCredSTAT provides medical credentialing, payer enrollment, primary source verification, recredentialing and provider data management services for healthcare organizations across the United States.',
+      areaServed: { '@type': 'Country', name: 'United States' },
       knowsAbout: [
-        'Medical Credentialing',
-        'Primary Source Verification',
-        'NCQA Compliance',
-        'Provider Enrollment',
-        'Healthcare Operations',
-        'Privileging',
-      ],
-      sameAs: [
-        'https://www.linkedin.com/company/healthcredstat',
-        'https://twitter.com/HealthCredSTAT',
+        'Medical credentialing',
+        'Provider enrollment',
+        'Payer enrollment',
+        'Primary source verification',
+        'CAQH ProView',
+        'Medicare and Medicaid enrollment',
+        'Delegated credentialing',
+        'Hospital privileging',
+        'Multi-state licensing',
       ],
     },
     {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: 'HealthCredSTAT',
-      publisher: {
-        '@id': `${SITE_URL}/#organization`,
-      },
+      name: SITE_NAME,
+      publisher: { '@id': `${SITE_URL}/#organization` },
       inLanguage: 'en-US',
-    },
-    {
-      '@type': 'SoftwareApplication',
-      '@id': `${SITE_URL}/#software`,
-      name: 'HealthCredSTAT Portal',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'All',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
-      },
-      description:
-        'Real-time automated credentialing platform and autonomous provider onboarding CVO service.',
     },
   ],
 };
@@ -175,10 +134,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sora.variable} ${instrumentSerif.variable}`}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={jsonLd} />
       </head>
       <body>
         <Providers>{children}</Providers>

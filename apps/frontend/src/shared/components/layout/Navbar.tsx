@@ -144,7 +144,7 @@ export const Navbar: React.FC = () => {
                           <span className="mdl-panel__link-icon" style={{background:'#f0fdfa'}}>🛡️</span>
                           <div>
                             <strong>CVO Credentialing</strong>
-                            <span>1–2 day PSV file readiness</span>
+                            <span>Primary source verification</span>
                           </div>
                         </Link>
                         <Link href="/solutions/roster-management" className="mdl-panel__link" onClick={closeAll}>
@@ -194,9 +194,9 @@ export const Navbar: React.FC = () => {
                             <div className="sp-row"><span className="sp-dot sp-dot--blue"/>Roster Sync<span className="sp-tag">Running</span></div>
                           </div>
                         </div>
-                        <p className="mdl-panel__spotlight-label">Cutting $1.2B in redundant credentialing costs for healthcare.</p>
-                        <Link href="/resources/case-studies" className="mdl-panel__spotlight-cta" onClick={closeAll}>
-                          SEE THE STORY <span>↗</span>
+                        <p className="mdl-panel__spotlight-label">Every step from signed offer to billing, handled by one team.</p>
+                        <Link href="/services" className="mdl-panel__spotlight-cta" onClick={closeAll}>
+                          SEE ALL SERVICES <span>↗</span>
                         </Link>
                       </div>
                     </div>
@@ -334,15 +334,15 @@ export const Navbar: React.FC = () => {
                       <div className="mdl-panel__spotlight">
                         <div className="mdl-panel__spotlight-img" style={{background:'linear-gradient(135deg,#1e1b4b,#4338ca)'}}>
                           <div className="mdl-panel__spotlight-badge">
-                            <span>🎙️</span> On Demand
+                            <span>🧮</span> Free tool
                           </div>
                           <div style={{color:'#fff', fontWeight:800, fontSize:'1.1rem', letterSpacing:'-0.02em', margin:'auto 0'}}>
-                            ELEVATE 2026
+                            Timeline Estimator
                           </div>
                         </div>
-                        <p className="mdl-panel__spotlight-label">Big ideas. Real strategies. Now on demand.</p>
-                        <Link href="/resources/case-studies" className="mdl-panel__spotlight-cta" onClick={closeAll}>
-                          WATCH NOW <span>↗</span>
+                        <p className="mdl-panel__spotlight-label">See how long credentialing will take for your providers.</p>
+                        <Link href="/#estimator" className="mdl-panel__spotlight-cta" onClick={closeAll}>
+                          TRY IT FREE <span>↗</span>
                         </Link>
                       </div>
                     </div>
@@ -399,7 +399,7 @@ export const Navbar: React.FC = () => {
                           <span className="mdl-panel__link-icon" style={{background:'#f0fdf4'}}>🔒</span>
                           <div>
                             <strong>Compliance</strong>
-                            <span>SOC 2, HIPAA &amp; NCQA alignment</span>
+                            <span>How we protect provider data</span>
                           </div>
                         </Link>
                         <Link href="/company/careers" className="mdl-panel__link" onClick={closeAll}>
@@ -415,15 +415,15 @@ export const Navbar: React.FC = () => {
                       <div className="mdl-panel__spotlight">
                         <div className="mdl-panel__spotlight-img" style={{background:'linear-gradient(135deg,#062459,#10c1bb)'}}>
                           <div className="mdl-panel__spotlight-badge">
-                            <span>🚀</span> Milestone
+                            <span>💬</span> Free quote
                           </div>
                           <div style={{color:'#fff', fontWeight:700, fontSize:'0.85rem', lineHeight:1.35, margin:'auto 0'}}>
-                            HealthCredSTAT Expands AI Credentialing Nationwide
+                            Talk to a credentialing specialist
                           </div>
                         </div>
-                        <p className="mdl-panel__spotlight-label">Eliminating redundant provider operations for over 150,000 clinicians.</p>
-                        <Link href="/about" className="mdl-panel__spotlight-cta" onClick={closeAll}>
-                          READ MORE <span>↗</span>
+                        <p className="mdl-panel__spotlight-label">Get pricing and a realistic timeline for your providers.</p>
+                        <Link href="/contact" className="mdl-panel__spotlight-cta" onClick={closeAll}>
+                          GET A QUOTE <span>↗</span>
                         </Link>
                       </div>
                     </div>
@@ -437,7 +437,7 @@ export const Navbar: React.FC = () => {
               </Link>
             </div>
 
-            {/* Right actions matching Medallion: Search, Divider, Sign In, GET IN TOUCH */}
+            {/* Right actions: Search, Divider, Sign In, primary CTA */}
             <div className="mdl-nav__actions">
               {/* Search button */}
               <button
@@ -462,7 +462,7 @@ export const Navbar: React.FC = () => {
               )}
 
               <Link href="/#contact" className="mdl-nav__btn-touch" onClick={closeAll}>
-                GET IN TOUCH
+                GET A FREE QUOTE
               </Link>
             </div>
           </div>
@@ -516,7 +516,7 @@ export const Navbar: React.FC = () => {
                   ⚡ <div><strong>Provider Enrollment</strong><span>Automate multi-payer applications</span></div>
                 </Link>
                 <Link href="/solutions/cvo-credentialing" onClick={closeAll} className="search-result-item">
-                  🛡️ <div><strong>CVO Credentialing</strong><span>1–2 day PSV file readiness</span></div>
+                  🛡️ <div><strong>CVO Credentialing</strong><span>Primary source verification</span></div>
                 </Link>
                 <Link href="/pricing" onClick={closeAll} className="search-result-item">
                   💳 <div><strong>Transparent Pricing</strong><span>Calculate ROI &amp; plans</span></div>

@@ -104,33 +104,20 @@ export const ContactWizard: React.FC = () => {
             Ready to Simplify Your <em>Credentialing?</em>
           </h2>
           <p>
-            Take the paperwork off your plate. Fill out our simple onboarding form to get a personalized quote and timeline estimate from a dedicated specialist.
+            Tell us about your providers and payers. A credentialing specialist will send you a personalized quote and a realistic timeline — no obligation.
           </p>
 
           <ul className="form-trust">
             <li>
-              <Icon name="check" /> No Long-Term Contracts or Hidden Fees
+              <Icon name="check" /> Free quote and timeline, no obligation
             </li>
             <li>
-              <Icon name="check" /> 100% HIPAA & BAA Compliant Data Handling
+              <Icon name="check" /> Secure, HIPAA-aligned document handling
             </li>
             <li>
-              <Icon name="check" /> Dedicated Credentialing Specialist Assigned
+              <Icon name="check" /> A dedicated credentialing specialist
             </li>
           </ul>
-
-          <div className="form-rating">
-            <div className="stars">
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star" />
-            </div>
-            <span>
-              <strong>4.9/5 Rating</strong> across 250+ practices
-            </span>
-          </div>
         </div>
 
         <motion.div

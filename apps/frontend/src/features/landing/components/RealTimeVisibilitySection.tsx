@@ -33,11 +33,12 @@ export const RealTimeVisibilitySection: React.FC = () => {
         <div className="rtv-header">
           <div className="rtv-tag">
             <Icon name="bar" />
-            <span>Operational Command Center</span>
+            <span>Your credentialing dashboard</span>
           </div>
-          <h2>Real-time visibility into your provider network</h2>
+          <h2>See where every provider stands, at a glance</h2>
           <p className="rtv-subtitle">
-            Single pane of glass across credentialing, enrollment status, continuous monitoring, and provider compliance profiles.
+            Credentialing progress, payer enrollment status, upcoming expirations and monitoring alerts in one place, so
+            you&apos;re never chasing updates by email. <em>Sample data shown.</em>
           </p>
         </div>
 

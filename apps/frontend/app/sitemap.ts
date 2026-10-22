@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://healthcredstat.com';
+import { SITE_URL } from '@/shared/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
@@ -28,14 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/who-we-help/health-systems', priority: 0.85, changeFrequency: 'monthly' },
     { path: '/who-we-help/digital-health', priority: 0.85, changeFrequency: 'monthly' },
 
-    // Resources & Company
-    { path: '/resources/library', priority: 0.75, changeFrequency: 'weekly' },
-    { path: '/resources/blog', priority: 0.75, changeFrequency: 'daily' },
-    { path: '/resources/case-studies', priority: 0.75, changeFrequency: 'weekly' },
-    { path: '/company/experts', priority: 0.7, changeFrequency: 'monthly' },
-    { path: '/company/newsroom', priority: 0.7, changeFrequency: 'weekly' },
-    { path: '/company/compliance', priority: 0.75, changeFrequency: 'monthly' },
-    { path: '/company/careers', priority: 0.65, changeFrequency: 'weekly' },
+    // Placeholder pages (blog, library, case studies, newsroom, team, careers, compliance)
+    // are noindexed — add them back here once they have real content.
   ];
 
   return routes.map((route) => ({

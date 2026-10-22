@@ -16,50 +16,50 @@ export interface StickyPlatformItem {
 const STICKY_ITEMS: StickyPlatformItem[] = [
   {
     num: '01',
-    title: 'Adaptive provider data operations',
-    description: 'Operations that improve automatically — AI agents learn from every credentialing and enrollment workflow, getting faster, more resilient, and more accurate over time.',
-    badge: 'Self-Optimizing',
+    title: 'Collect provider data once',
+    description: 'Providers hate filling out the same information over and over. We gather it once, keep it current, and reuse it for every payer, facility and renewal.',
+    badge: 'Less paperwork',
     icon: 'sparkle',
     detailPoints: [
-      'Machine learning models trained on 1,000+ payer form changes',
-      'Automated extraction of provider history from CAQH & PDFs',
-      'Zero repeat data requests for returning clinicians',
+      'Provider history pulled from CAQH ProView and existing documents',
+      'Secure document collection with automatic reminders',
+      'No repeat requests for information you have already sent',
     ],
   },
   {
     num: '02',
-    title: 'Full operational visibility',
-    description: 'Real-time status across credentialing, enrollment, licensing, and continuous monitoring — all consolidated into one command center, so nothing ever falls through the cracks.',
-    badge: 'Single Source of Truth',
+    title: 'Know the status of every file',
+    description: 'Credentialing, enrollment, licensing and monitoring status in one place, so nothing falls through the cracks and nobody has to ask "where are we on this?"',
+    badge: 'Full visibility',
     icon: 'bar',
     detailPoints: [
-      'Live pipeline stages across all active payer applications',
-      'Instant bottleneck detection and automated escalation',
-      'Custom role-based views for C-suite, operations, and clinicians',
+      'Live status for every payer application',
+      'Bottlenecks flagged and escalated early',
+      'Views for leadership, operations and providers',
     ],
   },
   {
     num: '03',
-    title: 'Confidence and capacity to focus on care',
-    description: 'Stay in control of what matters most — AI handles tedious payer follow-ups, primary source verifications, and administrative overhead automatically.',
-    badge: 'Clinician Satisfaction',
-    icon: 'shield',
+    title: 'Let providers focus on patients',
+    description: 'Follow-ups with payers, verifications and renewal paperwork happen in the background. Your providers only hear from us when we truly need them.',
+    badge: 'Happier providers',
+    icon: 'users',
     detailPoints: [
-      'Eliminates 90% of clinician paperwork burden',
-      'Automated proactive deadline and renewal alerts',
-      'Dedicated specialist support when edge cases arise',
+      'Payer follow-ups handled by our team',
+      'Alerts well before licenses and certifications expire',
+      'A dedicated specialist for questions and edge cases',
     ],
   },
   {
     num: '04',
-    title: 'Performance written into your contract',
-    description: 'Move faster with absolute confidence — we stand firmly behind every credentialing operation with performance-backed SLAs and turnaround guarantees.',
-    badge: 'Guaranteed SLA',
+    title: 'Clear commitments, measured',
+    description: 'Turnaround expectations are agreed up front and reported on, so you always know how your credentialing operation is performing.',
+    badge: 'Accountability',
     icon: 'check-circle',
     detailPoints: [
-      '1 to 2 business day primary source verification files',
-      '99.9% audited file accuracy standard',
-      'Direct revenue attribution and in-network velocity',
+      'Turnaround and status reporting you can share with leadership',
+      'Audit-ready records for every verification',
+      'Visibility into when each provider can start billing',
     ],
   },
 ];
@@ -74,15 +74,15 @@ export const PlatformSection: React.FC = () => {
         <div className="platform-sticky-head">
           <div className="platform-eyebrow">
             <Icon name="cpu" />
-            <span>Modern Operations Stack</span>
+            <span>Why HealthCredSTAT</span>
           </div>
-          <h2>A complete platform for every provider workflow</h2>
+          <h2>Less chasing. Fewer delays. Providers billing sooner.</h2>
           <p className="platform-sticky-lead">
-            Built specifically for the scale, compliance rigor, and velocity required by modern health systems, digital health, and provider groups.
+            Whether you are onboarding one provider or hundreds, you get a team that owns the work and a system that shows you exactly where it stands.
           </p>
           <div className="platform-head-cta">
             <a href="#contact" className="btn btn-primary btn-sm">
-              Schedule Platform Tour &rarr;
+              Talk to a credentialing specialist &rarr;
             </a>
           </div>
         </div>

@@ -16,12 +16,12 @@ export default function PricingPage() {
 
       <main style={{ paddingTop: '100px' }}>
         <section className="container" style={{ padding: '60px 24px 20px', textAlign: 'center' }}>
-          <Badge icon={<Icon name="sparkle" />}>Transparent &amp; Value-Driven</Badge>
+          <Badge icon={<Icon name="sparkle" />}>Pricing</Badge>
           <h1 style={{ fontSize: 'clamp(2.4rem, 4vw, 3.4rem)', color: 'var(--ink)', margin: '16px 0', fontWeight: 800 }}>
-            Predictable Pricing for <em>Clinicians &amp; Enterprises</em>
+            Credentialing pricing that&apos;s <em>simple and predictable</em>
           </h1>
           <p style={{ maxWidth: 760, margin: '0 auto', fontSize: '1.15rem', color: 'var(--ink-soft)', lineHeight: 1.6 }}>
-            No hidden setup charges, no surprise fees. Scale credentialing and payer enrollment with guaranteed turnaround SLAs.
+            A flat rate for individual clinicians and custom pricing for groups and enterprises — with no hidden setup fees. Not sure what you need? Use the estimator below or ask for a free quote.
           </p>
         </section>
 

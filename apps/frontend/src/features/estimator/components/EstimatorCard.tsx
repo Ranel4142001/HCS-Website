@@ -28,10 +28,10 @@ export const EstimatorCard: React.FC = () => {
     <section className="estimator" id="estimator">
       <div className="container">
         <SectionHeader
-          eyebrow="Interactive Quiz"
+          eyebrow="Free tool"
           eyebrowIcon="sparkle"
-          title={<>Turnaround Time <em>Estimator</em></>}
-          description="Answer 3 quick questions to calculate your estimated credentialing timeframe and plan option."
+          title={<>How long will <em>credentialing take?</em></>}
+          description="Answer three quick questions for an estimated timeline and the plan that fits your practice."
         />
 
         <motion.div
@@ -81,8 +81,8 @@ export const EstimatorCard: React.FC = () => {
                 <Icon name="clock" />
               </div>
               <div>
-                <strong>Fast-Track Guarantee</strong>
-                <span>Application packets submitted to payors within 48 hours of onboarding.</span>
+                <strong>Fast submissions</strong>
+                <span>Applications go out as soon as your file is complete — no waiting in a queue.</span>
               </div>
             </div>
 
@@ -91,8 +91,8 @@ export const EstimatorCard: React.FC = () => {
                 <Icon name="shield" />
               </div>
               <div>
-                <strong>100% Primary Source Verified</strong>
-                <span>Direct verification with medical boards, SAM, and NPDB to prevent errors.</span>
+                <strong>Primary source verified</strong>
+                <span>Credentials checked directly with licensing boards, NPDB, OIG and SAM.gov.</span>
               </div>
             </div>
 
@@ -101,8 +101,8 @@ export const EstimatorCard: React.FC = () => {
                 <Icon name="chat" />
               </div>
               <div>
-                <strong>Weekly Follow-Up Logs</strong>
-                <span>Regular phone calls to payor committees to expedite provider ID issuance.</span>
+                <strong>Scheduled payer follow-up</strong>
+                <span>We follow up with every payer until provider IDs are issued.</span>
               </div>
             </div>
           </div>

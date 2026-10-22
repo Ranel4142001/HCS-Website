@@ -14,52 +14,9 @@ interface TestimonialCard {
   metric: string;
 }
 
-const TESTIMONIALS: TestimonialCard[] = [
-  {
-    id: 't1',
-    company: 'CareBridge',
-    companyInitials: 'CB',
-    companyColor: '#0d6efd',
-    thumbnailBg: 'linear-gradient(135deg, #062459 0%, #0d6efd 100%)',
-    quote: '"Helps us scale without having to build a massive internal credentialing team."',
-    name: 'Steven Shterenberg, M.D.',
-    role: 'SVP of Operations & Clinical Strategy',
-    metric: '98% faster enrollment',
-  },
-  {
-    id: 't2',
-    company: 'WellBe Senior Medical',
-    companyInitials: 'WB',
-    companyColor: '#10c1bb',
-    thumbnailBg: 'linear-gradient(135deg, #0a4a47 0%, #10c1bb 100%)',
-    quote: '"We are at a turnaround time of 2 days. It is unbelievable compared to before."',
-    name: 'Joshua Autry',
-    role: 'Chief Compliance & Privacy Officer',
-    metric: '2-day PSV file turnaround',
-  },
-  {
-    id: 't3',
-    company: 'Headspace Health',
-    companyInitials: 'HH',
-    companyColor: '#6366f1',
-    thumbnailBg: 'linear-gradient(135deg, #1e1b4b 0%, #6366f1 100%)',
-    quote: '"Allowed us to score over 99% on all health plan credentialing audits."',
-    name: 'Katie Dave',
-    role: 'Director of Partner Operations',
-    metric: '99%+ audit compliance score',
-  },
-  {
-    id: 't4',
-    company: 'Family Care Center',
-    companyInitials: 'FC',
-    companyColor: '#f59e0b',
-    thumbnailBg: 'linear-gradient(135deg, #451a03 0%, #f59e0b 100%)',
-    quote: '"Very intuitive platform, and providers rarely need to ask for help."',
-    name: 'Matthew Ortiz',
-    role: 'VP of Payor Strategy & Relations',
-    metric: '100% provider adoption',
-  },
-];
+// Add real, client-approved testimonials here (written permission required before publishing).
+// The section stays hidden while this list is empty.
+const TESTIMONIALS: TestimonialCard[] = [];
 
 export const TestimonialsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -135,6 +92,8 @@ export const TestimonialsSection: React.FC = () => {
       Object.values(progressIntervals.current).forEach(clearInterval);
     };
   }, []);
+
+  if (total === 0) return null;
 
   return (
     <section className="tv2-section" id="testimonials">

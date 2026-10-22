@@ -1,18 +1,12 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/shared/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Services & Autonomous Operations',
+export const metadata = buildMetadata({
+  title: 'Credentialing & Provider Enrollment Services',
   description:
-    'Comprehensive AI-powered healthcare credentialing, primary source verification, delegated credentialing, and multi-state provider enrollment services.',
-  alternates: {
-    canonical: '/services',
-  },
-};
+    'Full-service medical credentialing: payer enrollment, primary source verification, recredentialing, roster management, privileging and multi-state licensing.',
+  path: '/services',
+});
 
-export default function ServicesLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ServicesLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

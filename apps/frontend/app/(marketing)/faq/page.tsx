@@ -15,12 +15,12 @@ export default function FaqPage() {
 
       <main style={{ paddingTop: '100px' }}>
         <section className="container" style={{ padding: '60px 24px 20px', textAlign: 'center' }}>
-          <Badge icon={<Icon name="shield" />}>Knowledge Base &amp; Regulatory Guides</Badge>
+          <Badge icon={<Icon name="shield" />}>FAQ</Badge>
           <h1 style={{ fontSize: 'clamp(2.4rem, 4vw, 3.4rem)', color: 'var(--ink)', margin: '16px 0', fontWeight: 800 }}>
-            Healthcare Credentialing &amp; <em>CVO Knowledge Base</em>
+            Medical credentialing <em>FAQ</em>
           </h1>
           <p style={{ maxWidth: 760, margin: '0 auto', fontSize: '1.15rem', color: 'var(--ink-soft)', lineHeight: 1.6 }}>
-            Understand the regulations, turnaround timelines, NCQA standards, and technology powering modern automated provider credentialing.
+            Plain-English answers about credentialing, payer enrollment, CAQH, timelines, documents and costs. Do not see your question? Ask a credentialing specialist.
           </p>
         </section>
 

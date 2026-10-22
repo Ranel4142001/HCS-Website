@@ -34,14 +34,14 @@ export const Footer: React.FC = () => {
               />
             </Link>
             <p className="footer-brand-desc">
-              The AI operations partner powering healthcare&rsquo;s first real-time CVO and automated provider enrollment.
+              Medical credentialing and payer enrollment services that get providers verified, in-network and billing sooner.
             </p>
             <div className="footer-accreditations">
               <span className="accred-badge">
-                <Icon name="shield" /> NCQA Aligned
+                <Icon name="shield" /> NCQA standards
               </span>
               <span className="accred-badge">
-                <Icon name="lock" /> 256-Bit HIPAA Vault
+                <Icon name="lock" /> HIPAA-aligned
               </span>
             </div>
           </div>

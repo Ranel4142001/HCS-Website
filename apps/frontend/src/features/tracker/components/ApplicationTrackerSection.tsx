@@ -104,10 +104,11 @@ export const ApplicationTrackerSection: React.FC = () => {
     <section className="tracker-section" id="tracker">
       <div className="container">
         <div className="tracker-head">
-          <Badge icon={<Icon name="shield" />}>Automated Application Tracking</Badge>
-          <h2>Real-Time Credentialing &amp; Payer Status</h2>
+          <Badge icon={<Icon name="shield" />}>Interactive demo</Badge>
+          <h2>Always know where every application stands</h2>
           <p className="tracker-sub">
-            Track primary source verifications, committee approvals, and health plan in-network milestones in real time.
+            Verification, committee approval, payer enrollment and billing go-live, tracked step by step for every
+            provider. Try the demo with one of the sample providers below.
           </p>
         </div>
 

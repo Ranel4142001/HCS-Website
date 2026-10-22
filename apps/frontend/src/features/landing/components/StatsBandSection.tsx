@@ -15,35 +15,35 @@ export interface GalleryStat {
 
 const STATS_CAROUSEL: GalleryStat[] = [
   {
-    big: '2x',
-    label: 'estimated faster enrollment to unlock revenue',
+    big: 'Experts',
+    label: 'step in the moment automation hits a snag',
     num: '01',
-    title: 'Experts-in-the-loop',
-    body: 'When AI flags a payer exception or missing document, credentialing specialists step in immediately — so applications never stall.',
+    title: 'Specialists in the loop',
+    body: 'When a payer kicks back an application or a document is missing, a credentialing specialist takes over right away — so files keep moving instead of sitting in a queue.',
     iconName: 'users',
   },
   {
-    big: '66%',
-    label: 'estimated reduction in administrative overhead',
+    big: 'Every stage',
+    label: 'reviewed before anything reaches a payer',
     num: '02',
     title: 'Checkpoint review',
-    body: 'HealthCredSTAT experts review every critical stage before packets are dispatched to health plans. Turnaround times guaranteed.',
+    body: 'Applications are checked for completeness and accuracy at each stage. Clean submissions mean fewer rejections, fewer resubmissions and fewer weeks lost.',
     iconName: 'check-circle',
   },
   {
-    big: '1 day',
-    label: 'average credentialing file readiness for faster care',
+    big: 'NCQA',
+    label: 'verification standards built into every file',
     num: '03',
-    title: 'Built-in compliant oversight',
-    body: 'Primary source verification and NCQA standards are embedded at each step — so compliance is never a question mark.',
+    title: 'Compliance built in',
+    body: 'Primary source verification follows NCQA credentialing standards from the start, so every file is ready for a committee — or an audit.',
     iconName: 'shield',
   },
   {
-    big: '99.9%',
-    label: 'average primary source file accuracy',
+    big: 'Up to date',
+    label: 'with changing payer and state requirements',
     num: '04',
-    title: 'AI agent training & configuration',
-    body: 'Our regulatory specialists continuously train HealthCredSTAT AI agents to reflect evolving state and commercial health plan rules.',
+    title: 'Rules that keep up',
+    body: 'Payer forms and state board rules change constantly. Our team tracks those changes and updates our workflows, so you never have to.',
     iconName: 'cpu',
   },
 ];
@@ -73,7 +73,7 @@ export const StatsBandSection: React.FC = () => {
       <div className="container stats-gallery-inner">
         {/* Left Stats Counter Panel */}
         <div className="stats-gallery-lead">
-          <h2>AI and human expertise, woven into every workflow</h2>
+          <h2>Credentialing experts, backed by automation</h2>
           
           <div className="stats-active-metric-box">
             <AnimatePresence mode="wait">
@@ -91,7 +91,7 @@ export const StatsBandSection: React.FC = () => {
           </div>
 
           {/* Progress Segment Tabs */}
-          <div className="stats-seg-bar" role="tablist" aria-label="AI and human expertise gallery">
+          <div className="stats-seg-bar" role="tablist" aria-label="How HealthCredSTAT works">
             {STATS_CAROUSEL.map((item, idx) => {
               const isSelected = idx === activeIdx;
               return (

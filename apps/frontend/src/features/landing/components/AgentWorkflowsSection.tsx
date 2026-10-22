@@ -12,8 +12,6 @@ export interface WorkflowItem {
   description: string;
   icon: IconName;
   tag: string;
-  metric: string;
-  metricLabel: string;
   highlights: string[];
   mockData: {
     statusBadge: string;
@@ -27,13 +25,11 @@ const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'enrollment',
     title: 'Provider Enrollment',
-    description: 'Accelerate time-to-revenue with autonomous agent workflows across 1,000+ commercial, Medicare, and Medicaid payer portals.',
+    description: 'Get providers in-network faster. We prepare and submit applications to Medicare, Medicaid and commercial payers, then follow up until each one is approved.',
     icon: 'sparkle',
     tag: 'Revenue Acceleration',
-    metric: '2.4x Faster',
-    metricLabel: 'time-to-in-network status',
     highlights: [
-      'Multi-payer packet generation (Form 855I, CAQH, state forms)',
+      'Medicare (CMS-855), CAQH and state Medicaid applications prepared for you',
       'Automated portal status checks & follow-up touches',
       'Instant exception escalation to credentialing specialists',
     ],
@@ -56,15 +52,13 @@ const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'credentialing',
     title: 'CVO Credentialing',
-    description: 'Accurate, NCQA-ready credentialing files with automated primary source verification (PSV) delivered in 1–2 business days.',
+    description: 'Complete, committee-ready credentialing files built on primary source verification: licenses, board certification, education, sanctions and malpractice history.',
     icon: 'shield',
     tag: 'Primary Source Verification',
-    metric: '1 Day',
-    metricLabel: 'average file readiness',
     highlights: [
-      'Automated queries to NPDB, OIG, SAM, and 50 state medical boards',
+      'Verification against NPDB, OIG, SAM.gov and state licensing boards',
       'Real-time primary source verification packet compilation',
-      'Guaranteed SLA turnaround times written into contract',
+      'Committee-ready files with a complete audit trail',
     ],
     mockData: {
       statusBadge: 'NCQA Compliant • PSV Complete',
@@ -85,15 +79,13 @@ const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'roster',
     title: 'Roster Management',
-    description: 'Keep provider data synchronized enterprise-wide and automatically generate standardized rosters for health plans.',
+    description: 'Keep provider data accurate everywhere it lives, and send every health plan the roster format it requires.',
     icon: 'users',
     tag: 'Directory Hygiene',
-    metric: '100%',
-    metricLabel: 'roster accuracy guarantee',
     highlights: [
       'Automated roster formatting for all national & regional payers',
       'Bi-directional sync with internal HRIS, EHR, and billing databases',
-      'Eliminates ghost networks and compliance penalties',
+      'Helps keep health plan provider directories accurate',
     ],
     mockData: {
       statusBadge: 'All Rosters Synced • 1,240 Clinicians',
@@ -114,11 +106,9 @@ const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'delegated',
     title: 'Delegated Credentialing',
-    description: 'Fast-track network-wide provider credentialing under delegated payer agreements without scaling administrative headcount.',
+    description: 'Credential providers under delegated agreements with health plans, with the files, committee packets and reporting their oversight audits expect.',
     icon: 'zap',
     tag: 'Delegation Velocity',
-    metric: '60% Faster',
-    metricLabel: 'clinician onboarding speed',
     highlights: [
       'Pre-configured audit-ready committee packet generation',
       'Delegated roster submission directly to participating plans',
@@ -126,7 +116,7 @@ const WORKFLOWS: WorkflowItem[] = [
     ],
     mockData: {
       statusBadge: '14 Active Delegated Agreements',
-      subtext: 'UnitedHealthcare, Humana, Elevance, Cigna',
+      subtext: 'Sample: 4 regional health plans',
       stats: [
         { label: 'Credentialing Window', value: '3 Days', trend: 'vs 90d payer' },
         { label: 'Audit Pass Rate', value: '100%', trend: 'NCQA Ready' },
@@ -143,11 +133,9 @@ const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'privileging',
     title: 'Privileging & Appointments',
-    description: 'Digitize hospital, surgery center, and telehealth clinical privileges with automated application routing and peer review packets.',
+    description: 'Hospital, surgery center and telehealth privileging applications, peer references and OPPE/FPPE tracking in one organized workflow.',
     icon: 'file',
     tag: 'Clinical Privileges',
-    metric: '5 Days',
-    metricLabel: 'average committee cycle',
     highlights: [
       'Customizable specialty privilege delineate forms',
       'Automated OPPE / FPPE tracking and case log collection',
@@ -172,11 +160,9 @@ const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'licensing',
     title: 'Cross-State Licensing',
-    description: 'Scale multi-state clinician practices rapidly with automated license applications, renewals, and board tracking.',
+    description: 'New state licenses, renewals and compact applications for providers who practice, or see patients virtually, across state lines.',
     icon: 'globe',
     tag: 'National Expansion',
-    metric: '50 States',
-    metricLabel: 'automated board coverage',
     highlights: [
       'Automated IMLC (Interstate Medical Licensure Compact) filing',
       'CME credit verification and renewal alerts 90-60-30 days out',
@@ -201,11 +187,9 @@ const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'monitoring',
     title: 'Continuous Monitoring',
-    description: 'Protect patient safety and compliance with continuous 24/7 background monitoring across all federal and state registries.',
+    description: 'Ongoing checks against federal exclusion lists and state licensing boards, with alerts before a lapse or sanction becomes a problem.',
     icon: 'bell',
     tag: '24/7 Risk Mitigation',
-    metric: '100% Real-Time',
-    metricLabel: 'instant sanction detection',
     highlights: [
       'Daily automated OIG-LEIE, SAM.gov, and NPDB re-checks',
       'Instant exclusion detection and automated compliance alerts',
@@ -230,11 +214,9 @@ const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'contracts',
     title: 'Payer Contract Management',
-    description: 'Transform complex health plan agreements into a unified, searchable, negotiation-ready system of record.',
+    description: 'Keep payer agreements, fee schedules and renewal dates organized so nothing expires unnoticed.',
     icon: 'cpu',
     tag: 'Contract Intelligence',
-    metric: '$1.2M+',
-    metricLabel: 'average value protected',
     highlights: [
       'AI extraction of fee schedules, re-credentialing cycles, and carve-outs',
       'Timely alert notifications before contract expiration & renewal windows',
@@ -320,11 +302,11 @@ export const AgentWorkflowsSection: React.FC = () => {
             <span className="eyebrow-sparkle">
               <Icon name="sparkle" />
             </span>
-            <span>Autonomous Agent Workflows</span>
+            <span>What we do</span>
           </div>
-          <h2>AI-fueled healthcare operations at enterprise scale</h2>
+          <h2>Every credentialing workflow, handled end to end</h2>
           <p className="workflows-subtitle">
-            Medallion-grade autonomous agents and specialized credentialing experts take on complex, multi-touch provider workflows from end to end.
+            Credentialing specialists and automation work together on the slow, multi-step tasks that keep providers from billing, from the first application to every recredentialing cycle.
           </p>
         </div>
 
@@ -364,7 +346,7 @@ export const AgentWorkflowsSection: React.FC = () => {
                     >
                       <p className="wf-tab-desc">{wf.description}</p>
                       <a href="#contact" className="wf-tab-link">
-                        <span>Deploy this workflow</span>
+                        <span>Get a quote for this service</span>
                         <Icon name="arrow" />
                       </a>
                     </motion.div>
@@ -401,9 +383,7 @@ export const AgentWorkflowsSection: React.FC = () => {
                     <span className="live-dot" />
                     <span>{active.mockData.statusBadge}</span>
                   </div>
-                  <span className="wf-metric-pill">
-                    <strong>{active.metric}</strong> {active.metricLabel}
-                  </span>
+                  <span className="wf-metric-pill">Sample view</span>
                 </div>
 
                 <div className="wf-media-subtext">{active.mockData.subtext}</div>

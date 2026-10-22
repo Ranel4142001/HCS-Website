@@ -1,18 +1,12 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/shared/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'About Us — Mission & Healthcare Leadership',
+export const metadata = buildMetadata({
+  title: 'About Us — Medical Credentialing Specialists',
   description:
-    'Learn how HealthCredSTAT is revolutionizing healthcare credentialing with real-time AI autonomous agents and seasoned clinical compliance specialists.',
-  alternates: {
-    canonical: '/about',
-  },
-};
+    'HealthCredSTAT helps healthcare organizations get providers credentialed, enrolled and billing sooner by pairing experienced credentialing specialists with automation.',
+  path: '/about',
+});
 
-export default function AboutLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

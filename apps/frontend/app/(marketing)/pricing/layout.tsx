@@ -1,23 +1,12 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/shared/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Pricing & Guaranteed SLAs',
+export const metadata = buildMetadata({
+  title: 'Credentialing Services Pricing',
   description:
-    'Predictable, transparent pricing for medical credentialing, provider enrollment, and delegated CVO operations with guaranteed turnaround times.',
-  alternates: {
-    canonical: '/pricing',
-  },
-  openGraph: {
-    title: 'Pricing & Plans | HealthCredSTAT',
-    description:
-      'Predictable pricing for medical credentialing, provider enrollment, and delegated CVO operations.',
-  },
-};
+    'Transparent pricing for medical credentialing and payer enrollment services. Individual clinicians from $599 per assignment; custom pricing for groups and enterprises.',
+  path: '/pricing',
+});
 
-export default function PricingLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PricingLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

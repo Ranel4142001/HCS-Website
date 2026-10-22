@@ -8,7 +8,6 @@ import StatsBandSection from '@/features/landing/components/StatsBandSection';
 import AgentWorkflowsSection from '@/features/landing/components/AgentWorkflowsSection';
 import RealTimeVisibilitySection from '@/features/landing/components/RealTimeVisibilitySection';
 import PlatformSection from '@/features/landing/components/PlatformSection';
-import PressAwardsSection from '@/features/landing/components/PressAwardsSection';
 
 // Code-split heavy below-the-fold and client-only interactive components
 const ApplicationTrackerSection = dynamic(
@@ -72,7 +71,7 @@ export default function MarketingPage() {
         {/* 2. AI + Human Expertise Gallery */}
         <StatsBandSection />
 
-        {/* 3. Medallion-Style 8 Agent Workflows Engine */}
+        {/* 3. HealthCredSTAT 8 Agent Workflows Engine */}
         <AgentWorkflowsSection />
 
         {/* 4. Real-Time Visibility (RTV) Command Center Dashboards */}
@@ -87,20 +86,17 @@ export default function MarketingPage() {
         {/* 7. Adaptive Operations Sticky Platform Narrative */}
         <PlatformSection />
 
-        {/* 8. Press & Industry Accolades Grid (Static Server Component) */}
-        <PressAwardsSection />
-
         {/* 9. Interactive Turnaround Estimator (Code-split) */}
         <EstimatorCard />
 
         {/* 10. Transparent Pricing Matrix (Code-split) */}
         <PricingSection />
 
-        {/* 11. Customer Stories & Video Showcase (Code-split) */}
+        {/* 11. Client testimonials — hidden until real, approved quotes are added */}
         <TestimonialsSection />
 
         {/* 12. Credentialing Knowledge Base & FAQ Accordion (Code-split) */}
-        <FaqSection />
+        <FaqSection limit={6} />
 
         {/* 13. Contact & Demo Request Wizard (Code-split) */}
         <ContactWizard />

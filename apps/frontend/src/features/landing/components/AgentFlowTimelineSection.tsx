@@ -204,11 +204,12 @@ export const AgentFlowTimelineSection: React.FC = () => {
         <div className="timeline-head">
           <div className="timeline-eyebrow">
             <Icon name="sparkle" />
-            <span>Autonomous Execution Engine</span>
+            <span>Behind the scenes</span>
           </div>
-          <h2>Our fully autonomous agents handle work across hundreds of interactions.</h2>
+          <h2>Payer enrollment takes dozens of follow-ups. We handle every one.</h2>
           <p className="timeline-intro">
-            Payer enrollment is not a single-turn task. It is weeks of work involving dozens of touches across payer portals, CAQH, state boards, email, SMS, and phones — orchestrated end to end.
+            Enrollment isn&apos;t one form. It&apos;s weeks of back-and-forth across payer portals, CAQH, state boards,
+            email and phone calls. Step through a sample enrollment to see the work we take off your team&apos;s plate.
           </p>
         </div>
 
