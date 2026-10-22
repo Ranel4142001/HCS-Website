@@ -5,19 +5,22 @@ import { Providers } from './providers';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
 import JsonLd from '@/shared/components/seo/JsonLd';
 
+// Sora is a variable font: omitting `weight` loads one file covering every weight,
+// instead of six separate files competing on slow connections.
 const sora = Sora({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-sans',
   display: 'swap',
 });
 
+// Only used for a few accent words, so it isn't preloaded ahead of the main font.
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
   weight: ['400'],
   style: ['normal', 'italic'],
   variable: '--font-display',
   display: 'swap',
+  preload: false,
 });
 
 export const viewport: Viewport = {
@@ -27,7 +30,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const DEFAULT_TITLE = 'Medical Credentialing & Payer Enrollment Services | HealthCredSTAT';
+const DEFAULT_TITLE = 'Medical Credentialing & Enrollment Services | HealthCredSTAT';
 const DEFAULT_DESCRIPTION =
   'Medical credentialing and payer enrollment services for practices, health systems and health plans. Get providers verified, in-network and billing sooner.';
 

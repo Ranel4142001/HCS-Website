@@ -1,9 +1,9 @@
 import { buildMetadata } from '@/shared/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'About Us — Medical Credentialing Specialists',
+  title: 'About Us — Credentialing Specialists',
   description:
-    'HealthCredSTAT helps healthcare organizations get providers credentialed, enrolled and billing sooner by pairing experienced credentialing specialists with automation.',
+    'HealthCredSTAT helps healthcare organizations get providers credentialed, enrolled and billing sooner, pairing credentialing specialists with automation.',
   path: '/about',
 });
 

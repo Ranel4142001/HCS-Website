@@ -4,16 +4,17 @@ import React, { useState, useEffect } from 'react';
 import Icon from '@/shared/components/ui/Icon';
 
 export const AnnouncementBar: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  // Rendered visible from the server so the page doesn't shift down when JavaScript loads.
+  // Only visitors who dismissed it this session see it removed after load.
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     try {
-      const dismissed = sessionStorage.getItem('hcs_announcement_dismissed');
-      if (!dismissed) {
-        setIsVisible(true);
+      if (sessionStorage.getItem('hcs_announcement_dismissed')) {
+        setIsVisible(false);
       }
     } catch {
-      setIsVisible(true);
+      // Storage unavailable (private mode, blocked): keep the bar visible.
     }
   }, []);
 

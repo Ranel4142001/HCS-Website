@@ -10,7 +10,7 @@ export const providerGroups: SolutionContent = {
   color: '#3f8dff',
   icon: '👩‍⚕️',
   meta: {
-    title: 'Credentialing Services for Medical Groups & MSOs',
+    title: 'Credentialing for Medical Groups & MSOs',
     description:
       'Outsourced credentialing and payer enrollment for medical groups and MSOs. Onboard new providers faster and keep every enrollment current.',
   },
@@ -89,7 +89,7 @@ export const healthPlans: SolutionContent = {
   color: '#10c1bb',
   icon: '🛡️',
   meta: {
-    title: 'Credentialing Services for Health Plans & Payers',
+    title: 'Credentialing Services for Health Plans',
     description:
       'Credentialing, recredentialing, monitoring and directory accuracy support for health plans, with files that follow NCQA standards.',
   },
@@ -163,7 +163,7 @@ export const healthSystems: SolutionContent = {
   color: '#ef4444',
   icon: '🏥',
   meta: {
-    title: 'Credentialing & Privileging Services for Health Systems',
+    title: 'Credentialing Services for Health Systems',
     description:
       'Centralized credentialing, privileging and payer enrollment for hospitals and health systems, with every expiration tracked.',
   },
@@ -237,7 +237,7 @@ export const digitalHealth: SolutionContent = {
   color: '#8b5cf6',
   icon: '💻',
   meta: {
-    title: 'Credentialing & Licensing for Telehealth Companies',
+    title: 'Telehealth Credentialing & Licensing',
     description:
       'Multi-state licensing, credentialing and payer enrollment for telehealth and digital health companies. Launch in new states and get in-network faster.',
   },

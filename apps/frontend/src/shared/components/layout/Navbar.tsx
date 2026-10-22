@@ -283,157 +283,15 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
 
-              {/* 3. RESOURCES DROPDOWN */}
-              <div
-                className="mdl-nav__item"
-                onMouseEnter={() => openMenu('resources')}
-                onMouseLeave={closeMenu}
-              >
-                <button
-                  type="button"
-                  className={`mdl-nav__trigger ${activeDropdown === 'resources' ? 'mdl-nav__trigger--active' : ''}`}
-                  aria-expanded={activeDropdown === 'resources'}
-                  onClick={() => setActiveDropdown(activeDropdown === 'resources' ? null : 'resources')}
-                >
-                  Resources
-                  <svg className={`mdl-nav__chevron ${activeDropdown === 'resources' ? 'mdl-nav__chevron--open' : ''}`} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-
-                {activeDropdown === 'resources' && (
-                  <div
-                    className="mdl-panel mdl-panel--resources"
-                    onMouseEnter={() => keepOpen('resources')}
-                    onMouseLeave={closeMenu}
-                  >
-                    <div className="mdl-panel__grid mdl-panel__grid--compact">
-                      <div className="mdl-panel__col">
-                        <Link href="/resources/library" className="mdl-panel__link" onClick={closeAll}>
-                          <span className="mdl-panel__link-icon" style={{background:'#eff6ff'}}>📖</span>
-                          <div>
-                            <strong>Resource library</strong>
-                            <span>Guides, whitepapers, benchmarks</span>
-                          </div>
-                        </Link>
-                        <Link href="/resources/blog" className="mdl-panel__link" onClick={closeAll}>
-                          <span className="mdl-panel__link-icon" style={{background:'#f0fdfa'}}>✍️</span>
-                          <div>
-                            <strong>Blog</strong>
-                            <span>Industry analysis &amp; updates</span>
-                          </div>
-                        </Link>
-                        <Link href="/resources/case-studies" className="mdl-panel__link" onClick={closeAll}>
-                          <span className="mdl-panel__link-icon" style={{background:'#faf5ff'}}>📑</span>
-                          <div>
-                            <strong>Case studies</strong>
-                            <span>Customer turnaround stories</span>
-                          </div>
-                        </Link>
-                      </div>
-
-                      {/* Spotlight */}
-                      <div className="mdl-panel__spotlight">
-                        <div className="mdl-panel__spotlight-img" style={{background:'linear-gradient(135deg,#1e1b4b,#4338ca)'}}>
-                          <div className="mdl-panel__spotlight-badge">
-                            <span>🧮</span> Free tool
-                          </div>
-                          <div style={{color:'#fff', fontWeight:800, fontSize:'1.1rem', letterSpacing:'-0.02em', margin:'auto 0'}}>
-                            Timeline Estimator
-                          </div>
-                        </div>
-                        <p className="mdl-panel__spotlight-label">See how long credentialing will take for your providers.</p>
-                        <Link href="/#estimator" className="mdl-panel__spotlight-cta" onClick={closeAll}>
-                          TRY IT FREE <span>↗</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* 4. COMPANY DROPDOWN */}
-              <div
-                className="mdl-nav__item"
-                onMouseEnter={() => openMenu('company')}
-                onMouseLeave={closeMenu}
-              >
-                <button
-                  type="button"
-                  className={`mdl-nav__trigger ${activeDropdown === 'company' ? 'mdl-nav__trigger--active' : ''}`}
-                  aria-expanded={activeDropdown === 'company'}
-                  onClick={() => setActiveDropdown(activeDropdown === 'company' ? null : 'company')}
-                >
-                  Company
-                  <svg className={`mdl-nav__chevron ${activeDropdown === 'company' ? 'mdl-nav__chevron--open' : ''}`} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-
-                {activeDropdown === 'company' && (
-                  <div
-                    className="mdl-panel mdl-panel--company"
-                    onMouseEnter={() => keepOpen('company')}
-                    onMouseLeave={closeMenu}
-                  >
-                    <div className="mdl-panel__grid mdl-panel__grid--compact">
-                      <div className="mdl-panel__col">
-                        <Link href="/about" className="mdl-panel__link" onClick={closeAll}>
-                          <span className="mdl-panel__link-icon" style={{background:'#eff6ff'}}>🏛️</span>
-                          <div>
-                            <strong>About us</strong>
-                            <span>Our mission &amp; leadership</span>
-                          </div>
-                        </Link>
-                        <Link href="/company/experts" className="mdl-panel__link" onClick={closeAll}>
-                          <span className="mdl-panel__link-icon" style={{background:'#f0fdfa'}}>🎖️</span>
-                          <div>
-                            <strong>Subject matter experts</strong>
-                            <span>Credentialing directors &amp; counsel</span>
-                          </div>
-                        </Link>
-                        <Link href="/company/newsroom" className="mdl-panel__link" onClick={closeAll}>
-                          <span className="mdl-panel__link-icon" style={{background:'#faf5ff'}}>📰</span>
-                          <div>
-                            <strong>Newsroom</strong>
-                            <span>Press releases &amp; media</span>
-                          </div>
-                        </Link>
-                        <Link href="/company/compliance" className="mdl-panel__link" onClick={closeAll}>
-                          <span className="mdl-panel__link-icon" style={{background:'#f0fdf4'}}>🔒</span>
-                          <div>
-                            <strong>Compliance</strong>
-                            <span>How we protect provider data</span>
-                          </div>
-                        </Link>
-                        <Link href="/company/careers" className="mdl-panel__link" onClick={closeAll}>
-                          <span className="mdl-panel__link-icon" style={{background:'#fffbeb'}}>⭐</span>
-                          <div>
-                            <strong>Careers</strong>
-                            <span>We&apos;re hiring!</span>
-                          </div>
-                        </Link>
-                      </div>
-
-                      {/* Spotlight */}
-                      <div className="mdl-panel__spotlight">
-                        <div className="mdl-panel__spotlight-img" style={{background:'linear-gradient(135deg,#062459,#10c1bb)'}}>
-                          <div className="mdl-panel__spotlight-badge">
-                            <span>💬</span> Free quote
-                          </div>
-                          <div style={{color:'#fff', fontWeight:700, fontSize:'0.85rem', lineHeight:1.35, margin:'auto 0'}}>
-                            Talk to a credentialing specialist
-                          </div>
-                        </div>
-                        <p className="mdl-panel__spotlight-label">Get pricing and a realistic timeline for your providers.</p>
-                        <Link href="/contact" className="mdl-panel__spotlight-cta" onClick={closeAll}>
-                          GET A QUOTE <span>↗</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* 5. PRICING PLAIN LINK */}
+              {/* Plain links. Resources and Company menus return once those pages have real content. */}
               <Link href="/pricing" className="mdl-nav__plain-link" onClick={closeAll}>
                 Pricing
+              </Link>
+              <Link href="/faq" className="mdl-nav__plain-link" onClick={closeAll}>
+                FAQ
+              </Link>
+              <Link href="/about" className="mdl-nav__plain-link" onClick={closeAll}>
+                About
               </Link>
             </div>
 
@@ -521,8 +379,8 @@ export const Navbar: React.FC = () => {
                 <Link href="/pricing" onClick={closeAll} className="search-result-item">
                   💳 <div><strong>Transparent Pricing</strong><span>Calculate ROI &amp; plans</span></div>
                 </Link>
-                <Link href="/resources/library" onClick={closeAll} className="search-result-item">
-                  📖 <div><strong>Resource Library</strong><span>Whitepapers &amp; checklists</span></div>
+                <Link href="/faq" onClick={closeAll} className="search-result-item">
+                  📖 <div><strong>Credentialing FAQ</strong><span>Timelines, documents and costs</span></div>
                 </Link>
                 <Link href="/about" onClick={closeAll} className="search-result-item">
                   🏛️ <div><strong>About HealthCredSTAT</strong><span>Mission &amp; leadership</span></div>

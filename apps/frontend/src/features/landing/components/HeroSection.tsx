@@ -80,13 +80,13 @@ export const HeroSection: React.FC = () => {
         <div className="hcs-hero-banner">
           <div className="hcs-hero-banner-inner">
             <img
-              src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=2200&q=85"
+              src="/hero-facility.jpg"
               alt="Clinicians in a modern medical facility"
               className="hcs-hero-banner-img"
               loading="lazy"
               decoding="async"
-              width={2200}
-              height={740}
+              width={1600}
+              height={900}
             />
           </div>
         </div>

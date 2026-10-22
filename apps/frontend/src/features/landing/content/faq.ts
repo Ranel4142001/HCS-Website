@@ -23,8 +23,8 @@ export const FAQ_DATA: FaqItem[] = [
     a: 'Most payers and facilities ask for: an NPI, state license, DEA and state controlled substance registrations (if applicable), board certification, a CV with month/year dates and gap explanations, malpractice insurance certificate and claims history, education and training certificates, and an up-to-date CAQH ProView profile.',
   },
   {
-    q: 'What is CAQH ProView and why does it matter?',
-    a: 'CAQH ProView is the online profile most commercial health plans use to collect provider credentialing data. Payers pull information directly from it, so it must be complete, include current documents, grant access to each payer and be re-attested every 120 days. An outdated CAQH profile is one of the most common causes of delays.',
+    q: 'What is CAQH ProView (now DataSpring) and why does it matter?',
+    a: 'CAQH ProView is the online profile most commercial health plans use to collect provider credentialing data. In June 2026 CAQH rebranded as DataSpring, and the profile now lives in its Provider Data Portal, though most payers and providers still call it CAQH. Payers pull information directly from it, so it must be complete, include current documents, grant access to each payer and be re-attested every 120 days for most providers. An outdated CAQH profile is one of the most common causes of delays.',
   },
   {
     q: 'How much do credentialing services cost?',
@@ -40,7 +40,7 @@ export const FAQ_DATA: FaqItem[] = [
   },
   {
     q: 'How often do providers need to be recredentialed?',
-    a: 'Under NCQA standards, providers are recredentialed at least every 36 months. Medicare enrollment is generally revalidated every five years, hospitals reappoint medical staff on the cycle set by their bylaws, and CAQH profiles must be re-attested every 120 days. We track all of these dates for you.',
+    a: 'Under NCQA standards, providers are recredentialed at least every 36 months. Medicare enrollment is generally revalidated every five years, hospitals reappoint medical staff on the cycle set by their bylaws, and most providers must re-attest their CAQH (DataSpring) profile every 120 days. We track all of these dates for you.',
   },
   {
     q: 'How does ongoing monitoring work?',

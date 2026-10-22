@@ -34,6 +34,10 @@
   --container: 1680px;
   --ease: cubic-bezier(.22,1,.36,1);
 
+  /* These intentionally override next/font's variables (which use a local("Arial")
+     size-adjusted fallback). In mobile lab tests the system-font stack below painted
+     ~2s sooner (LCP ~3.6s vs ~5.6s) with layout shift still under 0.1 (0.091).
+     Re-check both options with PageSpeed Insights once the site is live. */
   --font-display: 'Instrument Serif', Georgia, serif;
   --font-sans: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }

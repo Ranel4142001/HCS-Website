@@ -13,7 +13,7 @@ export const providerEnrollment: SolutionContent = {
   color: '#3f8dff',
   icon: '⚡',
   meta: {
-    title: 'Provider Enrollment & Payer Credentialing Services',
+    title: 'Provider Enrollment & Payer Credentialing',
     description:
       'Provider enrollment for Medicare, Medicaid and commercial payers. We prepare applications, manage CAQH and follow up until your providers are in-network.',
   },
@@ -86,7 +86,7 @@ export const providerEnrollment: SolutionContent = {
     },
     {
       q: 'Do you handle CAQH ProView?',
-      a: 'Yes. We create or update the CAQH profile, upload documents, grant payer access and re-attest it every 120 days as CAQH requires, so payers always see current information.',
+      a: 'Yes. We create or update the CAQH profile, upload documents, grant payer access and re-attest it on schedule (every 120 days for most providers), so payers always see current information. CAQH now operates as DataSpring; the profile works the same way.',
     },
   ],
   related: [
@@ -107,7 +107,7 @@ export const cvoCredentialing: SolutionContent = {
   color: '#10c1bb',
   icon: '🛡️',
   meta: {
-    title: 'CVO Credentialing & Primary Source Verification',
+    title: 'Primary Source Verification & CVO Services',
     description:
       'Outsourced credentialing and primary source verification following NCQA standards: committee-ready files, recredentialing and ongoing monitoring.',
   },
@@ -187,7 +187,7 @@ export const rosterManagement: SolutionContent = {
   color: '#8b5cf6',
   icon: '📋',
   meta: {
-    title: 'Provider Roster Management & Directory Accuracy Services',
+    title: 'Provider Roster Management Services',
     description:
       'Keep provider data accurate across every health plan. We maintain your roster, format it for each payer and submit updates on time.',
   },
@@ -264,7 +264,7 @@ export const delegatedCredentialing: SolutionContent = {
   color: '#f59e0b',
   icon: '🤝',
   meta: {
-    title: 'Delegated Credentialing Services for Groups & Health Plans',
+    title: 'Delegated Credentialing Services',
     description:
       'Delegated credentialing support: files, committee packets, monitoring and reporting that meet health plan oversight requirements.',
   },
@@ -341,7 +341,7 @@ export const privileging: SolutionContent = {
   color: '#ef4444',
   icon: '🏥',
   meta: {
-    title: 'Hospital Privileging & Medical Staff Credentialing Services',
+    title: 'Hospital Privileging & Credentialing',
     description:
       'Hospital privileging support: applications, peer references, privilege forms, FPPE/OPPE tracking and reappointments.',
   },
@@ -420,7 +420,7 @@ export const crossStateLicensing: SolutionContent = {
   color: '#0ea5e9',
   icon: '🗺️',
   meta: {
-    title: 'Multi-State Medical Licensing Services for Physicians & NPs',
+    title: 'Multi-State Medical Licensing Services',
     description:
       'Get providers licensed in new states: state applications, IMLC and Nurse Licensure Compact support, DEA registrations and renewals.',
   },

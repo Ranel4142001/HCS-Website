@@ -46,10 +46,11 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 1: Agent Workflows */}
+          {/* Col 1: Services */}
           <div className="footer-col">
             <h4 className="footer-heading">Services</h4>
             <ul className="footer-links">
+              <li><Link href="/services">All services</Link></li>
               <li><Link href="/solutions/provider-enrollment">Provider enrollment</Link></li>
               <li><Link href="/solutions/cvo-credentialing">CVO credentialing</Link></li>
               <li><Link href="/solutions/roster-management">Roster management</Link></li>
@@ -85,11 +86,9 @@ export const Footer: React.FC = () => {
           <div className="footer-col">
             <h4 className="footer-heading">Resources</h4>
             <ul className="footer-links">
-              <li><Link href="/#estimator">Turnaround time estimator</Link></li>
-              <li><Link href="/#timeline">Autonomous agent visualizer</Link></li>
-              <li><Link href="/resources/case-studies">Customer case studies</Link></li>
-              <li><Link href="/faq">Knowledge base &amp; FAQs</Link></li>
-              <li><Link href="/#press">Press &amp; recognitions</Link></li>
+              <li><Link href="/faq">Credentialing FAQ</Link></li>
+              <li><Link href="/#estimator">Timeline estimator</Link></li>
+              <li><Link href="/#timeline">How enrollment works</Link></li>
             </ul>
           </div>
 
@@ -98,10 +97,7 @@ export const Footer: React.FC = () => {
             <h4 className="footer-heading">Company</h4>
             <ul className="footer-links">
               <li><Link href="/about">About us</Link></li>
-              <li><Link href="/company/experts">Subject matter experts</Link></li>
-              <li><Link href="/company/newsroom">Newsroom</Link></li>
-              <li><Link href="/company/compliance">Compliance &amp; security</Link></li>
-              <li><Link href="/company/careers">Careers</Link></li>
+              <li><Link href="/contact">Contact us</Link></li>
               {envConfig.portalUrl && <li><a href={envConfig.portalUrl}>Portal login</a></li>}
             </ul>
           </div>
