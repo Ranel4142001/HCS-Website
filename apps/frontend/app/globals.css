@@ -5355,8 +5355,9 @@ img, video, iframe, svg {
   height: 14px;
 }
 
-.rotate-90 { transform: rotate(-90deg); }
-.rotate-minus-90 { transform: rotate(90deg); }
+/* Applied to a down-pointing chevron: +90deg points it left (previous), -90deg points it right (next). */
+.rotate-90 { transform: rotate(90deg); }
+.rotate-minus-90 { transform: rotate(-90deg); }
 
 .ctrl-btn-play {
   background: var(--teal-600);
@@ -8991,3 +8992,115 @@ img, video, iframe, svg {
 
 /* Word-based highlights in the stats band need a smaller size than numerals */
 .stat-big-num { font-size: clamp(2.4rem, 4vw, 3.4rem); }
+
+/* ==========================================================================
+   RESPONSIVE HARDENING — small phones (320px) through large desktops
+   ========================================================================== */
+
+/* Grid children default to min-width: auto, so wide content (stat rows, week
+   labels) can push a column past the screen. Let them shrink instead. */
+.workflows-container > *,
+.timeline-grid-card > *,
+.est-wrap > *,
+.platform-sticky-inner > *,
+.stats-gallery-inner > *,
+.rtv-grid > *,
+.form-grid > *,
+.faq-inner > *,
+.sol-body-grid > * {
+  min-width: 0;
+}
+
+@media (max-width: 992px) {
+  .workflows-container,
+  .timeline-grid-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .est-wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  /* The enrollment timeline is a 6-week chart: scroll it sideways inside its
+     own box rather than squeezing it unreadably or overflowing the page. */
+  .timeline-canvas-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px;
+  }
+  .canvas-header-weeks,
+  .canvas-grid-body {
+    min-width: 520px;
+  }
+  .timeline-control-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px;
+  }
+  .timeline-grid-card,
+  .timeline-detail-panel {
+    padding: 16px;
+  }
+
+  /* Long words wrap only when they cannot fit on a line (never mid-word otherwise) */
+  .est-card,
+  .est-side-card,
+  .sol-step,
+  .faq-item {
+    overflow-wrap: break-word;
+  }
+}
+
+/* Timeline nodes are positioned on this track (after the 84px label + 16px gap),
+   matching .canvas-header-weeks padding-left, so they never cover the row labels. */
+.canvas-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100px;
+  right: 0;
+}
+
+@media (max-width: 640px) {
+  /* Short status labels ("Auto-verified", "In Review") read better on one line */
+  .wf-step-time {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Two link columns on phones instead of one very long list; brand spans both */
+  .footer-enterprise-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 20px;
+  }
+  .footer-brand-cell {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Scale the hero headline with the screen; the desktop line break is not needed */
+  .hero-main-headline {
+    font-size: clamp(2.1rem, 9.5vw, 3rem);
+    letter-spacing: -0.03em;
+  }
+  .hero-main-headline br {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Very small phones: number every step, but label only the current one */
+  .est-p-step:not(.active) > span:not(.est-p-num) {
+    display: none;
+  }
+  .est-progress {
+    gap: 8px;
+  }
+}

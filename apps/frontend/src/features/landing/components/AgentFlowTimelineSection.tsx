@@ -297,42 +297,45 @@ export const AgentFlowTimelineSection: React.FC = () => {
                   </div>
                 ))}
 
-                {/* Nodes on Timeline */}
-                {steps.map((step, idx) => {
-                  const isPast = idx < currentStepIndex;
-                  const isCurrent = idx === currentStepIndex;
-                  const isFuture = idx > currentStepIndex;
+                {/* Nodes and playhead sit on a track that starts after the row labels,
+                    aligned with the week headings, so xPos 0–100% spans weeks 1–6. */}
+                <div className="canvas-track">
+                  {steps.map((step, idx) => {
+                    const isPast = idx < currentStepIndex;
+                    const isCurrent = idx === currentStepIndex;
+                    const isFuture = idx > currentStepIndex;
 
-                  const rowYPercent = (step.rowY * 25) + 12.5; // Centers in 4 rows (0, 1, 2, 3)
+                    const rowYPercent = (step.rowY * 25) + 12.5; // Centers in 4 rows (0, 1, 2, 3)
 
-                  return (
-                    <div
-                      key={step.id}
-                      className={`timeline-node ${step.type.toLowerCase()} ${isCurrent ? 'is-current' : ''} ${isPast ? 'is-past' : ''} ${isFuture ? 'is-future' : ''}`}
-                      style={{
-                        left: `${step.xPos}%`,
-                        top: `${rowYPercent}%`,
-                      }}
-                      onClick={() => {
-                        setIsPlaying(false);
-                        setCurrentStepIndex(idx);
-                      }}
-                      title={`${step.type}: ${step.title}`}
-                    >
-                      <div className="node-marker">
-                        {isPast && <Icon name="check" />}
-                        {isCurrent && <span className="node-pulse-ring" />}
+                    return (
+                      <div
+                        key={step.id}
+                        className={`timeline-node ${step.type.toLowerCase()} ${isCurrent ? 'is-current' : ''} ${isPast ? 'is-past' : ''} ${isFuture ? 'is-future' : ''}`}
+                        style={{
+                          left: `${step.xPos}%`,
+                          top: `${rowYPercent}%`,
+                        }}
+                        onClick={() => {
+                          setIsPlaying(false);
+                          setCurrentStepIndex(idx);
+                        }}
+                        title={`${step.type}: ${step.title}`}
+                      >
+                        <div className="node-marker">
+                          {isPast && <Icon name="check" />}
+                          {isCurrent && <span className="node-pulse-ring" />}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
 
-                {/* Connecting Playhead Vertical Line */}
-                <div
-                  className="timeline-playhead-line"
-                  style={{ left: `${currentStep.xPos}%` }}
-                >
-                  <div className="playhead-glow-dot" />
+                  {/* Connecting Playhead Vertical Line */}
+                  <div
+                    className="timeline-playhead-line"
+                    style={{ left: `${currentStep.xPos}%` }}
+                  >
+                    <div className="playhead-glow-dot" />
+                  </div>
                 </div>
               </div>
             </div>

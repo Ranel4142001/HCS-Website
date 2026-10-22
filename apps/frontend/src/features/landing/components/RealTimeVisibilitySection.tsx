@@ -449,7 +449,7 @@ export const RealTimeVisibilitySection: React.FC = () => {
                     <div className="rtv-card-top">
                       <div>
                         <h4>Secure Credential Document Vault</h4>
-                        <span className="rtv-sub">Encrypted 256-bit HIPAA compliance repository</span>
+                        <span className="rtv-sub">Every provider document in one secure place</span>
                       </div>
                       <span className="rtv-pill-green">Encrypted</span>
                     </div>

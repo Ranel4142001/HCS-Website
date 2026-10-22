@@ -436,10 +436,10 @@ export const AgentWorkflowsSection: React.FC = () => {
                 {/* Action CTA */}
                 <div className="wf-media-foot">
                   <Button variant="primary" size="sm" as="a" href="#contact" icon={<Icon name="arrow" />}>
-                    Automate {active.title}
+                    Get a quote
                   </Button>
                   <span className="wf-security-note">
-                    <Icon name="shield" /> NCQA Aligned • 256-Bit Vault
+                    <Icon name="shield" /> NCQA standards • HIPAA-aligned
                   </span>
                 </div>
               </motion.div>

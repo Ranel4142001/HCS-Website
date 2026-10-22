@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 1: Agent Workflows */}
           <div className="footer-col">
-            <h4 className="footer-heading">Agent Workflows</h4>
+            <h4 className="footer-heading">Services</h4>
             <ul className="footer-links">
               <li><Link href="/solutions/provider-enrollment">Provider enrollment</Link></li>
               <li><Link href="/solutions/cvo-credentialing">CVO credentialing</Link></li>
@@ -101,7 +101,7 @@ export const Footer: React.FC = () => {
               <li><Link href="/company/experts">Subject matter experts</Link></li>
               <li><Link href="/company/newsroom">Newsroom</Link></li>
               <li><Link href="/company/compliance">Compliance &amp; security</Link></li>
-              <li><Link href="/company/careers">Careers &mdash; We&rsquo;re hiring!</Link></li>
+              <li><Link href="/company/careers">Careers</Link></li>
               {envConfig.portalUrl && <li><a href={envConfig.portalUrl}>Portal login</a></li>}
             </ul>
           </div>
