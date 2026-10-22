@@ -14,17 +14,4 @@ export const ROUTES = {
   HOW_IT_WORKS: '/#how-it-works',
   TESTIMONIALS: '/#testimonials',
   CONTACT: '/#contact',
-
-  // Authentication
-  LOGIN: '/login',
-  REGISTER: '/register',
-
-  // Dashboard (Authenticated)
-  DASHBOARD: '/dashboard',
-  PROVIDERS: '/providers',
-  PROVIDER_DETAIL: (id: string) => `/providers/${id}`,
-  ORGANIZATIONS: '/organizations',
-  CREDENTIALING: '/credentialing',
-  DOCUMENTS: '/documents',
-  SETTINGS: '/settings',
 } as const;

@@ -4,7 +4,6 @@
  * This makes it easy to add validation, defaults, and type safety in one place.
  */
 export const envConfig = {
-  apiUrl: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000/api',
   appName: process.env.NEXT_PUBLIC_APP_NAME ?? 'HealthCredSTAT',
   appUrl: process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000',
   // Client portal (separate app). Sign-in links stay hidden until this is set.

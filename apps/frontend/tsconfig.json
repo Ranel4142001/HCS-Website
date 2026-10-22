@@ -16,10 +16,6 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/app/*":            ["./app/*"],
-      "@/core/*":           ["./src/core/*"],
-      "@/domain/*":         ["./src/core/domain/*"],
-      "@/application/*":    ["./src/core/application/*"],
-      "@/infrastructure/*": ["./src/core/infrastructure/*"],
       "@/features/*":       ["./src/features/*"],
       "@/shared/*":         ["./src/shared/*"]
     }
