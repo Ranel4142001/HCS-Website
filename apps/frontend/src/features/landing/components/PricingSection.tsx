@@ -1,171 +1,129 @@
-﻿'use client';
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import SectionHeader from '@/shared/components/layout/SectionHeader';
-import Button from '@/shared/components/ui/Button';
-import Icon, { IconName } from '@/shared/components/ui/Icon';
+﻿import React from 'react';
 
 export interface PricingPlan {
+  id: string;
   name: string;
-  tag?: string;
+  audience: string;
   price: string;
-  priceNote: string;
-  subtitle: string;
-  features: string[];
-  featured?: boolean;
+  priceUnit: string;
   ctaText: string;
   ctaHref: string;
-  icon: IconName;
+  /** Name of the plan this one builds on, shown as "Everything in X, plus". */
+  buildsOn?: string;
+  features: string[];
+  featured?: boolean;
 }
 
 const PRICING_PLANS: PricingPlan[] = [
   {
-    name: 'Individual Clinician',
-    tag: '',
+    id: 'individual',
+    name: 'Individual clinician',
+    audience: 'For locum tenens and travel professionals',
     price: '$599',
-    priceNote: 'per assignment',
-    subtitle: 'For locum tenens & travel professionals',
+    priceUnit: 'per assignment',
+    ctaText: 'Get started',
+    ctaHref: '#contact',
     features: [
       'Full credentialing management',
-      'HIPAA-compliant document portal',
-      'Real-time text & email updates',
-      'Deadline tracking & renewals',
+      'Secure document portal',
+      'Text and email status updates',
+      'Deadline tracking and renewals',
       'Recruiter communication handled',
     ],
-    ctaText: 'Get Started',
-    ctaHref: '#contact',
-    icon: 'user',
   },
   {
-    name: 'Group Practice',
-    tag: 'Most Popular',
+    id: 'group',
+    name: 'Group practice',
+    audience: 'For clinics and staffing agencies',
     price: 'Custom',
-    priceNote: 'volume pricing',
-    subtitle: 'For clinics & staffing agencies',
+    priceUnit: 'based on volume',
+    ctaText: 'Get a group quote',
+    ctaHref: '#contact',
+    buildsOn: 'Individual',
     features: [
-      'Everything in Individual',
       'Dedicated account manager',
       'Bulk credentialing workflows',
       'Monthly compliance reports',
-      'Priority turnaround times',
+      'Priority turnaround',
     ],
     featured: true,
-    ctaText: 'Get Started',
-    ctaHref: '#contact',
-    icon: 'users',
   },
   {
+    id: 'enterprise',
     name: 'Enterprise',
-    tag: '',
-    price: 'Contact\nUs',
-    priceNote: 'tailored pricing',
-    subtitle: 'For health systems & large networks',
+    audience: 'For health systems and large networks',
+    price: 'Custom',
+    priceUnit: 'tailored to your network',
+    ctaText: 'Talk to our team',
+    ctaHref: '#contact',
+    buildsOn: 'Group',
     features: [
-      'Everything in Group',
-      'API & EHR integration',
+      'API and EHR integration',
       'White-label portal option',
-      'Advanced analytics dashboard',
+      'Analytics dashboard',
       'Dedicated compliance team',
     ],
-    ctaText: 'Contact Sales',
-    ctaHref: '#contact',
-    icon: 'building',
   },
 ];
 
+const CheckMark: React.FC = () => (
+  <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+    <path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+/**
+ * Pricing laid out as a single fee schedule: one sheet with aligned columns,
+ * so names, prices and actions line up across plans for easy comparison.
+ */
 export const PricingSection: React.FC = () => {
   return (
-    <section className="pricing" id="pricing">
+    <section className="pricing" id="pricing" aria-labelledby="pricing-title">
       <div className="container">
-        <SectionHeader
-          eyebrow="Solutions"
-          eyebrowIcon="sparkle"
-          title={<>Tailored for Every <em>Practice Size</em></>}
-          description="Whether you're a solo travel nurse or a large health system, we have a credentialing solution designed for you."
-        />
+        <header className="pricing-head">
+          <h2 id="pricing-title">Pricing that scales with your providers</h2>
+          <p>
+            A flat rate for individual clinicians. Groups and health systems get a custom quote based on how many
+            providers and payers you need.
+          </p>
+        </header>
 
-        <div className="pricing-grid">
-          {PRICING_PLANS.map((plan, idx) => (
-            <motion.div
-              key={idx}
-              className={`price-card ${plan.featured ? 'featured' : ''}`}
-              initial={{ opacity: 0, y: 24, scale: plan.featured ? 0.98 : 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: plan.featured ? 1.04 : 1 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: idx * 0.09, ease: [0.16, 1, 0.3, 1] }}
-              style={{ position: 'relative' }}
+        <div className="fee-schedule">
+          {PRICING_PLANS.map((plan) => (
+            <article
+              key={plan.id}
+              className={`fee-col${plan.featured ? ' is-featured' : ''}`}
+              aria-labelledby={`plan-${plan.id}`}
             >
-              {/* Most Popular floating badge */}
-              {plan.tag && (
-                <div style={{
-                  position: 'absolute',
-                  top: -14,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  background: 'linear-gradient(135deg, var(--cyan-400), var(--teal-500))',
-                  color: '#08302d',
-                  fontWeight: 800,
-                  fontSize: '0.76rem',
-                  letterSpacing: '0.02em',
-                  padding: '5px 16px',
-                  borderRadius: '20px',
-                  whiteSpace: 'nowrap',
-                  zIndex: 2,
-                }}>
-                  {plan.tag}
-                </div>
-              )}
-
-              {/* Card icon */}
-              <div style={{
-                width: 42,
-                height: 42,
-                borderRadius: 12,
-                background: plan.featured ? 'rgba(255,255,255,0.15)' : 'var(--mint-100)',
-                color: plan.featured ? 'var(--cyan-300)' : 'var(--teal-600)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 16,
-              }}>
-                <Icon name={plan.icon} />
+              <h3 id={`plan-${plan.id}`} className="fee-name">{plan.name}</h3>
+              <p className="fee-audience">{plan.audience}</p>
+              <p className="fee-price">
+                <span className="fee-amount">{plan.price}</span>
+                <span className="fee-unit">{plan.priceUnit}</span>
+              </p>
+              <a className="fee-cta" href={plan.ctaHref}>{plan.ctaText}</a>
+              <div className="fee-body">
+                {plan.buildsOn && <p className="fee-plus">Everything in {plan.buildsOn}, plus:</p>}
+                <ul className="fee-list">
+                  {plan.features.map((feature) => (
+                    <li key={feature}>
+                      <CheckMark />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <h3>{plan.name}</h3>
-              <p className="price-desc">{plan.subtitle}</p>
-
-              <div className="price-amount">
-                <strong style={{ whiteSpace: 'pre-line' }}>{plan.price}</strong>
-                <span>{plan.priceNote}</span>
-              </div>
-
-              <ul className="price-features">
-                {plan.features.map((feat, i) => (
-                  <li key={i}>
-                    <Icon name="check" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                variant={plan.featured ? 'onDark' : 'primary'}
-                as="a"
-                href={plan.ctaHref}
-                fullWidth
-                icon={<Icon name="arrow" />}
-              >
-                {plan.ctaText}
-              </Button>
-            </motion.div>
+            </article>
           ))}
         </div>
+
+        <p className="fee-footnote">
+          Every plan includes primary source verification, CAQH ProView management and follow-up with each payer
+          until approval. No setup fees.
+        </p>
       </div>
     </section>
   );
 };
 
 export default PricingSection;
-
-

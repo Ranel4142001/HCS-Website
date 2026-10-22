@@ -1,0 +1,16 @@
+{
+  "enabledPlugins": {
+    "design@anthropic-plugin-directory": true,
+    "marketing@anthropic-plugin-directory": true,
+    "superpowers@anthropic-plugin-directory": true,
+    "frontend-design@anthropic-plugin-directory": true,
+    "feature-dev@anthropic-plugin-directory": true,
+    "engineering@anthropic-plugin-directory": true,
+    "sales@anthropic-plugin-directory": true,
+    "code-review-anthropics@anthropic-plugin-directory": true,
+    "claude-security@anthropic-plugin-directory": true,
+    "social-media-skills@anthropic-plugin-directory": true,
+    "code-simplifier@anthropic-plugin-directory": true,
+    "image-generation@anthropic-plugin-directory": true
+  }
+}
