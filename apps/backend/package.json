@@ -1,0 +1,11 @@
+{
+  "name": "@hcstatservices/backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HealthCredSTAT Enterprise Microservices Backend API",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "node src/index.ts",
+    "build": "tsc"
+  }
+}

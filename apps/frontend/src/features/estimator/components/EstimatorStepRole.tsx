@@ -1,0 +1,71 @@
+﻿import React from 'react';
+import Icon from '@/shared/components/ui/Icon';
+import { EstimatorRole } from '../types/estimator.types';
+
+export interface EstimatorStepRoleProps {
+  selectedRole: EstimatorRole | null;
+  onSelect: (role: EstimatorRole, baseLow: number, baseHigh: number) => void;
+}
+
+export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRole, onSelect }) => {
+  return (
+    <div className="est-step">
+      <h3>1. What type of practice do you need credentialing for?</h3>
+      <div className="est-choice">
+        <button
+          type="button"
+          className={`est-option ${selectedRole === 'individual' ? 'selected' : ''}`}
+          onClick={() => onSelect('individual', 14, 30)}
+        >
+          <div className="est-opt-icon">
+            <Icon name="user" />
+          </div>
+          <div className="est-opt-text">
+            <strong>Individual Clinician</strong>
+            <span>Solo MD, DO, NP, PA, or allied professional</span>
+          </div>
+          <span className="est-opt-check">
+            <Icon name="check-circle" />
+          </span>
+        </button>
+
+        <button
+          type="button"
+          className={`est-option ${selectedRole === 'group' ? 'selected' : ''}`}
+          onClick={() => onSelect('group', 21, 45)}
+        >
+          <div className="est-opt-icon">
+            <Icon name="users" />
+          </div>
+          <div className="est-opt-text">
+            <strong>Group Practice or Staffing Agency</strong>
+            <span>Multiple providers across 1 or more specialties</span>
+          </div>
+          <span className="est-opt-check">
+            <Icon name="check-circle" />
+          </span>
+        </button>
+
+        <button
+          type="button"
+          className={`est-option ${selectedRole === 'enterprise' ? 'selected' : ''}`}
+          onClick={() => onSelect('enterprise', 30, 60)}
+        >
+          <div className="est-opt-icon">
+            <Icon name="building" />
+          </div>
+          <div className="est-opt-text">
+            <strong>Enterprise Health System / MSO</strong>
+            <span>Large hospital system, MSO, or national platform</span>
+          </div>
+          <span className="est-opt-check">
+            <Icon name="check-circle" />
+          </span>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default EstimatorStepRole;
+
