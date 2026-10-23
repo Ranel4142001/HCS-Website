@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
 import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactFormSchema, ContactFormValues } from '../validation/contact.schema';
@@ -121,13 +120,7 @@ export const ContactWizard: React.FC = () => {
           </ul>
         </div>
 
-        <motion.div
-          className="form-card-wrap"
-          initial={{ opacity: 0, y: 35, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, margin: '-40px' }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="form-card-wrap reveal">
           <div
             className="form-card"
             ref={cardRef}
@@ -179,7 +172,7 @@ export const ContactWizard: React.FC = () => {
               <SuccessPanel onReset={handleReset} />
             )}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

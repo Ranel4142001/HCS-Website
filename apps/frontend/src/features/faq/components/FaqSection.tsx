@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
 import { FAQ_DATA } from '../content/faq';
 import './FaqSection.css';
@@ -55,15 +54,11 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ limit }) => {
                     <span className="faq-icon-cross" aria-hidden="true" />
                   </button>
                   {/* Answers stay in the HTML (collapsed, not removed) so search engines can read them */}
-                  <motion.div
-                    className="faq-answer"
-                    initial={false}
-                    animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-                    aria-hidden={!isOpen}
-                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <p className="faq-answer-text">{item.a}</p>
-                  </motion.div>
+                  <div className="faq-answer" aria-hidden={!isOpen}>
+                    <div className="faq-answer-clip">
+                      <p className="faq-answer-text">{item.a}</p>
+                    </div>
+                  </div>
                 </div>
               );
             })}

@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
             <div key={groups[0].heading} className="footer-col">
               {groups.map((group, i) => (
                 <React.Fragment key={group.heading}>
-                  <h4 className={`footer-heading${i > 0 ? ' mt-6' : ''}`}>{group.heading}</h4>
+                  <h2 className={`footer-heading${i > 0 ? ' mt-6' : ''}`}>{group.heading}</h2>
                   <ul className="footer-links">
                     {group.links.map((link) => (
                       <li key={`${link.href}-${link.label}`}><Link href={link.href}>{link.label}</Link></li>

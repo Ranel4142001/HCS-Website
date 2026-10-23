@@ -1,61 +1,30 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
 import Icon from '@/shared/components/ui/Icon';
 import Button from '@/shared/components/ui/Button';
 import { WORKFLOWS } from '../content/workflows';
 import './WorkflowsSection.css';
 
-const CYCLE_DURATION = 6000; // 6 seconds per tab
-
 export const WorkflowsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const animFrameRef = useRef<number | null>(null);
-  const lastTimeRef = useRef(0); // set when the animation loop (re)starts
-
-  useEffect(() => {
-    lastTimeRef.current = Date.now();
-
-    const loop = () => {
-      const now = Date.now();
-      const delta = now - lastTimeRef.current;
-      lastTimeRef.current = now;
-
-      if (!isPaused) {
-        setProgress((prev) => {
-          const next = prev + (delta / CYCLE_DURATION) * 100;
-          if (next >= 100) {
-            setActiveIndex((idx) => (idx + 1) % WORKFLOWS.length);
-            return 0;
-          }
-          return next;
-        });
-      }
-
-      animFrameRef.current = requestAnimationFrame(loop);
-    };
-
-    animFrameRef.current = requestAnimationFrame(loop);
-
-    return () => {
-      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-    };
-  }, [isPaused, activeIndex]);
+  // Bumped on every manual selection so the progress bar restarts even when the same tab is chosen again.
+  const [cycle, setCycle] = useState(0);
 
   const selectWorkflow = (idx: number) => {
-    // Changing the tab restarts the animation loop, which resets the clock.
     setActiveIndex(idx);
-    setProgress(0);
+    setCycle((c) => c + 1);
   };
+
+  // The progress bar is a CSS animation (6s, see .wf-tab-bar-fill); when it finishes, show the next tab.
+  const showNext = () => setActiveIndex((idx) => (idx + 1) % WORKFLOWS.length);
 
   const active = WORKFLOWS[activeIndex];
 
   return (
     <section
-      className="agent-workflows-section"
+      className={`agent-workflows-section ${isPaused ? 'is-paused' : ''}`}
       id="workflows"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -103,30 +72,21 @@ export const WorkflowsSection: React.FC = () => {
                     <Icon name="chevron" className={`wf-tab-chevron ${isActive ? 'open' : ''}`} />
                   </div>
 
-                  {isActive && (
-                    <motion.div
-                      className="wf-tab-body"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                  {/* Every body stays rendered so it can expand and collapse smoothly; closed ones are inert. */}
+                  <div className="wf-tab-body" inert={!isActive}>
+                    <div className="wf-tab-body-clip">
                       <p className="wf-tab-desc">{wf.description}</p>
                       <a href="#contact" className="wf-tab-link">
                         <span>Get a quote for this service</span>
                         <Icon name="arrow" />
                       </a>
-                    </motion.div>
-                  )}
+                    </div>
+                  </div>
 
                   <div className="wf-tab-bar" aria-hidden="true">
-                    <div
-                      className="wf-tab-bar-fill"
-                      style={{
-                        width: isActive ? `${progress}%` : '0%',
-                        transition: isActive ? 'none' : 'width 0.2s linear',
-                      }}
-                    />
+                    {isActive && (
+                      <div key={cycle} className="wf-tab-bar-fill" onAnimationEnd={showNext} />
+                    )}
                   </div>
                 </div>
               );
@@ -135,82 +95,73 @@ export const WorkflowsSection: React.FC = () => {
 
           {/* Right Live Visualizer Card */}
           <div className="workflows-media">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.id}
-                className="wf-media-card"
-                initial={{ opacity: 0, y: 14, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -14, scale: 0.98 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {/* Header Bar */}
-                <div className="wf-media-header">
-                  <div className="wf-media-badge">
-                    <span className="live-dot" />
-                    <span>{active.mockData.statusBadge}</span>
-                  </div>
-                  <span className="wf-metric-pill">Sample view</span>
+            <div key={active.id} className="wf-media-card">
+              {/* Header Bar */}
+              <div className="wf-media-header">
+                <div className="wf-media-badge">
+                  <span className="live-dot" />
+                  <span>{active.mockData.statusBadge}</span>
                 </div>
+                <span className="wf-metric-pill">Sample view</span>
+              </div>
 
-                <div className="wf-media-subtext">{active.mockData.subtext}</div>
+              <div className="wf-media-subtext">{active.mockData.subtext}</div>
 
-                {/* Key Metrics Row */}
-                <div className="wf-stats-row">
-                  {active.mockData.stats.map((stat, i) => (
-                    <div key={i} className="wf-stat-chip">
-                      <span className="wf-stat-label">{stat.label}</span>
-                      <div className="wf-stat-val-row">
-                        <strong className="wf-stat-val">{stat.value}</strong>
-                        {stat.trend && <span className="wf-stat-trend">{stat.trend}</span>}
+              {/* Key Metrics Row */}
+              <div className="wf-stats-row">
+                {active.mockData.stats.map((stat, i) => (
+                  <div key={i} className="wf-stat-chip">
+                    <span className="wf-stat-label">{stat.label}</span>
+                    <div className="wf-stat-val-row">
+                      <strong className="wf-stat-val">{stat.value}</strong>
+                      {stat.trend && <span className="wf-stat-trend">{stat.trend}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Simulated Real-Time Step Tracker */}
+              <div className="wf-timeline-box">
+                <div className="wf-timeline-title">Autonomous Execution Timeline</div>
+                <div className="wf-timeline-list">
+                  {active.mockData.steps.map((step, i) => (
+                    <div key={i} className={`wf-timeline-step ${step.status}`}>
+                      <div className="wf-step-marker">
+                        {step.status === 'completed' && <Icon name="check" />}
+                        {step.status === 'in-progress' && <span className="step-pulse" />}
+                        {step.status === 'pending' && <span className="step-dot" />}
+                      </div>
+                      <div className="wf-step-content">
+                        <span className="wf-step-name">{step.name}</span>
+                        <span className="wf-step-time">{step.time}</span>
                       </div>
                     </div>
                   ))}
                 </div>
+              </div>
 
-                {/* Simulated Real-Time Step Tracker */}
-                <div className="wf-timeline-box">
-                  <div className="wf-timeline-title">Autonomous Execution Timeline</div>
-                  <div className="wf-timeline-list">
-                    {active.mockData.steps.map((step, i) => (
-                      <div key={i} className={`wf-timeline-step ${step.status}`}>
-                        <div className="wf-step-marker">
-                          {step.status === 'completed' && <Icon name="check" />}
-                          {step.status === 'in-progress' && <span className="step-pulse" />}
-                          {step.status === 'pending' && <span className="step-dot" />}
-                        </div>
-                        <div className="wf-step-content">
-                          <span className="wf-step-name">{step.name}</span>
-                          <span className="wf-step-time">{step.time}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              {/* Highlights List */}
+              <div className="wf-highlights-box">
+                <ul className="wf-highlights-list">
+                  {active.highlights.map((item, i) => (
+                    <li key={i}>
+                      <Icon name="check-circle" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                {/* Highlights List */}
-                <div className="wf-highlights-box">
-                  <ul className="wf-highlights-list">
-                    {active.highlights.map((item, i) => (
-                      <li key={i}>
-                        <Icon name="check-circle" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Action CTA */}
-                <div className="wf-media-foot">
-                  <Button variant="primary" size="sm" as="a" href="#contact" icon={<Icon name="arrow" />}>
-                    Get a quote
-                  </Button>
-                  <span className="wf-security-note">
-                    <Icon name="shield" /> NCQA standards • HIPAA-aligned
-                  </span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+              {/* Action CTA */}
+              <div className="wf-media-foot">
+                <Button variant="primary" size="sm" as="a" href="#contact" icon={<Icon name="arrow" />}>
+                  Get a quote
+                </Button>
+                <span className="wf-security-note">
+                  <Icon name="shield" /> NCQA standards • HIPAA-aligned
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

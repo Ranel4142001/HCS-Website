@@ -341,7 +341,7 @@
 
 .psc-badge.submitted {
   background: #eef4ff;
-  color: #0d6efd;
+  color: var(--teal-700);
 }
 
 .psc-days {

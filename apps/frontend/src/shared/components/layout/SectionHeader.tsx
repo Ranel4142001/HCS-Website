@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import { motion } from 'framer-motion';
 import Badge from '@/shared/components/ui/Badge';
 import Icon, { IconName } from '@/shared/components/ui/Icon';
 import './SectionHeader.css';
@@ -22,13 +21,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <motion.div
-      className={`section-head ${className}`}
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-    >
+    <div className={`section-head reveal ${className}`}>
       {eyebrow && (
         <Badge variant={eyebrowVariant} icon={<Icon name={eyebrowIcon} />}>
           {eyebrow}
@@ -36,7 +29,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       )}
       <h2>{title}</h2>
       {description && <p>{description}</p>}
-    </motion.div>
+    </div>
   );
 };
 

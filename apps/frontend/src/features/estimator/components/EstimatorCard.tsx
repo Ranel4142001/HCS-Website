@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import useEstimator from '../hooks/useEstimator';
 import EstimatorProgress from './EstimatorProgress';
 import EstimatorStepRole from './EstimatorStepRole';
@@ -35,13 +34,7 @@ export const EstimatorCard: React.FC = () => {
           description="Answer three quick questions for an estimated timeline and the plan that fits your practice."
         />
 
-        <motion.div
-          className="est-wrap"
-          initial={{ opacity: 0, y: 35, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, margin: '-40px' }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="est-wrap reveal">
           <div className="est-card">
             {state.step < 4 && <EstimatorProgress currentStep={state.step} />}
 
@@ -107,7 +100,7 @@ export const EstimatorCard: React.FC = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

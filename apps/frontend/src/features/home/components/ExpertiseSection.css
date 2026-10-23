@@ -140,3 +140,12 @@
 .stats-gallery-inner > * {
   min-width: 0;
 }
+
+/* The headline figure fades in each time it changes. */
+.stat-big-swap {
+  animation: stat-big-in .3s ease;
+}
+
+@keyframes stat-big-in {
+  from { opacity: 0; transform: translateY(12px); }
+}

@@ -103,7 +103,6 @@ export const Navbar: React.FC = () => {
               className="mdl-nav__logo-img"
               loading="eager"
               decoding="async"
-              fetchPriority="high"
             />
           </Link>
 

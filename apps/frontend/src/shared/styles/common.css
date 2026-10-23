@@ -1,6 +1,29 @@
 /* Styles used by more than one feature or shared component. Loaded once, by app/layout.tsx. */
 
 /* =====================================================
+   REVEAL ON SCROLL
+   Fades and lifts an element as it scrolls into view, using a CSS scroll-driven animation. Content is
+   never hidden while JavaScript loads, and browsers without support simply show it without the effect.
+===================================================== */
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(.98);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
+/* =====================================================
    BUTTONS
 ===================================================== */
 

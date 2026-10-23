@@ -15,7 +15,7 @@
   --surface: #ffffff;
   --ink: #0e1b30;
   --ink-soft: #4d5c78;
-  --ink-faint: #8895ac;
+  --ink-faint: #66738b; /* 4.5:1 on white and the light tints */
   --teal-900: #062459;
   --teal-800: #0a3a8f;
   --teal-700: #0d51c2;

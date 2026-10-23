@@ -7,6 +7,8 @@ import JsonLd from '@/shared/components/seo/JsonLd';
 
 // Sora is a variable font: omitting `weight` loads one file covering every weight,
 // instead of six separate files competing on slow connections.
+// 'swap' keeps text visible while the font loads. ('optional' was measured too: Chrome treats a preloaded
+// optional font as render-blocking, so text appeared later on slow connections.)
 const sora = Sora({
   subsets: ['latin'],
   variable: '--font-sans',

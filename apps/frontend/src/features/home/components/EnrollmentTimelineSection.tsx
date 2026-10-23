@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
 import { FLOW_MODES, COMMERCIAL_STEPS } from '../content/enrollment-timeline';
 import './EnrollmentTimelineSection.css';
@@ -190,57 +189,48 @@ export const EnrollmentTimelineSection: React.FC = () => {
 
           {/* Right Detail Panel Inspector */}
           <div className="timeline-detail-panel">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentStep.id}
-                className="step-detail-inner"
-                initial={{ opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -12 }}
-                transition={{ duration: 0.25 }}
-              >
-                <div className="step-type-header">
-                  <span className={`type-badge badge-${currentStep.type.toLowerCase()}`}>
-                    {currentStep.type}
-                  </span>
-                  <span className="step-time">{currentStep.time}</span>
+            <div key={currentStep.id} className="step-detail-inner">
+              <div className="step-type-header">
+                <span className={`type-badge badge-${currentStep.type.toLowerCase()}`}>
+                  {currentStep.type}
+                </span>
+                <span className="step-time">{currentStep.time}</span>
+              </div>
+
+              <div className="step-week-tag">{currentStep.week}</div>
+              <h3 className="step-title">{currentStep.title}</h3>
+
+              <div className="step-meta-row">
+                <span className="meta-label">SOURCE</span>
+                <span className="meta-val">{currentStep.source}</span>
+              </div>
+
+              <p className="step-description">{currentStep.description}</p>
+
+              <div className="step-footer">
+                <span className="step-counter">
+                  Step {currentStepIndex + 1} of {steps.length}
+                </span>
+                <div className="step-quick-nav">
+                  <button
+                    type="button"
+                    disabled={currentStepIndex === 0}
+                    onClick={handlePrev}
+                    className="nav-btn-prev"
+                  >
+                    &larr; Prev
+                  </button>
+                  <button
+                    type="button"
+                    disabled={currentStepIndex === steps.length - 1}
+                    onClick={handleNext}
+                    className="nav-btn-next"
+                  >
+                    Next &rarr;
+                  </button>
                 </div>
-
-                <div className="step-week-tag">{currentStep.week}</div>
-                <h3 className="step-title">{currentStep.title}</h3>
-
-                <div className="step-meta-row">
-                  <span className="meta-label">SOURCE</span>
-                  <span className="meta-val">{currentStep.source}</span>
-                </div>
-
-                <p className="step-description">{currentStep.description}</p>
-
-                <div className="step-footer">
-                  <span className="step-counter">
-                    Step {currentStepIndex + 1} of {steps.length}
-                  </span>
-                  <div className="step-quick-nav">
-                    <button
-                      type="button"
-                      disabled={currentStepIndex === 0}
-                      onClick={handlePrev}
-                      className="nav-btn-prev"
-                    >
-                      &larr; Prev
-                    </button>
-                    <button
-                      type="button"
-                      disabled={currentStepIndex === steps.length - 1}
-                      onClick={handleNext}
-                      className="nav-btn-next"
-                    >
-                      Next &rarr;
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            </div>
           </div>
         </div>
       </div>

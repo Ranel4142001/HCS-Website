@@ -1,9 +1,16 @@
 /* --- Hero Interactive Showcase Card --- */
 
+/* The active step's pulse is a ring on a pseudo-element animated with transform and opacity only
+   (animating box-shadow repaints on every frame). */
 @keyframes pulseDot {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 193, 187, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 193, 187, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 193, 187, 0); }
+  0% { transform: scale(1); opacity: .7; }
+  70% { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* A newly shown workflow card fades and rises in. */
+@keyframes wf-card-in {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
 }
 
 /* --- Agent Workflows 8-Tab Section --- */
@@ -28,7 +35,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--teal-600);
+  color: var(--teal-700);
   background: #eef5ff;
   padding: 6px 14px;
   border-radius: 20px;
@@ -111,15 +118,30 @@
   color: var(--teal-600);
 }
 
+/* Expands and collapses by animating the grid row between 0fr and 1fr. */
 .wf-tab-body {
-  margin-top: 10px;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows .3s ease, opacity .3s ease;
+}
+
+.wf-tab-item.is-active .wf-tab-body {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* No padding here: padding would keep closed bodies 10px tall. The spacing is the description's margin. */
+.wf-tab-body-clip {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .wf-tab-desc {
   font-size: 0.88rem;
   color: var(--ink-soft);
   line-height: 1.5;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .wf-tab-link {
@@ -128,7 +150,7 @@
   gap: 6px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--teal-600);
+  color: var(--teal-700);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -144,14 +166,35 @@
   border-radius: 2px;
 }
 
+/* Fills over 6 seconds, then the component moves to the next tab (onAnimationEnd). Uses transform so the
+   browser animates it without re-rendering or re-laying out the page. */
 .wf-tab-bar-fill {
   height: 100%;
   background: var(--teal-600);
+  transform-origin: left center;
+  animation: wf-tab-progress 6s linear forwards;
+}
+
+.agent-workflows-section.is-paused .wf-tab-bar-fill {
+  animation-play-state: paused;
+}
+
+/* No auto-rotation for visitors who ask for reduced motion: the tabs change only when clicked. */
+@media (prefers-reduced-motion: reduce) {
+  .wf-tab-bar-fill {
+    animation: none;
+  }
+}
+
+@keyframes wf-tab-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 /* Workflow Live Media Card */
 
 .wf-media-card {
+  animation: wf-card-in .35s cubic-bezier(.16, 1, .3, 1);
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -242,7 +285,7 @@
 .wf-stat-trend {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #0b827e;
+  color: #097a76;
 }
 
 .wf-timeline-box {
@@ -303,6 +346,15 @@
   border-radius: 50%;
   background: var(--teal-600);
   box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.2);
+  position: relative;
+}
+
+.step-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(16, 193, 187, 0.7);
   animation: pulseDot 1.5s infinite;
 }
 

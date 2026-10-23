@@ -20,7 +20,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--teal-600);
+  color: var(--teal-700);
   background: #eef5ff;
   padding: 6px 14px;
   border-radius: 20px;
@@ -113,7 +113,7 @@
 .goal-label {
   font-size: 0.72rem;
   font-weight: 800;
-  color: var(--teal-600);
+  color: var(--teal-700);
   letter-spacing: 0.06em;
 }
 
@@ -349,7 +349,7 @@
 .step-week-tag {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--teal-600);
+  color: var(--teal-700);
 }
 
 .step-title {
@@ -468,4 +468,13 @@
   bottom: 0;
   left: 100px;
   right: 0;
+}
+
+/* The step inspector slides in when another step is selected. */
+.step-detail-inner {
+  animation: step-detail-in .25s ease;
+}
+
+@keyframes step-detail-in {
+  from { opacity: 0; transform: translateX(12px); }
 }

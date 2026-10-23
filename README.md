@@ -15,7 +15,7 @@ hcstatservices-portal/
 │       ├── src/
 │       │   ├── features/    # One folder per part of the site (home, solutions, pricing, contact…)
 │       │   └── shared/      # UI components, layout, navigation config, SEO helpers
-│       ├── public/          # Images, logos, video
+│       ├── public/          # Images and logos
 │       └── .env.example     # Environment variables template
 ├── docs/ARCHITECTURE.md     # How the code is organized and the rules that keep it that way
 ├── .github/workflows/       # CI: type-check, lint, build

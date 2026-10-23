@@ -26,7 +26,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--teal-600);
+  color: var(--teal-700);
   background: #eef5ff;
   padding: 6px 14px;
   border-radius: 20px;
@@ -90,7 +90,7 @@
 .item-num {
   font-size: 0.85rem;
   font-weight: 800;
-  color: var(--teal-600);
+  color: var(--teal-700);
   letter-spacing: 0.08em;
 }
 
@@ -104,7 +104,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   background: #eef5ff;
-  color: var(--teal-600);
+  color: var(--teal-700);
   padding: 3px 8px;
   border-radius: 4px;
 }

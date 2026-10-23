@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { EXPERTISE_ITEMS } from '../content/expertise';
 import './ExpertiseSection.css';
 
@@ -33,18 +32,10 @@ export const ExpertiseSection: React.FC = () => {
           <h2>Credentialing experts, backed by automation</h2>
           
           <div className="stats-active-metric-box">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.big}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="stat-big-num">{active.big}</div>
-                <div className="stat-big-label">{active.label}</div>
-              </motion.div>
-            </AnimatePresence>
+            <div key={active.big} className="stat-big-swap">
+              <div className="stat-big-num">{active.big}</div>
+              <div className="stat-big-label">{active.label}</div>
+            </div>
           </div>
 
           {/* Progress Segment Tabs */}

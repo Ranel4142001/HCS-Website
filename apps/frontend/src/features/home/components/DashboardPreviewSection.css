@@ -89,6 +89,11 @@
   line-height: 1.6;
 }
 
+/* The standard accent blue is too dark to read on this navy background. */
+.rtv-subtitle em {
+  color: #5aa0ff;
+}
+
 .rtv-tabs-wrapper {
   display: flex;
   justify-content: center;
@@ -150,7 +155,7 @@
   gap: 12px;
 }
 
-.rtv-card-top h4 {
+.rtv-card-top h3 {
   font-size: 1.1rem;
   color: #ffffff;
   font-weight: 700;
@@ -158,7 +163,7 @@
 
 .rtv-sub {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
   display: block;
   margin-top: 3px;
 }
@@ -185,7 +190,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   background: rgba(245, 185, 66, 0.2);
-  color: var(--gold);
+  color: #ffd88a;
   padding: 3px 8px;
   border-radius: 6px;
 }
@@ -587,4 +592,13 @@
 
 .rtv-grid > * {
   min-width: 0;
+}
+
+/* A newly selected dashboard tab fades and rises in. */
+.rtv-panel {
+  animation: rtv-panel-in .35s cubic-bezier(.16, 1, .3, 1);
+}
+
+@keyframes rtv-panel-in {
+  from { opacity: 0; transform: translateY(15px); }
 }
