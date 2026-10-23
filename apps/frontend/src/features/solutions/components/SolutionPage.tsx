@@ -1,7 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Navbar from '@/shared/components/layout/Navbar';
-import Footer from '@/shared/components/layout/Footer';
 import JsonLd from '@/shared/components/seo/JsonLd';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/shared/lib/seo';
 import type { SolutionContent } from '../types/solution.types';
@@ -25,7 +23,6 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
           faqSchema(content.faqs),
         ]}
       />
-      <Navbar />
       <main>
         <section className="sol-hero" style={accent}>
           <div className="container sol-hero-inner">
@@ -139,7 +136,6 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

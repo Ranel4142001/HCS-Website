@@ -1,9 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Icon from '@/shared/components/ui/Icon';
 
+/** Homepage-only bar, rendered by the marketing layout so it sits above the navigation. */
 export const AnnouncementBar: React.FC = () => {
+  const isHomepage = usePathname() === '/';
   // Rendered visible from the server so the page doesn't shift down when JavaScript loads.
   // Only visitors who dismissed it this session see it removed after load.
   const [isVisible, setIsVisible] = useState(true);
@@ -25,7 +28,7 @@ export const AnnouncementBar: React.FC = () => {
     } catch {}
   };
 
-  if (!isVisible) return null;
+  if (!isHomepage || !isVisible) return null;
 
   return (
     <div className="announcement-bar" role="region" aria-label="Announcement">
