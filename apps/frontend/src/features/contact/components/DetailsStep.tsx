@@ -95,7 +95,7 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
       </button>
 
       <div className="form-note">
-        <Icon name="lock" /> 100% Confidential & BAA Protected
+        <Icon name="lock" /> Your details stay confidential
       </div>
     </div>
   );
