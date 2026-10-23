@@ -9164,3 +9164,110 @@ img, video, iframe, svg {
     margin-top: 40px;
   }
 }
+
+/* ==========================================================================
+   FOUNDING CLIENTS — honest proof for a new company (in place of testimonials)
+   ========================================================================== */
+.founding {
+  padding: 96px 0;
+  background: #f2f5f8;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.founding-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 1120px;
+}
+.founding-head {
+  max-width: 720px;
+}
+.founding-head h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.founding-head p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+.founding-commitments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 32px 40px;
+}
+.founding-commitments li {
+  border-top: 2px solid #062459;
+  padding-top: 20px;
+}
+.founding-commitments h3 {
+  margin: 0 0 10px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.founding-commitments p {
+  margin: 0;
+  font-size: 0.9875rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.founding-sources h3 {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.founding-sources ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.founding-sources li {
+  padding: 7px 14px;
+  border: 1px solid #cdd6e2;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 0.875rem;
+  color: #334155;
+}
+.founding-cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 24px;
+  border-radius: 10px;
+  background: #062459;
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+.founding-cta:hover {
+  background: #0a3a8f;
+}
+.founding-cta:focus-visible {
+  outline: 3px solid #3f8dff;
+  outline-offset: 2px;
+}
+@media (max-width: 640px) {
+  .founding { padding: 64px 0; }
+  .founding-inner { gap: 36px; }
+  .founding-cta { align-self: stretch; justify-content: center; }
+}

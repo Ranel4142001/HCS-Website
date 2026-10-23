@@ -35,6 +35,11 @@ const TestimonialsSection = dynamic(
   { ssr: true }
 );
 
+const FoundingClientsSection = dynamic(
+  () => import('@/features/landing/components/FoundingClientsSection'),
+  { ssr: true }
+);
+
 const FaqSection = dynamic(
   () => import('@/features/landing/components/FaqSection'),
   { ssr: true }
@@ -94,6 +99,9 @@ export default function MarketingPage() {
 
         {/* 11. Client testimonials — hidden until real, approved quotes are added */}
         <TestimonialsSection />
+
+        {/* 11b. Startup trust: commitments and verification sources, in place of testimonials */}
+        <FoundingClientsSection />
 
         {/* 12. Credentialing Knowledge Base & FAQ Accordion (Code-split) */}
         <FaqSection limit={6} />
