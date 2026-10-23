@@ -165,6 +165,15 @@
 /* Responsive — Mobile nav */
 
 @media (max-width: 1024px) {
+  /* A backdrop-filter makes the nav the containing block for the fixed menu panel below, squeezing the
+     panel into the nav's own height (invisible). Without the blur, the nav needs a solid background. */
+  .mdl-nav {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #ffffff;
+  }
+  /* The open menu covers the page, including the floating widgets (z-index 1000). */
+  .mdl-nav--menu-open { z-index: 1001; }
   .mdl-nav__menu {
     display: none;
     position: fixed;

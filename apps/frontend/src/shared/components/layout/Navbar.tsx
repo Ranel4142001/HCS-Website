@@ -11,11 +11,21 @@ import './Navbar.css';
 const MOBILE_BREAKPOINT = 1024;
 const CLOSE_DELAY_MS = 150;
 
+// Locks the page behind the open mobile menu. This must be set on <html>, not <body>: html and body
+// use overflow-x: clip, so overflow: hidden on body would make body a scroll container and the sticky
+// nav would scroll away with it.
+function lockPageScroll(locked: boolean) {
+  document.documentElement.style.overflow = locked ? 'hidden' : '';
+}
+
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  // The mobile panel starts where the nav ends, which moves when the announcement bar is shown above it.
+  const [mobileMenuTop, setMobileMenuTop] = useState<number | undefined>();
+  const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -29,7 +39,7 @@ export const Navbar: React.FC = () => {
     const handleResize = () => {
       if (window.innerWidth > MOBILE_BREAKPOINT) {
         setIsMobileOpen(false);
-        document.body.style.overflow = '';
+        lockPageScroll(false);
       }
     };
     window.addEventListener('resize', handleResize);
@@ -65,18 +75,23 @@ export const Navbar: React.FC = () => {
     setIsMobileOpen(false);
     setActiveMenu(null);
     setIsSearchOpen(false);
-    document.body.style.overflow = '';
+    lockPageScroll(false);
   };
 
   const toggleMobile = () => {
     const next = !isMobileOpen;
+    if (next) setMobileMenuTop(navRef.current?.getBoundingClientRect().bottom);
     setIsMobileOpen(next);
-    document.body.style.overflow = next ? 'hidden' : '';
+    lockPageScroll(next);
   };
 
   return (
     <>
-      <nav className={`mdl-nav ${isScrolled ? 'mdl-nav--scrolled' : ''}`} id="nav">
+      <nav
+        ref={navRef}
+        className={`mdl-nav ${isScrolled ? 'mdl-nav--scrolled' : ''} ${isMobileOpen ? 'mdl-nav--menu-open' : ''}`}
+        id="nav"
+      >
         <div className="mdl-nav__inner">
           <Link href="/" className="mdl-nav__logo" onClick={closeAll} aria-label="HealthCredSTAT Home">
             {/* eslint-disable-next-line @next/next/no-img-element -- brand logo is served as-is, never re-encoded */}
@@ -92,7 +107,10 @@ export const Navbar: React.FC = () => {
             />
           </Link>
 
-          <div className={`mdl-nav__menu ${isMobileOpen ? 'mdl-nav__menu--open' : ''}`}>
+          <div
+            className={`mdl-nav__menu ${isMobileOpen ? 'mdl-nav__menu--open' : ''}`}
+            style={isMobileOpen && mobileMenuTop !== undefined ? { top: mobileMenuTop } : undefined}
+          >
             <div className="mdl-nav__links">
               {NAV_MENUS.map((menu) => (
                 <NavDropdown
