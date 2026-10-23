@@ -1,0 +1,33 @@
+.section-head {
+  max-width: 660px;
+  margin: 0 auto 52px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-head h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+}
+
+.section-head p {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.testimonials .section-head h2, .testimonials .section-head p {
+  color: #fff;
+}
+
+.testimonials .section-head p {
+  color: rgba(255,255,255,.78);
+}
+
+@media (max-width: 640px) {
+  .section-head {
+    margin-bottom: 38px;
+  }
+}

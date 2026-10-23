@@ -1,0 +1,138 @@
+/* Styles shared by several estimator components. Loaded by the feature entry point (index.ts). */
+
+.est-step[hidden] {
+  display: none !important;
+}
+
+.est-step {
+  animation: estStepIn .35s var(--ease);
+}
+
+@keyframes estStepIn {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.est-step h3 {
+  font-size: 1.08rem;
+  margin-bottom: 14px;
+}
+
+.est-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .84rem;
+  color: var(--ink-soft);
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.est-back svg {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.est-back:hover {
+  color: var(--teal-600);
+}
+
+.est-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.est-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: var(--surface);
+  border: 1.6px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-family: inherit;
+  transition: border-color .25s var(--ease), background .25s var(--ease), transform .2s var(--ease);
+}
+
+.est-option:hover {
+  border-color: var(--teal-500);
+  transform: translateY(-2px);
+}
+
+.est-option.selected {
+  border-color: var(--teal-600);
+  background: var(--mint-100);
+}
+
+.est-opt-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--mint-100);
+  color: var(--teal-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   VIDEO MODAL OVERLAY
+   ===================================================== */
+
+.est-opt-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.est-option.selected .est-opt-icon {
+  background: linear-gradient(135deg, var(--teal-600), var(--cyan-400));
+  color: #fff;
+}
+
+.est-opt-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.est-opt-text strong {
+  font-size: .93rem;
+  color: var(--ink);
+}
+
+.est-opt-text span {
+  font-size: .79rem;
+  color: var(--ink-soft);
+}
+
+.est-opt-check {
+  width: 20px;
+  height: 20px;
+  color: var(--teal-600);
+  opacity: 0;
+  transform: scale(.5);
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+  flex-shrink: 0;
+}
+
+.est-opt-check svg {
+  width: 20px;
+  height: 20px;
+}
+
+.est-option.selected .est-opt-check {
+  opacity: 1;
+  transform: scale(1);
+}

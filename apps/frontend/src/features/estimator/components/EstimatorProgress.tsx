@@ -1,4 +1,5 @@
 import React from 'react';
+import './EstimatorProgress.css';
 
 export interface EstimatorProgressProps {
   currentStep: number;

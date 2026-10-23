@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Icon from '@/shared/components/ui/Icon';
+import './BackToTop.css';
 
 export const BackToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);

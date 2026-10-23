@@ -10,6 +10,7 @@ import EstimatorStepUrgency from './EstimatorStepUrgency';
 import EstimatorResult from './EstimatorResult';
 import Icon from '@/shared/components/ui/Icon';
 import SectionHeader from '@/shared/components/layout/SectionHeader';
+import './EstimatorCard.css';
 
 export const EstimatorCard: React.FC = () => {
   const {

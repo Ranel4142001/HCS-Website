@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { SOLUTIONS } from '../content/solutions';
+import './SolutionsOverview.css';
 
 /** Grid linking to every solution page, used on /services. */
 export function SolutionsOverview() {

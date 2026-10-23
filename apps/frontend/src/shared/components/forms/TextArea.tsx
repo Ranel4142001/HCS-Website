@@ -1,5 +1,6 @@
 import React from 'react';
 import { clsx } from 'clsx';
+import './forms.css';
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;

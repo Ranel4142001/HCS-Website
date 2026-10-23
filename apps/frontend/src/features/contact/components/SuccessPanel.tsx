@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import Icon from '@/shared/components/ui/Icon';
 import Button from '@/shared/components/ui/Button';
+import './SuccessPanel.css';
 
 export interface SuccessPanelProps {
   onReset: () => void;

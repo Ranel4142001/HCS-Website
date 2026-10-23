@@ -1,0 +1,16 @@
+/* Small ring spinner for use inside buttons; takes the button's text color. */
+.btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: btn-spinner-rotate .7s linear infinite;
+  flex-shrink: 0;
+  vertical-align: -3px;
+}
+
+@keyframes btn-spinner-rotate {
+  to { transform: rotate(360deg); }
+}

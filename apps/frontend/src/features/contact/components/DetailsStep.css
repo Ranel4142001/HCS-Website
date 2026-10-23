@@ -1,0 +1,105 @@
+.form-card-head-back {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 14px;
+  position: relative;
+}
+
+.form-card-head-back h3, .form-card-head-back p {
+  flex: 0 0 100%;
+}
+
+.step-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .84rem;
+  color: var(--ink-soft);
+  padding: 0 0 4px;
+  order: -1;
+}
+
+.step-back svg {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.step-back:hover {
+  color: var(--teal-600);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit .btn-label, .btn-submit .btn-loading, .btn-submit .btn-success {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.btn-submit .btn-loading, .btn-submit .btn-success {
+  display: none;
+}
+
+.btn-submit.is-loading .btn-label {
+  display: none;
+}
+
+.btn-submit.is-loading .btn-loading {
+  display: flex;
+}
+
+.btn-submit.is-loading {
+  cursor: progress;
+  opacity: .92;
+}
+
+.btn-submit.is-success .btn-label, .btn-submit.is-success .btn-loading {
+  display: none;
+}
+
+.btn-submit.is-success .btn-success {
+  display: flex;
+}
+
+.btn-submit.is-success {
+  background: linear-gradient(135deg, #12a37a, #0d7f60);
+}
+
+.form-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 18px;
+  font-size: .82rem;
+  color: var(--ink-faint);
+}
+
+.form-note svg {
+  width: 15px;
+  height: 15px;
+  color: var(--ink-faint);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}

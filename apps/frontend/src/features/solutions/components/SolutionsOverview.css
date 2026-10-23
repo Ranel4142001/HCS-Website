@@ -1,0 +1,13 @@
+.sol-overview-title {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+}
+
+.sol-overview-title a {
+  color: #062459;
+  text-decoration: none;
+}
+
+.sol-overview-title a:hover {
+  text-decoration: underline;
+}

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
 import { FAQ_DATA } from '../content/faq';
+import './FaqSection.css';
 
 interface FaqSectionProps {
   /** Show only the first N questions (the homepage uses a shorter list). */

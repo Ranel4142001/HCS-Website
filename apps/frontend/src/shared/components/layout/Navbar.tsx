@@ -6,6 +6,7 @@ import { envConfig } from '@/shared/config/env.config';
 import { NAV_LINKS, NAV_MENUS, PRIMARY_CTA } from '@/shared/config/navigation';
 import { NavDropdown } from './NavDropdown';
 import { SearchDialog } from './SearchDialog';
+import './Navbar.css';
 
 const MOBILE_BREAKPOINT = 1024;
 const CLOSE_DELAY_MS = 150;

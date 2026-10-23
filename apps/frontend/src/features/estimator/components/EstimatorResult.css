@@ -1,0 +1,128 @@
+.est-result[hidden] {
+  display: none !important;
+}
+
+.est-result {
+  animation: estStepIn .35s var(--ease);
+}
+
+.est-result {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: popIn .5s var(--ease);
+}
+
+.est-result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--teal-700);
+  background: var(--mint-100);
+  padding: 6px 13px 6px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(13,110,253,.12);
+  margin-bottom: 12px;
+}
+
+.est-result-badge svg {
+  width: 13px;
+  height: 13px;
+}
+
+.est-result-num {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.est-count {
+  font-size: clamp(2.1rem, 4vw, 2.8rem);
+  font-weight: 600;
+  color: var(--teal-700);
+  letter-spacing: -0.02em;
+}
+
+.est-result-unit {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-left: 4px;
+}
+
+.est-result-copy {
+  color: var(--ink-soft);
+  font-size: .9rem;
+  line-height: 1.5;
+  margin-bottom: 14px;
+  max-width: 440px;
+}
+
+.est-result-plan {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 14px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.est-result-plan .fc-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--mint-100);
+  color: var(--teal-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.est-result-plan .fc-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.est-result-plan strong {
+  display: block;
+  font-size: .9rem;
+  color: var(--ink);
+}
+
+.est-result-plan span {
+  display: block;
+  font-size: .79rem;
+  color: var(--ink-soft);
+}
+
+.est-result-cta {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.est-result-cta .btn {
+  flex: 1;
+  min-width: 150px;
+  justify-content: center;
+}
+
+.est-disclaimer {
+  margin-top: 12px;
+  font-size: .74rem;
+  color: var(--ink-faint);
+  line-height: 1.45;
+}

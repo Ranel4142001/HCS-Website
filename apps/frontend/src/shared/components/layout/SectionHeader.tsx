@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import Badge from '@/shared/components/ui/Badge';
 import Icon, { IconName } from '@/shared/components/ui/Icon';
+import './SectionHeader.css';
 
 export interface SectionHeaderProps {
   eyebrow?: string;

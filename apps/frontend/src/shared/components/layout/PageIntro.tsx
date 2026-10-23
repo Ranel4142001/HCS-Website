@@ -1,6 +1,7 @@
 import React from 'react';
 import Badge from '@/shared/components/ui/Badge';
 import Icon, { IconName } from '@/shared/components/ui/Icon';
+import './PageIntro.css';
 
 interface PageIntroProps {
   /** Small label above the heading. */

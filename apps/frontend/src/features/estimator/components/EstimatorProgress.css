@@ -1,0 +1,60 @@
+.est-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.est-p-step {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: .84rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+  transition: color .3s var(--ease);
+}
+
+.est-p-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--mint-100);
+  color: var(--ink-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .76rem;
+  flex-shrink: 0;
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+
+.est-p-step.active {
+  color: var(--ink);
+}
+
+.est-p-step.active .est-p-num {
+  background: linear-gradient(135deg, var(--teal-600), var(--cyan-400));
+  color: #fff;
+}
+
+.est-p-step.done .est-p-num {
+  background: var(--teal-600);
+  color: #fff;
+}
+
+.est-p-line {
+  flex: 1;
+  height: 2px;
+  background: var(--line);
+}
+
+@media (max-width: 400px) {
+  /* Very small phones: number every step, but label only the current one */
+  .est-p-step:not(.active) > span:not(.est-p-num) {
+    display: none;
+  }
+  .est-progress {
+    gap: 8px;
+  }
+}

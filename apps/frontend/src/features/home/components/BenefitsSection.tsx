@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Icon from '@/shared/components/ui/Icon';
 import { BENEFITS } from '../content/benefits';
+import './BenefitsSection.css';
 
 export const BenefitsSection: React.FC = () => {
   const [activeItem, setActiveItem] = useState(0);

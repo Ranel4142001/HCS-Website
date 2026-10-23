@@ -1,6 +1,7 @@
 import React from 'react';
 import { clsx } from 'clsx';
 import Icon from '@/shared/components/ui/Icon';
+import './forms.css';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;

@@ -5,6 +5,7 @@ import Input from '@/shared/components/forms/Input';
 import TextArea from '@/shared/components/forms/TextArea';
 import Icon from '@/shared/components/ui/Icon';
 import Spinner from '@/shared/components/ui/Spinner';
+import './DetailsStep.css';
 
 export interface DetailsStepProps {
   form: UseFormReturn<ContactFormValues>;

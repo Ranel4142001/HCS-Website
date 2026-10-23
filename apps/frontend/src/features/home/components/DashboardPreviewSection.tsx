@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
 import type { TabId } from '../types';
 import { TABS } from '../content/dashboard';
+import './DashboardPreviewSection.css';
 
 export const DashboardPreviewSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabId>('cred');

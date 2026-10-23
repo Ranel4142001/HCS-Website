@@ -1,0 +1,417 @@
+/* --- Hero Interactive Showcase Card --- */
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 193, 187, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 193, 187, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 193, 187, 0); }
+}
+
+/* --- Agent Workflows 8-Tab Section --- */
+
+.agent-workflows-section {
+  padding: 96px 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+}
+
+.workflows-head {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 56px;
+}
+
+.workflows-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal-600);
+  background: #eef5ff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.eyebrow-sparkle svg {
+  width: 14px;
+  height: 14px;
+}
+
+.workflows-head h2 {
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.workflows-subtitle {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.workflows-container {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.workflows-tablist {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  padding-right: 20px;
+}
+
+.wf-tab-item {
+  border-bottom: 1px solid var(--line);
+  padding: 16px 12px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s ease;
+  border-radius: 8px;
+}
+
+.wf-tab-item:last-child {
+  border-bottom: none;
+}
+
+.wf-tab-item:hover {
+  background: #f8fbff;
+}
+
+.wf-tab-item.is-active {
+  background: #f2f7ff;
+}
+
+.wf-tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wf-tab-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.wf-tab-chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--ink-faint);
+  transition: transform 0.2s ease;
+}
+
+.wf-tab-chevron.open {
+  transform: rotate(90deg);
+  color: var(--teal-600);
+}
+
+.wf-tab-body {
+  margin-top: 10px;
+}
+
+.wf-tab-desc {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.wf-tab-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--teal-600);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wf-tab-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.wf-tab-bar-fill {
+  height: 100%;
+  background: var(--teal-600);
+}
+
+/* Workflow Live Media Card */
+
+.wf-media-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wf-media-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wf-media-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: #f0f4fa;
+  color: var(--ink);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.wf-metric-pill {
+  font-size: 0.85rem;
+  color: var(--teal-600);
+}
+
+.wf-metric-pill strong {
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.wf-media-subtext {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+
+.wf-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.wf-stat-chip {
+  background: #f7faff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.wf-stat-label {
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  display: block;
+}
+
+.wf-stat-val-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.wf-stat-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.wf-stat-trend {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0b827e;
+}
+
+.wf-timeline-box {
+  background: #f9fbff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.wf-timeline-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+
+.wf-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wf-timeline-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wf-step-marker {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wf-timeline-step.completed .wf-step-marker {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.wf-timeline-step.completed .wf-step-marker svg {
+  width: 12px;
+  height: 12px;
+}
+
+.wf-timeline-step.in-progress .wf-step-marker {
+  background: #eef5ff;
+}
+
+.step-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--teal-600);
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.2);
+  animation: pulseDot 1.5s infinite;
+}
+
+.step-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+
+.wf-step-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.wf-step-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.wf-step-time {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+.wf-highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wf-highlights-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.wf-highlights-list li svg {
+  width: 16px;
+  height: 16px;
+  color: var(--teal-600);
+  flex-shrink: 0;
+}
+
+.wf-media-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wf-security-note {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wf-security-note svg {
+  width: 14px;
+  height: 14px;
+  color: var(--teal-600);
+}
+
+@media (max-width: 992px) {
+  .workflows-container {
+    grid-template-columns: 1fr;
+  }
+  .workflows-tablist {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding-right: 0;
+    padding-bottom: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wf-stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Grid children default to min-width: auto, so wide content (stat rows, week
+   labels) can push a column past the screen. Let them shrink instead. */
+
+.workflows-container > * {
+  min-width: 0;
+}
+
+@media (max-width: 992px) {
+  .workflows-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Short status labels ("Auto-verified", "In Review") read better on one line */
+  .wf-step-time {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}

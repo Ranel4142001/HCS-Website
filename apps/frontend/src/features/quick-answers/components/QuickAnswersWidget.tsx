@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Icon from '@/shared/components/ui/Icon';
 import type { ChatMessage } from '../types';
 import { INITIAL_MESSAGES, PRESET_QUERIES, findAnswer } from '../content/answers';
+import './QuickAnswersWidget.css';
 
 export const QuickAnswersWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

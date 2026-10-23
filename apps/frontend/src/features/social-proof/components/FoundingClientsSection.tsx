@@ -1,5 +1,6 @@
 import React from 'react';
 import { COMMITMENTS, SOURCES } from '../content/founding';
+import './FoundingClientsSection.css';
 
 export const FoundingClientsSection: React.FC = () => {
   return (

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
 import Button from '@/shared/components/ui/Button';
 import { WORKFLOWS } from '../content/workflows';
+import './WorkflowsSection.css';
 
 const CYCLE_DURATION = 6000; // 6 seconds per tab
 

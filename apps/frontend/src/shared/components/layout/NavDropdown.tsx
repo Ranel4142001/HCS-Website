@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import type { NavMenu, NavSpotlight } from '@/shared/config/navigation';
+import './NavDropdown.css';
 
 interface NavDropdownProps {
   menu: NavMenu;

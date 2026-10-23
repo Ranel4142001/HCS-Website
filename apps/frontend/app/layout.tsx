@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Sora, Instrument_Serif } from 'next/font/google';
 import './globals.css';
+import '@/shared/styles/common.css';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
 import JsonLd from '@/shared/components/seo/JsonLd';
 

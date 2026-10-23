@@ -1,0 +1,103 @@
+/* Field styles shared by Input and TextArea. */
+
+.field {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.field input, .field textarea {
+  width: 100%;
+  padding: 17px 16px 15px;
+  border: 1.6px solid var(--line);
+  border-radius: 13px;
+  font-size: .98rem;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+
+.field textarea {
+  min-height: 104px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.field label {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  font-size: .98rem;
+  color: var(--ink-faint);
+  pointer-events: none;
+  transition: all .2s var(--ease);
+  background: var(--surface);
+  padding: 0 7px;
+  margin-left: -7px;
+  border-radius: 4px;
+}
+
+.field input:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--teal-500);
+  box-shadow: 0 0 0 4px rgba(63,141,255,.14);
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+  top: -9px;
+  font-size: .74rem;
+  font-weight: 700;
+  color: var(--teal-600);
+}
+
+.field .field-icon {
+  position: absolute;
+  right: 14px;
+  top: 16px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(.5);
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+
+.field .field-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.field.valid .field-icon.icon-valid {
+  opacity: 1;
+  transform: scale(1);
+  color: var(--teal-600);
+}
+
+.field.invalid .field-icon.icon-invalid {
+  opacity: 1;
+  transform: scale(1);
+  color: #d64545;
+}
+
+.field.invalid input {
+  border-color: #d64545;
+}
+
+.field.invalid input:focus {
+  box-shadow: 0 0 0 4px rgba(214,69,69,.14);
+}
+
+.field.shake {
+  animation: fieldShake .4s var(--ease);
+}
+
+@keyframes fieldShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}

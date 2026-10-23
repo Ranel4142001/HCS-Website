@@ -1,0 +1,255 @@
+/* =====================================================
+   NAV
+===================================================== */
+
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 16px 0;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(225, 232, 244, 0.85);
+  box-shadow: 0 4px 20px -6px rgba(14, 27, 48, 0.05);
+  transition: background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
+}
+
+/* ============================================================
+   MDL-NAV — HealthCredSTAT Navigation
+   ============================================================ */
+
+.mdl-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #f1f5f9;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.2s ease;
+}
+
+.mdl-nav--scrolled {
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mdl-nav__inner {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  gap: 0;
+  max-width: var(--container) !important;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: clamp(24px, 4vw, 64px) !important;
+  padding-right: clamp(24px, 4vw, 64px) !important;
+}
+
+/* Logo */
+
+.mdl-nav__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: clamp(24px, 3.5vw, 44px);
+  transition: opacity 0.15s ease;
+}
+
+.mdl-nav__logo:hover {
+  opacity: 0.92;
+}
+
+/* Official HealthCredSTAT Logo styling */
+
+.mdl-nav__logo-img {
+  height: 48px;
+  max-height: 52px;
+  width: auto;
+  max-width: 230px;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+@media (max-width: 768px) {
+  .mdl-nav__logo-img {
+    height: 42px;
+    max-height: 42px;
+    max-width: 190px;
+  }
+}
+
+/* Nav menu wrapper */
+
+.mdl-nav__menu {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 0;
+}
+
+.mdl-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+/* Plain nav links (no dropdown) */
+
+.mdl-nav__plain-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.mdl-nav__plain-link:hover {
+  color: #062459;
+  background: #f1f5f9;
+}
+
+/* Right actions */
+
+.mdl-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.mdl-nav__signin {
+  padding: 8px 16px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.mdl-nav__signin:hover {
+  color: #062459;
+  background: #f1f5f9;
+}
+
+/* Hamburger */
+
+.mdl-nav__hamburger {
+  display: none;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #374151;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+.mdl-nav__hamburger:hover {
+  background: #f1f5f9;
+}
+
+/* Responsive — Mobile nav */
+
+@media (max-width: 1024px) {
+  .mdl-nav__menu {
+    display: none;
+    position: fixed;
+    inset: 68px 0 0;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    overflow-y: auto;
+    z-index: 998;
+    border-top: 1px solid #f1f5f9;
+  }
+  .mdl-nav__menu--open { display: flex; }
+  .mdl-nav__links { flex-direction: column; align-items: stretch; gap: 4px; }
+  .mdl-nav__plain-link { width: 100%; border-radius: 10px; padding: 12px 16px; }
+  .mdl-nav__actions {
+    margin: 16px 0 0;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mdl-nav__signin { width: 100%; text-align: center; border-radius: 10px; padding: 12px; }
+  .mdl-nav__hamburger { display: flex; }
+  .mdl-nav__logo { margin-right: auto; }
+}
+
+/* Search trigger button in navbar */
+
+.mdl-nav__search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mdl-nav__search-btn:hover {
+  background: #f1f5f9;
+  color: #062459;
+}
+
+/* Divider line between Search and Sign In */
+
+.mdl-nav__divider {
+  width: 1px;
+  height: 22px;
+  background: #e2e8f0;
+  margin: 0 4px;
+}
+
+/* GET IN TOUCH outline button */
+
+.mdl-nav__btn-touch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0f172a;
+  background: transparent;
+  border: 1.5px solid #0f172a;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.mdl-nav__btn-touch:hover {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .mdl-nav__divider {
+    display: none;
+  }
+  .mdl-nav__search-btn {
+    display: none;
+  }
+}

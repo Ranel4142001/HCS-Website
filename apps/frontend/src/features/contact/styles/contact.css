@@ -1,0 +1,37 @@
+/* Styles shared by several contact components. Loaded by the feature entry point (index.ts). */
+
+.form-step {
+  transition: opacity .25s var(--ease);
+}
+
+.field.select select {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 17px 42px 15px 16px;
+  border: 1.6px solid var(--line);
+  border-radius: 13px;
+  font-size: .98rem;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+
+.field.select select:focus {
+  outline: none;
+  border-color: var(--teal-500);
+  box-shadow: 0 0 0 4px rgba(63,141,255,.14);
+}
+
+.field.select label {
+  top: 18px;
+}
+
+.field.select select:focus + label {
+  top: -9px;
+  font-size: .74rem;
+  font-weight: 700;
+  color: var(--teal-600);
+}

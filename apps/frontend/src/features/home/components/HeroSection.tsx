@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { COVERAGE } from '../content/coverage';
+import './HeroSection.css';
 
 const CoverageItem: React.FC<{ label: string }> = ({ label }) => (
   <div className="hcs-partner-item">

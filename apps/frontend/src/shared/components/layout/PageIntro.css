@@ -1,0 +1,24 @@
+/* ==========================================================================
+   PAGE PRIMITIVES — shared intro block, overview grid, status pages
+   ========================================================================== */
+
+.page-intro {
+  padding-block: 72px 32px;
+  text-align: center;
+}
+
+.page-intro h1 {
+  margin: 16px 0;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.page-intro p {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}

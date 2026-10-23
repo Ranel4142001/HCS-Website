@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Icon from '@/shared/components/ui/Icon';
 import { FOOTER_COLUMNS, LEGAL_LINKS } from '@/shared/config/navigation';
+import './Footer.css';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();

@@ -3,6 +3,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import type { TestimonialCard } from '../types';
 import { TESTIMONIALS } from '../content/testimonials';
+import './TestimonialsSection.css';
 
 export const TestimonialsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);

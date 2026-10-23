@@ -1,0 +1,86 @@
+/* --- Announcement Bar  --- */
+
+.announcement-bar {
+  background: #081d38;
+  color: #ffffff;
+  padding: 10px clamp(24px, 4vw, 64px);
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 101;
+  width: 100%;
+}
+
+.announcement-inner {
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 36px;
+}
+
+.announcement-msg-full {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.announcement-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #60a5fa;
+  font-weight: 600;
+  font-size: 0.86rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.announcement-cta:hover {
+  color: #93c5fd;
+}
+
+.announcement-dismiss {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+
+.announcement-dismiss:hover {
+  color: #ffffff;
+}
+
+.announcement-dismiss svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 768px) {
+  .announcement-msg-full {
+    display: none;
+  }
+}

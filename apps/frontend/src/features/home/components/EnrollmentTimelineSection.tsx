@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
 import { FLOW_MODES, COMMERCIAL_STEPS } from '../content/enrollment-timeline';
+import './EnrollmentTimelineSection.css';
 
 export const EnrollmentTimelineSection: React.FC = () => {
   const [selectedFlow, setSelectedFlow] = useState(0);

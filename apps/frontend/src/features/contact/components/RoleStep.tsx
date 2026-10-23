@@ -2,6 +2,7 @@
 import Icon from '@/shared/components/ui/Icon';
 import Button from '@/shared/components/ui/Button';
 import { ContactRole } from '../types/contact.types';
+import './RoleStep.css';
 
 export interface RoleStepProps {
   selectedRole: ContactRole | null;

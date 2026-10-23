@@ -1,4 +1,5 @@
 import { PRICING_PLANS } from '../content/plans';
+import './PricingSection.css';
 ﻿import React from 'react';
 
 const CheckMark: React.FC = () => (

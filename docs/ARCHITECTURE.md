@@ -11,7 +11,8 @@ apps/frontend/
 ├── app/                        Routes only: compose features into pages, set metadata
 │   ├── (marketing)/layout.tsx  Site chrome (announcement bar, navbar, footer) for every page
 │   ├── (marketing)/**/page.tsx One file per URL; renders <main> with feature sections
-│   ├── layout.tsx              <html>, fonts, site-wide structured data
+│   ├── layout.tsx              <html>, fonts, site-wide structured data, global stylesheets
+│   ├── globals.css             Design tokens, element defaults, route-level styles
 │   ├── not-found.tsx, error.tsx, loading.tsx
 │   └── sitemap.ts, robots.ts, opengraph-image.tsx
 └── src/
@@ -28,9 +29,10 @@ apps/frontend/
     └── shared/                 Used by several features; knows nothing about any feature
         ├── components/ui/      Badge, Button, Icon, Spinner
         ├── components/forms/   Input, TextArea
-        ├── components/layout/  Navbar, NavDropdown, SearchDialog, Footer, PageIntro,
-        │                       SectionHeader, ComingSoonPage, BackToTop
+        ├── components/layout/  AnnouncementBar, Navbar, NavDropdown, SearchDialog, Footer,
+        │                       PageIntro, SectionHeader, ComingSoonPage, BackToTop
         ├── components/seo/     JsonLd
+        ├── styles/common.css   Classes used by more than one feature (buttons, page hero)
         ├── config/             env.config.ts, navigation.ts (every site link, defined once)
         └── lib/                seo.ts (metadata and structured-data helpers)
 ```
@@ -40,7 +42,8 @@ apps/frontend/
 ```text
 features/<name>/
 ├── index.ts        Public API: the only file other code may import
-├── components/     React components (rendering only)
+├── components/     React components (rendering only), each with its own Component.css
+├── styles/         <name>.css: styles shared by several of the feature's components
 ├── content/        Copy and data: text, lists, sample data, prices, ranges
 ├── types.ts        Shapes of that content
 ├── hooks/          Stateful logic (e.g. useEstimator)
@@ -68,6 +71,7 @@ compose them in the page.
 | I want to… | Edit |
 |---|---|
 | Change wording, prices, timelines or sample data | the feature's `content/` file |
+| Restyle a section | the `.css` file next to its component |
 | Add or rename a menu, footer or search link | `src/shared/config/navigation.ts` |
 | Add a solution or audience page | `features/solutions/content/*.ts`, then a 3-line `page.tsx`; the sitemap picks it up |
 | Add a homepage section | a component in `features/home/components`, export it from `features/home/index.ts`, place it in `app/(marketing)/page.tsx` |
@@ -80,8 +84,15 @@ compose them in the page.
 
 - **Server components by default.** Add `'use client'` only to components that need state, effects or
   browser events. Pages are server components.
-- **No inline styles** for layout or typography. Styles live in `app/globals.css`, grouped by section.
-  A `style` prop is fine for values that come from data (e.g. an accent color).
+- **Styles live with what they style.** A component imports its own stylesheet (`import './PricingSection.css'`),
+  so a page downloads only the CSS of the components it renders. Styles shared inside one feature go in
+  `features/<name>/styles/<name>.css` (imported by the feature's `index.ts`); styles shared across features go
+  in `src/shared/styles/common.css`; tokens and element defaults stay in `app/globals.css`. Class names are
+  global, so keep them unique to their component (e.g. a `pricing-` prefix).
+- **No inline styles** for layout or typography. A `style` prop is fine for values that come from data
+  (e.g. an accent color) or are measured at runtime.
+- **Vendor prefixes go first** (`-webkit-backdrop-filter` before `backdrop-filter`). The build's CSS
+  minifier keeps only the last of the two, so the reverse order silently drops the standard property.
 - **Content is not code.** Components should not contain long text or data arrays; put them in `content/`.
 - **Honest claims only.** Numbers, certifications, client names and promises must be confirmed by the
   business before they go in `content/`. Sample dashboards and demos are labeled as samples.

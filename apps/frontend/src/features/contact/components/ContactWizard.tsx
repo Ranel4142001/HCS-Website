@@ -11,6 +11,7 @@ import DetailsStep from './DetailsStep';
 import SuccessPanel from './SuccessPanel';
 import Icon from '@/shared/components/ui/Icon';
 import Badge from '@/shared/components/ui/Badge';
+import './ContactWizard.css';
 
 export const ContactWizard: React.FC = () => {
   const [step, setStep] = useState<1 | 2>(1);

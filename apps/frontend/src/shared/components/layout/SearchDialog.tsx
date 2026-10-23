@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { QUICK_LINKS, SEARCH_INDEX } from '@/shared/config/navigation';
+import './SearchDialog.css';
 
 interface SearchDialogProps {
   onClose: () => void;

@@ -5,6 +5,7 @@ import Icon from '@/shared/components/ui/Icon';
 import Badge from '@/shared/components/ui/Badge';
 import type { TrackingResult } from '../types';
 import { SAMPLE_TRACKING } from '../content/sample-tracking';
+import './ApplicationTrackerSection.css';
 
 export const ApplicationTrackerSection: React.FC = () => {
   const [query, setQuery] = useState('1942083921');
