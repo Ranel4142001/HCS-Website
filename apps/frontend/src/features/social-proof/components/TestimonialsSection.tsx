@@ -1,22 +1,8 @@
 'use client';
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-
-interface TestimonialCard {
-  id: string;
-  company: string;
-  companyInitials: string;
-  companyColor: string;
-  thumbnailBg: string;
-  quote: string;
-  name: string;
-  role: string;
-  metric: string;
-}
-
-// Add real, client-approved testimonials here (written permission required before publishing).
-// The section stays hidden while this list is empty.
-const TESTIMONIALS: TestimonialCard[] = [];
+import type { TestimonialCard } from '../types';
+import { TESTIMONIALS } from '../content/testimonials';
 
 export const TestimonialsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);

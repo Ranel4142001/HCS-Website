@@ -3,9 +3,9 @@
 import React from 'react';
 import Navbar from '@/shared/components/layout/Navbar';
 import Footer from '@/shared/components/layout/Footer';
-import PricingSection from '@/features/pricing/components/PricingSection';
-import EstimatorCard from '@/features/estimator/components/EstimatorCard';
-import ContactWizard from '@/features/contact/components/ContactWizard';
+import { PricingSection } from '@/features/pricing';
+import { EstimatorCard } from '@/features/estimator';
+import { ContactWizard } from '@/features/contact';
 import Badge from '@/shared/components/ui/Badge';
 import Icon from '@/shared/components/ui/Icon';
 

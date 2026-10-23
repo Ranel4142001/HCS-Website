@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { EstimatorState, EstimatorRole, EstimatorUrgency, PlanInfo } from '../types/estimator.types';
+import { ESTIMATE_RANGES, PLAN_INFO_MAP } from '../content/plans';
 
 const INITIAL_STATE: EstimatorState = {
   step: 1,
@@ -10,21 +11,16 @@ const INITIAL_STATE: EstimatorState = {
   urgent: null,
 };
 
-const PLAN_INFO_MAP: Record<EstimatorRole, PlanInfo> = {
-  individual: { name: 'Individual Clinician', price: '$599 flat rate per assignment' },
-  group: { name: 'Group Practice / Staffing Agency', price: 'Custom volume pricing' },
-  enterprise: { name: 'Enterprise Health System', price: 'Tailored pricing — contact sales' },
-};
-
 export const useEstimator = () => {
   const [state, setState] = useState<EstimatorState>(INITIAL_STATE);
 
-  const selectRole = useCallback((role: EstimatorRole, baseLow: number, baseHigh: number) => {
+  const selectRole = useCallback((role: EstimatorRole) => {
+    const { low, high } = ESTIMATE_RANGES[role];
     setState((prev) => ({
       ...prev,
       role,
-      baseLow,
-      baseHigh,
+      baseLow: low,
+      baseHigh: high,
     }));
     setTimeout(() => {
       setState((prev) => ({ ...prev, step: 2 }));

@@ -3,8 +3,8 @@
 import React from 'react';
 import Navbar from '@/shared/components/layout/Navbar';
 import Footer from '@/shared/components/layout/Footer';
-import FaqSection from '@/features/faq/components/FaqSection';
-import ContactWizard from '@/features/contact/components/ContactWizard';
+import { FaqSection } from '@/features/faq';
+import { ContactWizard } from '@/features/contact';
 import Badge from '@/shared/components/ui/Badge';
 import Icon from '@/shared/components/ui/Icon';
 

@@ -3,20 +3,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
-
-type TabId = 'cred' | 'enroll' | 'mon' | 'profile';
-
-interface TabDef {
-  id: TabId;
-  label: string;
-}
-
-const TABS: TabDef[] = [
-  { id: 'cred', label: 'Credentialing' },
-  { id: 'enroll', label: 'Provider Enrollment' },
-  { id: 'mon', label: 'Monitoring' },
-  { id: 'profile', label: 'Provider Profile' },
-];
+import type { TabId, TabDef } from '../types';
+import { TABS } from '../content/dashboard';
 
 export const DashboardPreviewSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabId>('cred');

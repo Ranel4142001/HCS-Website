@@ -4,7 +4,7 @@ import { EstimatorRole } from '../types/estimator.types';
 
 export interface EstimatorStepRoleProps {
   selectedRole: EstimatorRole | null;
-  onSelect: (role: EstimatorRole, baseLow: number, baseHigh: number) => void;
+  onSelect: (role: EstimatorRole) => void;
 }
 
 export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRole, onSelect }) => {
@@ -15,7 +15,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
         <button
           type="button"
           className={`est-option ${selectedRole === 'individual' ? 'selected' : ''}`}
-          onClick={() => onSelect('individual', 14, 30)}
+          onClick={() => onSelect('individual')}
         >
           <div className="est-opt-icon">
             <Icon name="user" />
@@ -32,7 +32,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
         <button
           type="button"
           className={`est-option ${selectedRole === 'group' ? 'selected' : ''}`}
-          onClick={() => onSelect('group', 21, 45)}
+          onClick={() => onSelect('group')}
         >
           <div className="est-opt-icon">
             <Icon name="users" />
@@ -49,7 +49,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
         <button
           type="button"
           className={`est-option ${selectedRole === 'enterprise' ? 'selected' : ''}`}
-          onClick={() => onSelect('enterprise', 30, 60)}
+          onClick={() => onSelect('enterprise')}
         >
           <div className="est-opt-icon">
             <Icon name="building" />

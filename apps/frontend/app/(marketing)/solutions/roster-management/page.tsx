@@ -1,5 +1,4 @@
-import SolutionPage from '@/features/solutions/components/SolutionPage';
-import { rosterManagement } from '@/features/solutions/content/solutions';
+import { SolutionPage, rosterManagement } from '@/features/solutions';
 import { buildMetadata } from '@/shared/lib/seo';
 
 export const metadata = buildMetadata({ ...rosterManagement.meta, path: rosterManagement.path });

@@ -1,5 +1,4 @@
-import SolutionPage from '@/features/solutions/components/SolutionPage';
-import { delegatedCredentialing } from '@/features/solutions/content/solutions';
+import { SolutionPage, delegatedCredentialing } from '@/features/solutions';
 import { buildMetadata } from '@/shared/lib/seo';
 
 export const metadata = buildMetadata({ ...delegatedCredentialing.meta, path: delegatedCredentialing.path });

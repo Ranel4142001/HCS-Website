@@ -1,5 +1,4 @@
-import SolutionPage from '@/features/solutions/components/SolutionPage';
-import { digitalHealth } from '@/features/solutions/content/audiences';
+import { SolutionPage, digitalHealth } from '@/features/solutions';
 import { buildMetadata } from '@/shared/lib/seo';
 
 export const metadata = buildMetadata({ ...digitalHealth.meta, path: digitalHealth.path });

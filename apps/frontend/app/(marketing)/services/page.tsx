@@ -3,13 +3,12 @@
 import React from 'react';
 import Navbar from '@/shared/components/layout/Navbar';
 import Footer from '@/shared/components/layout/Footer';
-import WorkflowsSection from '@/features/home/components/WorkflowsSection';
-import DashboardPreviewSection from '@/features/home/components/DashboardPreviewSection';
-import ContactWizard from '@/features/contact/components/ContactWizard';
+import { WorkflowsSection, DashboardPreviewSection } from '@/features/home';
+import { ContactWizard } from '@/features/contact';
+import { SOLUTIONS } from '@/features/solutions';
 import Badge from '@/shared/components/ui/Badge';
 import Icon from '@/shared/components/ui/Icon';
 import Link from 'next/link';
-import { SOLUTIONS } from '@/features/solutions/content/solutions';
 
 export default function ServicesPage() {
   return (

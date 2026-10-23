@@ -2,30 +2,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Icon from '@/shared/components/ui/Icon';
-
-interface ChatMessage {
-  id: string;
-  sender: 'ai' | 'user';
-  text: string;
-  time: string;
-  actionLink?: { text: string; href: string };
-}
-
-const INITIAL_MESSAGES: ChatMessage[] = [
-  {
-    id: 'm1',
-    sender: 'ai',
-    text: 'Hi! Pick a topic below or type a question for a quick answer about credentialing and payer enrollment. For anything specific to your practice, a specialist is one click away.',
-    time: 'Just now',
-  },
-];
-
-const PRESET_QUERIES = [
-  { label: '📋 Required Documents', query: 'What documents do I need to start credentialing?' },
-  { label: '⏱️ How long it takes', query: 'How long does credentialing take?' },
-  { label: '🔍 Credentialing vs Enrollment', query: 'What is the difference between credentialing and enrollment?' },
-  { label: '🛡️ Continuous Monitoring', query: 'How does continuous sanctions monitoring work?' },
-];
+import type { ChatMessage } from '../types';
+import { INITIAL_MESSAGES, PRESET_QUERIES, findAnswer } from '../content/answers';
 
 export const QuickAnswersWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,30 +40,7 @@ export const QuickAnswersWidget: React.FC = () => {
     setIsTyping(true);
 
     setTimeout(() => {
-      let reply = '';
-      let actionLink: { text: string; href: string } | undefined;
-      const lower = text.toLowerCase();
-
-      if (lower.includes('document') || lower.includes('requirement') || lower.includes('need')) {
-        reply = 'Most payers ask for: NPI, state license, DEA and state controlled substance registrations (if applicable), board certification, a CV with month/year dates and gap explanations, malpractice insurance certificate, education certificates and an up-to-date CAQH ProView profile.';
-        actionLink = { text: 'Start Credentialing Intake →', href: '#contact' };
-      } else if (lower.includes('turnaround') || lower.includes('how fast') || lower.includes('time') || lower.includes('duration')) {
-        reply = 'Commercial payer credentialing commonly takes 90 to 120 days, and Medicare and Medicaid timelines vary by contractor and state. Complete applications and steady follow-up are what keep it moving — that is our job. Try the estimator for your situation.';
-        actionLink = { text: 'Calculate Your Turnaround →', href: '#estimator' };
-      } else if (lower.includes('enrollment') || lower.includes('difference') || lower.includes('vs')) {
-        reply = 'Credentialing verifies a clinician’s clinical qualifications and primary sources. Payer Enrollment contracts that clinician with specific health plans (Medicare, Medicaid, BCBS, Aetna, etc.) so they can bill in-network.';
-        actionLink = { text: 'Explore Agent Workflows →', href: '#workflows' };
-      } else if (lower.includes('monitor') || lower.includes('sanction') || lower.includes('oig') || lower.includes('npdb')) {
-        reply = 'Between credentialing cycles we check providers against sanctions and exclusion sources such as the OIG exclusion list, SAM.gov and state Medicaid lists, and track license, DEA and certification expirations — so you hear about issues early.';
-        actionLink = { text: 'Get a Quote →', href: '#contact' };
-      } else if (lower.includes('status') || lower.includes('track') || lower.includes('npi')) {
-        reply = 'Clients see the status of every application in their dashboard. You can try a demo of the tracker with a sample provider on our homepage.';
-        actionLink = { text: 'Try the Tracker Demo →', href: '#tracker' };
-      } else {
-        reply = `Thank you for asking about "${text}". Our credentialing specialists can answer that for your specific situation. Would you like a free quote and timeline?`;
-        actionLink = { text: 'Speak With A Specialist →', href: '#contact' };
-      }
-
+      const { reply, actionLink } = findAnswer(text);
       const aiMsg: ChatMessage = {
         id: `ai-${Date.now()}`,
         sender: 'ai',

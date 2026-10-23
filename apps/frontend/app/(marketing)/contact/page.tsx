@@ -1,6 +1,6 @@
 import Navbar from '@/shared/components/layout/Navbar';
 import Footer from '@/shared/components/layout/Footer';
-import ContactWizard from '@/features/contact/components/ContactWizard';
+import { ContactWizard } from '@/features/contact';
 import { buildMetadata } from '@/shared/lib/seo';
 
 export const metadata = buildMetadata({
