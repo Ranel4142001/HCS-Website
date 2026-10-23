@@ -1,4 +1,3 @@
-import type { PricingPlan } from '../types';
 import { PRICING_PLANS } from '../content/plans';
 ﻿import React from 'react';
 

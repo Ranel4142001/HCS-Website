@@ -2,10 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Icon, { IconName } from '@/shared/components/ui/Icon';
-import Badge from '@/shared/components/ui/Badge';
+import Icon from '@/shared/components/ui/Icon';
 import Button from '@/shared/components/ui/Button';
-import type { WorkflowItem } from '../types';
 import { WORKFLOWS } from '../content/workflows';
 
 const CYCLE_DURATION = 6000; // 6 seconds per tab

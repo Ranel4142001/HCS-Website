@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
-import type { TabId, TabDef } from '../types';
+import type { TabId } from '../types';
 import { TABS } from '../content/dashboard';
 
 export const DashboardPreviewSection: React.FC = () => {

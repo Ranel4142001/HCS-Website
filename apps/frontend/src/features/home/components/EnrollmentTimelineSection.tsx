@@ -3,8 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
-import Button from '@/shared/components/ui/Button';
-import type { TimelineStep } from '../types';
 import { FLOW_MODES, COMMERCIAL_STEPS } from '../content/enrollment-timeline';
 
 export const EnrollmentTimelineSection: React.FC = () => {
@@ -138,7 +136,7 @@ export const EnrollmentTimelineSection: React.FC = () => {
               </div>
 
               <div className="canvas-grid-body">
-                {rows.map((rowName, rIdx) => (
+                {rows.map((rowName) => (
                   <div key={rowName} className="canvas-row">
                     <span className="canvas-row-label">{rowName}</span>
                     <div className="canvas-row-line" />

@@ -74,8 +74,9 @@ export const TestimonialsSection: React.FC = () => {
   };
 
   useEffect(() => {
+    const intervals = progressIntervals.current;
     return () => {
-      Object.values(progressIntervals.current).forEach(clearInterval);
+      Object.values(intervals).forEach(clearInterval);
     };
   }, []);
 

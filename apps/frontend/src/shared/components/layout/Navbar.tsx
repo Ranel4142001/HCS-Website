@@ -78,6 +78,7 @@ export const Navbar: React.FC = () => {
       <nav className={`mdl-nav ${isScrolled ? 'mdl-nav--scrolled' : ''}`} id="nav">
         <div className="mdl-nav__inner">
           <Link href="/" className="mdl-nav__logo" onClick={closeAll} aria-label="HealthCredSTAT Home">
+            {/* eslint-disable-next-line @next/next/no-img-element -- brand logo is served as-is, never re-encoded */}
             <img
               src="/healthcredstat-logo.png"
               alt="HealthCredSTAT"

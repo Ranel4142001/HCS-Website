@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { COVERAGE } from '../content/coverage';
 
 const CoverageItem: React.FC<{ label: string }> = ({ label }) => (
@@ -66,14 +67,13 @@ export const HeroSection: React.FC = () => {
 
         <div className="hcs-hero-banner">
           <div className="hcs-hero-banner-inner">
-            <img
+            {/* Fills the fixed-height banner; Next serves a resized copy per screen width */}
+            <Image
               src="/hero-facility.jpg"
               alt="Clinicians in a modern medical facility"
               className="hcs-hero-banner-img"
-              loading="lazy"
-              decoding="async"
-              width={1600}
-              height={900}
+              fill
+              sizes="(max-width: 1280px) 100vw, 1200px"
             />
           </div>
         </div>

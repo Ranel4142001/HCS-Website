@@ -48,7 +48,7 @@ export const ContactWizard: React.FC = () => {
       setTimeout(() => {
         setShowSuccessPanel(true);
       }, 550);
-    } catch (err) {
+    } catch {
       setIsLoading(false);
       triggerShake();
     }

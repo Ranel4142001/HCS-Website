@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Icon, { IconName } from '@/shared/components/ui/Icon';
-import type { BenefitItem } from '../types';
+import Icon from '@/shared/components/ui/Icon';
 import { BENEFITS } from '../content/benefits';
 
 export const BenefitsSection: React.FC = () => {

@@ -6,7 +6,8 @@ export interface SubmitContactResponse {
   submissionId: string;
 }
 
-export const submitContactForm = async (data: ContactFormValues): Promise<SubmitContactResponse> => {
+// PLACEHOLDER: nothing is sent yet. Replace with the Monday CRM integration before launch.
+export const submitContactForm = async (_data: ContactFormValues): Promise<SubmitContactResponse> => {
   // Simulate network latency (1300ms matching original animation delay)
   await new Promise((resolve) => setTimeout(resolve, 1300));
 

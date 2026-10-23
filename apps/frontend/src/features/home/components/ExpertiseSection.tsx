@@ -1,9 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Icon from '@/shared/components/ui/Icon';
-import type { ExpertiseItem } from '../types';
 import { EXPERTISE_ITEMS } from '../content/expertise';
 
 const ROTATE_INTERVAL = 4500;

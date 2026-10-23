@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { EstimatorState, EstimatorRole, EstimatorUrgency, PlanInfo } from '../types/estimator.types';
+import { EstimatorState, EstimatorRole, EstimatorUrgency } from '../types/estimator.types';
 import { ESTIMATE_RANGES, PLAN_INFO_MAP } from '../content/plans';
 
 const INITIAL_STATE: EstimatorState = {

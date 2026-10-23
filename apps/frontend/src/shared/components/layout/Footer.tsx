@@ -12,6 +12,7 @@ export const Footer: React.FC = () => {
         <div className="footer-enterprise-grid">
           <div className="footer-brand-cell">
             <Link href="/" className="footer-logo-lockup" aria-label="HealthCredSTAT Home">
+              {/* eslint-disable-next-line @next/next/no-img-element -- brand logo is served as-is, never re-encoded */}
               <img
                 src="/healthcredstat-logo-white.png"
                 alt="HealthCredSTAT"
