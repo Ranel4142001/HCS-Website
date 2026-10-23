@@ -27,7 +27,7 @@ const PRESET_QUERIES = [
   { label: '🛡️ Continuous Monitoring', query: 'How does continuous sanctions monitoring work?' },
 ];
 
-export const AiAdvisorWidget: React.FC = () => {
+export const QuickAnswersWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES);
   const [input, setInput] = useState('');
@@ -213,4 +213,4 @@ export const AiAdvisorWidget: React.FC = () => {
   );
 };
 
-export default AiAdvisorWidget;
+export default QuickAnswersWidget;

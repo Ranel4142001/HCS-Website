@@ -159,7 +159,7 @@ const COMMERCIAL_STEPS: TimelineStep[] = [
   },
 ];
 
-export const AgentFlowTimelineSection: React.FC = () => {
+export const EnrollmentTimelineSection: React.FC = () => {
   const [selectedFlow, setSelectedFlow] = useState(0);
   const [currentStepIndex, setCurrentStepIndex] = useState(4); // Default to mid-flow
   const [isPlaying, setIsPlaying] = useState(false);
@@ -401,4 +401,4 @@ export const AgentFlowTimelineSection: React.FC = () => {
   );
 };
 
-export default AgentFlowTimelineSection;
+export default EnrollmentTimelineSection;

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/shared/components/ui/Icon';
 
-export interface GalleryStat {
+export interface ExpertiseItem {
   big: string;
   label: string;
   num: string;
@@ -13,7 +13,7 @@ export interface GalleryStat {
   iconName: string;
 }
 
-const STATS_CAROUSEL: GalleryStat[] = [
+const EXPERTISE_ITEMS: ExpertiseItem[] = [
   {
     big: 'Experts',
     label: 'step in the moment automation hits a snag',
@@ -50,19 +50,19 @@ const STATS_CAROUSEL: GalleryStat[] = [
 
 const ROTATE_INTERVAL = 4500;
 
-export const StatsBandSection: React.FC = () => {
+export const ExpertiseSection: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % STATS_CAROUSEL.length);
+      setActiveIdx((prev) => (prev + 1) % EXPERTISE_ITEMS.length);
     }, ROTATE_INTERVAL);
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  const active = STATS_CAROUSEL[activeIdx];
+  const active = EXPERTISE_ITEMS[activeIdx];
 
   return (
     <section
@@ -92,7 +92,7 @@ export const StatsBandSection: React.FC = () => {
 
           {/* Progress Segment Tabs */}
           <div className="stats-seg-bar" role="tablist" aria-label="How HealthCredSTAT works">
-            {STATS_CAROUSEL.map((item, idx) => {
+            {EXPERTISE_ITEMS.map((item, idx) => {
               const isSelected = idx === activeIdx;
               return (
                 <button
@@ -114,7 +114,7 @@ export const StatsBandSection: React.FC = () => {
         {/* Right Cards Showcase */}
         <div className="stats-gallery-stage">
           <div className="stats-card-grid">
-            {STATS_CAROUSEL.map((item, idx) => {
+            {EXPERTISE_ITEMS.map((item, idx) => {
               const isActive = idx === activeIdx;
               return (
                 <div
@@ -136,4 +136,4 @@ export const StatsBandSection: React.FC = () => {
   );
 };
 
-export default StatsBandSection;
+export default ExpertiseSection;

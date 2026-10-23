@@ -3,8 +3,8 @@
 import React from 'react';
 import Navbar from '@/shared/components/layout/Navbar';
 import Footer from '@/shared/components/layout/Footer';
-import AgentWorkflowsSection from '@/features/landing/components/AgentWorkflowsSection';
-import RealTimeVisibilitySection from '@/features/landing/components/RealTimeVisibilitySection';
+import WorkflowsSection from '@/features/home/components/WorkflowsSection';
+import DashboardPreviewSection from '@/features/home/components/DashboardPreviewSection';
 import ContactWizard from '@/features/contact/components/ContactWizard';
 import Badge from '@/shared/components/ui/Badge';
 import Icon from '@/shared/components/ui/Icon';
@@ -42,8 +42,8 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <AgentWorkflowsSection />
-        <RealTimeVisibilitySection />
+        <WorkflowsSection />
+        <DashboardPreviewSection />
         <ContactWizard />
       </main>
 

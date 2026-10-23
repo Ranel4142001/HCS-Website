@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Navbar from '@/shared/components/layout/Navbar';
 import Footer from '@/shared/components/layout/Footer';
-import StatsBandSection from '@/features/landing/components/StatsBandSection';
+import ExpertiseSection from '@/features/home/components/ExpertiseSection';
 import ContactWizard from '@/features/contact/components/ContactWizard';
 import Badge from '@/shared/components/ui/Badge';
 import Icon from '@/shared/components/ui/Icon';
@@ -80,7 +80,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <StatsBandSection />
+        <ExpertiseSection />
 
         <section className="sol-section">
           <div className="container sol-narrow">

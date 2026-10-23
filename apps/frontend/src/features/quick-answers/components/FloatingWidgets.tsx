@@ -3,8 +3,8 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 
-const AiAdvisorWidget = dynamic(
-  () => import('@/features/ai-assistant/components/AiAdvisorWidget'),
+const QuickAnswersWidget = dynamic(
+  () => import('@/features/quick-answers/components/QuickAnswersWidget'),
   { ssr: false }
 );
 
@@ -13,10 +13,10 @@ const BackToTop = dynamic(
   { ssr: false }
 );
 
-export default function ClientFloatingWidgets() {
+export default function FloatingWidgets() {
   return (
     <>
-      <AiAdvisorWidget />
+      <QuickAnswersWidget />
       <BackToTop />
     </>
   );

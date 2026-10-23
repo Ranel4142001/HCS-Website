@@ -18,7 +18,7 @@ const TABS: TabDef[] = [
   { id: 'profile', label: 'Provider Profile' },
 ];
 
-export const RealTimeVisibilitySection: React.FC = () => {
+export const DashboardPreviewSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabId>('cred');
 
   return (
@@ -490,4 +490,4 @@ export const RealTimeVisibilitySection: React.FC = () => {
   );
 };
 
-export default RealTimeVisibilitySection;
+export default DashboardPreviewSection;

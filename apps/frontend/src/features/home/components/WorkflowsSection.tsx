@@ -242,7 +242,7 @@ const WORKFLOWS: WorkflowItem[] = [
 
 const CYCLE_DURATION = 6000; // 6 seconds per tab
 
-export const AgentWorkflowsSection: React.FC = () => {
+export const WorkflowsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -451,4 +451,4 @@ export const AgentWorkflowsSection: React.FC = () => {
   );
 };
 
-export default AgentWorkflowsSection;
+export default WorkflowsSection;

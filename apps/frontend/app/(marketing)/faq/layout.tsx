@@ -1,6 +1,6 @@
 import { buildMetadata, faqSchema } from '@/shared/lib/seo';
 import JsonLd from '@/shared/components/seo/JsonLd';
-import { FAQ_DATA } from '@/features/landing/content/faq';
+import { FAQ_DATA } from '@/features/faq/content/faq';
 
 export const metadata = buildMetadata({
   title: 'Medical Credentialing FAQ',

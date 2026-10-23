@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Icon, { IconName } from '@/shared/components/ui/Icon';
 
-export interface StickyPlatformItem {
+export interface BenefitItem {
   num: string;
   title: string;
   description: string;
@@ -13,7 +13,7 @@ export interface StickyPlatformItem {
   detailPoints: string[];
 }
 
-const STICKY_ITEMS: StickyPlatformItem[] = [
+const BENEFITS: BenefitItem[] = [
   {
     num: '01',
     title: 'Collect provider data once',
@@ -64,7 +64,7 @@ const STICKY_ITEMS: StickyPlatformItem[] = [
   },
 ];
 
-export const PlatformSection: React.FC = () => {
+export const BenefitsSection: React.FC = () => {
   const [activeItem, setActiveItem] = useState(0);
 
   return (
@@ -89,7 +89,7 @@ export const PlatformSection: React.FC = () => {
 
         {/* Right Scrolling/Interactive Process Items */}
         <div className="platform-sticky-list">
-          {STICKY_ITEMS.map((item, idx) => {
+          {BENEFITS.map((item, idx) => {
             const isHovered = activeItem === idx;
             return (
               <div
@@ -129,4 +129,4 @@ export const PlatformSection: React.FC = () => {
   );
 };
 
-export default PlatformSection;
+export default BenefitsSection;

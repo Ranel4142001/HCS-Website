@@ -1,22 +1,22 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import AnnouncementBar from '@/shared/components/layout/AnnouncementBar';
+import AnnouncementBar from '@/features/home/components/AnnouncementBar';
 import Navbar from '@/shared/components/layout/Navbar';
 import Footer from '@/shared/components/layout/Footer';
-import HeroSection from '@/features/landing/components/HeroSection';
-import StatsBandSection from '@/features/landing/components/StatsBandSection';
-import AgentWorkflowsSection from '@/features/landing/components/AgentWorkflowsSection';
-import RealTimeVisibilitySection from '@/features/landing/components/RealTimeVisibilitySection';
-import PlatformSection from '@/features/landing/components/PlatformSection';
+import HeroSection from '@/features/home/components/HeroSection';
+import ExpertiseSection from '@/features/home/components/ExpertiseSection';
+import WorkflowsSection from '@/features/home/components/WorkflowsSection';
+import DashboardPreviewSection from '@/features/home/components/DashboardPreviewSection';
+import BenefitsSection from '@/features/home/components/BenefitsSection';
 
 // Code-split heavy below-the-fold and client-only interactive components
 const ApplicationTrackerSection = dynamic(
-  () => import('@/features/tracker/components/ApplicationTrackerSection'),
+  () => import('@/features/home/components/ApplicationTrackerSection'),
   { ssr: true }
 );
 
-const AgentFlowTimelineSection = dynamic(
-  () => import('@/features/landing/components/AgentFlowTimelineSection'),
+const EnrollmentTimelineSection = dynamic(
+  () => import('@/features/home/components/EnrollmentTimelineSection'),
   { ssr: true }
 );
 
@@ -26,22 +26,22 @@ const EstimatorCard = dynamic(
 );
 
 const PricingSection = dynamic(
-  () => import('@/features/landing/components/PricingSection'),
+  () => import('@/features/pricing/components/PricingSection'),
   { ssr: true }
 );
 
 const TestimonialsSection = dynamic(
-  () => import('@/features/landing/components/TestimonialsSection'),
+  () => import('@/features/social-proof/components/TestimonialsSection'),
   { ssr: true }
 );
 
 const FoundingClientsSection = dynamic(
-  () => import('@/features/landing/components/FoundingClientsSection'),
+  () => import('@/features/social-proof/components/FoundingClientsSection'),
   { ssr: true }
 );
 
 const FaqSection = dynamic(
-  () => import('@/features/landing/components/FaqSection'),
+  () => import('@/features/faq/components/FaqSection'),
   { ssr: true }
 );
 
@@ -50,8 +50,8 @@ const ContactWizard = dynamic(
   { ssr: true }
 );
 
-const ClientFloatingWidgets = dynamic(
-  () => import('@/features/landing/components/ClientFloatingWidgets'),
+const FloatingWidgets = dynamic(
+  () => import('@/features/quick-answers/components/FloatingWidgets'),
   { ssr: true }
 );
 
@@ -74,22 +74,22 @@ export default function MarketingPage() {
         <HeroSection />
 
         {/* 2. AI + Human Expertise Gallery */}
-        <StatsBandSection />
+        <ExpertiseSection />
 
         {/* 3. HealthCredSTAT 8 Agent Workflows Engine */}
-        <AgentWorkflowsSection />
+        <WorkflowsSection />
 
         {/* 4. Real-Time Visibility (RTV) Command Center Dashboards */}
-        <RealTimeVisibilitySection />
+        <DashboardPreviewSection />
 
         {/* 5. Live Application & NPI Milestone Status Tracker (Code-split) */}
         <ApplicationTrackerSection />
 
         {/* 6. Autonomous Agent Flow Timeline Visualizer (Code-split) */}
-        <AgentFlowTimelineSection />
+        <EnrollmentTimelineSection />
 
         {/* 7. Adaptive Operations Sticky Platform Narrative */}
-        <PlatformSection />
+        <BenefitsSection />
 
         {/* 9. Interactive Turnaround Estimator (Code-split) */}
         <EstimatorCard />
@@ -114,7 +114,7 @@ export default function MarketingPage() {
       <Footer />
 
       {/* Client-only Floating Widgets */}
-      <ClientFloatingWidgets />
+      <FloatingWidgets />
     </div>
   );
 }
