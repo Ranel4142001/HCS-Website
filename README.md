@@ -10,17 +10,21 @@ The client portal is a separate application; this site links to it via `NEXT_PUB
 ```text
 hcstatservices-portal/
 ├── apps/
-│   └── frontend/          # Next.js website (deployed to Vercel)
-│       ├── app/           # Routes, layouts, sitemap.ts, robots.ts
+│   └── frontend/            # Next.js website (deployed to Vercel)
+│       ├── app/             # Routes only: compose features into pages, metadata, sitemap
 │       ├── src/
-│       │   ├── features/  # Landing sections, contact form, estimator, tracker
-│       │   └── shared/    # Layout (navbar/footer), UI components, hooks, config
-│       ├── public/        # Images, logos, video
-│       └── .env.example   # Environment variables template
-├── .github/workflows/     # CI: type-check + build
-├── package.json           # npm workspace root
-└── .nvmrc                 # Node.js version (24)
+│       │   ├── features/    # One folder per part of the site (home, solutions, pricing, contact…)
+│       │   └── shared/      # UI components, layout, navigation config, SEO helpers
+│       ├── public/          # Images, logos, video
+│       └── .env.example     # Environment variables template
+├── docs/ARCHITECTURE.md     # How the code is organized and the rules that keep it that way
+├── .github/workflows/       # CI: type-check, lint, build
+├── package.json             # npm workspace root
+└── .nvmrc                   # Node.js version (24)
 ```
+
+Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) before adding features: it explains where code goes,
+and ESLint enforces the dependency rules.
 
 ---
 
@@ -30,6 +34,8 @@ hcstatservices-portal/
 npm install          # install dependencies
 npm run dev          # http://localhost:3000
 npm run build        # production build
+npm run lint         # ESLint (includes architecture rules)
+npm run typecheck    # TypeScript
 npm run start        # serve the production build
 ```
 
