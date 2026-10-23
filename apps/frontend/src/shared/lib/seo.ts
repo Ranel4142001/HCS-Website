@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
+import { envConfig } from '@/shared/config/env.config';
 
 /**
  * SEO helpers shared by every route.
  * Keeps titles, canonicals and social previews consistent from one place.
  */
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://healthcredstat.com';
+export const SITE_URL = envConfig.siteUrl;
 export const SITE_NAME = 'HealthCredSTAT';
 export const OG_IMAGE = '/opengraph-image';
 

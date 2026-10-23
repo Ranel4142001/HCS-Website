@@ -14,6 +14,11 @@
   margin-bottom: 18px;
 }
 
+/* A second group in the same column (e.g. "Who we help" under "Platform") */
+.footer-links + .footer-heading {
+  margin-top: 1.5rem;
+}
+
 .footer-col ul {
   display: flex;
   flex-direction: column;

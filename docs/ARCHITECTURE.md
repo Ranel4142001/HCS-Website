@@ -116,5 +116,5 @@ cd apps/frontend
 NEXT_DIST_DIR=.next-audit npx next build && NEXT_DIST_DIR=.next-audit npx next start -p 3123
 ```
 
-That build rewrites `tsconfig.json` and `next-env.d.ts` to point at `.next-audit`; restore them before
-committing with `git checkout -- apps/frontend/tsconfig.json apps/frontend/next-env.d.ts`.
+That build adds `.next-audit` paths to `tsconfig.json`; restore it before committing with
+`git checkout -- apps/frontend/tsconfig.json`. (`next-env.d.ts` is generated and not committed.)

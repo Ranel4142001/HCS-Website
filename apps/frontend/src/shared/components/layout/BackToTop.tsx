@@ -32,7 +32,7 @@ export const BackToTop: React.FC = () => {
       aria-label="Back to top of page"
       title="Back to top"
     >
-      <Icon name="chevron" className="rotate-180" />
+      <Icon name="chevron" className="back-to-top-icon" />
     </button>
   );
 };

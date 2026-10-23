@@ -321,19 +321,19 @@ export const DashboardPreviewSection: React.FC = () => {
                       <span>Timestamp</span>
                     </div>
                     <div className="audit-row">
-                      <span className="font-semibold">OIG-LEIE Database</span>
+                      <span className="audit-source">OIG-LEIE Database</span>
                       <span>Network-wide (1,240 Clinicians)</span>
                       <span className="audit-badge-pass"><Icon name="check" /> PASS - 0 Flags</span>
                       <span className="text-muted">Today at 04:00 AM</span>
                     </div>
                     <div className="audit-row">
-                      <span className="font-semibold">SAM.gov Federal Exclusions</span>
+                      <span className="audit-source">SAM.gov Federal Exclusions</span>
                       <span>Network-wide (1,240 Clinicians)</span>
                       <span className="audit-badge-pass"><Icon name="check" /> PASS - 0 Flags</span>
                       <span className="text-muted">Today at 04:15 AM</span>
                     </div>
                     <div className="audit-row">
-                      <span className="font-semibold">50 State Medical Boards</span>
+                      <span className="audit-source">50 State Medical Boards</span>
                       <span>Licenses &amp; Disciplinary Actions</span>
                       <span className="audit-badge-pass"><Icon name="check" /> 100% Up to date</span>
                       <span className="text-muted">Today at 04:45 AM</span>

@@ -1,5 +1,18 @@
 /* Styles used by more than one feature or shared component. Loaded once, by app/layout.tsx. */
 
+/* Visually hidden but still read by screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* =====================================================
    REVEAL ON SCROLL
    Fades and lifts an element as it scrolls into view, using a CSS scroll-driven animation. Content is

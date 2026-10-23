@@ -37,3 +37,8 @@
     height: 40px;
   }
 }
+
+/* The shared chevron points down; turn it to point up. */
+.back-to-top-icon {
+  transform: rotate(180deg);
+}
