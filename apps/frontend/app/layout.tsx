@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Sora, Instrument_Serif } from 'next/font/google';
 import './globals.css';
-import { Providers } from './providers';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
 import JsonLd from '@/shared/components/seo/JsonLd';
 
@@ -140,7 +139,7 @@ export default function RootLayout({
         <JsonLd data={jsonLd} />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );

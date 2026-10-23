@@ -13,16 +13,7 @@ const nextConfig = {
   outputFileTracingRoot: path.join(__dirname, '../..'),
   poweredByHeader: false, // Security: removes X-Powered-By: Next.js
   experimental: {
-    optimizePackageImports: ['framer-motion', '@tanstack/react-query', 'lucide-react', 'zod'],
-  },
-  images: {
-    unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'zod'],
   },
   async headers() {
     return [
