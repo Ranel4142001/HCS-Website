@@ -7933,7 +7933,7 @@ img, video, iframe, svg {
 
 /* Footer Official Logo */
 .footer-logo-img {
-  height: 48px;
+  height: 46px;
   max-height: 52px;
   width: auto;
   max-width: 240px;
@@ -7946,7 +7946,7 @@ img, video, iframe, svg {
 
 @media (max-width: 768px) {
   .mdl-nav__logo-img {
-    height: 40px;
+    height: 42px;
     max-height: 42px;
     max-width: 190px;
   }
@@ -9326,4 +9326,11 @@ button.btn-sol-ghost {
   align-items: center;
   justify-content: center;
   min-height: 60vh;
+}
+
+.search-empty {
+  margin: 0;
+  padding: 12px 4px;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
 }

@@ -1,9 +1,7 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import Icon from '@/shared/components/ui/Icon';
-import { envConfig } from '@/shared/config/env.config';
+import { FOOTER_COLUMNS, LEGAL_LINKS } from '@/shared/config/navigation';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -11,9 +9,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="footer enterprise-footer">
       <div className="container">
-        {/* Main 5-Column Navigation Grid */}
         <div className="footer-enterprise-grid">
-          {/* Brand Col */}
           <div className="footer-brand-cell">
             <Link href="/" className="footer-logo-lockup" aria-label="HealthCredSTAT Home">
               <img
@@ -24,13 +20,6 @@ export const Footer: React.FC = () => {
                 className="footer-logo-img"
                 loading="lazy"
                 decoding="async"
-                style={{
-                  height: '46px',
-                  width: 'auto',
-                  display: 'block',
-                  objectFit: 'contain',
-                  marginBottom: '14px',
-                }}
               />
             </Link>
             <p className="footer-brand-desc">
@@ -46,73 +35,31 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 1: Services */}
-          <div className="footer-col">
-            <h4 className="footer-heading">Services</h4>
-            <ul className="footer-links">
-              <li><Link href="/services">All services</Link></li>
-              <li><Link href="/solutions/provider-enrollment">Provider enrollment</Link></li>
-              <li><Link href="/solutions/cvo-credentialing">CVO credentialing</Link></li>
-              <li><Link href="/solutions/roster-management">Roster management</Link></li>
-              <li><Link href="/solutions/delegated-credentialing">Delegated credentialing</Link></li>
-              <li><Link href="/solutions/privileging">Privileging &amp; OPPE</Link></li>
-              <li><Link href="/solutions/cross-state-licensing">Cross-state licensing</Link></li>
-              <li><Link href="/#workflows">Continuous monitoring</Link></li>
-              <li><Link href="/#workflows">Payer contract management</Link></li>
-            </ul>
-          </div>
-
-          {/* Col 2: Platform & Solutions */}
-          <div className="footer-col">
-            <h4 className="footer-heading">Platform</h4>
-            <ul className="footer-links">
-              <li><Link href="/#rtv">Provider data management</Link></li>
-              <li><Link href="/#workflows">CredAlliance&trade;</Link></li>
-              <li><Link href="/#workflows">AI operations engine</Link></li>
-              <li><Link href="/#platform">Modern platform architecture</Link></li>
-              <li><Link href="/pricing">Transparent pricing</Link></li>
-            </ul>
-
-            <h4 className="footer-heading mt-6">Who We Help</h4>
-            <ul className="footer-links">
-              <li><Link href="/who-we-help/provider-groups">Provider groups &amp; MSOs</Link></li>
-              <li><Link href="/who-we-help/health-plans">Payers &amp; health plans</Link></li>
-              <li><Link href="/who-we-help/health-systems">Health systems</Link></li>
-              <li><Link href="/who-we-help/digital-health">Digital health</Link></li>
-            </ul>
-          </div>
-
-          {/* Col 3: Resources & Tools */}
-          <div className="footer-col">
-            <h4 className="footer-heading">Resources</h4>
-            <ul className="footer-links">
-              <li><Link href="/faq">Credentialing FAQ</Link></li>
-              <li><Link href="/#estimator">Timeline estimator</Link></li>
-              <li><Link href="/#timeline">How enrollment works</Link></li>
-            </ul>
-          </div>
-
-          {/* Col 4: Company */}
-          <div className="footer-col">
-            <h4 className="footer-heading">Company</h4>
-            <ul className="footer-links">
-              <li><Link href="/about">About us</Link></li>
-              <li><Link href="/contact">Contact us</Link></li>
-              {envConfig.portalUrl && <li><a href={envConfig.portalUrl}>Portal login</a></li>}
-            </ul>
-          </div>
+          {FOOTER_COLUMNS.map((groups) => (
+            <div key={groups[0].heading} className="footer-col">
+              {groups.map((group, i) => (
+                <React.Fragment key={group.heading}>
+                  <h4 className={`footer-heading${i > 0 ? ' mt-6' : ''}`}>{group.heading}</h4>
+                  <ul className="footer-links">
+                    {group.links.map((link) => (
+                      <li key={`${link.href}-${link.label}`}><Link href={link.href}>{link.label}</Link></li>
+                    ))}
+                  </ul>
+                </React.Fragment>
+              ))}
+            </div>
+          ))}
         </div>
 
-        {/* Bottom Legal Section */}
         <div className="footer-bottom-bar">
           <div className="footer-legal-copy">
             <span>&copy; {currentYear} HealthCredSTAT Inc. All rights reserved.</span>
-            <span className="legal-sep">&bull;</span>
-            <a href="#faq" className="legal-link">Privacy Policy</a>
-            <span className="legal-sep">&bull;</span>
-            <a href="#faq" className="legal-link">Terms of Service</a>
-            <span className="legal-sep">&bull;</span>
-            <a href="#faq" className="legal-link">HIPAA Business Associate (BAA)</a>
+            {LEGAL_LINKS.map((link) => (
+              <React.Fragment key={link.label}>
+                <span className="legal-sep">&bull;</span>
+                <a href={link.href} className="legal-link">{link.label}</a>
+              </React.Fragment>
+            ))}
           </div>
 
           <div className="footer-trademark-note">
