@@ -1,35 +1,39 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
 import Icon from '@/shared/components/ui/Icon';
 import './AnnouncementBar.css';
 
+const DISMISSED_KEY = 'hcs_announcement_dismissed';
+
+function wasDismissed() {
+  try {
+    return Boolean(sessionStorage.getItem(DISMISSED_KEY));
+  } catch {
+    return false; // Storage unavailable (private mode, blocked): keep the bar visible.
+  }
+}
+
+// sessionStorage has no change events within a tab; dismissing in this tab is tracked in state instead.
+const subscribeToNothing = () => () => {};
+
 /** Bar shown only on the homepage, rendered by the marketing layout so it sits above the navigation. */
 export const AnnouncementBar: React.FC = () => {
   const isHomepage = usePathname() === '/';
-  // Rendered visible from the server so the page doesn't shift down when JavaScript loads.
-  // Only visitors who dismissed it this session see it removed after load.
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    try {
-      if (sessionStorage.getItem('hcs_announcement_dismissed')) {
-        setIsVisible(false);
-      }
-    } catch {
-      // Storage unavailable (private mode, blocked): keep the bar visible.
-    }
-  }, []);
+  // Rendered visible from the server (snapshot false) so the page doesn't shift down when JavaScript
+  // loads. Only visitors who dismissed it earlier this session see it removed after load.
+  const dismissedEarlier = useSyncExternalStore(subscribeToNothing, wasDismissed, () => false);
+  const [dismissedNow, setDismissedNow] = useState(false);
 
   const handleDismiss = () => {
-    setIsVisible(false);
+    setDismissedNow(true);
     try {
-      sessionStorage.setItem('hcs_announcement_dismissed', '1');
+      sessionStorage.setItem(DISMISSED_KEY, '1');
     } catch {}
   };
 
-  if (!isHomepage || !isVisible) return null;
+  if (!isHomepage || dismissedEarlier || dismissedNow) return null;
 
   return (
     <div className="announcement-bar" role="region" aria-label="Announcement">

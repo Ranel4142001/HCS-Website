@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactFormSchema, ContactFormValues } from '../validation/contact.schema';
 import { submitContactForm } from '../services/contact.service';
@@ -33,7 +33,7 @@ export const ContactWizard: React.FC = () => {
     },
   });
 
-  const selectedRole = form.watch('role');
+  const selectedRole = useWatch({ control: form.control, name: 'role' });
 
   const handleSelectRole = (role: 'individual' | 'group' | 'enterprise') => {
     form.setValue('role', role, { shouldValidate: true });

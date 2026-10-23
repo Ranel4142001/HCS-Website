@@ -1,6 +1,6 @@
 # HealthCredSTAT Website
 
-Public marketing website for HealthCredSTAT, built with **Next.js 15 (App Router)**.
+Public marketing website for HealthCredSTAT, built with **Next.js 16 (App Router)**.
 The client portal is a separate application; this site links to it via `NEXT_PUBLIC_PORTAL_URL`.
 
 ---

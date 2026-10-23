@@ -14,7 +14,7 @@ export const WorkflowsSection: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
   const animFrameRef = useRef<number | null>(null);
-  const lastTimeRef = useRef<number>(Date.now());
+  const lastTimeRef = useRef(0); // set when the animation loop (re)starts
 
   useEffect(() => {
     lastTimeRef.current = Date.now();
@@ -46,9 +46,9 @@ export const WorkflowsSection: React.FC = () => {
   }, [isPaused, activeIndex]);
 
   const selectWorkflow = (idx: number) => {
+    // Changing the tab restarts the animation loop, which resets the clock.
     setActiveIndex(idx);
     setProgress(0);
-    lastTimeRef.current = Date.now();
   };
 
   const active = WORKFLOWS[activeIndex];

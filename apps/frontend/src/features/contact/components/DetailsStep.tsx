@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { UseFormReturn } from 'react-hook-form';
+import { UseFormReturn, useWatch } from 'react-hook-form';
 import { ContactFormValues } from '../validation/contact.schema';
 import Input from '@/shared/components/forms/Input';
 import TextArea from '@/shared/components/forms/TextArea';
@@ -22,9 +22,9 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
   isSuccess,
   isShaking,
 }) => {
-  const { register, watch, formState: { errors, touchedFields } } = form;
+  const { register, control, formState: { errors, touchedFields } } = form;
 
-  const emailValue = watch('email') || '';
+  const emailValue = useWatch({ control, name: 'email' }) || '';
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isEmailValid = emailValue.trim().length > 0 && emailRegex.test(emailValue.trim());
   const isEmailInvalid = (touchedFields.email || errors.email) && !isEmailValid && emailValue.trim().length > 0;

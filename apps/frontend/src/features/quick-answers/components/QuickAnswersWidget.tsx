@@ -6,6 +6,20 @@ import type { ChatMessage } from '../types';
 import { INITIAL_MESSAGES, PRESET_QUERIES, findAnswer } from '../content/answers';
 import './QuickAnswersWidget.css';
 
+let messageCount = 0;
+
+/** A chat message stamped with the current time. */
+function createMessage(sender: ChatMessage['sender'], text: string, actionLink?: ChatMessage['actionLink']): ChatMessage {
+  messageCount += 1;
+  return {
+    id: `${sender}-${messageCount}`,
+    sender,
+    text,
+    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    actionLink,
+  };
+}
+
 export const QuickAnswersWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES);
@@ -29,29 +43,14 @@ export const QuickAnswersWidget: React.FC = () => {
     const text = (textToSend || input).trim();
     if (!text) return;
 
-    const userMsg: ChatMessage = {
-      id: `u-${Date.now()}`,
-      sender: 'user',
-      text,
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    };
-
-    setMessages((prev) => [...prev, userMsg]);
+    setMessages((prev) => [...prev, createMessage('user', text)]);
     if (!textToSend) setInput('');
     setIsTyping(true);
 
     setTimeout(() => {
       const { reply, actionLink } = findAnswer(text);
-      const aiMsg: ChatMessage = {
-        id: `ai-${Date.now()}`,
-        sender: 'ai',
-        text: reply,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        actionLink,
-      };
-
       setIsTyping(false);
-      setMessages((prev) => [...prev, aiMsg]);
+      setMessages((prev) => [...prev, createMessage('ai', reply, actionLink)]);
     }, 600);
   };
 

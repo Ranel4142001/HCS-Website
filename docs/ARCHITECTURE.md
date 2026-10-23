@@ -1,6 +1,6 @@
 # Website architecture
 
-The HealthCredSTAT marketing website is a Next.js 15 App Router app in `apps/frontend`.
+The HealthCredSTAT marketing website is a Next.js 16 App Router app in `apps/frontend`.
 Code is organized **by feature**: everything a part of the site needs (components, content, types, logic)
 lives together, and routes in `app/` only compose features into pages.
 
