@@ -1,13 +1,13 @@
 # Website architecture
 
-The HealthCredSTAT marketing website is a single Next.js 16 App Router app at the repository root.
+The HealthCredSTAT marketing website is a single Next.js 16 App Router app in the `frontend/` folder (paths below are relative to it).
 Code is organized **by feature**: everything a part of the site needs (components, content, types, logic)
 lives together, and routes in `app/` only compose features into pages.
 
 ## Folder map
 
 ```text
-hcs-website/
+frontend/
 ├── app/                        Routes only: compose features into pages, set metadata
 │   ├── (marketing)/layout.tsx  Site chrome (announcement bar, navbar, footer) for every page
 │   ├── (marketing)/**/page.tsx One file per URL; renders <main> with feature sections
@@ -109,7 +109,7 @@ npm run lint        # ESLint, including the dependency rules above
 npm run build       # production build
 ```
 
-CI (`.github/workflows/ci.yml`) runs the same three on every pull request and push to `main`.
+CI (`.github/workflows/ci.yml` at the repository root) runs the same three on every pull request and push to `main`.
 
 To test a production build while `npm run dev` is running, build into a separate folder so the two don't
 overwrite each other:
