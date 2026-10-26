@@ -32,8 +32,8 @@ const nextConfig = {
   compress: true,
   // Lets a production build for local testing live beside `next dev` without the two overwriting each other
   distDir: process.env.NEXT_DIST_DIR || '.next',
-  // Pin tracing to the monorepo root so a stray lockfile higher up the disk isn't picked as the root
-  outputFileTracingRoot: path.join(__dirname, '../..'),
+  // Pin tracing to this project so a stray lockfile higher up the disk isn't picked as the root
+  outputFileTracingRoot: __dirname,
   poweredByHeader: false, // Security: removes X-Powered-By: Next.js
   experimental: {
     optimizePackageImports: ['lucide-react', 'zod'],

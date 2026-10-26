@@ -8,19 +8,18 @@ The client portal is a separate application; this site links to it via `NEXT_PUB
 ## Project Structure
 
 ```text
-hcstatservices-portal/
-├── apps/
-│   └── frontend/            # Next.js website (deployed to Vercel)
-│       ├── app/             # Routes only: compose features into pages, metadata, sitemap
-│       ├── src/
-│       │   ├── features/    # One folder per part of the site (home, solutions, pricing, contact…)
-│       │   └── shared/      # UI components, layout, navigation config, SEO helpers
-│       ├── public/          # Images and original logo artwork (brand/: generated, sized copies)
-│       ├── scripts/         # brand-assets.mjs: regenerates public/brand from the logos
-│       └── .env.example     # Environment variables template
+hcs-website/
+├── app/                     # Routes only: compose features into pages, metadata, sitemap
+├── src/
+│   ├── features/            # One folder per part of the site (home, solutions, pricing, contact…)
+│   └── shared/              # UI components, layout, navigation config, SEO helpers
+├── public/                  # Images and original logo artwork (brand/: generated, sized copies)
+├── scripts/                 # brand-assets.mjs: regenerates public/brand from the logos
 ├── docs/ARCHITECTURE.md     # How the code is organized and the rules that keep it that way
 ├── .github/workflows/       # CI: type-check, lint, build
-├── package.json             # npm workspace root
+├── .env.example             # Environment variables template
+├── next.config.mjs          # Next.js config, security headers
+├── eslint.config.mjs        # Lint rules, including the architecture rules
 └── .nvmrc                   # Node.js version (24)
 ```
 
@@ -40,7 +39,7 @@ npm run typecheck    # TypeScript
 npm run start        # serve the production build
 ```
 
-For local settings, copy `apps/frontend/.env.example` to `apps/frontend/.env.local`.
+For local settings, copy `.env.example` to `.env.local`.
 
 ---
 
@@ -66,7 +65,7 @@ The CI workflow in `.github/workflows/ci.yml` type-checks and builds every push 
 
 ### 2. Import into Vercel
 - **Add New → Project →** pick the repository.
-- **Root Directory:** `apps/frontend`
+- Leave **Root Directory** empty (the site is at the repository root).
 - Framework preset is detected as Next.js; leave build settings at their defaults.
 - Node.js version comes from `engines` in `package.json` (24.x).
 

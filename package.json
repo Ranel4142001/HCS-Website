@@ -1,16 +1,33 @@
 {
-  "name": "hcstatservices-portal",
+  "name": "hcs-website",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*"
-  ],
   "scripts": {
-    "dev": "npm run dev --workspace=apps/frontend",
-    "build": "npm run build --workspace=apps/frontend",
-    "start": "npm run start --workspace=apps/frontend",
-    "lint": "npm run lint --workspace=apps/frontend",
-    "typecheck": "npm run typecheck --workspace=apps/frontend"
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "brand-assets": "node scripts/brand-assets.mjs"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.475.0",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-hook-form": "^7.54.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^10.13.0",
+    "eslint-config-next": "^16.4.3",
+    "sharp": "^0.35.5",
+    "typescript": "^5.7.3"
   },
   "engines": {
     "node": "24.x"

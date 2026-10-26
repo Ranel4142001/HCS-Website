@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
 import Icon from '@/shared/components/ui/Icon';
 import Button from '@/shared/components/ui/Button';
-import { EstimatorUrgency, PlanInfo } from '../types/estimator.types';
+import { EstimatorUrgency, PlanInfo } from '../types';
 import './EstimatorResult.css';
 
 export interface EstimatorResultProps {

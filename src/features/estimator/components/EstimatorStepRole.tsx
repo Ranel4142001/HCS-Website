@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import Icon from '@/shared/components/ui/Icon';
-import { EstimatorRole } from '../types/estimator.types';
+import { EstimatorRole } from '../types';
 
 export interface EstimatorStepRoleProps {
   selectedRole: EstimatorRole | null;

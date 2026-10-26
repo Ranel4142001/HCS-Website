@@ -1,13 +1,13 @@
 # Website architecture
 
-The HealthCredSTAT marketing website is a Next.js 16 App Router app in `apps/frontend`.
+The HealthCredSTAT marketing website is a single Next.js 16 App Router app at the repository root.
 Code is organized **by feature**: everything a part of the site needs (components, content, types, logic)
 lives together, and routes in `app/` only compose features into pages.
 
 ## Folder map
 
 ```text
-apps/frontend/
+hcs-website/
 ├── app/                        Routes only: compose features into pages, set metadata
 │   ├── (marketing)/layout.tsx  Site chrome (announcement bar, navbar, footer) for every page
 │   ├── (marketing)/**/page.tsx One file per URL; renders <main> with feature sections
@@ -115,9 +115,8 @@ To test a production build while `npm run dev` is running, build into a separate
 overwrite each other:
 
 ```bash
-cd apps/frontend
 NEXT_DIST_DIR=.next-audit npx next build && NEXT_DIST_DIR=.next-audit npx next start -p 3123
 ```
 
 That build adds `.next-audit` paths to `tsconfig.json`; restore it before committing with
-`git checkout -- apps/frontend/tsconfig.json`. (`next-env.d.ts` is generated and not committed.)
+`git checkout -- tsconfig.json`. (`next-env.d.ts` is generated and not committed.)

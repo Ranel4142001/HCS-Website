@@ -1,4 +1,4 @@
-import type { SolutionContent } from '../types/solution.types';
+import type { SolutionContent } from '../types';
 
 /** Copy for /who-we-help/* pages. Same rule as solutions: no unverified numbers. */
 

@@ -1,4 +1,4 @@
-import type { EstimatorRole, PlanInfo } from '../types/estimator.types';
+import type { EstimatorRole, PlanInfo } from '../types';
 
 export const PLAN_INFO_MAP: Record<EstimatorRole, PlanInfo> = {
   individual: { name: 'Individual Clinician', price: '$599 flat rate per assignment' },

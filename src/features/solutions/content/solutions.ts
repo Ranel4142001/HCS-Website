@@ -1,4 +1,4 @@
-import type { SolutionContent } from '../types/solution.types';
+import type { SolutionContent } from '../types';
 
 /**
  * Copy for /solutions/* pages.

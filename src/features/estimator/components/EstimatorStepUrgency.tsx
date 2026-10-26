@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import Icon from '@/shared/components/ui/Icon';
-import { EstimatorUrgency } from '../types/estimator.types';
+import { EstimatorUrgency } from '../types';
 
 export interface EstimatorStepUrgencyProps {
   selectedUrgent: EstimatorUrgency | null;

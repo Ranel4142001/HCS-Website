@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import JsonLd from '@/shared/components/seo/JsonLd';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/shared/lib/seo';
-import type { SolutionContent } from '../types/solution.types';
+import type { SolutionContent } from '../types';
 import './SolutionPage.css';
 
 /**
