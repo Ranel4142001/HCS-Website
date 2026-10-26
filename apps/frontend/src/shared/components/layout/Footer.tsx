@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import BrandLogo from '@/shared/components/ui/BrandLogo';
 import Icon from '@/shared/components/ui/Icon';
 import { FOOTER_COLUMNS, LEGAL_LINKS } from '@/shared/config/navigation';
 import './Footer.css';
@@ -13,16 +14,7 @@ export const Footer: React.FC = () => {
         <div className="footer-enterprise-grid">
           <div className="footer-brand-cell">
             <Link href="/" className="footer-logo-lockup" aria-label="HealthCredSTAT Home">
-              {/* eslint-disable-next-line @next/next/no-img-element -- brand logo is served as-is, never re-encoded */}
-              <img
-                src="/healthcredstat-logo-white.png"
-                alt="HealthCredSTAT"
-                width={210}
-                height={52}
-                className="footer-logo-img"
-                loading="lazy"
-                decoding="async"
-              />
+              <BrandLogo variant="white" width={210} height={52} className="footer-logo-img" />
             </Link>
             <p className="footer-brand-desc">
               Medical credentialing and payer enrollment services that get providers verified, in-network and billing sooner.

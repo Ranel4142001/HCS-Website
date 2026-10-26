@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import BrandLogo from '@/shared/components/ui/BrandLogo';
 import { envConfig } from '@/shared/config/env.config';
 import { NAV_LINKS, NAV_MENUS, PRIMARY_CTA } from '@/shared/config/navigation';
 import { NavDropdown } from './NavDropdown';
@@ -94,16 +95,7 @@ export const Navbar: React.FC = () => {
       >
         <div className="mdl-nav__inner">
           <Link href="/" className="mdl-nav__logo" onClick={closeAll} aria-label="HealthCredSTAT Home">
-            {/* eslint-disable-next-line @next/next/no-img-element -- brand logo is served as-is, never re-encoded */}
-            <img
-              src="/healthcredstat-logo.png"
-              alt="HealthCredSTAT"
-              width={200}
-              height={50}
-              className="mdl-nav__logo-img"
-              loading="eager"
-              decoding="async"
-            />
+            <BrandLogo width={200} height={50} className="mdl-nav__logo-img" loading="eager" />
           </Link>
 
           <div

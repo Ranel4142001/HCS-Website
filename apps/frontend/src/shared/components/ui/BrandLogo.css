@@ -1,0 +1,10 @@
+/* The <picture> wrapper takes no part in layout: the <img> is sized and placed exactly as if it stood alone. */
+.brand-logo {
+  display: contents;
+}
+
+/* The proportions of the original artwork (752x189). The resized copy rounds to whole pixels (600x151),
+   which would otherwise make the logo, and everything beside it, shift by a pixel. */
+.brand-logo > img {
+  aspect-ratio: 752 / 189;
+}

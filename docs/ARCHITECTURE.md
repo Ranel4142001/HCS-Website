@@ -27,7 +27,7 @@ apps/frontend/
     │   ├── quick-answers/      Floating quick-answer widget
     │   └── about/              About page sections
     └── shared/                 Used by several features; knows nothing about any feature
-        ├── components/ui/      Badge, Button, Icon, Spinner
+        ├── components/ui/      Badge, BrandLogo, Button, Icon, Spinner
         ├── components/forms/   Input, TextArea
         ├── components/layout/  AnnouncementBar, Navbar, NavDropdown, SearchDialog, Footer,
         │                       PageIntro, SectionHeader, ComingSoonPage, BackToTop
@@ -77,6 +77,7 @@ compose them in the page.
 | Add a homepage section | a component in `features/home/components`, export it from `features/home/index.ts`, place it in `app/(marketing)/page.tsx` |
 | Change page title or description | `buildMetadata()` in the page or its `layout.tsx` |
 | Change the estimator's day ranges | `features/estimator/content/plans.ts` (`ESTIMATE_RANGES`) |
+| Replace the logo or favicon | the original file in `public/` (same name), then `npm run brand-assets` to regenerate `public/brand/` |
 | Add a real testimonial | `features/social-proof/content/testimonials.ts` (written permission first); the section appears automatically |
 | Connect the contact form to the CRM | `features/contact/services/contact.service.ts` (currently a placeholder) |
 
@@ -96,7 +97,9 @@ compose them in the page.
 - **Content is not code.** Components should not contain long text or data arrays; put them in `content/`.
 - **Honest claims only.** Numbers, certifications, client names and promises must be confirmed by the
   business before they go in `content/`. Sample dashboards and demos are labeled as samples.
-- **Brand logos are served as-is** (`<img>`, never `next/image` re-encoding). Photos use `next/image`.
+- **Brand logos** keep their original artwork in `public/`. The site serves display-sized copies from
+  `public/brand/` (lossless WebP; the original PNG is the fallback) through `BrandLogo`; regenerate them with
+  `npm run brand-assets`, never edit them by hand. Photos use `next/image`.
 
 ## Checks before you push
 

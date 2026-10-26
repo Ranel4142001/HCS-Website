@@ -56,11 +56,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logo.png', sizes: '32x32', type: 'image/png' },
-      { url: '/logo-mark.png', sizes: '192x192', type: 'image/png' },
+      { url: '/brand/icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/brand/icon-192.png', sizes: '192x192', type: 'image/png' },
     ],
-    apple: [{ url: '/logo-mark.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: '/logo.png',
+    apple: [{ url: '/brand/apple-icon-180.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/brand/icon-32.png',
   },
   openGraph: {
     type: 'website',
