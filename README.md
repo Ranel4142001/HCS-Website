@@ -39,7 +39,11 @@ npm run build        # production build
 npm run lint         # ESLint (includes architecture rules)
 npm run typecheck    # TypeScript
 npm run start        # serve the production build
+npm run preview      # build + serve like the live site (fast; use this to judge speed)
 ```
+
+`npm run dev` is for editing: it recompiles and re-renders every page on each request, so its
+response times (hundreds of ms) do not reflect the live site, which serves prebuilt pages in milliseconds.
 
 For local settings, copy `frontend/.env.example` to `frontend/.env.local`.
 
