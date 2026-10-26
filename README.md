@@ -40,6 +40,7 @@ npm run lint         # ESLint (includes architecture rules)
 npm run typecheck    # TypeScript
 npm run start        # serve the production build
 npm run preview      # build + serve like the live site (fast; use this to judge speed)
+npm run speed        # with preview running: response time of every page (target under 150 ms)
 ```
 
 `npm run dev` is for editing: it recompiles and re-renders every page on each request, so its
