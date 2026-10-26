@@ -137,7 +137,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sora.variable} ${instrumentSerif.variable}`}>
+    // data-scroll-behavior: Next.js turns smooth scrolling off during route changes, so pages open at the top instantly.
+    <html lang="en" className={`${sora.variable} ${instrumentSerif.variable}`} data-scroll-behavior="smooth">
       <head>
         <JsonLd data={jsonLd} />
       </head>

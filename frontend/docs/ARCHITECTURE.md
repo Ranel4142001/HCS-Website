@@ -22,6 +22,7 @@ frontend/
     │   ├── pricing/            Pricing fee schedule
     │   ├── estimator/          Timeline estimator
     │   ├── faq/                FAQ section and questions
+    │   ├── guides/             Educational guides at /guides (content + article template)
     │   ├── contact/            Quote request form (validation, submit service)
     │   ├── social-proof/       Founding-client commitments; testimonials (hidden until real)
     │   ├── quick-answers/      Floating quick-answer widget
@@ -73,6 +74,7 @@ compose them in the page.
 | Change wording, prices, timelines or sample data | the feature's `content/` file |
 | Restyle a section | the `.css` file next to its component |
 | Add or rename a menu, footer or search link | `src/shared/config/navigation.ts` |
+| Add a guide | an entry in `features/guides/content/guides.ts` (added to `GUIDES`); the route, sitemap and guides list pick it up |
 | Add a solution or audience page | `features/solutions/content/*.ts`, then a 3-line `page.tsx`; the sitemap picks it up |
 | Add a homepage section | a component in `features/home/components`, export it from `features/home/index.ts`, place it in `app/(marketing)/page.tsx` |
 | Change page title or description | `buildMetadata()` in the page or its `layout.tsx` |

@@ -131,6 +131,10 @@ export const SEARCH_INDEX: NavLink[] = [
   ...NAV_MENUS.flatMap((m) => m.groups.flatMap((g) => g.links)),
   { href: '/services', label: 'All services', description: 'Everything from signed offer to billing', icon: '🧭' },
   { href: '/contact', label: 'Contact us', description: 'Get a free credentialing quote', icon: '💬' },
+  { href: '/guides', label: 'Credentialing guides', description: 'Timelines, CAQH and getting in-network', icon: '📘' },
+  { href: '/guides/how-long-does-credentialing-take', label: 'How long does credentialing take?', description: 'Typical timelines and what slows them down', icon: '⏱️' },
+  { href: '/guides/caqh-proview-guide', label: 'CAQH ProView guide', description: 'Setup, attestation and common mistakes', icon: '📋' },
+  { href: '/guides/how-to-get-credentialed-with-insurance-companies', label: 'How to get credentialed with insurers', description: 'Step-by-step from NPI to effective date', icon: '🧾' },
 ].filter((link, i, all) => all.findIndex((l) => l.href === link.href) === i);
 
 /** Footer columns; each column holds one or more headed groups. */
@@ -176,6 +180,7 @@ export const FOOTER_COLUMNS: NavGroup[][] = [
     {
       heading: 'Resources',
       links: [
+        { href: '/guides', label: 'Credentialing guides' },
         { href: '/faq', label: 'Credentialing FAQ' },
         { href: '/#estimator', label: 'Timeline estimator' },
         { href: '/#timeline', label: 'How enrollment works' },

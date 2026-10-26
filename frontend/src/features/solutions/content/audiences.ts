@@ -52,6 +52,19 @@ export const providerGroups: SolutionContent = {
       { title: 'Maintain', text: 'Recredentialing, revalidation and expirations are tracked so nothing lapses.' },
     ],
   },
+  checklist: {
+    title: 'Documents to gather before a new provider starts',
+    intro: 'Having these ready on day one keeps applications from stalling:',
+    items: [
+      'Individual NPI, and the group NPI and tax ID',
+      'State license and DEA / state controlled-substance registrations',
+      'Board certification and training certificates',
+      'CV with month-and-year work history',
+      'Malpractice insurance certificate',
+      'CAQH ProView login',
+      'Hospital affiliation letters, if any',
+    ],
+  },
   faqs: [
     {
       q: 'When should we start credentialing a new provider?',
@@ -68,6 +81,10 @@ export const providerGroups: SolutionContent = {
     {
       q: 'How is pricing structured for groups?',
       a: 'Group pricing depends on the number of providers, payers and services you need. Contact us for a custom quote.',
+    },
+    {
+      q: 'What is reassignment of benefits?',
+      a: 'For Medicare, it lets a provider assign their right to payment to the group, so the group bills and is paid for the provider’s services. It is set up as part of Medicare enrollment.',
     },
   ],
   related: [
@@ -130,6 +147,18 @@ export const healthPlans: SolutionContent = {
       { title: 'Report', text: 'You receive the reporting your committee, compliance team and auditors need.' },
     ],
   },
+  checklist: {
+    title: 'Credentialing work a health plan can hand off',
+    intro: 'Plans can outsource some or all of these while keeping final decisions with their credentialing committee:',
+    items: [
+      'Initial credentialing and recredentialing files',
+      'Primary source verification',
+      'Ongoing sanction, exclusion and license monitoring',
+      'Provider directory and roster data maintenance',
+      'Support for delegated-entity oversight audits',
+      'Committee-ready file summaries',
+    ],
+  },
   faqs: [
     {
       q: 'Can you work within our credentialing policies?',
@@ -142,6 +171,14 @@ export const healthPlans: SolutionContent = {
     {
       q: 'How do you support directory accuracy?',
       a: 'We validate provider demographic and location data against credentialing records and provider attestations, and flag discrepancies for correction.',
+    },
+    {
+      q: 'How often must providers be recredentialed?',
+      a: 'Health plans commonly recredential every three years, in line with widely used accreditation standards, with ongoing monitoring in between.',
+    },
+    {
+      q: 'What should be monitored between credentialing cycles?',
+      a: 'License status and disciplinary actions, Medicare and Medicaid sanctions, the OIG exclusion list, SAM.gov and Medicare opt-out status, so issues are caught when they happen rather than at the next cycle.',
     },
   ],
   related: [
@@ -204,6 +241,17 @@ export const healthSystems: SolutionContent = {
       { title: 'Report', text: 'Leadership sees status, turnaround and upcoming expirations across the system.' },
     ],
   },
+  checklist: {
+    title: 'Where health systems typically lose time',
+    intro: 'These are the bottlenecks we look for first:',
+    items: [
+      'Collecting the same provider data twice, for privileging and for payer enrollment',
+      'Expiring licenses and documents caught too late',
+      'Provider data that differs between the medical staff office, payers and directories',
+      'Manual follow-up with dozens of payers',
+      'Reappointment and recredentialing deadlines tracked in spreadsheets',
+    ],
+  },
   faqs: [
     {
       q: 'Can you support multiple hospitals with different bylaws?',
@@ -216,6 +264,14 @@ export const healthSystems: SolutionContent = {
     {
       q: 'Can you work alongside our existing medical staff office?',
       a: 'Absolutely. Most health systems use us to add capacity, handle peaks or take on specific workflows while their team focuses on committee work.',
+    },
+    {
+      q: 'How is payer enrollment different from medical staff credentialing?',
+      a: 'Medical staff credentialing and privileging decide whether a provider may practice at your facilities. Payer enrollment lets the organization bill insurers for that provider’s services. They are separate processes, but both can be built from the same verified file.',
+    },
+    {
+      q: 'Can you work alongside our medical staff office?',
+      a: 'Yes. We can take on payer enrollment, verification or monitoring while your medical staff office keeps privileging decisions and committee work.',
     },
   ],
   related: [
@@ -278,6 +334,17 @@ export const digitalHealth: SolutionContent = {
       { title: 'Maintain', text: 'Every license, registration and enrollment is tracked and renewed on time.' },
     ],
   },
+  checklist: {
+    title: 'What multi-state telehealth credentialing involves',
+    intro: 'Virtual care adds a state dimension to every step:',
+    items: [
+      'A license in each state where patients are located',
+      'DEA registration for each state where controlled substances are prescribed',
+      'Payer enrollment by state, since Medicaid programs and many commercial plans are state-specific',
+      'A CAQH profile kept current across all practice locations',
+      'Renewal dates tracked for every license and registration in every state',
+    ],
+  },
   faqs: [
     {
       q: 'Can you help us launch in several states at once?',
@@ -290,6 +357,14 @@ export const digitalHealth: SolutionContent = {
     {
       q: 'Can you work with our health plan partners’ requirements?',
       a: 'Yes. We credential providers to the standards your partners require and keep files ready for their review.',
+    },
+    {
+      q: 'Which state license does a telehealth provider need?',
+      a: 'Generally the license must cover the state where the patient is located during the visit, not where the provider sits.',
+    },
+    {
+      q: 'Do licensure compacts help telehealth companies?',
+      a: 'They can. Compacts such as the IMLC for physicians, the Nurse Licensure Compact and PSYPACT for psychologists simplify practicing in participating states, though they do not cover every state.',
     },
   ],
   related: [

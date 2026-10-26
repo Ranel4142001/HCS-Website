@@ -75,6 +75,21 @@ export function breadcrumbSchema(crumbs: { name: string; path: string }[]) {
   };
 }
 
+export function articleSchema({ headline, description, path, dateModified }: { headline: string; description: string; path: string; dateModified: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline,
+    description,
+    url: `${SITE_URL}${path}`,
+    mainEntityOfPage: `${SITE_URL}${path}`,
+    image: `${SITE_URL}${OG_IMAGE}`,
+    dateModified,
+    author: { '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  };
+}
+
 export function serviceSchema({ name, description, path, audience }: { name: string; description: string; path: string; audience?: string }) {
   return {
     '@context': 'https://schema.org',

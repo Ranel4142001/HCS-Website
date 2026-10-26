@@ -151,6 +151,20 @@ export const cvoCredentialing: SolutionContent = {
       { title: 'Recredentialing', text: 'We track every expiration and start recredentialing well before the 36-month NCQA cycle comes due.' },
     ],
   },
+  checklist: {
+    title: 'What primary source verification covers',
+    intro: 'Each credential is confirmed directly with the organization that issued it, not from copies the provider supplies:',
+    items: [
+      'State medical or professional licenses, including any disciplinary actions',
+      'DEA registration and state controlled-substance registrations',
+      'Board certification status',
+      'Education and training: professional school, residency and fellowship',
+      'Work history, with gaps explained',
+      'Malpractice insurance and claims history',
+      'National Practitioner Data Bank (NPDB) query',
+      'OIG LEIE, SAM.gov and state Medicaid exclusion lists, and the Medicare opt-out list',
+    ],
+  },
   faqs: [
     {
       q: 'What is a Credentials Verification Organization (CVO)?',
@@ -167,6 +181,10 @@ export const cvoCredentialing: SolutionContent = {
     {
       q: 'Is HealthCredSTAT an NCQA-certified CVO?',
       a: 'We follow NCQA credentialing standards in our verification process. If your organization requires a CVO with formal NCQA certification, ask us about your specific requirements before you start.',
+    },
+    {
+      q: 'How often do credentials need to be checked again?',
+      a: 'Providers are recredentialed on a fixed cycle, commonly every three years for health plans. In between, licenses, DEA registrations and malpractice coverage are re-checked when they expire, and exclusion lists are typically monitored monthly.',
     },
   ],
   related: [
@@ -228,6 +246,18 @@ export const rosterManagement: SolutionContent = {
       { title: 'Reconciliation', text: 'We compare what payers show against your record and correct discrepancies before they cause denials.' },
     ],
   },
+  checklist: {
+    title: 'What a payer roster update usually includes',
+    intro: 'Each payer asks for its own format, but most rosters track the same core details for every provider:',
+    items: [
+      'Provider name, NPI and specialty (taxonomy)',
+      'Group name, tax ID (TIN) and group NPI',
+      'Practice locations, phone numbers and office hours',
+      'Whether the provider is accepting new patients',
+      'Effective dates for additions and termination dates for departures',
+      'Languages spoken and hospital affiliations',
+    ],
+  },
   faqs: [
     {
       q: 'What is a provider roster?',
@@ -244,6 +274,18 @@ export const rosterManagement: SolutionContent = {
     {
       q: 'Can you work with our existing systems?',
       a: 'Yes. We can start from spreadsheets or exports from your HR, credentialing or practice management systems. Tell us what you use today and we will propose the simplest workflow.',
+    },
+    {
+      q: 'Why does provider directory accuracy matter?',
+      a: 'Patients use payer directories to find in-network care, and wrong addresses or specialties lead to frustrated patients, misdirected claims and denials. Under the federal No Surprises Act, health plans must verify directory information regularly and providers must report changes promptly.',
+    },
+    {
+      q: 'How often should rosters be sent to payers?',
+      a: 'It depends on the payer and your contract. Many plans expect updates whenever something changes, and groups with delegated agreements often send full rosters monthly or quarterly.',
+    },
+    {
+      q: 'What needs to happen when a provider leaves?',
+      a: 'The provider should be terminated with each payer and removed from every roster and directory, with the correct end date. Leaving them listed can cause claims to be sent under the wrong provider and patients to be booked with someone who is no longer there.',
     },
   ],
   related: [
@@ -305,6 +347,19 @@ export const delegatedCredentialing: SolutionContent = {
       { title: 'Audit-ready', text: 'Files are organized for oversight audits, and we help you prepare and respond.' },
     ],
   },
+  checklist: {
+    title: 'What a delegated credentialing program needs',
+    intro: 'Health plans review these elements before granting delegation and audit them afterwards:',
+    items: [
+      'Written credentialing policies and procedures that meet the plan’s standards',
+      'A credentialing committee with documented review and decisions',
+      'Primary source verification completed within required timeframes',
+      'Ongoing monitoring of sanctions, exclusions and license actions',
+      'A recredentialing cycle tracked for every provider',
+      'Complete, audit-ready provider files',
+      'Regular reporting to each plan, including rosters and updates',
+    ],
+  },
   faqs: [
     {
       q: 'What is delegated credentialing?',
@@ -321,6 +376,14 @@ export const delegatedCredentialing: SolutionContent = {
     {
       q: 'Can you help us apply for delegation?',
       a: 'Yes. We can help you organize policies and files for a pre-delegation review. Talk to us about the plans you want to delegate with.',
+    },
+    {
+      q: 'What is a pre-delegation audit?',
+      a: 'Before granting delegation, the health plan reviews the organization’s policies, committee process and a sample of provider files. After delegation starts, plans typically audit at least once a year.',
+    },
+    {
+      q: 'Is delegated credentialing right for our organization?',
+      a: 'It usually suits larger groups that add providers often, because new providers can be loaded through rosters instead of individual applications. Each plan sets its own requirements for who can be delegated.',
     },
   ],
   related: [
@@ -384,6 +447,19 @@ export const privileging: SolutionContent = {
       { title: 'Ongoing', text: 'FPPE, OPPE and reappointment dates are tracked so nothing lapses.' },
     ],
   },
+  checklist: {
+    title: 'What a privileging file usually contains',
+    intro: 'Medical staff offices assemble and verify these items before privileges are granted:',
+    items: [
+      'Application and signed attestation',
+      'Verified licenses, DEA registration and board certification',
+      'Education and training verification',
+      'Peer references',
+      'Case logs or procedure volumes supporting the privileges requested',
+      'Malpractice history and NPDB report',
+      'Delineation of the specific privileges requested',
+    ],
+  },
   faqs: [
     {
       q: 'What is the difference between credentialing and privileging?',
@@ -400,6 +476,10 @@ export const privileging: SolutionContent = {
     {
       q: 'Do you support telehealth privileging?',
       a: 'Yes, including credentialing-by-proxy arrangements where your facility relies on the distant-site hospital’s credentialing decisions, as permitted by your bylaws and agreements.',
+    },
+    {
+      q: 'How often are privileges renewed?',
+      a: 'Hospitals typically reappoint medical staff and renew privileges every two years, re-verifying credentials and reviewing performance data each time.',
     },
   ],
   related: [
@@ -461,6 +541,19 @@ export const crossStateLicensing: SolutionContent = {
       { title: 'Maintain', text: 'Renewals, CME requirements and registrations are tracked and started well before deadlines.' },
     ],
   },
+  checklist: {
+    title: 'What state boards commonly ask for',
+    intro: 'Requirements differ by state and profession, but most applications draw on the same documents:',
+    items: [
+      'The state board’s application and fees',
+      'Verified professional education and transcripts',
+      'Postgraduate training verification',
+      'Licensing exam scores',
+      'Verification of every license ever held, in every state',
+      'NPDB report and malpractice history',
+      'Fingerprints and a background check, where the state requires them',
+    ],
+  },
   faqs: [
     {
       q: 'Do I need a license in the patient’s state for telehealth?',
@@ -477,6 +570,18 @@ export const crossStateLicensing: SolutionContent = {
     {
       q: 'Do you track license renewals?',
       a: 'Yes. We track expiration dates, continuing education requirements and DEA registrations, and start renewals early so no provider has to stop seeing patients.',
+    },
+    {
+      q: 'What is the Interstate Medical Licensure Compact (IMLC)?',
+      a: 'An expedited pathway that lets eligible physicians obtain licenses in participating states through one application process. Not every state participates, and physicians must meet the Compact’s eligibility requirements.',
+    },
+    {
+      q: 'Are there licensure compacts for other professions?',
+      a: 'Yes. The Nurse Licensure Compact allows a multistate license for registered and practical nurses, PSYPACT covers psychologists practicing across state lines, and compacts exist for other professions such as physical therapy and counseling.',
+    },
+    {
+      q: 'Do telehealth providers need a license where the patient is?',
+      a: 'Generally, yes: the license must cover the state where the patient is located at the time of the visit, with limited exceptions that vary by state.',
     },
   ],
   related: [

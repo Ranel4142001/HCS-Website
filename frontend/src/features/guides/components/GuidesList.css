@@ -1,0 +1,36 @@
+.guides-list {
+  display: grid;
+  gap: 16px;
+}
+
+.guides-card {
+  display: block;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.guides-card:hover {
+  border-color: var(--teal-600);
+  box-shadow: var(--shadow-sm);
+}
+
+.guides-card h2 {
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.guides-card p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+.guides-card-more {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 700;
+  color: var(--teal-700);
+}
