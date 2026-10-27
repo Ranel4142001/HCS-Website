@@ -99,12 +99,12 @@ export const ContactWizard: React.FC = () => {
     <section className="form-section" id="contact">
       <div className="container form-grid">
         <div className="form-copy">
-          <Badge icon={<Icon name="sparkle" />}>Get Started Today</Badge>
+          <Badge icon={<Icon name="sparkle" />}>Request a quote</Badge>
           <h2>
-            Ready to Simplify Your <em>Credentialing?</em>
+            Ready to simplify <em>credentialing?</em>
           </h2>
           <p>
-            Tell us about your providers and payers. A credentialing specialist will send you a personalized quote and a realistic timeline — no obligation.
+            Share a few details about your providers and payers. A credentialing specialist will respond with a quote and a realistic timeline, with no obligation.
           </p>
 
           <ul className="form-trust">

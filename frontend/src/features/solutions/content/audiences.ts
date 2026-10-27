@@ -8,7 +8,7 @@ export const providerGroups: SolutionContent = {
   name: 'Medical Groups & MSOs',
   audience: 'Medical groups, physician practices and management services organizations',
   color: '#3f8dff',
-  icon: '👩‍⚕️',
+  icon: 'users',
   meta: {
     title: 'Credentialing for Medical Groups & MSOs',
     description:
@@ -16,7 +16,7 @@ export const providerGroups: SolutionContent = {
   },
   h1: 'Credentialing services for medical groups & MSOs',
   lead:
-    'New providers should start earning on day one, not month four. We handle credentialing, payer enrollment and recredentialing for your practice, so growth is not held back by paperwork.',
+    'Credentialing, payer enrollment and recredentialing for your practice, so new providers can begin billing as early as possible.',
   primaryCta: 'Get a quote for your group',
   highlights: [
     { title: 'Onboarding', text: 'New providers enrolled early' },
@@ -104,7 +104,7 @@ export const healthPlans: SolutionContent = {
   name: 'Health Plans',
   audience: 'Health plans and payers',
   color: '#10c1bb',
-  icon: '🛡️',
+  icon: 'shield',
   meta: {
     title: 'Credentialing Services for Health Plans',
     description:
@@ -198,7 +198,7 @@ export const healthSystems: SolutionContent = {
   name: 'Health Systems & Hospitals',
   audience: 'Health systems, hospitals and ambulatory surgery centers',
   color: '#ef4444',
-  icon: '🏥',
+  icon: 'building',
   meta: {
     title: 'Credentialing Services for Health Systems',
     description:
@@ -291,7 +291,7 @@ export const digitalHealth: SolutionContent = {
   name: 'Telehealth & Digital Health',
   audience: 'Telehealth and digital health companies',
   color: '#8b5cf6',
-  icon: '💻',
+  icon: 'globe',
   meta: {
     title: 'Telehealth Credentialing & Licensing',
     description:

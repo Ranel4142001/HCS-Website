@@ -7,10 +7,9 @@ export const FoundingClientsSection: React.FC = () => {
     <section className="founding" id="why-us" aria-labelledby="founding-title">
       <div className="container founding-inner">
         <header className="founding-head">
-          <h2 id="founding-title">We’re a new company. Here’s what that means for you.</h2>
+          <h2 id="founding-title">Our commitments to founding clients</h2>
           <p>
-            HealthCredSTAT is taking on its first clients now. Instead of testimonials, here is what we commit to,
-            so you know exactly what to hold us to.
+            HealthCredSTAT is now onboarding its first clients. These are the commitments every client can hold us to.
           </p>
         </header>
 

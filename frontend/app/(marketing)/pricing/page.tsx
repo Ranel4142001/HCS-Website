@@ -8,8 +8,8 @@ export default function PricingPage() {
     <main>
       <PageIntro
         badge={{ icon: 'sparkle', label: 'Pricing' }}
-        title={<>Credentialing pricing that&apos;s <em>simple and predictable</em></>}
-        lede="A flat rate for individual clinicians and custom pricing for groups and enterprises — with no hidden setup fees. Not sure what you need? Use the estimator below or ask for a free quote."
+        title={<>Credentialing services <em>pricing</em></>}
+        lede="Transparent rates for individual clinicians and tailored pricing for groups and health systems."
       />
       <PricingSection />
       <EstimatorCard />

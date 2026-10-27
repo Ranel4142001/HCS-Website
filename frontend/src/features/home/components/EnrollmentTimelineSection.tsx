@@ -52,10 +52,10 @@ export const EnrollmentTimelineSection: React.FC = () => {
             <Icon name="sparkle" />
             <span>Behind the scenes</span>
           </div>
-          <h2>Payer enrollment takes dozens of follow-ups. We handle every one.</h2>
+          <h2>Payer enrollment, managed from application to approval</h2>
           <p className="timeline-intro">
-            Enrollment isn&apos;t one form. It&apos;s weeks of back-and-forth across payer portals, CAQH, state boards,
-            email and phone calls. Step through a sample enrollment to see the work we take off your team&apos;s plate.
+            Enrollment involves weeks of coordination across payer portals, CAQH and state boards. Step through a sample
+            enrollment to see each stage we manage.
           </p>
         </div>
 

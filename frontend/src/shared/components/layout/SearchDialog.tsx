@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
+import Icon from '@/shared/components/ui/Icon';
 import { QUICK_LINKS, SEARCH_INDEX } from '@/shared/config/navigation';
 import './SearchDialog.css';
 
@@ -63,7 +64,7 @@ export function SearchDialog({ onClose, onNavigate }: SearchDialogProps) {
           <div className="search-links-list">
             {results.map((link) => (
               <Link key={link.href} href={link.href} onClick={onNavigate} className="search-result-item">
-                {link.icon} <div><strong>{link.label}</strong><span>{link.description}</span></div>
+                {link.icon && <Icon name={link.icon} aria-hidden="true" />} <div><strong>{link.label}</strong><span>{link.description}</span></div>
               </Link>
             ))}
             {results.length === 0 && (

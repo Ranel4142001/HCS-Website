@@ -11,7 +11,7 @@ export const providerEnrollment: SolutionContent = {
   section: 'Solutions',
   name: 'Provider Enrollment',
   color: '#3f8dff',
-  icon: '⚡',
+  icon: 'zap',
   meta: {
     title: 'Provider Enrollment & Payer Credentialing',
     description:
@@ -31,7 +31,7 @@ export const providerEnrollment: SolutionContent = {
     title: 'Why enrollment takes so long',
     paragraphs: [
       'Every payer has its own application, its own portal and its own idea of a "complete" file. A single missing date or an expired document can send an application back to the start of the queue — and nobody tells you until weeks later.',
-      'Commercial payer credentialing commonly takes 90 to 120 days, and sometimes longer. During that time a new provider either cannot see insured patients or sees them without being able to bill. The fastest way through is a clean first submission and relentless, documented follow-up. That is exactly what we do.',
+      'Commercial payer credentialing commonly takes 90 to 120 days, and sometimes longer. During that time a new provider either cannot see insured patients or sees them without being able to bill. The fastest way through is a clean first submission and consistent, documented follow-up.',
     ],
   },
   included: {
@@ -105,7 +105,7 @@ export const cvoCredentialing: SolutionContent = {
   section: 'Solutions',
   name: 'CVO Credentialing',
   color: '#10c1bb',
-  icon: '🛡️',
+  icon: 'shield',
   meta: {
     title: 'Primary Source Verification & CVO Services',
     description:
@@ -203,7 +203,7 @@ export const rosterManagement: SolutionContent = {
   section: 'Solutions',
   name: 'Roster Management',
   color: '#8b5cf6',
-  icon: '📋',
+  icon: 'users',
   meta: {
     title: 'Provider Roster Management Services',
     description:
@@ -304,7 +304,7 @@ export const delegatedCredentialing: SolutionContent = {
   section: 'Solutions',
   name: 'Delegated Credentialing',
   color: '#f59e0b',
-  icon: '🤝',
+  icon: 'share',
   meta: {
     title: 'Delegated Credentialing Services',
     description:
@@ -402,7 +402,7 @@ export const privileging: SolutionContent = {
   section: 'Solutions',
   name: 'Privileging & OPPE',
   color: '#ef4444',
-  icon: '🏥',
+  icon: 'building',
   meta: {
     title: 'Hospital Privileging & Credentialing',
     description:
@@ -498,13 +498,13 @@ export const crossStateLicensing: SolutionContent = {
   section: 'Solutions',
   name: 'Multi-State Licensing',
   color: '#0ea5e9',
-  icon: '🗺️',
+  icon: 'globe',
   meta: {
     title: 'Multi-State Medical Licensing Services',
     description:
       'Get providers licensed in new states: state applications, IMLC and Nurse Licensure Compact support, DEA registrations and renewals.',
   },
-  h1: 'Multi-state medical licensing, handled for you',
+  h1: 'Multi-state medical licensing services',
   lead:
     'State license applications, compact pathways, DEA registrations and renewals for providers who practice — or see patients by telehealth — in more than one state.',
   primaryCta: 'Get a licensing quote',

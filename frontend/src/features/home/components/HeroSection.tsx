@@ -19,14 +19,13 @@ export const HeroSection: React.FC = () => {
       <div className="container hero-container">
         <div className="hero-centered-content">
           <h1 className="hero-main-headline">
-            Medical credentialing &amp; payer enrollment,{' '}<br />
-            done for you.
+            Medical credentialing &amp;{' '}<br />
+            payer enrollment services
           </h1>
 
           <p className="hero-lead-text">
-            Every week a provider waits on credentialing is a week they can&apos;t bill. HealthCredSTAT pairs dedicated
-            credentialing specialists with automation to verify your providers, enroll them with every payer, and keep
-            them in-network&nbsp;&mdash; so revenue starts sooner.
+            HealthCredSTAT combines dedicated credentialing specialists with automation to verify providers, enroll them
+            with payers and keep them in-network, so revenue starts sooner.
           </p>
 
           <div className="hero-actions-row">

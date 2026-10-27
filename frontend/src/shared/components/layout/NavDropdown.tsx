@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Icon from '@/shared/components/ui/Icon';
 import type { NavMenu, NavSpotlight } from '@/shared/config/navigation';
 import './NavDropdown.css';
 
@@ -21,7 +22,7 @@ function Spotlight({ spotlight, onNavigate }: { spotlight: NavSpotlight; onNavig
     <div className="mdl-panel__spotlight">
       <div className="mdl-panel__spotlight-img" style={{ background: spotlight.background }}>
         <div className="mdl-panel__spotlight-badge">
-          <span>{spotlight.badge.icon}</span> {spotlight.badge.label}
+          <Icon name={spotlight.badge.icon} aria-hidden="true" /> {spotlight.badge.label}
         </div>
         <div className="mdl-panel__spotlight-preview">
           {spotlight.header && (
@@ -75,7 +76,7 @@ export function NavDropdown({ menu, isOpen, onOpen, onClose, onToggle, onNavigat
                 <span className="mdl-panel__heading">{group.heading}</span>
                 {group.links.map((link) => (
                   <Link key={link.href} href={link.href} className="mdl-panel__link" onClick={onNavigate}>
-                    <span className="mdl-panel__link-icon" style={{ background: link.iconBg }}>{link.icon}</span>
+                    <span className="mdl-panel__link-icon" style={{ background: link.iconBg }}>{link.icon && <Icon name={link.icon} aria-hidden="true" />}</span>
                     <div>
                       <strong>{link.label}</strong>
                       <span>{link.description}</span>

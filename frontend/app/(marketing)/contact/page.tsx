@@ -14,7 +14,7 @@ export default function ContactPage() {
     <main>
       <PageIntro
         title="Get a free credentialing quote"
-        lede="Tell us a little about your providers and the payers you work with. A credentialing specialist will reply with pricing and a realistic timeline — no obligation."
+        lede="Request pricing and a timeline for your providers."
       />
       <ContactWizard />
     </main>

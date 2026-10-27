@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import JsonLd from '@/shared/components/seo/JsonLd';
+import Icon from '@/shared/components/ui/Icon';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/shared/lib/seo';
 import type { SolutionContent } from '../types';
 import './SolutionPage.css';
@@ -34,7 +35,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
               <span aria-hidden="true">›</span>
               <span aria-current="page">{content.name}</span>
             </nav>
-            <div className="sol-icon-badge" aria-hidden="true">{content.icon}</div>
+            <div className="sol-icon-badge" aria-hidden="true"><Icon name={content.icon} /></div>
             <h1 className="sol-hero-title">{content.h1}</h1>
             <p className="sol-hero-tagline">{content.lead}</p>
             <div className="sol-hero-cta">

@@ -276,3 +276,9 @@ button.btn-sol-ghost {
 button.btn-sol-ghost {
   border: 1.5px solid #cbd5e1;
 }
+
+.sol-icon-badge svg {
+  width: 28px;
+  height: 28px;
+  color: var(--teal-800);
+}

@@ -12,7 +12,7 @@ export default function AboutPage() {
         lede={
           <>
             HealthCredSTAT is a medical credentialing and payer enrollment company. We combine experienced credentialing
-            specialists with automation to take the paperwork, the follow-up and the waiting off your team&apos;s plate.
+            specialists with automation to manage the paperwork and payer follow-up on your behalf.
           </>
         }
       />

@@ -273,3 +273,15 @@
   .mdl-panel__spotlight { display: none; }
   .mdl-panel__col { border-right: none; border-bottom: 1px solid #f1f5f9; }
 }
+
+/* Line icons in the menu tiles and the spotlight badge (they replaced emoji). */
+.mdl-panel__link-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--teal-800);
+}
+
+.mdl-panel__spotlight-badge svg {
+  width: 13px;
+  height: 13px;
+}

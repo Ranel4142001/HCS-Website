@@ -17,9 +17,9 @@ export const BenefitsSection: React.FC = () => {
             <Icon name="cpu" />
             <span>Why HealthCredSTAT</span>
           </div>
-          <h2>Less chasing. Fewer delays. Providers billing sooner.</h2>
+          <h2>Fewer delays and a faster path to billing</h2>
           <p className="platform-sticky-lead">
-            Whether you are onboarding one provider or hundreds, you get a team that owns the work and a system that shows you exactly where it stands.
+            Whether you onboard one provider or hundreds, a dedicated team manages the work and you can see the status of every application.
           </p>
           <div className="platform-head-cta">
             <a href="#contact" className="btn btn-primary btn-sm">

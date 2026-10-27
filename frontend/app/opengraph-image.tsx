@@ -29,7 +29,7 @@ export default async function OpengraphImage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={logoSrc} width={526} height={132} alt="" />
         <div style={{ marginTop: 48, fontSize: 56, fontWeight: 700, lineHeight: 1.15, maxWidth: 980 }}>
-          Medical credentialing &amp; payer enrollment, done for you.
+          Medical credentialing &amp; payer enrollment services
         </div>
         <div style={{ marginTop: 24, fontSize: 30, color: '#6fe0da' }}>
           Get providers credentialed, in-network, and billing sooner.

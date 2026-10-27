@@ -77,7 +77,7 @@ export const EstimatorResult: React.FC<EstimatorResultProps> = ({
 
       <div className="est-result-cta">
         <Button variant="primary" as="a" href="#contact" icon={<Icon name="arrow" />}>
-          Get Started Today
+          Request a quote
         </Button>
         <Button variant="ghost" type="button" onClick={onRetake}>
           Retake Quiz

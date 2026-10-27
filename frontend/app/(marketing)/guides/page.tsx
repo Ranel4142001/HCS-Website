@@ -5,7 +5,7 @@ import { buildMetadata } from '@/shared/lib/seo';
 export const metadata = buildMetadata({
   title: 'Credentialing Guides for Providers',
   description:
-    'Plain-English guides to medical credentialing and payer enrollment: timelines, CAQH ProView and how to get credentialed with insurance companies.',
+    'Practical guides to medical credentialing and payer enrollment: timelines, CAQH ProView and how to get credentialed with insurance companies.',
   path: '/guides',
 });
 

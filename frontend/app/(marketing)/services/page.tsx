@@ -9,7 +9,7 @@ export default function ServicesPage() {
       <PageIntro
         badge={{ icon: 'sparkle', label: 'Our services' }}
         title={<>Medical credentialing &amp; <em>provider enrollment services</em></>}
-        lede="Everything it takes to get a provider from signed offer to billing — and keep them there. Pick one service or hand us the whole process."
+        lede="End-to-end support from signed offer to billing, and ongoing maintenance after. Engage us for a single service or the full process."
       />
       <SolutionsOverview />
       <WorkflowsSection />

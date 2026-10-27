@@ -1,4 +1,5 @@
 import type { FaqItem } from '@/shared/lib/seo';
+import type { IconName } from '@/shared/components/ui/Icon';
 
 export interface SolutionContent {
   /** Route path, e.g. "/solutions/provider-enrollment". */
@@ -7,7 +8,7 @@ export interface SolutionContent {
   section: string;
   /** Accent color for the hero glow and CTA band. */
   color: string;
-  icon: string;
+  icon: IconName;
   meta: { title: string; description: string };
   /** Short service name used in breadcrumbs and structured data. */
   name: string;
