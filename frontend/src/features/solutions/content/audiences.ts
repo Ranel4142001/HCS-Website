@@ -202,7 +202,7 @@ export const healthSystems: SolutionContent = {
   meta: {
     title: 'Credentialing Services for Health Systems',
     description:
-      'Centralized credentialing, privileging and payer enrollment for hospitals and health systems, with every expiration tracked.',
+      'Centralized credentialing, privileging and payer enrollment for hospitals and health systems, with every license, certification and reappointment tracked.',
   },
   h1: 'Credentialing & privileging for hospitals and health systems',
   lead:

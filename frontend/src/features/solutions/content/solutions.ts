@@ -406,7 +406,7 @@ export const privileging: SolutionContent = {
   meta: {
     title: 'Hospital Privileging & Credentialing',
     description:
-      'Hospital privileging support: applications, peer references, privilege forms, FPPE/OPPE tracking and reappointments.',
+      'Hospital privileging and medical staff credentialing support: applications, peer references, privilege forms, FPPE/OPPE tracking and reappointments.',
   },
   h1: 'Hospital privileging & medical staff credentialing',
   lead:
