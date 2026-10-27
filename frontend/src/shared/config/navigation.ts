@@ -132,10 +132,12 @@ export const SEARCH_INDEX: NavLink[] = ([
   ...NAV_MENUS.flatMap((m) => m.groups.flatMap((g) => g.links)),
   { href: '/services', label: 'All services', description: 'Everything from signed offer to billing', icon: 'cog' },
   { href: '/contact', label: 'Contact us', description: 'Get a free credentialing quote', icon: 'mail' },
-  { href: '/guides', label: 'Credentialing guides', description: 'Timelines, CAQH and getting in-network', icon: 'file' },
+  { href: '/guides', label: 'Credentialing guides', description: 'Timelines, CAQH, Medicare and recredentialing', icon: 'file' },
   { href: '/guides/how-long-does-credentialing-take', label: 'How long does credentialing take?', description: 'Typical timelines and what slows them down', icon: 'clock' },
   { href: '/guides/caqh-proview-guide', label: 'CAQH ProView guide', description: 'Setup, attestation and common mistakes', icon: 'doc-check' },
   { href: '/guides/how-to-get-credentialed-with-insurance-companies', label: 'How to get credentialed with insurers', description: 'Step-by-step from NPI to effective date', icon: 'check-circle' },
+  { href: '/guides/medicare-pecos-enrollment', label: 'Medicare enrollment through PECOS', description: 'CMS-855 forms, effective dates and revalidation', icon: 'shield' },
+  { href: '/guides/recredentialing-requirements', label: 'Recredentialing requirements', description: 'Cycles, re-verification and avoiding lapses', icon: 'clock' },
 ] satisfies NavLink[]).filter((link, i, all) => all.findIndex((l) => l.href === link.href) === i);
 
 /** Footer columns; each column holds one or more headed groups. */

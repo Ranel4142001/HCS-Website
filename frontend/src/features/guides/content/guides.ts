@@ -76,7 +76,7 @@ export const howLongDoesCredentialingTake: Guide = {
   related: [
     { label: 'Estimate your timeline', href: '/#estimator' },
     { label: 'CAQH ProView guide', href: '/guides/caqh-proview-guide' },
-    { label: 'Provider enrollment services', href: '/solutions/provider-enrollment' },
+    { label: 'Recredentialing requirements', href: '/guides/recredentialing-requirements' },
   ],
 };
 
@@ -145,7 +145,7 @@ export const caqhProviewGuide: Guide = {
   related: [
     { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
     { label: 'How to get credentialed with insurers', href: '/guides/how-to-get-credentialed-with-insurance-companies' },
-    { label: 'Provider enrollment services', href: '/solutions/provider-enrollment' },
+    { label: 'Recredentialing requirements', href: '/guides/recredentialing-requirements' },
   ],
 };
 
@@ -204,9 +204,160 @@ export const howToGetCredentialed: Guide = {
   ],
   related: [
     { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
-    { label: 'CAQH ProView guide', href: '/guides/caqh-proview-guide' },
+    { label: 'Medicare enrollment through PECOS', href: '/guides/medicare-pecos-enrollment' },
     { label: 'Credentialing for provider groups', href: '/who-we-help/provider-groups' },
   ],
 };
 
-export const GUIDES = [howToGetCredentialed, howLongDoesCredentialingTake, caqhProviewGuide];
+export const medicarePecosEnrollment: Guide = {
+  slug: 'medicare-pecos-enrollment',
+  meta: {
+    title: 'Medicare Enrollment Through PECOS',
+    description:
+      'How Medicare provider enrollment works in PECOS: which CMS-855 form to use, reassigning benefits, effective dates, revalidation and reporting changes.',
+  },
+  title: 'Medicare enrollment through PECOS',
+  lead:
+    'Medicare does not use CAQH or a credentialing committee. Providers enroll through PECOS, the CMS online enrollment system, and their application is processed by the Medicare Administrative Contractor (MAC) for their state.',
+  updated: '2026-10-28',
+  sections: [
+    {
+      heading: 'What PECOS is',
+      paragraphs: [
+        'PECOS (Provider Enrollment, Chain, and Ownership System) is the CMS system for submitting and maintaining Medicare enrollment. Access requires an account in the CMS Identity & Access Management (I&A) system. Paper CMS-855 forms are still accepted, but online applications are generally processed faster and are easier to track.',
+      ],
+    },
+    {
+      heading: 'Which application to file',
+      list: [
+        'CMS-855I: individual physicians and non-physician practitioners who will bill Medicare.',
+        'CMS-855B: clinics, group practices and certain other suppliers enrolling as an organization.',
+        'Reassignment of benefits: lets a group bill Medicare for services its providers perform. Each provider in a group needs it in addition to their own enrollment.',
+        'CMS-855O: providers who only order or refer services and do not bill Medicare themselves.',
+      ],
+    },
+    {
+      heading: 'Enrolling step by step',
+      ordered: true,
+      list: [
+        'Confirm the provider has an active NPI and that NPPES shows the correct name and practice address.',
+        'Create or confirm the provider’s I&A account, and connect the group’s account if benefits will be reassigned.',
+        'Complete the application in PECOS with the license, practice location, specialty and payment information.',
+        'Upload supporting documents and sign electronically.',
+        'Respond promptly to any development request from the MAC. Unanswered requests can lead to a rejected application.',
+        'Record the approval letter, effective date and PTAN (Provider Transaction Access Number) for billing.',
+      ],
+    },
+    {
+      heading: 'Effective dates and billing',
+      paragraphs: [
+        'For physicians and non-physician practitioners, the effective date is generally the later of the date the MAC received an application it could process and the date the provider began furnishing services at the new location. Medicare allows billing for services up to 30 days before that effective date in most circumstances.',
+        'Because of this window, filing early matters. An application submitted months after a provider starts seeing patients can leave earlier services unbillable.',
+      ],
+    },
+    {
+      heading: 'Keeping enrollment current',
+      list: [
+        'Revalidation: most providers must revalidate every five years, and DMEPOS suppliers every three. CMS publishes due dates in advance.',
+        'Changes: physicians and non-physician practitioners must report a change of ownership, an adverse legal action or a change of practice location within 30 days, and most other changes within 90 days.',
+        'Medicare Advantage: plans credential providers separately, so Medicare enrollment alone does not make a provider in-network with them.',
+      ],
+    },
+  ],
+  faqs: [
+    {
+      q: 'How long does Medicare enrollment take?',
+      a: 'Processing times vary by MAC and application type. Many complete online applications are processed within several weeks, while applications that need corrections or additional information take longer.',
+    },
+    {
+      q: 'Is there a fee to enroll in Medicare?',
+      a: 'Individual physicians and non-physician practitioners do not pay an application fee. Certain institutional providers and suppliers do, and CMS updates the amount each year.',
+    },
+    {
+      q: 'Does Medicare enrollment cover Medicaid as well?',
+      a: 'No. Medicaid enrollment is handled separately by each state, although some states rely on Medicare enrollment to simplify their own screening.',
+    },
+  ],
+  related: [
+    { label: 'How to get credentialed with insurers', href: '/guides/how-to-get-credentialed-with-insurance-companies' },
+    { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
+    { label: 'Provider enrollment services', href: '/solutions/provider-enrollment' },
+  ],
+};
+
+export const recredentialingRequirements: Guide = {
+  slug: 'recredentialing-requirements',
+  meta: {
+    title: 'Recredentialing Requirements for Providers',
+    description:
+      'How often providers must be recredentialed, what payers and hospitals re-verify, how it differs from Medicare revalidation and how to avoid lapses.',
+  },
+  title: 'Recredentialing requirements for providers',
+  lead:
+    'Credentialing is not a one-time event. Health plans and hospitals re-verify every provider on a fixed cycle, and a missed deadline can remove a provider from a network or suspend their privileges.',
+  updated: '2026-10-28',
+  sections: [
+    {
+      heading: 'How often recredentialing happens',
+      list: [
+        'Health plans: at least every 36 months under NCQA credentialing standards, which most commercial and many Medicaid managed care plans follow. Some plans use a shorter cycle.',
+        'Hospitals: medical staff reappointment and privileges are commonly renewed every two years, as accreditation standards typically require.',
+        'CAQH ProView: re-attestation every 120 days keeps the profile available to plans during recredentialing.',
+      ],
+    },
+    {
+      heading: 'What is re-verified',
+      list: [
+        'Current, unrestricted state licenses, and DEA and state controlled-substance registrations',
+        'Board certification status',
+        'Malpractice insurance coverage and claims history since the last cycle',
+        'Sanctions and exclusions, including the OIG exclusion list and state Medicaid exclusions',
+        'Hospital privileges and practice information',
+        'For many plans and hospitals, quality data such as complaints and performance reviews',
+      ],
+    },
+    {
+      heading: 'Recredentialing vs. Medicare revalidation',
+      paragraphs: [
+        'They are separate processes. Recredentialing is a health plan or hospital re-verifying a provider’s qualifications. Medicare revalidation is CMS confirming the provider’s enrollment information, generally every five years. A provider can be current on one and overdue on the other, so track both.',
+      ],
+    },
+    {
+      heading: 'Avoiding lapses',
+      list: [
+        'Keep one calendar of every recredentialing, reappointment, revalidation and license expiration date.',
+        'Start each renewal 90 to 120 days before it is due.',
+        'Keep CAQH attested and documents current between cycles, so plans can complete their review without new requests.',
+        'Respond to payer and medical staff office requests promptly.',
+        'Monitor licenses and exclusion lists between cycles rather than waiting for the next review.',
+      ],
+    },
+  ],
+  faqs: [
+    {
+      q: 'What happens if a provider misses recredentialing?',
+      a: 'The plan can terminate the provider’s participation. Rejoining usually means submitting a new initial application, and claims for services in the gap may not be paid as in-network.',
+    },
+    {
+      q: 'Is recredentialing faster than initial credentialing?',
+      a: 'It usually involves less work because the provider is already on file, but it still depends on complete, current information and timely responses.',
+    },
+    {
+      q: 'Do providers have to re-apply from scratch?',
+      a: 'No. Most plans send a recredentialing request and rely on the CAQH profile, so the work is mainly confirming that information and documents are current.',
+    },
+  ],
+  related: [
+    { label: 'CAQH ProView guide', href: '/guides/caqh-proview-guide' },
+    { label: 'Medicare enrollment through PECOS', href: '/guides/medicare-pecos-enrollment' },
+    { label: 'Privileging services', href: '/solutions/privileging' },
+  ],
+};
+
+export const GUIDES = [
+  howToGetCredentialed,
+  howLongDoesCredentialingTake,
+  caqhProviewGuide,
+  medicarePecosEnrollment,
+  recredentialingRequirements,
+];
