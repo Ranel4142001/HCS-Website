@@ -4,6 +4,7 @@ import './globals.css';
 import '@/shared/styles/common.css';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
 import JsonLd from '@/shared/components/seo/JsonLd';
+import { BRAND_VERSION } from '@/shared/components/ui/BrandLogo';
 
 // Both are variable fonts: omitting `weight` loads one file covering every weight.
 // 'swap' keeps text visible while the font loads. ('optional' was measured too: Chrome treats a preloaded
@@ -52,11 +53,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/brand/icon-32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/brand/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: `/brand/icon-32.png?v=${BRAND_VERSION}`, sizes: '32x32', type: 'image/png' },
+      { url: `/brand/icon-192.png?v=${BRAND_VERSION}`, sizes: '192x192', type: 'image/png' },
     ],
-    apple: [{ url: '/brand/apple-icon-180.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: '/brand/icon-32.png',
+    apple: [{ url: `/brand/apple-icon-180.png?v=${BRAND_VERSION}`, sizes: '180x180', type: 'image/png' }],
+    shortcut: `/brand/icon-32.png?v=${BRAND_VERSION}`,
   },
   openGraph: {
     type: 'website',

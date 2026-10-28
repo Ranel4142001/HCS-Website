@@ -211,7 +211,8 @@
 
 @media (max-width: 1024px) {
   .hero-lead-text {
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
   .hero-actions-row {
     justify-content: center;

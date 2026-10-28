@@ -79,7 +79,7 @@ compose them in the page.
 | Add a homepage section | a component in `features/home/components`, export it from `features/home/index.ts`, place it in `app/(marketing)/page.tsx` |
 | Change page title or description | `buildMetadata()` in the page or its `layout.tsx` |
 | Change the estimator's day ranges | `features/estimator/content/plans.ts` (`ESTIMATE_RANGES`) |
-| Replace the logo or favicon | the original file in `public/` (same name), then `npm run brand-assets` to regenerate `public/brand/` |
+| Replace the logo or favicon | the original file in `public/` (same name), then `npm run brand-assets` to regenerate `public/brand/`, and bump `BRAND_VERSION` in `BrandLogo.tsx` so browsers drop their cached copies |
 | Add a real testimonial | `features/social-proof/content/testimonials.ts` (written permission first); the section appears automatically |
 | Connect the contact form to the CRM | `features/contact/services/contact.service.ts` (currently a placeholder) |
 

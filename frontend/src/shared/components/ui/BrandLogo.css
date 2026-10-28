@@ -3,8 +3,8 @@
   display: contents;
 }
 
-/* The proportions of the original artwork (752x189). The resized copy rounds to whole pixels (600x151),
+/* The proportions of the original artwork (587x147). The resized copy rounds to whole pixels (600x150),
    which would otherwise make the logo, and everything beside it, shift by a pixel. */
 .brand-logo > img {
-  aspect-ratio: 752 / 189;
+  aspect-ratio: 587 / 147;
 }

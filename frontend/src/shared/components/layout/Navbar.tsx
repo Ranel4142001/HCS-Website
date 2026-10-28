@@ -95,7 +95,7 @@ export const Navbar: React.FC = () => {
       >
         <div className="mdl-nav__inner">
           <Link href="/" className="mdl-nav__logo" onClick={closeAll} aria-label="HealthCredSTAT Home">
-            <BrandLogo width={200} height={50} className="mdl-nav__logo-img" loading="eager" />
+            <BrandLogo width={232} height={58} className="mdl-nav__logo-img" loading="eager" />
           </Link>
 
           <div

@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
         <div className="footer-enterprise-grid">
           <div className="footer-brand-cell">
             <Link href="/" className="footer-logo-lockup" aria-label="HealthCredSTAT Home">
-              <BrandLogo variant="white" width={210} height={52} className="footer-logo-img" />
+              <BrandLogo variant="white" width={224} height={56} className="footer-logo-img" />
             </Link>
             <p className="footer-brand-desc">
               Health credentialing services that get providers verified and ready to see patients sooner.

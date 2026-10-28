@@ -253,6 +253,9 @@ video {
 
 html {
   scroll-behavior: smooth;
+  /* 17px at the browser's default 16px; every rem-based size on the site scales with it. A percentage keeps
+     the visitor's own browser font-size setting working. */
+  font-size: 106.25%;
 }
 
 body {

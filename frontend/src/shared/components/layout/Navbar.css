@@ -66,10 +66,10 @@
 /* Official HealthCredSTAT Logo styling */
 
 .mdl-nav__logo-img {
-  height: 48px;
-  max-height: 52px;
+  height: 58px;
+  max-height: 58px;
   width: auto;
-  max-width: 230px;
+  max-width: 240px;
   display: block;
   object-fit: contain;
   flex-shrink: 0;
@@ -78,9 +78,9 @@
 
 @media (max-width: 768px) {
   .mdl-nav__logo-img {
-    height: 42px;
-    max-height: 42px;
-    max-width: 190px;
+    height: 48px;
+    max-height: 48px;
+    max-width: 200px;
   }
 }
 
