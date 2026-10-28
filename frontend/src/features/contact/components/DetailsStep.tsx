@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { UseFormReturn, useWatch } from 'react-hook-form';
-import { ContactFormValues } from '../validation/contact.schema';
+import type { ContactFormValues } from '../validation/contact.schema';
 import Input from '@/shared/components/forms/Input';
 import TextArea from '@/shared/components/forms/TextArea';
 import Icon from '@/shared/components/ui/Icon';

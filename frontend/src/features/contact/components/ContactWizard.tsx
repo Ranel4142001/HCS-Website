@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { useForm, useWatch } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { contactFormSchema, ContactFormValues } from '../validation/contact.schema';
+import { useForm, useWatch, type Resolver } from 'react-hook-form';
+import type { ContactFormValues } from '../validation/contact.schema';
 import { submitContactForm } from '../services/contact.service';
 import RoleStep from './RoleStep';
 import DetailsStep from './DetailsStep';
@@ -11,6 +10,16 @@ import SuccessPanel from './SuccessPanel';
 import Icon from '@/shared/components/ui/Icon';
 import Badge from '@/shared/components/ui/Badge';
 import './ContactWizard.css';
+
+// The validation library is only needed once someone fills in the form, so it loads on first validation
+// instead of with every page that shows the form.
+const lazyResolver: Resolver<ContactFormValues> = async (values, context, options) => {
+  const [{ zodResolver }, { contactFormSchema }] = await Promise.all([
+    import('@hookform/resolvers/zod'),
+    import('../validation/contact.schema'),
+  ]);
+  return zodResolver(contactFormSchema)(values, context, options);
+};
 
 export const ContactWizard: React.FC = () => {
   const [step, setStep] = useState<1 | 2>(1);
@@ -22,7 +31,7 @@ export const ContactWizard: React.FC = () => {
   const rafIdRef = useRef<number | null>(null);
 
   const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: lazyResolver,
     defaultValues: {
       role: 'individual',
       name: '',

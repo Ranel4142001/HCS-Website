@@ -1,4 +1,4 @@
-import { ContactFormValues } from '../validation/contact.schema';
+import type { ContactFormValues } from '../validation/contact.schema';
 
 export interface SubmitContactResponse {
   success: boolean;

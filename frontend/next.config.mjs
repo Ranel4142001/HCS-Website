@@ -85,7 +85,7 @@ const nextConfig = {
       },
       {
         // Files in /public keep the same URL when replaced, so they must not be cached as immutable
-        source: '/(.*).(jpg|jpeg|png|webp|avif|ico|svg|mp4)',
+        source: '/(.*).(jpg|jpeg|png|webp|avif|ico|svg|mp4|webm)',
         headers: [
           {
             key: 'Cache-Control',
