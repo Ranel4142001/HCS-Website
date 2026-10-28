@@ -37,6 +37,9 @@ const nextConfig = {
   poweredByHeader: false, // Security: removes X-Powered-By: Next.js
   experimental: {
     optimizePackageImports: ['lucide-react', 'zod'],
+    // The site's CSS is small and split into ~16 files per page. Inlining it into the HTML removes those
+    // requests from the opening burst, so the scripts behind them no longer wait in the browser's queue.
+    inlineCss: true,
   },
   // Pages removed when the site narrowed to credentialing only; old links land on the closest page.
   async redirects() {
