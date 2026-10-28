@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Icon from '@/shared/components/ui/Icon';
+import FeatureText, { featureText } from '@/shared/components/ui/FeatureText';
 import { BENEFITS } from '../content/benefits';
 import './BenefitsSection.css';
 
@@ -54,10 +55,10 @@ export const BenefitsSection: React.FC = () => {
                 <p className="item-desc">{item.description}</p>
 
                 <ul className="item-points">
-                  {item.detailPoints.map((point, pIdx) => (
-                    <li key={pIdx}>
+                  {item.detailPoints.map((point) => (
+                    <li key={featureText(point)}>
                       <Icon name="check" />
-                      <span>{point}</span>
+                      <span><FeatureText feature={point} /></span>
                     </li>
                   ))}
                 </ul>

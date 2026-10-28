@@ -22,7 +22,7 @@ export const PRINCIPLES = [
   },
   {
     title: 'Protect your data',
-    text: 'Provider information is sensitive. We handle it with HIPAA-aligned safeguards, secure document collection and access only for the people who need it.',
+    text: 'Provider information is sensitive. We handle it with HIPAA-aligned safeguards, role-based access and an audit trail that cannot be edited.',
   },
 ];
 

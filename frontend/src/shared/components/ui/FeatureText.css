@@ -1,0 +1,16 @@
+/* Drawn in the surrounding text color, so it reads on light and dark sections alike. */
+.soon-tag {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 7px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  white-space: nowrap;
+  vertical-align: middle;
+  opacity: 0.75;
+}

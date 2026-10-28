@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Icon from '@/shared/components/ui/Icon';
+import FeatureText, { featureText } from '@/shared/components/ui/FeatureText';
 import Button from '@/shared/components/ui/Button';
 import { WORKFLOWS } from '../content/workflows';
 import './WorkflowsSection.css';
@@ -143,10 +144,10 @@ export const WorkflowsSection: React.FC = () => {
               {/* Highlights List */}
               <div className="wf-highlights-box">
                 <ul className="wf-highlights-list">
-                  {active.highlights.map((item, i) => (
-                    <li key={i}>
+                  {active.highlights.map((item) => (
+                    <li key={featureText(item)}>
                       <Icon name="check-circle" />
-                      <span>{item}</span>
+                      <span><FeatureText feature={item} /></span>
                     </li>
                   ))}
                 </ul>

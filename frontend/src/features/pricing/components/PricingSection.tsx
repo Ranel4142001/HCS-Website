@@ -1,4 +1,5 @@
 import { PRICING_PLANS } from '../content/plans';
+import FeatureText, { featureText } from '@/shared/components/ui/FeatureText';
 import './PricingSection.css';
 ﻿import React from 'react';
 
@@ -42,9 +43,9 @@ export const PricingSection: React.FC = () => {
                 {plan.buildsOn && <p className="fee-plus">Everything in {plan.buildsOn}, plus:</p>}
                 <ul className="fee-list">
                   {plan.features.map((feature) => (
-                    <li key={feature}>
+                    <li key={featureText(feature)}>
                       <CheckMark />
-                      <span>{feature}</span>
+                      <span><FeatureText feature={feature} /></span>
                     </li>
                   ))}
                 </ul>

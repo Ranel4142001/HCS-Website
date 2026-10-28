@@ -1,3 +1,5 @@
+import type { Feature } from '@/shared/components/ui/FeatureText';
+
 export interface PricingPlan {
   id: string;
   name: string;
@@ -8,6 +10,6 @@ export interface PricingPlan {
   ctaHref: string;
   /** Name of the plan this one builds on, shown as "Everything in X, plus". */
   buildsOn?: string;
-  features: string[];
+  features: Feature[];
   featured?: boolean;
 }

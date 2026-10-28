@@ -1,3 +1,4 @@
+import type { Feature } from '@/shared/components/ui/FeatureText';
 import type { IconName } from '@/shared/components/ui/Icon';
 
 export interface ExpertiseItem {
@@ -15,7 +16,7 @@ export interface WorkflowItem {
   description: string;
   icon: IconName;
   tag: string;
-  highlights: string[];
+  highlights: Feature[];
   mockData: {
     statusBadge: string;
     subtext: string;
@@ -24,7 +25,7 @@ export interface WorkflowItem {
   };
 }
 
-export type TabId = 'cred' | 'mon' | 'profile';
+export type TabId = 'provider' | 'team' | 'audit';
 
 export interface TabDef {
   id: TabId;
@@ -37,5 +38,5 @@ export interface BenefitItem {
   description: string;
   badge: string;
   icon: IconName;
-  detailPoints: string[];
+  detailPoints: Feature[];
 }

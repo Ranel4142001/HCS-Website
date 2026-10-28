@@ -8,8 +8,8 @@ export const BENEFITS: BenefitItem[] = [
     badge: 'Less paperwork',
     icon: 'sparkle',
     detailPoints: [
-      'Provider history pulled from CAQH ProView and existing documents',
-      'Secure document collection with AI-automated reminders',
+      'Secure document collection through the provider portal',
+      { text: 'Provider history pulled from CAQH ProView', soon: true },
       'No repeat requests for information you have already sent',
     ],
   },
@@ -22,7 +22,7 @@ export const BENEFITS: BenefitItem[] = [
     detailPoints: [
       'Live status for every provider file',
       'Bottlenecks flagged and escalated early',
-      'Views for leadership, operations and providers',
+      'Role-based views for providers, recruiters and coordinators',
     ],
   },
   {

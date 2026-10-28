@@ -3,11 +3,201 @@
 import React, { useState } from 'react';
 import Icon from '@/shared/components/ui/Icon';
 import type { TabId } from '../types';
-import { TABS } from '../content/dashboard';
+import {
+  TABS,
+  CHECKLIST_GROUPS,
+  UPCOMING_ASSIGNMENT,
+  OVERVIEW,
+  ADD_PROVIDERS,
+  PROVIDERS,
+  ROLES,
+  ROADMAP,
+  AUDIT_ROWS,
+  AUDIT_EVENT_GROUPS,
+  type Tone,
+} from '../content/dashboard';
 import './DashboardPreviewSection.css';
 
+const SECTIONS = CHECKLIST_GROUPS.flatMap((g) => g.sections);
+const COMPLETE = SECTIONS.filter((s) => s.percent === undefined).length;
+const PROGRESS = Math.round((COMPLETE / SECTIONS.length) * 100);
+
+interface CardProps {
+  title: string;
+  sub: string;
+  pill?: { text: string; tone: Tone };
+  wide?: boolean;
+  children: React.ReactNode;
+}
+
+function Card({ title, sub, pill, wide, children }: CardProps) {
+  return (
+    <div className={`rtv-card${wide ? ' rtv-card-wide' : ''}`}>
+      <div className="rtv-card-top">
+        <div>
+          <h3>{title}</h3>
+          <span className="rtv-sub">{sub}</span>
+        </div>
+        {pill && <Chip tone={pill.tone}>{pill.text}</Chip>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function Chip({ tone, children }: { tone: Tone; children: React.ReactNode }) {
+  return <span className={`rtv-chip rtv-chip--${tone}`}>{children}</span>;
+}
+
+/** Label/value rows, the building block of most cards. */
+function Rows({ rows }: { rows: { label: string; value: React.ReactNode }[] }) {
+  return (
+    <ul className="rtv-rows">
+      {rows.map((row) => (
+        <li key={row.label}>
+          <span>{row.label}</span>
+          <strong>{row.value}</strong>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ProviderChecklist() {
+  return (
+    <div className="rtv-grid">
+      <Card title="Credentialing progress" sub="What the provider sees when they sign in" wide pill={{ text: `${PROGRESS}% done`, tone: 'active' }}>
+        <div className="rtv-progress">
+          <div className="rtv-ring" style={{ '--p': PROGRESS } as React.CSSProperties}>
+            <span>{PROGRESS}%</span>
+          </div>
+          <div>
+            <p className="rtv-progress-title">You&rsquo;re {PROGRESS}% of the way there</p>
+            <p className="rtv-progress-sub">
+              {COMPLETE} of {SECTIONS.length} sections complete · each takes about 1 to 8 minutes
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      <Card title="Upcoming assignment" sub="Decides whose file is prepared first" pill={{ text: 'In progress', tone: 'active' }}>
+        <Rows rows={UPCOMING_ASSIGNMENT} />
+      </Card>
+
+      {CHECKLIST_GROUPS.map((group) => (
+        <Card key={group.title} title={group.title} sub={`${group.sections.length} sections`}>
+          <Rows
+            rows={group.sections.map((s) => ({
+              label: `${s.name} · ~${s.minutes} min`,
+              value: s.percent === undefined ? <Chip tone="done">Complete</Chip> : <Chip tone="active">{s.percent}% done</Chip>,
+            }))}
+          />
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function TeamConsole() {
+  return (
+    <div className="rtv-grid">
+      <Card title="Credentialing overview" sub="Every provider your team manages" wide>
+        <dl className="rtv-kpis">
+          {OVERVIEW.map((kpi) => (
+            <div key={kpi.label}>
+              <dt>{kpi.label}</dt>
+              <dd>{kpi.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </Card>
+
+      <Card title="Add providers" sub="Bring in one provider or a full roster">
+        <Rows rows={ADD_PROVIDERS} />
+      </Card>
+
+      <Card title="Providers" sub="Status and completion for each file">
+        <ul className="rtv-rows">
+          {PROVIDERS.map((p) => (
+            <li key={p.name}>
+              <span className="rtv-provider">
+                {p.name}
+                <span className="rtv-meter" role="img" aria-label={`${p.percent}% complete`}>
+                  <span style={{ width: `${p.percent}%` }} />
+                </span>
+              </span>
+              <Chip tone={p.tone}>{p.status}</Chip>
+            </li>
+          ))}
+        </ul>
+      </Card>
+
+      <Card title="Roles" sub="Each person sees only what their role allows">
+        <Rows rows={ROLES} />
+      </Card>
+
+      <Card title="Coming soon" sub="Planned, not live yet">
+        <Rows rows={ROADMAP.map((item) => ({ label: item, value: <Chip tone="neutral">Soon</Chip> }))} />
+      </Card>
+    </div>
+  );
+}
+
+function AuditTrail() {
+  return (
+    <div className="rtv-grid">
+      <Card title="Audit trail" sub="Who did what, and when" wide>
+        <table className="rtv-table">
+          <thead>
+            <tr>
+              <th scope="col">When</th>
+              <th scope="col">Who</th>
+              <th scope="col">Event</th>
+              <th scope="col">Record</th>
+            </tr>
+          </thead>
+          <tbody>
+            {AUDIT_ROWS.map((row) => (
+              <tr key={row.when}>
+                <td>{row.when}</td>
+                <td>
+                  <strong>{row.who}</strong>
+                  <span>{row.role}</span>
+                </td>
+                <td>{row.event}</td>
+                <td>{row.record}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
+
+      <Card title="A permanent record" sub="Nothing can be edited or removed" pill={{ text: 'Locked', tone: 'done' }}>
+        <ul className="rtv-checks">
+          <li><Icon name="check" /> Recorded the moment each action happens</li>
+          <li><Icon name="check" /> Viewing the log is logged too</li>
+          <li><Icon name="check" /> Filter by date range and event</li>
+        </ul>
+      </Card>
+
+      {AUDIT_EVENT_GROUPS.map((group) => (
+        <Card key={group.title} title={group.title} sub={group.sub}>
+          <Rows rows={group.events.map((event) => ({ label: event, value: <Chip tone="done">Logged</Chip> }))} />
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+const PANELS: Record<TabId, React.FC> = {
+  provider: ProviderChecklist,
+  team: TeamConsole,
+  audit: AuditTrail,
+};
+
 export const DashboardPreviewSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<TabId>('cred');
+  const [activeTab, setActiveTab] = useState<TabId>('provider');
+  const Panel = PANELS[activeTab];
 
   return (
     <section className="rtv-section" id="rtv">
@@ -21,25 +211,26 @@ export const DashboardPreviewSection: React.FC = () => {
         <div className="rtv-header">
           <div className="rtv-tag">
             <Icon name="bar" />
-            <span>Your credentialing dashboard</span>
+            <span>The HCStat credentialing portal</span>
           </div>
           <h2>See where every provider stands, at a glance</h2>
           <p className="rtv-subtitle">
-            Progress, recredentialing dates, expirations and alerts in one place. No more chasing updates by email. <em>Sample data shown.</em>
+            Providers complete a guided checklist. Your team tracks every file in one console. <em>Sample data shown.</em>
           </p>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="rtv-tabs-wrapper" role="tablist" aria-label="Provider network dashboards">
+        <div className="rtv-tabs-wrapper" role="tablist" aria-label="Portal views">
           {TABS.map((tab) => {
             const isActive = tab.id === activeTab;
             return (
               <button
                 key={tab.id}
                 type="button"
+                id={`rtv-tab-${tab.id}`}
                 className={`rtv-tab-btn ${isActive ? 'is-active' : ''}`}
                 role="tab"
                 aria-selected={isActive}
+                aria-controls="rtv-panel"
                 onClick={() => setActiveTab(tab.id)}
               >
                 {tab.label}
@@ -48,404 +239,8 @@ export const DashboardPreviewSection: React.FC = () => {
           })}
         </div>
 
-        {/* Dashboard Panels */}
-        <div className="rtv-viewport">
-          {activeTab === 'cred' && (
-            <div key="cred" className="rtv-panel">
-              <div className="rtv-grid">
-                {/* Card 1: Requests by Status */}
-                <div className="rtv-card rtv-card-wide">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Credentialing Requests by Status</h3>
-                      <span className="rtv-sub">Live pipeline distribution</span>
-                    </div>
-                    <span className="rtv-pill-green">358 Active</span>
-                  </div>
-                  <div className="rtv-status-breakdown">
-                    <div className="rtv-bar-track">
-                      <div className="rtv-bar-seg seg-prog" style={{ width: '35%' }} title="In Progress: 124" />
-                      <div className="rtv-bar-seg seg-ready" style={{ width: '22%' }} title="PSV Ready: 63" />
-                      <div className="rtv-bar-seg seg-comm" style={{ width: '43%' }} title="In Committee: 171" />
-                    </div>
-                    <div className="rtv-legend-row">
-                      <div className="rtv-legend-item">
-                        <span className="leg-dot seg-prog" />
-                        <span>In Progress: <strong>124</strong></span>
-                      </div>
-                      <div className="rtv-legend-item">
-                        <span className="leg-dot seg-ready" />
-                        <span>PSV Ready: <strong>63</strong></span>
-                      </div>
-                      <div className="rtv-legend-item">
-                        <span className="leg-dot seg-comm" />
-                        <span>In Committee: <strong>171</strong></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2: Turnaround Trend */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Turnaround Time</h3>
-                      <span className="rtv-sub">Days from intake to committee ready</span>
-                    </div>
-                    <span className="rtv-pill-cyan">-66% Speedup</span>
-                  </div>
-                  <div className="rtv-metric-big-row">
-                    <span className="rtv-stat-giant">1.2<small>days</small></span>
-                    <div className="rtv-spark-graph">
-                      <div className="spark-bar" style={{ height: '85%' }}><span className="bar-tag">30d</span></div>
-                      <div className="spark-bar" style={{ height: '60%' }}><span className="bar-tag">18d</span></div>
-                      <div className="spark-bar" style={{ height: '40%' }}><span className="bar-tag">9d</span></div>
-                      <div className="spark-bar active" style={{ height: '15%' }}><span className="bar-tag">1.2d</span></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3: Files Generated */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Files Generated</h3>
-                      <span className="rtv-sub">Audit-ready packets</span>
-                    </div>
-                    <span className="rtv-pill-green">+23% vs Q2</span>
-                  </div>
-                  <div className="rtv-counter-box">
-                    <span className="rtv-stat-giant">1,756</span>
-                    <span className="rtv-note"><Icon name="check" /> 100% primary source verified</span>
-                  </div>
-                </div>
-
-                {/* Card 4: Approval Composition */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Approval Time Allocation</h3>
-                      <span className="rtv-sub">Administrative vs Review</span>
-                    </div>
-                  </div>
-                  <div className="rtv-split-row">
-                    <div className="rtv-split-item">
-                      <strong className="split-num text-teal">20%</strong>
-                      <span className="split-label">AI Admin Intake</span>
-                    </div>
-                    <div className="rtv-split-divider" />
-                    <div className="rtv-split-item">
-                      <strong className="split-num text-cyan">80%</strong>
-                      <span className="split-label">Committee Decision</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 5: Upcoming Recredentials */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Upcoming Recredentials</h3>
-                      <span className="rtv-sub">Next 90 days expiration horizon</span>
-                    </div>
-                    <span className="rtv-pill-warn">124 Monitored</span>
-                  </div>
-                  <div className="rtv-recred-list">
-                    <div className="recred-item">
-                      <span>0–30 Days (AI-Automated Packets Dispatched)</span>
-                      <strong>38 Clinicians</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>31–60 Days (Pre-verification Queries)</span>
-                      <strong>49 Clinicians</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>61–90 Days (Scheduled Workflows)</span>
-                      <strong>37 Clinicians</strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'mon' && (
-            <div key="mon" className="rtv-panel">
-              <div className="rtv-grid">
-                {/* Card 1: Live Sanction Audit Logs */}
-                <div className="rtv-card rtv-card-wide">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Live Sanctions &amp; Disciplinary Audit Log</h3>
-                      <span className="rtv-sub">AI-automated 24/7 registries monitoring</span>
-                    </div>
-                    <span className="rtv-pill-green">100% Audit Ready</span>
-                  </div>
-                  <div className="rtv-audit-table">
-                    <div className="audit-row header">
-                      <span>Registry</span>
-                      <span>Scope</span>
-                      <span>Status</span>
-                      <span>Timestamp</span>
-                    </div>
-                    <div className="audit-row">
-                      <span className="audit-source">OIG-LEIE Database</span>
-                      <span>Network-wide (1,240 Clinicians)</span>
-                      <span className="audit-badge-pass"><Icon name="check" /> PASS - 0 Flags</span>
-                      <span className="text-muted">Today at 04:00 AM</span>
-                    </div>
-                    <div className="audit-row">
-                      <span className="audit-source">SAM.gov Federal Exclusions</span>
-                      <span>Network-wide (1,240 Clinicians)</span>
-                      <span className="audit-badge-pass"><Icon name="check" /> PASS - 0 Flags</span>
-                      <span className="text-muted">Today at 04:15 AM</span>
-                    </div>
-                    <div className="audit-row">
-                      <span className="audit-source">50 State Medical Boards</span>
-                      <span>Licenses &amp; Disciplinary Actions</span>
-                      <span className="audit-badge-pass"><Icon name="check" /> 100% Up to date</span>
-                      <span className="text-muted">Today at 04:45 AM</span>
-                    </div>
-                  </div>
-                </div>
-                {/* Card 2: NPDB Continuous Query */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>NPDB Verification Status</h3>
-                      <span className="rtv-sub">National Practitioner Data Bank</span>
-                    </div>
-                    <span className="rtv-pill-green">Enrolled</span>
-                  </div>
-                  <div className="rtv-donut-row">
-                    <div className="rtv-stat-giant text-teal">134</div>
-                    <div className="rtv-stat-desc">
-                      <div><strong className="text-teal">134 Clear</strong> &bull; No adverse reports</div>
-                      <div className="text-muted">12 Action items under specialist review</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3: Medicare Opt-Out & Exclusion */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Medicare Opt-Out &amp; OIG</h3>
-                      <span className="rtv-sub">Federal exclusions checking</span>
-                    </div>
-                    <span className="rtv-pill-green">145 Clear</span>
-                  </div>
-                  <div className="rtv-donut-row">
-                    <div className="rtv-stat-giant text-teal">145</div>
-                    <div className="rtv-stat-desc">
-                      <div><strong className="text-teal">145 Active &amp; Clear</strong></div>
-                      <div className="text-muted">0 Active federal sanctions detected</div>
-                    </div>
-                  </div>
-                </div>
-
-
-                {/* Card 4: Expiring Credentials */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Expiring Credentials</h3>
-                      <span className="rtv-sub">Next 60 days, renewals started</span>
-                    </div>
-                    <span className="rtv-pill-warn">9 Expiring</span>
-                  </div>
-                  <div className="rtv-recred-list">
-                    <div className="recred-item">
-                      <span>State medical licenses</span>
-                      <strong>4 Clinicians</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>DEA registrations</span>
-                      <strong>3 Clinicians</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>Board certifications</span>
-                      <strong>2 Clinicians</strong>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 5: Open Alerts */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Open Alerts</h3>
-                      <span className="rtv-sub">Flagged for specialist review</span>
-                    </div>
-                    <span className="rtv-pill-warn">2 Open</span>
-                  </div>
-                  <div className="rtv-recred-list">
-                    <div className="recred-item">
-                      <span>State board action reported</span>
-                      <strong>In review</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>New malpractice claim</span>
-                      <strong>In review</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>Exclusion list matches</span>
-                      <strong>None</strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'profile' && (
-            <div key="profile" className="rtv-panel">
-              <div className="rtv-grid">
-                {/* Card 1: Uploaded Documents Vault */}
-                <div className="rtv-card rtv-card-wide">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Secure Credential Document Vault</h3>
-                      <span className="rtv-sub">Every provider document in one secure place</span>
-                    </div>
-                    <span className="rtv-pill-green">Encrypted</span>
-                  </div>
-                  <div className="doc-vault-grid">
-                    <div className="vault-file">
-                      <Icon name="file" />
-                      <div className="file-meta">
-                        <strong>TX_Medical_License_2026.pdf</strong>
-                        <span>Verified with Texas Medical Board</span>
-                      </div>
-                      <span className="badge-verified"><Icon name="check" /> Verified</span>
-                    </div>
-                    <div className="vault-file">
-                      <Icon name="file" />
-                      <div className="file-meta">
-                        <strong>DEA_Registration_Cert.pdf</strong>
-                        <span>Verified with DEA Registry</span>
-                      </div>
-                      <span className="badge-verified"><Icon name="check" /> Verified</span>
-                    </div>
-                    <div className="vault-file">
-                      <Icon name="file" />
-                      <div className="file-meta">
-                        <strong>ABIM_Board_Cert.pdf</strong>
-                        <span>ABIM Primary Source Confirmed</span>
-                      </div>
-                      <span className="badge-verified"><Icon name="check" /> Verified</span>
-                    </div>
-                  </div>
-                </div>
-                {/* Card 2: 96% Profile Completion */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Profile Readiness</h3>
-                      <span className="rtv-sub">Clinician onboarding completion</span>
-                    </div>
-                    <span className="rtv-pill-green">96% Ready</span>
-                  </div>
-                  <div className="profile-completion-meter">
-                    <div className="meter-circle">
-                      <span className="meter-val">96%</span>
-                      <span className="meter-lbl">Complete</span>
-                    </div>
-                    <div className="meter-items">
-                      <div className="meter-item checked"><Icon name="check" /> Basic &amp; Contact Info</div>
-                      <div className="meter-item checked"><Icon name="check" /> State Medical Licenses (TX, CA)</div>
-                      <div className="meter-item checked"><Icon name="check" /> DEA &amp; Board Certifications</div>
-                      <div className="meter-item checked"><Icon name="check" /> Malpractice Insurance COI</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3: CAQH & Fast-Import */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>AI-Automated Data Imports</h3>
-                      <span className="rtv-sub">Zero duplicate data entry</span>
-                    </div>
-                    <span className="rtv-pill-cyan">CAQH Connected</span>
-                  </div>
-                  <div className="import-source-box">
-                    <div className="source-item">
-                      <div className="source-info">
-                        <Icon name="refresh" />
-                        <div>
-                          <strong>CAQH ProView Auto-Sync</strong>
-                          <span>Last synced 2 days ago &bull; 100% Attestation valid</span>
-                        </div>
-                      </div>
-                      <span className="badge-synced">Synced</span>
-                    </div>
-                    <div className="source-item">
-                      <div className="source-info">
-                        <Icon name="file" />
-                        <div>
-                          <strong>AI Resume &amp; CV Extraction</strong>
-                          <span>14 years work history extracted &amp; gap-checked</span>
-                        </div>
-                      </div>
-                      <span className="badge-synced">Extracted</span>
-                    </div>
-                  </div>
-                </div>
-
-
-                {/* Card 4: Work History */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Work History</h3>
-                      <span className="rtv-sub">Verified timeline, gaps explained</span>
-                    </div>
-                    <span className="rtv-pill-green">No Open Gaps</span>
-                  </div>
-                  <div className="rtv-recred-list">
-                    <div className="recred-item">
-                      <span>Current practice</span>
-                      <strong>2019–Present</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>Internal Medicine residency</span>
-                      <strong>2016–2019</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>Gap explained (relocation)</span>
-                      <strong>4 Months</strong>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 5: Requested From Provider */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Requested From Provider</h3>
-                      <span className="rtv-sub">Outstanding items, reminders automated</span>
-                    </div>
-                    <span className="rtv-pill-warn">2 Open</span>
-                  </div>
-                  <div className="rtv-recred-list">
-                    <div className="recred-item">
-                      <span>Updated malpractice COI</span>
-                      <strong>Due in 5 Days</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>Signed attestation</span>
-                      <strong>Due in 7 Days</strong>
-                    </div>
-                    <div className="recred-item">
-                      <span>Hospital privilege letter</span>
-                      <strong>Received</strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+        <div key={activeTab} id="rtv-panel" className="rtv-panel" role="tabpanel" aria-labelledby={`rtv-tab-${activeTab}`}>
+          <Panel />
         </div>
       </div>
     </section>

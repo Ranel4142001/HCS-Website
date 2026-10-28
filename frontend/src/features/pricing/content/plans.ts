@@ -11,8 +11,9 @@ export const PRICING_PLANS: PricingPlan[] = [
     ctaHref: '#contact',
     features: [
       'Full credentialing management',
-      'Secure document portal',
-      'Text and email status updates',
+      'Guided provider portal checklist',
+      'Email status updates',
+      { text: 'Text-message updates', soon: true },
       'Deadline tracking and renewals',
       'Recruiter communication handled',
     ],
@@ -28,7 +29,9 @@ export const PRICING_PLANS: PricingPlan[] = [
     buildsOn: 'Individual',
     features: [
       'Dedicated account manager',
-      'Bulk credentialing workflows',
+      'Team console with role-based access',
+      'Bulk provider import by CSV',
+      'Recruiter access limited to your agency',
       'Monthly compliance reports',
       'Priority turnaround',
     ],
@@ -44,10 +47,11 @@ export const PRICING_PLANS: PricingPlan[] = [
     ctaHref: '#contact',
     buildsOn: 'Group',
     features: [
-      'API and EHR integration',
-      'White-label portal option',
-      'Analytics dashboard',
+      'Audit trail that cannot be edited',
       'Dedicated compliance team',
+      { text: 'API and EHR integration', soon: true },
+      { text: 'White-label portal option', soon: true },
+      { text: 'Analytics dashboard', soon: true },
     ],
   },
 ];

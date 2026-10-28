@@ -10,7 +10,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     tag: 'Primary Source Verification',
     highlights: [
       'Verification against NPDB, OIG, SAM.gov and state licensing boards',
-      'AI automation assembles each verification packet as sources respond',
+      { text: 'AI-assembled verification packets', soon: true },
       'Committee-ready files with a complete audit trail',
     ],
     mockData: {
@@ -37,7 +37,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     tag: 'On-Time Renewals',
     highlights: [
       'Due dates tracked for every provider and every organization',
-      'AI-automated reminders for updated documents and attestations',
+      { text: 'Automated reminders for documents and attestations', soon: true },
       'CAQH ProView kept current and re-attested every 120 days',
     ],
     mockData: {
@@ -63,7 +63,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     icon: 'bell',
     tag: 'Ongoing Compliance',
     highlights: [
-      'AI-automated OIG-LEIE, SAM.gov and state board re-checks',
+      { text: 'Automated OIG-LEIE, SAM.gov and state board re-checks', soon: true },
       'Exclusion and license actions flagged to a specialist right away',
       'Timestamped audit log of every check',
     ],
