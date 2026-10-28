@@ -5,13 +5,7 @@ import Icon from '@/shared/components/ui/Icon';
 import { FAQ_DATA } from '../content/faq';
 import './FaqSection.css';
 
-interface FaqSectionProps {
-  /** Show only the first N questions (the homepage uses a shorter list). */
-  limit?: number;
-}
-
-export const FaqSection: React.FC<FaqSectionProps> = ({ limit }) => {
-  const items = limit ? FAQ_DATA.slice(0, limit) : FAQ_DATA;
+export const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (idx: number) => {
@@ -40,7 +34,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ limit }) => {
 
         <div className="faq-right">
           <div className="faq-list">
-            {items.map((item, idx) => {
+            {FAQ_DATA.map((item, idx) => {
               const isOpen = openIndex === idx;
               return (
                 <div key={idx} className={`faq-item ${isOpen ? 'is-open' : ''}`}>

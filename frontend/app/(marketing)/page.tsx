@@ -6,11 +6,10 @@ import {
   BenefitsSection,
 } from '@/features/home';
 import { EstimatorCard } from '@/features/estimator';
-import { PricingSection } from '@/features/pricing';
 import { TestimonialsSection, FoundingClientsSection } from '@/features/social-proof';
-import { FaqSection } from '@/features/faq';
 import { ContactWizard } from '@/features/contact';
 import { FloatingWidgets } from '@/features/quick-answers';
+import NextSteps, { PAGE_LINKS } from '@/shared/components/layout/NextSteps';
 
 /** Homepage: composes feature sections in reading order. Sections own their content and behavior. */
 export default function HomePage() {
@@ -26,11 +25,10 @@ export default function HomePage() {
         <DashboardPreviewSection />
         <BenefitsSection />
         <EstimatorCard />
-        <PricingSection />
         {/* Renders nothing until real, approved testimonials are added */}
         <TestimonialsSection />
         <FoundingClientsSection />
-        <FaqSection limit={6} />
+        <NextSteps links={[PAGE_LINKS.pricing, PAGE_LINKS.faq, PAGE_LINKS.guides]} tint />
         <ContactWizard />
       </main>
 

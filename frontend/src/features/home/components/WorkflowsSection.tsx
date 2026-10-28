@@ -42,7 +42,7 @@ export const WorkflowsSection: React.FC = () => {
           </div>
           <h2>Every credentialing workflow, handled end to end</h2>
           <p className="workflows-subtitle">
-            Credentialing specialists and AI automation work together to speed up the slow, multi-step credentialing tasks that keep providers from getting credentialed and generating revenue. HealthCredSTAT supports each provider from the first credentialing application through every recredentialing cycle.
+            From the first application to every recredentialing cycle, specialists and AI automation keep each file moving.
           </p>
         </div>
 

@@ -2,7 +2,8 @@ import type { Guide } from '../types';
 
 /**
  * Educational guides. Keep them factual and general: describe how credentialing works across the industry,
- * not promises about HealthCredSTAT's own turnaround or results. Update `updated` after each content review.
+ * not promises about HealthCredSTAT's own turnaround or results. Keep paragraphs to 2–3 short sentences and
+ * lead with the answer. Update `updated` after each content review.
  */
 
 export const howLongDoesCredentialingTake: Guide = {
@@ -10,73 +11,70 @@ export const howLongDoesCredentialingTake: Guide = {
   meta: {
     title: 'How Long Does Credentialing Take?',
     description:
-      'Typical credentialing and payer enrollment timelines, what happens at each stage, what causes delays and how to get providers billing sooner.',
+      'Typical provider credentialing timelines, what happens at each stage, what causes delays and how to get providers credentialed sooner.',
   },
   title: 'How long does credentialing take?',
-  lead:
-    'Most payer credentialing and enrollment takes about 60 to 180 days from a complete application, and commercial plans commonly take 90 to 120 days. Here is where that time goes and how to keep it from stretching further.',
-  updated: '2026-10-26',
+  lead: 'Plan for about 60 to 180 days from a complete application. Commercial health plans commonly take 90 to 120 days.',
+  updated: '2026-10-28',
   sections: [
     {
       heading: 'The short answer',
       paragraphs: [
-        'Plan for roughly three to six months from the day a complete application reaches a payer until the provider can bill it. Commercial health plans commonly take 90 to 120 days. Medicare applications are often processed faster, depending on the Medicare Administrative Contractor, and Medicaid timelines vary by state.',
-        'Hospital privileging runs on its own schedule, driven by when the credentials committee and governing body meet. A file that misses a meeting can wait another month.',
+        'Most health plans take three to six months. Medicare is often faster, and Medicaid timelines vary by state.',
+        'Hospitals work to their credentials committee’s meeting dates. A file that misses a meeting can wait another month.',
       ],
     },
     {
       heading: 'What happens during those months',
       ordered: true,
       list: [
-        'Preparation: collecting documents, completing and attesting the CAQH ProView profile, and confirming NPI and practice details.',
-        'Submission: sending each payer its own application, often through its own portal.',
-        'Verification: the payer confirms licenses, education, board certification, work history and malpractice history with the original sources.',
-        'Committee review: the payer’s credentialing committee approves the provider, usually on a fixed meeting schedule.',
-        'Contracting and loading: the participation agreement is signed and the provider is loaded into the payer’s systems with an effective date and provider ID.',
+        'Preparation: documents collected, CAQH ProView completed and attested, NPI and practice details confirmed.',
+        'Submission: each health plan gets its own application, often through its own portal.',
+        'Verification: licenses, education, board certification, work history and malpractice history are confirmed with the original sources.',
+        'Committee review: the credentialing committee approves the provider at its next meeting.',
+        'Approval: the provider gets an effective date and a provider ID.',
       ],
     },
     {
       heading: 'What slows credentialing down',
-      paragraphs: ['Most delays come from the application, not the payer’s queue:'],
+      paragraphs: ['Most delays come from the application, not the health plan’s queue:'],
       list: [
-        'Incomplete applications, missing dates or unsigned pages, which send the file back to the start',
-        'A CAQH profile that is not attested, or that still holds expired documents',
-        'Gaps in work history without a written explanation',
-        'Addresses, names or NPIs that do not match across NPPES, CAQH and the application',
-        'Payer panels that are closed to new providers in that specialty or area',
-        'Nobody following up, so a payer’s request for information sits unanswered',
+        'Missing dates, unsigned pages or incomplete sections',
+        'A CAQH profile that is not attested or holds expired documents',
+        'Work history gaps without a written explanation',
+        'Names, addresses or NPIs that do not match across NPPES, CAQH and the application',
+        'No one following up on requests for information',
       ],
     },
     {
-      heading: 'How to get providers billing sooner',
+      heading: 'How to get providers credentialed sooner',
       list: [
-        'Start as soon as the offer is signed, ideally 90 to 120 days before the start date.',
-        'Complete the CAQH profile fully and re-attest it every 120 days.',
+        'Start 90 to 120 days before the provider’s start date.',
+        'Complete CAQH fully and re-attest every 120 days.',
         'Gather every document before the first application goes out.',
-        'Submit to all payers at the same time rather than one after another.',
-        'Follow up with each payer on a fixed schedule and answer requests the same day.',
-        'Record each effective date and provider ID so billing can start immediately.',
+        'Apply to all health plans at the same time.',
+        'Follow up on a fixed schedule and answer requests the same day.',
       ],
     },
   ],
   faqs: [
     {
-      q: 'Can a provider bill while credentialing is pending?',
-      a: 'Usually not as an in-network provider. Some payers, including Medicare, allow limited retroactive billing back to an effective date, but rules differ by payer, so confirm with each one before seeing its members.',
+      q: 'Can a provider see patients while credentialing is pending?',
+      a: 'Usually not as an in-network provider. Some health plans, including Medicare, allow limited retroactive dates, so confirm with each plan first.',
     },
     {
       q: 'Does recredentialing take as long?',
-      a: 'It is usually less work because the provider is already on file, but it runs on a fixed cycle, commonly every three years. Missing a recredentialing deadline can remove a provider from the network.',
+      a: 'It is usually less work because the provider is already on file. It runs on a fixed cycle, commonly every three years.',
     },
     {
-      q: 'Can a credentialing service shorten a payer’s review?',
-      a: 'No one can speed up a payer’s internal review. What a service can do is avoid rejections and resubmissions, and keep every application moving with consistent follow-up — which is where most lost time comes from.',
+      q: 'Can a credentialing service shorten a health plan’s review?',
+      a: 'No one can speed up a plan’s internal review. A service avoids rejections and keeps every application moving, which is where most time is lost.',
     },
   ],
   related: [
     { label: 'Estimate your timeline', href: '/#estimator' },
     { label: 'CAQH ProView guide', href: '/guides/caqh-proview-guide' },
-    { label: 'Recredentialing requirements', href: '/guides/recredentialing-requirements' },
+    { label: 'Provider credentialing', href: '/solutions/cvo-credentialing' },
   ],
 };
 
@@ -85,45 +83,44 @@ export const caqhProviewGuide: Guide = {
   meta: {
     title: 'CAQH ProView Guide for Providers',
     description:
-      'How to set up CAQH ProView, what to upload, how re-attestation every 120 days works and the common mistakes that stall payer credentialing.',
+      'How to set up CAQH ProView, what to upload, how re-attestation every 120 days works and the common mistakes that stall credentialing.',
   },
   title: 'CAQH ProView: a practical guide for providers',
-  lead:
-    'Most commercial health plans pull credentialing data from CAQH ProView. A complete, attested profile is one of the simplest ways to avoid delays — and an expired one is one of the most common reasons applications stall.',
-  updated: '2026-10-26',
+  lead: 'Most commercial health plans pull credentialing data from CAQH ProView. A complete, attested profile is one of the simplest ways to avoid delays.',
+  updated: '2026-10-28',
   sections: [
     {
       heading: 'What CAQH ProView is',
       paragraphs: [
-        'CAQH ProView is an online database where providers enter their professional and practice information once. Participating health plans then access that profile instead of each asking for the same forms and documents.',
-        'It is free for providers. Medicare does not use CAQH — Medicare enrollment goes through PECOS — but many commercial plans and some Medicaid managed care plans require a current CAQH profile before they will process an application.',
+        'An online profile where providers enter their professional information once. Health plans read it instead of each asking for the same forms.',
+        'It is free for providers. Many commercial and Medicaid managed care plans require a current profile before they process an application.',
       ],
     },
     {
       heading: 'Setting up a profile',
       ordered: true,
       list: [
-        'Register on the CAQH ProView website, or use the CAQH ID a health plan sent you.',
-        'Complete every section: personal details, education and training, licenses, practice locations, hospital affiliations, work history, malpractice coverage and the disclosure questions.',
-        'Upload supporting documents, such as your license, DEA registration, board certification, malpractice certificate and CV.',
-        'Authorize the health plans you work with to view your profile.',
+        'Register on CAQH ProView, or use the CAQH ID a health plan sent you.',
+        'Complete every section, including work history, practice locations, malpractice coverage and disclosures.',
+        'Upload your license, DEA registration, board certification, malpractice certificate and CV.',
+        'Authorize each health plan you work with to view your profile.',
         'Review everything and attest that it is accurate.',
       ],
     },
     {
       heading: 'Re-attestation every 120 days',
       paragraphs: [
-        'CAQH asks providers to re-attest their profile every 120 days. If the attestation lapses, health plans can no longer rely on the profile, and applications and recredentialing can stall until it is updated.',
-        'Set reminders ahead of each due date, and update the profile whenever something changes — a new practice location, a renewed malpractice policy or a new license — rather than waiting for the next attestation.',
+        'Re-attest every 120 days. If the attestation lapses, credentialing and recredentialing can stall.',
+        'Update the profile as soon as something changes, such as a new location, license or malpractice policy.',
       ],
     },
     {
       heading: 'Common mistakes that stall applications',
       list: [
-        'Expired documents left on the profile after they were renewed',
-        'Gaps in work history without a written explanation',
-        'Practice locations that do not match the payer application or NPPES',
-        'Not authorizing the health plan that is processing the application',
+        'Expired documents left on the profile',
+        'Work history gaps without a written explanation',
+        'Practice locations that do not match the application or NPPES',
+        'Not authorizing the health plan reviewing the application',
         'A missed re-attestation date',
       ],
     },
@@ -131,21 +128,21 @@ export const caqhProviewGuide: Guide = {
   faqs: [
     {
       q: 'Does CAQH ProView cost anything for providers?',
-      a: 'No. CAQH ProView is free for providers; participating health plans fund it.',
+      a: 'No. It is free for providers; participating health plans fund it.',
     },
     {
       q: 'Is a CAQH profile the same as being credentialed?',
-      a: 'No. CAQH is a source of information. Each health plan still verifies the details and approves the provider through its own credentialing process.',
+      a: 'No. CAQH is a source of information. Each health plan still verifies the details and approves the provider itself.',
     },
     {
       q: 'What happens if my CAQH profile expires?',
-      a: 'Health plans lose access to a current profile, so pending applications and recredentialing may pause. Log in, update anything that changed and re-attest to restore it.',
+      a: 'Pending applications and recredentialing may pause. Log in, update anything that changed and re-attest to restore it.',
     },
   ],
   related: [
     { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
-    { label: 'How to get credentialed with insurers', href: '/guides/how-to-get-credentialed-with-insurance-companies' },
     { label: 'Recredentialing requirements', href: '/guides/recredentialing-requirements' },
+    { label: 'Credentialing for digital health', href: '/who-we-help/digital-health' },
   ],
 };
 
@@ -154,57 +151,56 @@ export const howToGetCredentialed: Guide = {
   meta: {
     title: 'How to Get Credentialed With Insurers',
     description:
-      'A step-by-step guide to getting credentialed with insurance companies: NPI, licenses, CAQH, Medicare and Medicaid enrollment, commercial payers and follow-up.',
+      'A step-by-step guide to getting credentialed with health plans: NPI, licenses, CAQH, applications, committee approval and follow-up.',
   },
   title: 'How to get credentialed with insurance companies',
-  lead:
-    'Getting in-network with insurers follows the same path for most providers: get your identifiers and licenses in order, build your CAQH profile, then apply to each payer and follow up until you have an effective date.',
-  updated: '2026-10-26',
+  lead: 'Get your identifiers and licenses in order, build your CAQH profile, then apply to each health plan and follow up until you are approved.',
+  updated: '2026-10-28',
   sections: [
     {
       heading: 'Step by step',
       ordered: true,
       list: [
-        'Get an NPI. Individual providers need a Type 1 NPI from NPPES; groups also need a Type 2 organizational NPI.',
-        'Confirm your licenses. Your state license — and DEA and state controlled-substance registrations, if you prescribe — must be active in the state where you practice.',
-        'Complete and attest your CAQH ProView profile so commercial payers can access your information.',
-        'Choose your payers. Start with the plans your patients use most, and check whether each plan’s network is open to your specialty in your area.',
-        'Enroll with Medicare through PECOS and with your state Medicaid program, if you will see those patients. Groups also need their own enrollment and reassignment of benefits.',
-        'Apply to each commercial payer. Most require a credentialing application and then a participation agreement.',
-        'Follow up regularly, and answer every request for information quickly.',
-        'Confirm your effective date and provider ID with each payer before billing, and set reminders for recredentialing.',
+        'Get an NPI. Individuals need a Type 1 NPI; groups also need a Type 2.',
+        'Confirm your state license, and DEA registration if you prescribe, is active where you practice.',
+        'Complete and attest your CAQH ProView profile.',
+        'Choose your health plans, starting with the ones your patients use most. Check each network is open to your specialty.',
+        'Apply to each plan. Medicare and Medicaid have their own applications.',
+        'Follow up regularly and answer every request quickly.',
+        'Confirm your effective date and provider ID, and note your recredentialing date.',
       ],
     },
     {
       heading: 'Credentialing vs. contracting',
       paragraphs: [
-        'Credentialing is the payer verifying that you are qualified. Contracting is the agreement that sets the terms and rates of your participation. You usually need both before you are in-network, and they can happen in sequence, so ask each payer where your file stands in each step.',
+        'Credentialing verifies you are qualified. Contracting sets the terms and rates. You usually need both to be in-network.',
       ],
     },
     {
       heading: 'Doing it yourself or getting help',
       paragraphs: [
-        'Many solo providers handle credentialing themselves. It mostly takes time and attention to detail: one application per payer, documents kept current and follow-up every couple of weeks. Practices that add providers often, or work with many payers, usually find it more efficient to use dedicated staff or a credentialing service, because each delay pushes back revenue.',
+        'Many solo providers credential themselves. It takes time: one application per plan, current documents and regular follow-up.',
+        'Practices that add providers often usually save time with dedicated staff or a credentialing service.',
       ],
     },
   ],
   faqs: [
     {
       q: 'How long does it take to get credentialed?',
-      a: 'Commonly three to six months from a complete application, and 90 to 120 days for many commercial plans. See our timeline guide for what affects it.',
+      a: 'Commonly three to six months from a complete application. See our timeline guide for what affects it.',
     },
     {
       q: 'Can I see patients before I am credentialed with their insurer?',
-      a: 'You can usually see them as an out-of-network provider or on a self-pay basis, but you cannot bill the plan as in-network until your participation is effective. Rules vary, so check with the payer first.',
+      a: 'Usually only as out-of-network or self-pay. Rules vary, so check with the health plan first.',
     },
     {
       q: 'What is the difference between credentialing and enrollment?',
-      a: 'The terms are often used interchangeably. Strictly, credentialing verifies a provider’s qualifications, while enrollment sets the provider up with a payer — such as Medicare — so claims can be paid.',
+      a: 'The terms are often used interchangeably. Strictly, credentialing verifies qualifications, while enrollment sets the provider up with a plan such as Medicare.',
     },
   ],
   related: [
     { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
-    { label: 'Recredentialing requirements', href: '/guides/recredentialing-requirements' },
+    { label: 'CAQH ProView guide', href: '/guides/caqh-proview-guide' },
     { label: 'Credentialing for provider groups', href: '/who-we-help/provider-groups' },
   ],
 };
@@ -214,66 +210,65 @@ export const recredentialingRequirements: Guide = {
   meta: {
     title: 'Recredentialing Requirements for Providers',
     description:
-      'How often providers must be recredentialed, what payers and hospitals re-verify, how it differs from Medicare revalidation and how to avoid lapses.',
+      'How often providers must be recredentialed, what health plans and hospitals re-verify and how to avoid lapses.',
   },
   title: 'Recredentialing requirements for providers',
-  lead:
-    'Credentialing is not a one-time event. Health plans and hospitals re-verify every provider on a fixed cycle, and a missed deadline can remove a provider from a network or suspend their privileges.',
+  lead: 'Health plans and hospitals re-verify every provider on a fixed cycle. A missed deadline can remove a provider from a network.',
   updated: '2026-10-28',
   sections: [
     {
       heading: 'How often recredentialing happens',
       list: [
-        'Health plans: at least every 36 months under NCQA credentialing standards, which most commercial and many Medicaid managed care plans follow. Some plans use a shorter cycle.',
-        'Hospitals: medical staff reappointment and privileges are commonly renewed every two years, as accreditation standards typically require.',
-        'CAQH ProView: re-attestation every 120 days keeps the profile available to plans during recredentialing.',
+        'Health plans: at least every 36 months under NCQA standards. Some plans use a shorter cycle.',
+        'Hospitals: reappointment and privileges commonly every two years.',
+        'CAQH ProView: re-attestation every 120 days.',
       ],
     },
     {
       heading: 'What is re-verified',
       list: [
-        'Current, unrestricted state licenses, and DEA and state controlled-substance registrations',
-        'Board certification status',
-        'Malpractice insurance coverage and claims history since the last cycle',
-        'Sanctions and exclusions, including the OIG exclusion list and state Medicaid exclusions',
+        'State licenses and DEA registrations',
+        'Board certification',
+        'Malpractice coverage and claims since the last cycle',
+        'Sanctions and exclusions, such as the OIG list',
         'Hospital privileges and practice information',
-        'For many plans and hospitals, quality data such as complaints and performance reviews',
+        'For many organizations, quality data such as complaints',
       ],
     },
     {
       heading: 'Recredentialing vs. Medicare revalidation',
       paragraphs: [
-        'They are separate processes. Recredentialing is a health plan or hospital re-verifying a provider’s qualifications. Medicare revalidation is CMS confirming the provider’s enrollment information, generally every five years. A provider can be current on one and overdue on the other, so track both.',
+        'They are separate. Recredentialing re-verifies qualifications. Medicare revalidation confirms enrollment details, generally every five years. Track both.',
       ],
     },
     {
       heading: 'Avoiding lapses',
       list: [
-        'Keep one calendar of every recredentialing, reappointment, revalidation and license expiration date.',
-        'Start each renewal 90 to 120 days before it is due.',
-        'Keep CAQH attested and documents current between cycles, so plans can complete their review without new requests.',
-        'Respond to payer and medical staff office requests promptly.',
-        'Monitor licenses and exclusion lists between cycles rather than waiting for the next review.',
+        'Keep one calendar of every due date and expiration.',
+        'Start each renewal 90 to 120 days early.',
+        'Keep CAQH attested and documents current between cycles.',
+        'Answer health plan and medical staff requests promptly.',
+        'Monitor licenses and exclusion lists between cycles.',
       ],
     },
   ],
   faqs: [
     {
       q: 'What happens if a provider misses recredentialing?',
-      a: 'The plan can terminate the provider’s participation. Rejoining usually means submitting a new initial application, and claims for services in the gap may not be paid as in-network.',
+      a: 'The plan can end the provider’s participation. Rejoining usually means a new initial application.',
     },
     {
       q: 'Is recredentialing faster than initial credentialing?',
-      a: 'It usually involves less work because the provider is already on file, but it still depends on complete, current information and timely responses.',
+      a: 'Usually, because the provider is already on file. It still depends on current information and quick responses.',
     },
     {
       q: 'Do providers have to re-apply from scratch?',
-      a: 'No. Most plans send a recredentialing request and rely on the CAQH profile, so the work is mainly confirming that information and documents are current.',
+      a: 'No. Most plans rely on the CAQH profile, so the work is confirming everything is still current.',
     },
   ],
   related: [
     { label: 'CAQH ProView guide', href: '/guides/caqh-proview-guide' },
-    { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
+    { label: 'Credentialing for health systems', href: '/who-we-help/health-systems' },
     { label: 'Provider credentialing', href: '/solutions/cvo-credentialing' },
   ],
 };

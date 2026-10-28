@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import JsonLd from '@/shared/components/seo/JsonLd';
 import Icon from '@/shared/components/ui/Icon';
+import NextSteps from '@/shared/components/layout/NextSteps';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/shared/lib/seo';
 import type { SolutionContent } from '../types';
 import './SolutionPage.css';
@@ -119,16 +120,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
           </div>
         </section>
 
-        <section className="sol-section">
-          <div className="container sol-narrow">
-            <h2 className="sol-block-title">Related services</h2>
-            <ul className="sol-related">
-              {content.related.map((r) => (
-                <li key={r.href}><Link href={r.href}>{r.label} →</Link></li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        <NextSteps links={content.related} />
 
         <section className="sol-cta-banner" style={accent}>
           <div className="container sol-cta-inner">

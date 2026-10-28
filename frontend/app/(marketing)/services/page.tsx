@@ -2,6 +2,7 @@ import { SolutionsOverview } from '@/features/solutions';
 import { WorkflowsSection, DashboardPreviewSection } from '@/features/home';
 import { ContactWizard } from '@/features/contact';
 import PageIntro from '@/shared/components/layout/PageIntro';
+import NextSteps, { PAGE_LINKS } from '@/shared/components/layout/NextSteps';
 
 export default function ServicesPage() {
   return (
@@ -14,6 +15,7 @@ export default function ServicesPage() {
       <SolutionsOverview />
       <WorkflowsSection />
       <DashboardPreviewSection />
+      <NextSteps links={[PAGE_LINKS.pricing, PAGE_LINKS.faq, PAGE_LINKS.guides]} />
       <ContactWizard />
     </main>
   );

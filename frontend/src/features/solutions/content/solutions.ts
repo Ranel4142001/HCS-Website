@@ -78,7 +78,7 @@ export const cvoCredentialing: SolutionContent = {
     },
     {
       q: 'What is primary source verification?',
-      a: 'Primary source verification means confirming a credential directly with the organization that issued it, such as the state licensing board or the certifying board, rather than relying on a copy supplied by the provider.',
+      a: 'It means confirming a credential directly with the organization that issued it, such as the state medical board. A copy from the provider is not enough.',
     },
     {
       q: 'How often do providers need to be recredentialed?',

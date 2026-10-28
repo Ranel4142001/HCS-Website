@@ -28,7 +28,7 @@ export const providerGroups: SolutionContent = {
     title: 'Growth stalls when credentialing lags',
     paragraphs: [
       'Recruiting a provider takes months, and credentialing can take months more. A provider who is hired but not yet credentialed is a cost without revenue.',
-      'Many practices rely on one or two busy staff members and spreadsheets. When that person is out, files stall. We give you a dedicated team, a clear status for every provider and a process that does not depend on one person.',
+      'Many practices rely on one busy staff member and a spreadsheet. When that person is out, files stall. We give you a dedicated team and a clear status for every provider.',
     ],
   },
   included: {
@@ -161,7 +161,7 @@ export const healthPlans: SolutionContent = {
     },
     {
       q: 'What should be monitored between credentialing cycles?',
-      a: 'License status and disciplinary actions, Medicare and Medicaid sanctions, the OIG exclusion list, SAM.gov and Medicare opt-out status, so issues are caught when they happen rather than at the next cycle.',
+      a: 'License actions, Medicare and Medicaid sanctions, OIG, SAM.gov and Medicare opt-out status. Issues are caught when they happen, not at the next cycle.',
     },
   ],
   related: [

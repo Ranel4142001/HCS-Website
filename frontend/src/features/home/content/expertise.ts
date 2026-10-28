@@ -6,7 +6,7 @@ export const EXPERTISE_ITEMS: ExpertiseItem[] = [
     label: 'step in the moment AI automation hits a snag',
     num: '01',
     title: 'Specialists in the loop',
-    body: 'When a source does not respond or a document is missing, a credentialing specialist takes over right away — so files keep moving instead of sitting in a queue.',
+    body: 'When a source goes quiet or a document is missing, a specialist steps in right away, so files keep moving.',
     iconName: 'users',
   },
   {

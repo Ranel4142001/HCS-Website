@@ -56,9 +56,9 @@ For local settings, copy `frontend/.env.example` to `frontend/.env.local`.
 | :--- | :--- |
 | `/` | Landing page |
 | `/about`, `/services`, `/pricing`, `/faq`, `/contact` | Core pages |
-| `/solutions/*` | Solution pages (CVO, enrollment, roster, delegated, privileging, licensing) |
+| `/solutions/cvo-credentialing` | Provider credentialing (CVO) |
+| `/guides`, `/guides/*` | Credentialing guides |
 | `/who-we-help/*` | Audience pages |
-| `/resources/*`, `/company/*` | Resources and company pages |
 | `/sitemap.xml`, `/robots.txt` | Generated for search engines |
 
 ## Deployment (Vercel + GoDaddy DNS)

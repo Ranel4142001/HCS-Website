@@ -1,15 +1,16 @@
 export const STORY = {
   title: 'Why we exist',
   paragraphs: [
-    'Credentialing is one of the least visible parts of healthcare — and one of the most expensive when it goes wrong. A provider who is hired but not yet credentialed cannot bill most payers. A missed recredentialing date can take a provider out of network overnight. And the work usually falls on a small team juggling portals, spreadsheets and phone queues.',
-    'We started HealthCredSTAT to fix that: a dedicated team that owns the process end to end, supported by technology that keeps every application moving and every date tracked.',
+    'Credentialing is easy to overlook and costly to get wrong. A provider who is not yet credentialed cannot see most insured patients, and a missed recredentialing date can drop them from a network.',
+    'The work usually falls on a small team juggling portals, spreadsheets and phone queues.',
+    'We started HealthCredSTAT to fix that: one dedicated team that owns the process, with technology that keeps every file moving and every date tracked.',
   ],
 };
 
 export const PRINCIPLES = [
   {
     title: 'Own the outcome',
-    text: 'We do not just submit applications. We follow every one until the provider is approved and billing — and tell you exactly where it stands along the way.',
+    text: 'We do not just submit applications. We follow every file until the provider is approved, and tell you where it stands along the way.',
   },
   {
     title: 'Get it right the first time',

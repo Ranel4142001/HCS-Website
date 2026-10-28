@@ -69,7 +69,7 @@ export const NAV_MENUS: NavMenu[] = [
         { label: 'Dr. Ivan Mora', tag: 'Credentialed', tagTone: 'green' },
         { label: 'Gary Smith', tag: 'In Progress', tagTone: 'teal' },
       ],
-      caption: 'Let us show you how HealthCredSTAT will transform your operations',
+      caption: 'See where every provider stands, at a glance',
       cta: { href: '/#contact', label: 'LEARN MORE' },
     },
   },
@@ -118,23 +118,13 @@ export const FOOTER_COLUMNS: NavGroup[][] = [
       links: [
         { href: '/services', label: 'All services' },
         { href: '/solutions/cvo-credentialing', label: 'Provider credentialing' },
-        { href: '/solutions/cvo-credentialing', label: 'Primary source verification' },
         { href: '/guides/recredentialing-requirements', label: 'Recredentialing' },
-        { href: '/#workflows', label: 'Continuous monitoring' },
+        { href: '/services#workflows', label: 'Continuous monitoring' },
+        { href: '/pricing', label: 'Pricing' },
       ],
     },
   ],
   [
-    {
-      heading: 'Platform',
-      links: [
-        { href: '/#rtv', label: 'Provider data management' },
-        { href: '/#workflows', label: 'CredAlliance™' },
-        { href: '/#workflows', label: 'AI operations engine' },
-        { href: '/#platform', label: 'Modern platform architecture' },
-        { href: '/pricing', label: 'Transparent pricing' },
-      ],
-    },
     {
       heading: 'Who We Help',
       links: [

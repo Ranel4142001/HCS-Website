@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import NextSteps from '@/shared/components/layout/NextSteps';
 import JsonLd from '@/shared/components/seo/JsonLd';
 import { articleSchema, breadcrumbSchema, faqSchema } from '@/shared/lib/seo';
 import type { Guide, GuideSection } from '../types';
@@ -79,20 +80,12 @@ export function GuidePage({ guide }: { guide: Guide }) {
           </div>
         </section>
 
-        <section className="sol-section">
-          <div className="container sol-narrow">
-            <h2 className="sol-block-title">Keep reading</h2>
-            <ul className="sol-related">
-              {guide.related.map((r) => (
-                <li key={r.href}><Link href={r.href}>{r.label} →</Link></li>
-              ))}
-            </ul>
-            <div className="guide-cta">
-              <p>Would you rather have a specialist handle it? Tell us about your providers and we will send a quote and a realistic timeline.</p>
-              <Link href="/contact" className="btn-sol-primary">Get a free quote</Link>
-            </div>
+        <NextSteps links={guide.related}>
+          <div className="guide-cta">
+            <p>Rather have a specialist handle it? Get a quote and a realistic timeline.</p>
+            <Link href="/contact" className="btn-sol-primary">Get a free quote</Link>
           </div>
-        </section>
+        </NextSteps>
       </main>
     </>
   );

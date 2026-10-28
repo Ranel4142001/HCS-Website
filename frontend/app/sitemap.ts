@@ -5,8 +5,7 @@ import { GUIDES, guidePath } from '@/features/guides';
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>;
 
-// Indexable pages only. Placeholder pages (blog, library, case studies, newsroom, team,
-// careers, compliance) are noindexed: add them here once they have real content.
+// Every page on the site is listed here.
 const CORE_PAGES: { path: string; priority: number; changeFrequency: ChangeFrequency }[] = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' },
   { path: '/pricing', priority: 0.9, changeFrequency: 'weekly' },

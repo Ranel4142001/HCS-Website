@@ -1,50 +1,49 @@
 import type { FaqItem } from '@/shared/lib/seo';
 
 /**
- * Main FAQ. Shown in full on /faq (with FAQPage structured data) and as a
- * shorter list on the homepage. Answer the question in the first sentence —
- * that is the part search engines quote.
+ * Main FAQ. Shown in full on /faq (with FAQPage structured data). Answer the question in the
+ * first sentence — that is the part search engines quote — and keep each answer to 2–3 short sentences.
  */
 export const FAQ_DATA: FaqItem[] = [
   {
     q: 'What is medical credentialing?',
-    a: 'Medical credentialing is the process of verifying that a healthcare provider is qualified to treat patients — confirming their license, education, training, board certification, work history, malpractice history and any sanctions. Hospitals, medical groups and health plans all credential providers, and insurers require it before a provider can bill them.',
+    a: 'Credentialing confirms a provider is qualified to treat patients. It checks their license, education, training, board certification, work history, malpractice history and sanctions. Hospitals, medical groups and health plans all require it.',
   },
   {
     q: 'What is primary source verification?',
-    a: 'Primary source verification means confirming each credential directly with the organization that issued it, such as the state licensing board or the certifying board, rather than relying on copies supplied by the provider. It is the foundation of every credentialing file.',
+    a: 'It means confirming each credential directly with the organization that issued it, such as the state medical board. Copies from the provider are not enough. Every credentialing file is built on it.',
   },
   {
     q: 'How long does provider credentialing take?',
-    a: 'It depends on the organization and how complete the provider’s information is. Health plan credentialing commonly takes 90 to 120 days. The biggest delays come from incomplete applications and slow responses, which is why we check every file and follow up with each source on a set schedule.',
+    a: 'Health plan credentialing commonly takes 90 to 120 days. Most delays come from incomplete applications and slow source responses. We check every file up front and follow up with each source on a set schedule.',
   },
   {
     q: 'What documents are needed for provider credentialing?',
-    a: 'Most payers and facilities ask for: an NPI, state license, DEA and state controlled substance registrations (if applicable), board certification, a CV with month/year dates and gap explanations, malpractice insurance certificate and claims history, education and training certificates, and an up-to-date CAQH ProView profile.',
+    a: 'Usually an NPI, state license, DEA registration (if applicable), board certification, a CV with month/year dates, malpractice insurance and claims history, education certificates and a current CAQH ProView profile.',
   },
   {
     q: 'What is CAQH ProView (now DataSpring) and why does it matter?',
-    a: 'CAQH ProView is the online profile most commercial health plans use to collect provider credentialing data. In June 2026 CAQH rebranded as DataSpring, and the profile now lives in its Provider Data Portal, though most payers and providers still call it CAQH. Payers pull information directly from it, so it must be complete, include current documents, grant access to each payer and be re-attested every 120 days for most providers. An outdated CAQH profile is one of the most common causes of delays.',
+    a: 'CAQH ProView is the profile most commercial health plans pull credentialing data from. CAQH became DataSpring in June 2026. Keep the profile complete and re-attest every 120 days, or applications stall.',
   },
   {
     q: 'How much do credentialing services cost?',
-    a: 'For individual clinicians, our credentialing management starts at $599 per assignment. Groups and enterprises receive custom pricing based on the number of providers and services needed. Use our timeline estimator or request a free quote for exact pricing.',
+    a: 'Credentialing for an individual clinician starts at $599 per assignment. Groups and enterprises get custom pricing based on provider count and services. Request a free quote for exact pricing.',
   },
   {
     q: 'Why outsource credentialing instead of doing it in-house?',
-    a: 'Credentialing is detailed, deadline-driven work, and in many practices it falls on one or two busy staff members. Outsourcing gives you a dedicated team that knows the requirements, consistent follow-up and a clear status for every provider — without hiring and training more staff.',
+    a: 'In many practices, credentialing falls on one or two busy staff members. Outsourcing gives you a dedicated team, consistent follow-up and a clear status for every provider, without hiring more staff.',
   },
   {
     q: 'What is a Credentials Verification Organization (CVO)?',
-    a: 'A CVO is an organization that verifies healthcare practitioners’ credentials on behalf of hospitals, medical groups and health plans. It performs primary source verification — confirming each credential directly with the issuing source — while the organization that hired it keeps the final credentialing decision.',
+    a: 'A CVO verifies providers’ credentials on behalf of hospitals, medical groups and health plans. It performs primary source verification, while your organization keeps the final credentialing decision.',
   },
   {
     q: 'How often do providers need to be recredentialed?',
-    a: 'Under NCQA standards, providers are recredentialed at least every 36 months. Hospitals reappoint medical staff on the cycle set by their bylaws, and most providers must re-attest their CAQH (DataSpring) profile every 120 days. We track all of these dates for you.',
+    a: 'At least every 36 months under NCQA standards. Hospitals reappoint on the cycle set by their bylaws, and CAQH profiles need re-attesting every 120 days. We track all of these dates for you.',
   },
   {
     q: 'How does ongoing monitoring work?',
-    a: 'Between credentialing cycles, we check providers against federal and state sanctions and exclusion sources — such as the OIG exclusion list, SAM.gov and state Medicaid exclusion lists — and track license, DEA and certification expiration dates, so you are alerted before an issue affects patient care or billing.',
+    a: 'Between cycles, we check providers against sanction and exclusion lists such as OIG and SAM.gov. We also track license, DEA and certification expiry dates and alert you before anything lapses.',
   },
   {
     q: 'Can you take over credentialing files already in progress?',

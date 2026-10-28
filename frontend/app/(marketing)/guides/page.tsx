@@ -1,6 +1,7 @@
 import { GuidesList } from '@/features/guides';
 import PageIntro from '@/shared/components/layout/PageIntro';
 import { buildMetadata } from '@/shared/lib/seo';
+import NextSteps, { PAGE_LINKS } from '@/shared/components/layout/NextSteps';
 
 export const metadata = buildMetadata({
   title: 'Credentialing Guides for Providers',
@@ -18,6 +19,7 @@ export default function GuidesPage() {
         lede="How credentialing works, what slows it down and how to get providers ready sooner."
       />
       <GuidesList />
+      <NextSteps links={[PAGE_LINKS.services, PAGE_LINKS.faq, PAGE_LINKS.pricing]} />
     </main>
   );
 }

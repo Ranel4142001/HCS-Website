@@ -4,7 +4,7 @@ export const BENEFITS: BenefitItem[] = [
   {
     num: '01',
     title: 'Collect provider data once',
-    description: 'Providers hate filling out the same information over and over. We gather it once, keep it current, and reuse it for every facility, health plan and renewal.',
+    description: 'We gather provider information once, keep it current and reuse it for every facility, health plan and renewal.',
     badge: 'Less paperwork',
     icon: 'sparkle',
     detailPoints: [
@@ -16,7 +16,7 @@ export const BENEFITS: BenefitItem[] = [
   {
     num: '02',
     title: 'Know the status of every file',
-    description: 'Credentialing, recredentialing and monitoring status in one place, so nothing falls through the cracks and nobody has to ask "where are we on this?"',
+    description: 'Credentialing, recredentialing and monitoring status in one place, so nothing falls through the cracks.',
     badge: 'Full visibility',
     icon: 'bar',
     detailPoints: [

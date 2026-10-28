@@ -31,7 +31,7 @@ frontend/
         ├── components/ui/      Badge, BrandLogo, Button, Icon, Spinner
         ├── components/forms/   Input, TextArea
         ├── components/layout/  AnnouncementBar, Navbar, NavDropdown, SearchDialog, Footer,
-        │                       PageIntro, SectionHeader, ComingSoonPage, BackToTop
+        │                       PageIntro, SectionHeader, NextSteps, BackToTop
         ├── components/seo/     JsonLd
         ├── styles/common.css   Classes used by more than one feature (buttons, page hero)
         ├── config/             env.config.ts, navigation.ts (every site link, defined once)

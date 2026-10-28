@@ -25,8 +25,7 @@ export const DashboardPreviewSection: React.FC = () => {
           </div>
           <h2>See where every provider stands, at a glance</h2>
           <p className="rtv-subtitle">
-            Credentialing progress, recredentialing dates, upcoming expirations and monitoring alerts in one place, so
-            you&apos;re never chasing updates by email. <em>Sample data shown.</em>
+            Progress, recredentialing dates, expirations and alerts in one place. No more chasing updates by email. <em>Sample data shown.</em>
           </p>
         </div>
 

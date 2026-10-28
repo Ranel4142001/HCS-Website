@@ -2,6 +2,7 @@ import { OurStorySection, PrinciplesSection, AudiencesSection } from '@/features
 import { ExpertiseSection } from '@/features/home';
 import { ContactWizard } from '@/features/contact';
 import PageIntro from '@/shared/components/layout/PageIntro';
+import NextSteps, { PAGE_LINKS } from '@/shared/components/layout/NextSteps';
 
 export default function AboutPage() {
   return (
@@ -20,6 +21,7 @@ export default function AboutPage() {
       <PrinciplesSection />
       <ExpertiseSection />
       <AudiencesSection />
+      <NextSteps links={[PAGE_LINKS.services, PAGE_LINKS.pricing, PAGE_LINKS.guides]} />
       <ContactWizard />
     </main>
   );
