@@ -197,11 +197,17 @@
   position: relative;
 }
 
-.hcs-hero-banner-img {
+.hcs-hero-banner-inner {
+  background: #f5f8fc; /* the video's own background, shown until it loads */
+}
+
+/* The video is 2:1. Its story sits in the middle, so the near-square phone crop still shows the whole file card. */
+.hcs-hero-banner-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 36%;
   display: block;
 }
 

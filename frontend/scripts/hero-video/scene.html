@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=block">
+<style>
+  /* 1920x960 hero loop. Everything that matters sits in the centre ~1000px so the phone crop (about square) still reads. */
+  :root {
+    --bg: #f5f8fc; --ink: #0e1b30; --soft: #4d5c78; --faint: #8592a8; --line: #e1e8f4;
+    --navy: #07192f; --blue: #1d4ed8; --blue-50: #eef3ff; --cyan: #10c1bb; --green: #3f9a17; --green-50: #ecf8e5;
+    --gold: #c98a12; --gold-50: #fdf5e3;
+    --head: 'Plus Jakarta Sans', sans-serif; --body: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1920px; height: 960px; overflow: hidden; }
+  body {
+    font-family: var(--body); color: var(--ink); position: relative;
+    background:
+      radial-gradient(900px 600px at 88% 8%, rgba(16,193,187,.16), transparent 70%),
+      radial-gradient(800px 600px at 6% 96%, rgba(29,78,216,.10), transparent 70%),
+      var(--bg);
+  }
+  .grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(14,27,48,.07) 1.4px, transparent 1.4px); background-size: 32px 32px; }
+
+  /* centre card */
+  .card {
+    position: absolute; left: 50%; top: 50%; width: 800px; transform: translate(-50%, -50%);
+    background: #fff; border: 1px solid var(--line); border-radius: 28px; padding: 36px 40px 30px;
+    box-shadow: 0 30px 70px -16px rgba(14,27,48,.28);
+  }
+  .card-glow { position: absolute; inset: -2px; border-radius: 30px; border: 3px solid var(--green); opacity: 0; pointer-events: none; }
+  .head { display: flex; align-items: center; gap: 18px; }
+  .avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #1d4ed8, #10c1bb); color: #fff; font: 700 22px var(--head); display: grid; place-items: center; flex: none; }
+  .who { flex: 1; min-width: 0; }
+  .name { font: 700 26px/1.2 var(--head); letter-spacing: -.01em; }
+  .meta { font-size: 17px; color: var(--soft); margin-top: 3px; }
+  .pill { font: 600 16px var(--body); padding: 8px 16px; border-radius: 999px; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; }
+  .pill .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+  .progress { margin: 26px 0 8px; display: flex; align-items: center; gap: 16px; }
+  .bar { flex: 1; height: 10px; border-radius: 99px; background: #edf1f8; overflow: hidden; }
+  .fill { height: 100%; width: 0; border-radius: 99px; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+  .pct { font: 700 18px var(--head); width: 56px; text-align: right; font-variant-numeric: tabular-nums; }
+  .rows { margin-top: 18px; display: grid; }
+  .row { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid #eef2f8; }
+  .icon { width: 30px; height: 30px; border-radius: 50%; flex: none; position: relative; display: grid; place-items: center; }
+  .icon svg { width: 18px; height: 18px; }
+  .label { flex: 1; font: 600 19px var(--body); }
+  .src { font-size: 16px; color: var(--faint); width: 200px; }
+  .state { font: 600 16px var(--body); width: 120px; text-align: right; }
+  .toast {
+    position: absolute; left: 50%; bottom: -34px; transform: translateX(-50%);
+    background: var(--navy); color: #fff; border-radius: 16px; padding: 14px 22px; display: flex; align-items: center; gap: 12px;
+    font: 600 18px var(--body); white-space: nowrap; box-shadow: 0 16px 40px -12px rgba(7,25,47,.5); opacity: 0;
+  }
+  .toast b { color: #8fdc5a; font-weight: 600; }
+
+  /* left: primary sources */
+  .side { position: absolute; top: 50%; transform: translateY(-50%); display: grid; gap: 16px; }
+  .side h4 { margin: 0 0 6px; font: 600 15px var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+  .left { left: 200px; width: 300px; }
+  .source { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.85); border: 1px solid var(--line); border-radius: 14px; padding: 13px 16px; font: 600 17px var(--body); color: var(--soft); }
+  .source i { width: 10px; height: 10px; border-radius: 50%; background: #c9d3e3; flex: none; }
+  .right { right: 190px; width: 320px; }
+  .stage { display: flex; align-items: center; gap: 14px; font: 600 18px var(--body); color: var(--faint); padding: 6px 0; }
+  .stage .n { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #c9d3e3; display: grid; place-items: center; font: 700 15px var(--head); flex: none; background: #fff; }
+  .connector { width: 2px; height: 22px; background: #d8e0ec; margin-left: 16px; }
+  .flow { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+  /* Scaled up so the card text stays legible when the 1920px video is shown ~1150px wide. */
+  .zoom { position: absolute; inset: 0; transform: scale(1.18); transform-origin: 960px 480px; }
+</style>
+</head>
+<body>
+<div class="grid"></div>
+<svg class="flow" id="flow" viewBox="0 0 1920 960"></svg>
+
+<div class="zoom">
+<div class="side left">
+  <h4>Primary sources</h4>
+  <div class="source" id="s0"><i></i>State Medical Board</div>
+  <div class="source" id="s1"><i></i>DEA</div>
+  <div class="source" id="s2"><i></i>ABMS boards</div>
+  <div class="source" id="s3"><i></i>Medical school</div>
+  <div class="source" id="s4"><i></i>NPDB</div>
+  <div class="source" id="s5"><i></i>OIG &amp; SAM.gov</div>
+</div>
+
+<div class="side right">
+  <h4>Credentialing file</h4>
+  <div class="stage" id="g0"><span class="n">1</span>Application received</div><div class="connector" id="c0"></div>
+  <div class="stage" id="g1"><span class="n">2</span>Primary source verification</div><div class="connector" id="c1"></div>
+  <div class="stage" id="g2"><span class="n">3</span>Specialist review</div><div class="connector" id="c2"></div>
+  <div class="stage" id="g3"><span class="n">4</span>Committee-ready</div>
+</div>
+
+<div class="card" id="card">
+  <div class="card-glow" id="glow"></div>
+  <div id="content">
+    <div class="head">
+      <div class="avatar">ER</div>
+      <div class="who"><div class="name">Dr. Elena Ruiz, MD</div><div class="meta">Family Medicine · Initial credentialing</div></div>
+      <div class="pill" id="pill"><span class="dot"></span><span id="pillText"></span></div>
+    </div>
+    <div class="progress"><div class="bar"><div class="fill" id="fill"></div></div><div class="pct" id="pct">0%</div></div>
+    <div class="rows" id="rows"></div>
+  </div>
+  <div class="toast" id="toast">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fdc5a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    Reviewed by your <b>credentialing specialist</b>
+  </div>
+</div>
+
+</div>
+<script>
+const ROWS = [
+  ['State medical license', 'State Medical Board'],
+  ['DEA registration', 'DEA'],
+  ['Board certification', 'ABMS'],
+  ['Education & training', 'Medical school'],
+  ['NPDB query', 'NPDB'],
+  ['Sanctions & exclusions', 'OIG · SAM.gov'],
+];
+const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+const rowsEl = document.getElementById('rows');
+rowsEl.innerHTML = ROWS.map((r, i) => `<div class="row" id="r${i}"><div class="icon" id="i${i}"></div><div class="label">${r[0]}</div><div class="src">${r[1]}</div><div class="state" id="t${i}"></div></div>`).join('');
+
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+const span = (t, a, b) => clamp((t - a) / (b - a));
+
+// Timeline (seconds). The loop is 18 s; content fades out and resets at the end so frame 0 follows the last frame.
+const DUR = 18, START = 1.4, STEP = 1.2, CHECKING = 0.85;
+const VERIFY = ROWS.map((_, i) => START + STEP * i + CHECKING);   // moment each row turns verified
+const REVIEW = 9.0, READY = 10.8, OUT = 16.3, IN = 16.9;
+
+const PILLS = {
+  received: ['Application received', '#4d5c78', '#eef1f6'],
+  verifying: ['Verifying sources', '#1d4ed8', '#eef3ff'],
+  review: ['Specialist review', '#a86f05', '#fdf5e3'],
+  ready: ['Committee-ready', '#2f7d10', '#ecf8e5'],
+};
+
+function stateAt(t) {
+  if (t >= IN) return { t: 0, fade: ease(span(t, IN, DUR - 0.4)) };   // already reset, fading back in
+  return { t, fade: 1 - ease(span(t, OUT, IN)) };
+}
+
+function render(time) {
+  const { t, fade } = stateAt(time);
+  $('content').style.opacity = fade;
+  $('toast').style.opacity = 0;
+
+  let verified = 0;
+  const flow = [];
+  ROWS.forEach((_, i) => {
+    const s = START + STEP * i, v = VERIFY[i];
+    const icon = $('i' + i), txt = $('t' + i), src = $('s' + i);
+    if (t >= v) {
+      verified++;
+      const pop = 1 + 0.25 * Math.sin(Math.PI * clamp((t - v) / 0.3));
+      icon.style.background = '#3f9a17'; icon.style.border = 'none'; icon.style.transform = `scale(${pop})`; icon.innerHTML = CHECK;
+      txt.textContent = 'Verified'; txt.style.color = '#2f7d10';
+      src.style.color = '#0e1b30'; src.querySelector('i').style.background = '#3f9a17'; src.style.borderColor = '#cfe9c0';
+    } else if (t >= s) {
+      const a = ((t - s) * 540) % 360;
+      icon.style.background = 'transparent'; icon.style.transform = 'none';
+      icon.style.border = '3px solid #dbe5f5'; icon.style.borderTopColor = '#1d4ed8'; icon.style.borderRadius = '50%';
+      icon.innerHTML = ''; icon.style.rotate = a + 'deg';
+      txt.textContent = 'Checking…'; txt.style.color = '#1d4ed8';
+      src.style.color = '#1d4ed8'; src.querySelector('i').style.background = '#1d4ed8'; src.style.borderColor = '#c7d6fb';
+      flow.push({ i, p: (t - s) / CHECKING });
+    } else {
+      icon.style.background = 'transparent'; icon.style.transform = 'none'; icon.style.rotate = '0deg';
+      icon.style.border = '3px solid #dbe5f5'; icon.innerHTML = '';
+      txt.textContent = 'Pending'; txt.style.color = '#8592a8';
+      src.style.color = '#4d5c78'; src.querySelector('i').style.background = '#c9d3e3'; src.style.borderColor = '#e1e8f4';
+    }
+    if (t >= v) icon.style.rotate = '0deg';
+  });
+
+  // progress: sources take it to 80%, specialist review and committee packet finish it
+  let pct = 0;
+  ROWS.forEach((_, i) => { pct += 80 / ROWS.length * ease(span(t, VERIFY[i] - 0.5, VERIFY[i])); });
+  pct += 12 * ease(span(t, REVIEW, REVIEW + 1)) + 8 * ease(span(t, READY - 0.4, READY));
+  $('fill').style.width = pct + '%';
+  $('pct').textContent = Math.round(pct) + '%';
+  if (pct > 99.5) $('fill').style.background = 'linear-gradient(90deg, #3f9a17, #10c1bb)';
+  else $('fill').style.background = '';
+
+  const key = t >= READY ? 'ready' : t >= REVIEW ? 'review' : t >= 1.0 ? 'verifying' : 'received';
+  const [label, fg, bg] = PILLS[key];
+  $('pillText').textContent = label; $('pill').style.color = fg; $('pill').style.background = bg;
+
+  // stage tracker on the right
+  const stage = key === 'ready' ? 3 : key === 'review' ? 2 : key === 'verifying' ? 1 : 0;
+  for (let g = 0; g < 4; g++) {
+    const el = $('g' + g), n = el.querySelector('.n');
+    const done = g < stage || (g === 3 && stage === 3), active = g === stage && stage !== 3;
+    el.style.color = done || active ? '#0e1b30' : '#8592a8';
+    n.style.borderColor = done ? '#3f9a17' : active ? '#1d4ed8' : '#c9d3e3';
+    n.style.background = done ? '#3f9a17' : '#fff';
+    n.style.color = done ? '#fff' : active ? '#1d4ed8' : '#8592a8';
+    n.innerHTML = done ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' : String(g + 1);
+    if (g < 3) $('c' + g).style.background = g < stage ? '#3f9a17' : '#d8e0ec';
+  }
+  for (const el of document.querySelectorAll('.side')) el.style.opacity = 0.25 + 0.75 * fade;
+
+  // dots travelling from the source being checked into the card
+  const svg = $('flow');
+  svg.innerHTML = flow.map(({ i, p }) => {
+    const src = $('s' + i).getBoundingClientRect(), row = $('r' + i).getBoundingClientRect();
+    const x0 = src.right + 6, y0 = src.top + src.height / 2, x1 = row.left - 8, y1 = row.top + row.height / 2;
+    const cx = (x0 + x1) / 2;
+    const path = `M${x0},${y0} C${cx},${y0} ${cx},${y1} ${x1},${y1}`;
+    const dots = [0, 0.33, 0.66].map((o) => {
+      const q = (p * 1.6 + o) % 1, u = 1 - q;
+      const x = u*u*u*x0 + 3*u*u*q*cx + 3*u*q*q*cx + q*q*q*x1, y = u*u*u*y0 + 3*u*u*q*y0 + 3*u*q*q*y1 + q*q*q*y1;
+      return `<circle cx="${x}" cy="${y}" r="5" fill="#1d4ed8" opacity="${Math.sin(Math.PI*q)}"/>`;
+    }).join('');
+    return `<path d="${path}" stroke="#bcd0f7" stroke-width="2" fill="none" stroke-dasharray="6 8"/>${dots}`;
+  }).join('');
+
+  // specialist toast and committee-ready glow
+  const toastIn = ease(span(t, REVIEW + 0.2, REVIEW + 0.7)) * (1 - ease(span(t, READY + 2.6, READY + 3.2)));
+  const tEl = $('toast');
+  tEl.style.opacity = toastIn * fade;
+  tEl.style.transform = `translateX(-50%) translateY(${(1 - toastIn) * 16}px)`;
+  const glow = ease(span(t, READY, READY + 0.6)) * (0.75 + 0.25 * Math.sin((t - READY) * 2.4)) * fade;
+  $('glow').style.opacity = t >= READY ? glow : 0;
+  $('card').style.boxShadow = t >= READY
+    ? `0 30px 70px -16px rgba(14,27,48,.28), 0 0 ${60 * glow}px ${8 * glow}px rgba(63,154,23,.22)`
+    : '0 30px 70px -16px rgba(14,27,48,.28)';
+}
+window.render = render;
+window.DUR = DUR;
+render(0);
+</script>
+</body>
+</html>

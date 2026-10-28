@@ -80,6 +80,7 @@ compose them in the page.
 | Change page title or description | `buildMetadata()` in the page or its `layout.tsx` |
 | Change the estimator's day ranges | `features/estimator/content/plans.ts` (`ESTIMATE_RANGES`) |
 | Replace the logo or favicon | the original file in `public/` (same name), then `npm run brand-assets` to regenerate `public/brand/`, and bump `BRAND_VERSION` in `BrandLogo.tsx` so browsers drop their cached copies |
+| Change the homepage hero video | `scripts/hero-video/scene.html` (the animation), then render it with `scripts/hero-video/render.mjs` (see its header) into `public/media/` |
 | Add a real testimonial | `features/social-proof/content/testimonials.ts` (written permission first); the section appears automatically |
 | Connect the contact form to the CRM | `features/contact/services/contact.service.ts` (currently a placeholder) |
 
