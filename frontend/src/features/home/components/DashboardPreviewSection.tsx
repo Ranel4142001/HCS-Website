@@ -172,43 +172,7 @@ export const DashboardPreviewSection: React.FC = () => {
           {activeTab === 'mon' && (
             <div key="mon" className="rtv-panel">
               <div className="rtv-grid">
-                {/* Card 1: NPDB Continuous Query */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>NPDB Verification Status</h3>
-                      <span className="rtv-sub">National Practitioner Data Bank</span>
-                    </div>
-                    <span className="rtv-pill-green">Continuous Query Active</span>
-                  </div>
-                  <div className="rtv-donut-row">
-                    <div className="rtv-stat-giant text-teal">134</div>
-                    <div className="rtv-stat-desc">
-                      <div><strong className="text-teal">134 Clear</strong> &bull; No adverse reports</div>
-                      <div className="text-muted">12 Action items under specialist review</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2: Medicare Opt-Out & Exclusion */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Medicare Opt-Out &amp; OIG</h3>
-                      <span className="rtv-sub">Federal exclusions checking</span>
-                    </div>
-                    <span className="rtv-pill-green">145 Clear</span>
-                  </div>
-                  <div className="rtv-donut-row">
-                    <div className="rtv-stat-giant text-teal">145</div>
-                    <div className="rtv-stat-desc">
-                      <div><strong className="text-teal">145 Active &amp; Clear</strong></div>
-                      <div className="text-muted">0 Active federal sanctions detected</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3: Live Sanction Audit Logs */}
+                {/* Card 1: Live Sanction Audit Logs */}
                 <div className="rtv-card rtv-card-wide">
                   <div className="rtv-card-top">
                     <div>
@@ -244,6 +208,92 @@ export const DashboardPreviewSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
+                {/* Card 2: NPDB Continuous Query */}
+                <div className="rtv-card">
+                  <div className="rtv-card-top">
+                    <div>
+                      <h3>NPDB Verification Status</h3>
+                      <span className="rtv-sub">National Practitioner Data Bank</span>
+                    </div>
+                    <span className="rtv-pill-green">Enrolled</span>
+                  </div>
+                  <div className="rtv-donut-row">
+                    <div className="rtv-stat-giant text-teal">134</div>
+                    <div className="rtv-stat-desc">
+                      <div><strong className="text-teal">134 Clear</strong> &bull; No adverse reports</div>
+                      <div className="text-muted">12 Action items under specialist review</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3: Medicare Opt-Out & Exclusion */}
+                <div className="rtv-card">
+                  <div className="rtv-card-top">
+                    <div>
+                      <h3>Medicare Opt-Out &amp; OIG</h3>
+                      <span className="rtv-sub">Federal exclusions checking</span>
+                    </div>
+                    <span className="rtv-pill-green">145 Clear</span>
+                  </div>
+                  <div className="rtv-donut-row">
+                    <div className="rtv-stat-giant text-teal">145</div>
+                    <div className="rtv-stat-desc">
+                      <div><strong className="text-teal">145 Active &amp; Clear</strong></div>
+                      <div className="text-muted">0 Active federal sanctions detected</div>
+                    </div>
+                  </div>
+                </div>
+
+
+                {/* Card 4: Expiring Credentials */}
+                <div className="rtv-card">
+                  <div className="rtv-card-top">
+                    <div>
+                      <h3>Expiring Credentials</h3>
+                      <span className="rtv-sub">Next 60 days, renewals started</span>
+                    </div>
+                    <span className="rtv-pill-warn">9 Expiring</span>
+                  </div>
+                  <div className="rtv-recred-list">
+                    <div className="recred-item">
+                      <span>State medical licenses</span>
+                      <strong>4 Clinicians</strong>
+                    </div>
+                    <div className="recred-item">
+                      <span>DEA registrations</span>
+                      <strong>3 Clinicians</strong>
+                    </div>
+                    <div className="recred-item">
+                      <span>Board certifications</span>
+                      <strong>2 Clinicians</strong>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 5: Open Alerts */}
+                <div className="rtv-card">
+                  <div className="rtv-card-top">
+                    <div>
+                      <h3>Open Alerts</h3>
+                      <span className="rtv-sub">Flagged for specialist review</span>
+                    </div>
+                    <span className="rtv-pill-warn">2 Open</span>
+                  </div>
+                  <div className="rtv-recred-list">
+                    <div className="recred-item">
+                      <span>State board action reported</span>
+                      <strong>In review</strong>
+                    </div>
+                    <div className="recred-item">
+                      <span>New malpractice claim</span>
+                      <strong>In review</strong>
+                    </div>
+                    <div className="recred-item">
+                      <span>Exclusion list matches</span>
+                      <strong>None</strong>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -251,7 +301,43 @@ export const DashboardPreviewSection: React.FC = () => {
           {activeTab === 'profile' && (
             <div key="profile" className="rtv-panel">
               <div className="rtv-grid">
-                {/* Card 1: 96% Profile Completion */}
+                {/* Card 1: Uploaded Documents Vault */}
+                <div className="rtv-card rtv-card-wide">
+                  <div className="rtv-card-top">
+                    <div>
+                      <h3>Secure Credential Document Vault</h3>
+                      <span className="rtv-sub">Every provider document in one secure place</span>
+                    </div>
+                    <span className="rtv-pill-green">Encrypted</span>
+                  </div>
+                  <div className="doc-vault-grid">
+                    <div className="vault-file">
+                      <Icon name="file" />
+                      <div className="file-meta">
+                        <strong>TX_Medical_License_2026.pdf</strong>
+                        <span>Verified with Texas Medical Board</span>
+                      </div>
+                      <span className="badge-verified"><Icon name="check" /> Verified</span>
+                    </div>
+                    <div className="vault-file">
+                      <Icon name="file" />
+                      <div className="file-meta">
+                        <strong>DEA_Registration_Cert.pdf</strong>
+                        <span>Verified with DEA Registry</span>
+                      </div>
+                      <span className="badge-verified"><Icon name="check" /> Verified</span>
+                    </div>
+                    <div className="vault-file">
+                      <Icon name="file" />
+                      <div className="file-meta">
+                        <strong>ABIM_Board_Cert.pdf</strong>
+                        <span>ABIM Primary Source Confirmed</span>
+                      </div>
+                      <span className="badge-verified"><Icon name="check" /> Verified</span>
+                    </div>
+                  </div>
+                </div>
+                {/* Card 2: 96% Profile Completion */}
                 <div className="rtv-card">
                   <div className="rtv-card-top">
                     <div>
@@ -274,7 +360,7 @@ export const DashboardPreviewSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Card 2: CAQH & Fast-Import */}
+                {/* Card 3: CAQH & Fast-Import */}
                 <div className="rtv-card">
                   <div className="rtv-card-top">
                     <div>
@@ -307,39 +393,53 @@ export const DashboardPreviewSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Card 3: Uploaded Documents Vault */}
-                <div className="rtv-card rtv-card-wide">
+
+                {/* Card 4: Work History */}
+                <div className="rtv-card">
                   <div className="rtv-card-top">
                     <div>
-                      <h3>Secure Credential Document Vault</h3>
-                      <span className="rtv-sub">Every provider document in one secure place</span>
+                      <h3>Work History</h3>
+                      <span className="rtv-sub">Verified timeline, gaps explained</span>
                     </div>
-                    <span className="rtv-pill-green">Encrypted</span>
+                    <span className="rtv-pill-green">No Open Gaps</span>
                   </div>
-                  <div className="doc-vault-grid">
-                    <div className="vault-file">
-                      <Icon name="file" />
-                      <div className="file-meta">
-                        <strong>TX_Medical_License_2026.pdf</strong>
-                        <span>Verified with Texas Medical Board</span>
-                      </div>
-                      <span className="badge-verified"><Icon name="check" /> Verified</span>
+                  <div className="rtv-recred-list">
+                    <div className="recred-item">
+                      <span>Current practice</span>
+                      <strong>2019–Present</strong>
                     </div>
-                    <div className="vault-file">
-                      <Icon name="file" />
-                      <div className="file-meta">
-                        <strong>DEA_Registration_Cert.pdf</strong>
-                        <span>Verified with DEA Registry</span>
-                      </div>
-                      <span className="badge-verified"><Icon name="check" /> Verified</span>
+                    <div className="recred-item">
+                      <span>Internal Medicine residency</span>
+                      <strong>2016–2019</strong>
                     </div>
-                    <div className="vault-file">
-                      <Icon name="file" />
-                      <div className="file-meta">
-                        <strong>Board_Certification_InternalMed.pdf</strong>
-                        <span>ABIM Primary Source Confirmed</span>
-                      </div>
-                      <span className="badge-verified"><Icon name="check" /> Verified</span>
+                    <div className="recred-item">
+                      <span>Gap explained (relocation)</span>
+                      <strong>4 Months</strong>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 5: Requested From Provider */}
+                <div className="rtv-card">
+                  <div className="rtv-card-top">
+                    <div>
+                      <h3>Requested From Provider</h3>
+                      <span className="rtv-sub">Outstanding items, reminders automated</span>
+                    </div>
+                    <span className="rtv-pill-warn">2 Open</span>
+                  </div>
+                  <div className="rtv-recred-list">
+                    <div className="recred-item">
+                      <span>Updated malpractice COI</span>
+                      <strong>Due in 5 Days</strong>
+                    </div>
+                    <div className="recred-item">
+                      <span>Signed attestation</span>
+                      <strong>Due in 7 Days</strong>
+                    </div>
+                    <div className="recred-item">
+                      <span>Hospital privilege letter</span>
+                      <strong>Received</strong>
                     </div>
                   </div>
                 </div>
