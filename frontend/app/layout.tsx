@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import '@/shared/styles/common.css';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
@@ -16,7 +16,8 @@ const inter = Inter({
 });
 
 // Headings, including the homepage H1 (the largest text on first paint), so it is preloaded too.
-const spaceGrotesk = Space_Grotesk({
+// Its rounded geometric shapes match the logo's wordmark.
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-heading',
   display: 'swap',
@@ -131,7 +132,7 @@ export default function RootLayout({
 }) {
   return (
     // data-scroll-behavior: Next.js turns smooth scrolling off during route changes, so pages open at the top instantly.
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} data-scroll-behavior="smooth">
       <head>
         <JsonLd data={jsonLd} />
       </head>
