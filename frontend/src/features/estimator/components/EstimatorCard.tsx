@@ -95,8 +95,8 @@ export const EstimatorCard: React.FC = () => {
                 <Icon name="chat" />
               </div>
               <div>
-                <strong>Scheduled payer follow-up</strong>
-                <span>We follow up with every payer until provider IDs are issued.</span>
+                <strong>Scheduled source follow-up</strong>
+                <span>We follow up with every source until each verification is complete.</span>
               </div>
             </div>
           </div>

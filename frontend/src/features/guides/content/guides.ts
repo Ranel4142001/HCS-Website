@@ -204,84 +204,8 @@ export const howToGetCredentialed: Guide = {
   ],
   related: [
     { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
-    { label: 'Medicare enrollment through PECOS', href: '/guides/medicare-pecos-enrollment' },
+    { label: 'Recredentialing requirements', href: '/guides/recredentialing-requirements' },
     { label: 'Credentialing for provider groups', href: '/who-we-help/provider-groups' },
-  ],
-};
-
-export const medicarePecosEnrollment: Guide = {
-  slug: 'medicare-pecos-enrollment',
-  meta: {
-    title: 'Medicare Enrollment Through PECOS',
-    description:
-      'How Medicare provider enrollment works in PECOS: which CMS-855 form to use, reassigning benefits, effective dates, revalidation and reporting changes.',
-  },
-  title: 'Medicare enrollment through PECOS',
-  lead:
-    'Medicare does not use CAQH or a credentialing committee. Providers enroll through PECOS, the CMS online enrollment system, and their application is processed by the Medicare Administrative Contractor (MAC) for their state.',
-  updated: '2026-10-28',
-  sections: [
-    {
-      heading: 'What PECOS is',
-      paragraphs: [
-        'PECOS (Provider Enrollment, Chain, and Ownership System) is the CMS system for submitting and maintaining Medicare enrollment. Access requires an account in the CMS Identity & Access Management (I&A) system. Paper CMS-855 forms are still accepted, but online applications are generally processed faster and are easier to track.',
-      ],
-    },
-    {
-      heading: 'Which application to file',
-      list: [
-        'CMS-855I: individual physicians and non-physician practitioners who will bill Medicare.',
-        'CMS-855B: clinics, group practices and certain other suppliers enrolling as an organization.',
-        'Reassignment of benefits: lets a group bill Medicare for services its providers perform. Each provider in a group needs it in addition to their own enrollment.',
-        'CMS-855O: providers who only order or refer services and do not bill Medicare themselves.',
-      ],
-    },
-    {
-      heading: 'Enrolling step by step',
-      ordered: true,
-      list: [
-        'Confirm the provider has an active NPI and that NPPES shows the correct name and practice address.',
-        'Create or confirm the provider’s I&A account, and connect the group’s account if benefits will be reassigned.',
-        'Complete the application in PECOS with the license, practice location, specialty and payment information.',
-        'Upload supporting documents and sign electronically.',
-        'Respond promptly to any development request from the MAC. Unanswered requests can lead to a rejected application.',
-        'Record the approval letter, effective date and PTAN (Provider Transaction Access Number) for billing.',
-      ],
-    },
-    {
-      heading: 'Effective dates and billing',
-      paragraphs: [
-        'For physicians and non-physician practitioners, the effective date is generally the later of the date the MAC received an application it could process and the date the provider began furnishing services at the new location. Medicare allows billing for services up to 30 days before that effective date in most circumstances.',
-        'Because of this window, filing early matters. An application submitted months after a provider starts seeing patients can leave earlier services unbillable.',
-      ],
-    },
-    {
-      heading: 'Keeping enrollment current',
-      list: [
-        'Revalidation: most providers must revalidate every five years, and DMEPOS suppliers every three. CMS publishes due dates in advance.',
-        'Changes: physicians and non-physician practitioners must report a change of ownership, an adverse legal action or a change of practice location within 30 days, and most other changes within 90 days.',
-        'Medicare Advantage: plans credential providers separately, so Medicare enrollment alone does not make a provider in-network with them.',
-      ],
-    },
-  ],
-  faqs: [
-    {
-      q: 'How long does Medicare enrollment take?',
-      a: 'Processing times vary by MAC and application type. Many complete online applications are processed within several weeks, while applications that need corrections or additional information take longer.',
-    },
-    {
-      q: 'Is there a fee to enroll in Medicare?',
-      a: 'Individual physicians and non-physician practitioners do not pay an application fee. Certain institutional providers and suppliers do, and CMS updates the amount each year.',
-    },
-    {
-      q: 'Does Medicare enrollment cover Medicaid as well?',
-      a: 'No. Medicaid enrollment is handled separately by each state, although some states rely on Medicare enrollment to simplify their own screening.',
-    },
-  ],
-  related: [
-    { label: 'How to get credentialed with insurers', href: '/guides/how-to-get-credentialed-with-insurance-companies' },
-    { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
-    { label: 'Provider enrollment services', href: '/solutions/provider-enrollment' },
   ],
 };
 
@@ -349,8 +273,8 @@ export const recredentialingRequirements: Guide = {
   ],
   related: [
     { label: 'CAQH ProView guide', href: '/guides/caqh-proview-guide' },
-    { label: 'Medicare enrollment through PECOS', href: '/guides/medicare-pecos-enrollment' },
-    { label: 'Privileging services', href: '/solutions/privileging' },
+    { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
+    { label: 'Provider credentialing', href: '/solutions/cvo-credentialing' },
   ],
 };
 
@@ -358,6 +282,5 @@ export const GUIDES = [
   howToGetCredentialed,
   howLongDoesCredentialingTake,
   caqhProviewGuide,
-  medicarePecosEnrollment,
   recredentialingRequirements,
 ];

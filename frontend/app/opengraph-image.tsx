@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 // Social share card (LinkedIn, Facebook, X, Slack, iMessage) — 1200×630 as platforms expect.
-export const alt = 'HealthCredSTAT — medical credentialing and payer enrollment services';
+export const alt = 'HealthCredSTAT — health credentialing services';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -29,10 +29,10 @@ export default async function OpengraphImage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={logoSrc} width={526} height={132} alt="" />
         <div style={{ marginTop: 48, fontSize: 56, fontWeight: 700, lineHeight: 1.15, maxWidth: 980 }}>
-          Medical credentialing &amp; payer enrollment services
+          Health Credentialing
         </div>
         <div style={{ marginTop: 24, fontSize: 30, color: '#6fe0da' }}>
-          Get providers credentialed, in-network, and billing sooner.
+          Credentialing specialists with AI automation, so revenue starts sooner.
         </div>
       </div>
     ),

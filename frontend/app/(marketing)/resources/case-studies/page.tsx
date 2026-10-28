@@ -14,7 +14,7 @@ export default function Page() {
     <ComingSoonPage
       icon="📈"
       title="Case Studies"
-      intro="Client stories are on the way. Ask us how we would approach credentialing and enrollment for an organization like yours."
+      intro="Client stories are on the way. Ask us how we would approach credentialing for an organization like yours."
       meanwhile={[{ label: 'Our services', href: '/services' }, { label: 'Timeline estimator', href: '/#estimator' }, { label: 'Pricing', href: '/pricing' }]}
     />
   );

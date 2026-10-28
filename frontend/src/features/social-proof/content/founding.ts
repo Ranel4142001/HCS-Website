@@ -7,7 +7,7 @@ export const COMMITMENTS = [
   },
   {
     title: 'A written update on every application, every week',
-    text: 'Until each payer approves, you get a weekly status for every application: what was submitted, what the payer asked for and what happens next.',
+    text: 'Until each file is complete, you get a weekly status for every provider: what was verified, what is outstanding and what happens next.',
   },
   {
     title: 'Founding-client terms',

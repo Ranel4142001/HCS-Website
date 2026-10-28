@@ -20,7 +20,7 @@ export const PricingSection: React.FC = () => {
           <h2 id="pricing-title">Pricing that scales with your providers</h2>
           <p>
             A flat rate for individual clinicians. Groups and health systems get a custom quote based on how many
-            providers and payers you need.
+            providers you need credentialed.
           </p>
         </header>
 
@@ -54,8 +54,8 @@ export const PricingSection: React.FC = () => {
         </div>
 
         <p className="fee-footnote">
-          Every plan includes primary source verification, CAQH ProView management and follow-up with each payer
-          until approval. No setup fees.
+          Every plan includes primary source verification, CAQH ProView management and follow-up with every source
+          until each file is complete. No setup fees.
         </p>
       </div>
     </section>

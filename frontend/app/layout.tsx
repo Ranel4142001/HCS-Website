@@ -1,28 +1,24 @@
 import type { Metadata, Viewport } from 'next';
-import { Sora, Instrument_Serif } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import '@/shared/styles/common.css';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
 import JsonLd from '@/shared/components/seo/JsonLd';
 
-// Sora is a variable font: omitting `weight` loads one file covering every weight,
-// instead of six separate files competing on slow connections.
+// Both are variable fonts: omitting `weight` loads one file covering every weight.
 // 'swap' keeps text visible while the font loads. ('optional' was measured too: Chrome treats a preloaded
 // optional font as render-blocking, so text appeared later on slow connections.)
-const sora = Sora({
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-// Only used for a few accent words, so it isn't preloaded ahead of the main font.
-const instrumentSerif = Instrument_Serif({
+// Headings, including the homepage H1 (the largest text on first paint), so it is preloaded too.
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['400'],
-  style: ['normal', 'italic'],
-  variable: '--font-display',
+  variable: '--font-heading',
   display: 'swap',
-  preload: false,
 });
 
 export const viewport: Viewport = {
@@ -32,9 +28,9 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const DEFAULT_TITLE = 'Medical Credentialing & Enrollment Services | HealthCredSTAT';
+const DEFAULT_TITLE = 'Health Credentialing Services | HealthCredSTAT';
 const DEFAULT_DESCRIPTION =
-  'Medical credentialing and payer enrollment services for practices, health systems and health plans. Get providers verified, in-network and billing sooner.';
+  'Health credentialing services for practices, health systems and health plans. Specialists and AI automation verify, recredential and monitor your providers.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -106,18 +102,14 @@ const jsonLd = {
       },
       image: `${SITE_URL}/opengraph-image`,
       description:
-        'HealthCredSTAT provides medical credentialing, payer enrollment, primary source verification, recredentialing and provider data management services for healthcare organizations across the United States.',
+        'HealthCredSTAT provides health credentialing services, including primary source verification, recredentialing and ongoing monitoring, for healthcare organizations across the United States.',
       areaServed: { '@type': 'Country', name: 'United States' },
       knowsAbout: [
         'Medical credentialing',
-        'Provider enrollment',
-        'Payer enrollment',
         'Primary source verification',
+        'Recredentialing',
         'CAQH ProView',
-        'Medicare and Medicaid enrollment',
-        'Delegated credentialing',
-        'Hospital privileging',
-        'Multi-state licensing',
+        'Sanctions and exclusion monitoring',
       ],
     },
     {
@@ -138,7 +130,7 @@ export default function RootLayout({
 }) {
   return (
     // data-scroll-behavior: Next.js turns smooth scrolling off during route changes, so pages open at the top instantly.
-    <html lang="en" className={`${sora.variable} ${instrumentSerif.variable}`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} data-scroll-behavior="smooth">
       <head>
         <JsonLd data={jsonLd} />
       </head>

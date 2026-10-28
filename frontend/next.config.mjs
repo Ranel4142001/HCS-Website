@@ -38,6 +38,15 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'zod'],
   },
+  // Pages removed when the site narrowed to credentialing only; old links land on the closest page.
+  async redirects() {
+    return [
+      ...['provider-enrollment', 'roster-management', 'delegated-credentialing', 'privileging', 'cross-state-licensing'].map(
+        (slug) => ({ source: `/solutions/${slug}`, destination: '/services', permanent: true }),
+      ),
+      { source: '/guides/medicare-pecos-enrollment', destination: '/guides', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

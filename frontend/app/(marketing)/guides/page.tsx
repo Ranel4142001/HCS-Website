@@ -5,7 +5,7 @@ import { buildMetadata } from '@/shared/lib/seo';
 export const metadata = buildMetadata({
   title: 'Credentialing Guides for Providers',
   description:
-    'Practical guides to medical credentialing and payer enrollment: timelines, CAQH ProView, Medicare PECOS enrollment, recredentialing and getting in-network.',
+    'Practical guides to health credentialing: how long it takes, CAQH ProView, recredentialing and getting credentialed with insurers.',
   path: '/guides',
 });
 
@@ -15,7 +15,7 @@ export default function GuidesPage() {
       <PageIntro
         badge={{ icon: 'shield', label: 'Guides' }}
         title={<>Credentialing <em>guides</em></>}
-        lede="How credentialing and payer enrollment work, what slows them down and how to get providers billing sooner."
+        lede="How credentialing works, what slows it down and how to get providers ready sooner."
       />
       <GuidesList />
     </main>

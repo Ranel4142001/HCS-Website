@@ -102,7 +102,7 @@
 
 .wf-tab-title {
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--ink);
 }
 
@@ -278,7 +278,7 @@
 
 .wf-stat-val {
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--ink);
 }
 
@@ -297,7 +297,7 @@
 
 .wf-timeline-title {
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-faint);

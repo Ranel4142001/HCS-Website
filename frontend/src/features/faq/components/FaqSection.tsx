@@ -28,7 +28,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ limit }) => {
           </div>
           <h2>Credentialing questions, answered</h2>
           <p className="faq-left-desc">
-            Key facts about provider credentialing, payer enrollment, timelines and costs.
+            Key facts about provider credentialing, verification, timelines and costs.
           </p>
           <div className="faq-contact-cta">
             <span>Have another question?</span>

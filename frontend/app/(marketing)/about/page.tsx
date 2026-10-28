@@ -8,11 +8,11 @@ export default function AboutPage() {
     <main>
       <PageIntro
         badge={{ icon: 'shield', label: 'About HealthCredSTAT' }}
-        title={<>We get providers credentialed, enrolled and <em>billing sooner</em></>}
+        title={<>We get providers credentialed and <em>ready sooner</em></>}
         lede={
           <>
-            HealthCredSTAT is a medical credentialing and payer enrollment company. We combine experienced credentialing
-            specialists with automation to manage the paperwork and payer follow-up on your behalf.
+            HealthCredSTAT is a health credentialing company. We combine experienced credentialing
+            specialists with AI automation to manage verification, paperwork and follow-up on your behalf.
           </>
         }
       />

@@ -40,7 +40,7 @@ export const AnnouncementBar: React.FC = () => {
       <div className="announcement-inner">
         <div className="announcement-content">
           <span className="announcement-msg-full">
-            New providers starting soon? See how long credentialing and payer enrollment will take.
+            New providers starting soon? See how long credentialing will take.
           </span>
           <a href="#estimator" className="announcement-cta">
             <span>Estimate your timeline</span>

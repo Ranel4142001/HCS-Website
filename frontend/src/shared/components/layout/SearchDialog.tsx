@@ -68,7 +68,7 @@ export function SearchDialog({ onClose, onNavigate }: SearchDialogProps) {
               </Link>
             ))}
             {results.length === 0 && (
-              <p className="search-empty">No pages match “{query.trim()}”. Try “pricing” or “enrollment”.</p>
+              <p className="search-empty">No pages match “{query.trim()}”. Try “pricing” or “recredentialing”.</p>
             )}
           </div>
         </div>

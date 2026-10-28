@@ -5,7 +5,7 @@ import { buildMetadata } from '@/shared/lib/seo';
 export const metadata = buildMetadata({
   title: 'Contact Us — Get a Free Credentialing Quote',
   description:
-    'Talk to a credentialing specialist. Tell us about your providers and payers to get a free quote and a realistic timeline for credentialing and enrollment.',
+    'Talk to a credentialing specialist. Tell us about your providers to get a free quote and a realistic timeline for credentialing and recredentialing.',
   path: '/contact',
 });
 

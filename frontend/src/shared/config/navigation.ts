@@ -46,39 +46,6 @@ export interface NavMenu {
 
 export const NAV_MENUS: NavMenu[] = [
   {
-    id: 'solutions',
-    label: 'Solutions',
-    groups: [
-      {
-        heading: 'Core services',
-        links: [
-          { href: '/solutions/provider-enrollment', label: 'Provider Enrollment', description: 'Medicare, Medicaid and commercial payers', icon: 'zap', iconBg: '#eff6ff' },
-          { href: '/solutions/cvo-credentialing', label: 'CVO Credentialing', description: 'Primary source verification', icon: 'shield', iconBg: '#f0fdfa' },
-          { href: '/solutions/roster-management', label: 'Roster Management', description: 'Accurate payer rosters and directories', icon: 'users', iconBg: '#faf5ff' },
-        ],
-      },
-      {
-        heading: 'Specialized services',
-        links: [
-          { href: '/solutions/delegated-credentialing', label: 'Delegated Credentialing', description: 'Delegation programs and audits', icon: 'share', iconBg: '#fffbeb' },
-          { href: '/solutions/privileging', label: 'Privileging & OPPE', description: 'Medical staff credentialing', icon: 'building', iconBg: '#fdf2f8' },
-          { href: '/solutions/cross-state-licensing', label: 'Cross-State Licensing', description: 'State licenses and compacts', icon: 'globe', iconBg: '#f0fdfa' },
-        ],
-      },
-    ],
-    spotlight: {
-      background: 'linear-gradient(135deg,#062459,#0d6efd)',
-      badge: { icon: 'cpu', label: 'Agent Engine' },
-      rows: [
-        { dot: 'green', label: 'Provider Enrollment', tag: 'Active' },
-        { dot: 'teal', label: 'CVO Credentialing', tag: 'Active' },
-        { dot: 'blue', label: 'Roster Sync', tag: 'Running' },
-      ],
-      caption: 'Every step from signed offer to billing, handled by one team.',
-      cta: { href: '/services', label: 'SEE ALL SERVICES' },
-    },
-  },
-  {
     id: 'who',
     label: 'Who we help',
     panelClassName: 'mdl-panel--who',
@@ -88,14 +55,14 @@ export const NAV_MENUS: NavMenu[] = [
         links: [
           { href: '/who-we-help/provider-groups', label: 'Provider Groups & MSOs', description: 'Practices adding providers', icon: 'users', iconBg: '#eff6ff' },
           { href: '/who-we-help/health-plans', label: 'Health Plans & Payers', description: 'Network credentialing and monitoring', icon: 'shield', iconBg: '#f0fdfa' },
-          { href: '/who-we-help/health-systems', label: 'Health Systems & Hospitals', description: 'Verification and privileging', icon: 'building', iconBg: '#faf5ff' },
-          { href: '/who-we-help/digital-health', label: 'Digital Health & Telehealth', description: 'Multi-state licensing and enrollment', icon: 'globe', iconBg: '#f0fdfa' },
+          { href: '/who-we-help/health-systems', label: 'Health Systems & Hospitals', description: 'Centralized verification', icon: 'building', iconBg: '#faf5ff' },
+          { href: '/who-we-help/digital-health', label: 'Digital Health & Telehealth', description: 'Multi-state credentialing', icon: 'globe', iconBg: '#f0fdfa' },
         ],
       },
     ],
     spotlight: {
       background: 'linear-gradient(135deg,#0a4a47,#10c1bb)',
-      badge: { icon: 'bar', label: 'Roster Management' },
+      badge: { icon: 'bar', label: 'Credentialing Status' },
       header: ['Provider', 'Status'],
       rows: [
         { label: 'Dr. McLogan', tag: 'Credentialed', tagTone: 'green' },
@@ -108,8 +75,12 @@ export const NAV_MENUS: NavMenu[] = [
   },
 ];
 
-/** Top-level links shown beside the menus. Resources and Company menus return once those pages have content. */
+/** Shown before the dropdown menus. */
+export const NAV_LEAD_LINKS: NavLink[] = [{ href: '/services', label: 'Services' }];
+
+/** Top-level links shown after the menus. Resources and Company menus return once those pages have content. */
 export const NAV_LINKS: NavLink[] = [
+  { href: '/guides', label: 'Guides' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQ' },
   { href: '/about', label: 'About' },
@@ -119,8 +90,8 @@ export const PRIMARY_CTA: NavLink = { href: '/#contact', label: 'GET A FREE QUOT
 
 /** Shown in the search dialog before the visitor types. */
 export const QUICK_LINKS: NavLink[] = [
-  { href: '/solutions/provider-enrollment', label: 'Provider Enrollment', description: 'Medicare, Medicaid and commercial payers', icon: 'zap' },
-  { href: '/solutions/cvo-credentialing', label: 'CVO Credentialing', description: 'Primary source verification', icon: 'shield' },
+  { href: '/solutions/cvo-credentialing', label: 'Provider Credentialing', description: 'Primary source verification', icon: 'shield' },
+  { href: '/guides/recredentialing-requirements', label: 'Recredentialing', description: 'Cycles, re-verification and avoiding lapses', icon: 'clock' },
   { href: '/pricing', label: 'Transparent Pricing', description: 'Rates and plans', icon: 'bar' },
   { href: '/faq', label: 'Credentialing FAQ', description: 'Timelines, documents and costs', icon: 'chat' },
   { href: '/about', label: 'About HealthCredSTAT', description: 'Our approach', icon: 'building' },
@@ -130,13 +101,12 @@ export const QUICK_LINKS: NavLink[] = [
 export const SEARCH_INDEX: NavLink[] = ([
   ...QUICK_LINKS,
   ...NAV_MENUS.flatMap((m) => m.groups.flatMap((g) => g.links)),
-  { href: '/services', label: 'All services', description: 'Everything from signed offer to billing', icon: 'cog' },
+  { href: '/services', label: 'All services', description: 'Credentialing, recredentialing and monitoring', icon: 'cog' },
   { href: '/contact', label: 'Contact us', description: 'Get a free credentialing quote', icon: 'mail' },
-  { href: '/guides', label: 'Credentialing guides', description: 'Timelines, CAQH, Medicare and recredentialing', icon: 'file' },
+  { href: '/guides', label: 'Credentialing guides', description: 'Timelines, CAQH and recredentialing', icon: 'file' },
   { href: '/guides/how-long-does-credentialing-take', label: 'How long does credentialing take?', description: 'Typical timelines and what slows them down', icon: 'clock' },
   { href: '/guides/caqh-proview-guide', label: 'CAQH ProView guide', description: 'Setup, attestation and common mistakes', icon: 'doc-check' },
   { href: '/guides/how-to-get-credentialed-with-insurance-companies', label: 'How to get credentialed with insurers', description: 'Step-by-step from NPI to effective date', icon: 'check-circle' },
-  { href: '/guides/medicare-pecos-enrollment', label: 'Medicare enrollment through PECOS', description: 'CMS-855 forms, effective dates and revalidation', icon: 'shield' },
   { href: '/guides/recredentialing-requirements', label: 'Recredentialing requirements', description: 'Cycles, re-verification and avoiding lapses', icon: 'clock' },
 ] satisfies NavLink[]).filter((link, i, all) => all.findIndex((l) => l.href === link.href) === i);
 
@@ -147,14 +117,10 @@ export const FOOTER_COLUMNS: NavGroup[][] = [
       heading: 'Services',
       links: [
         { href: '/services', label: 'All services' },
-        { href: '/solutions/provider-enrollment', label: 'Provider enrollment' },
-        { href: '/solutions/cvo-credentialing', label: 'CVO credentialing' },
-        { href: '/solutions/roster-management', label: 'Roster management' },
-        { href: '/solutions/delegated-credentialing', label: 'Delegated credentialing' },
-        { href: '/solutions/privileging', label: 'Privileging & OPPE' },
-        { href: '/solutions/cross-state-licensing', label: 'Cross-state licensing' },
+        { href: '/solutions/cvo-credentialing', label: 'Provider credentialing' },
+        { href: '/solutions/cvo-credentialing', label: 'Primary source verification' },
+        { href: '/guides/recredentialing-requirements', label: 'Recredentialing' },
         { href: '/#workflows', label: 'Continuous monitoring' },
-        { href: '/#workflows', label: 'Payer contract management' },
       ],
     },
   ],
@@ -186,7 +152,6 @@ export const FOOTER_COLUMNS: NavGroup[][] = [
         { href: '/guides', label: 'Credentialing guides' },
         { href: '/faq', label: 'Credentialing FAQ' },
         { href: '/#estimator', label: 'Timeline estimator' },
-        { href: '/#timeline', label: 'How enrollment works' },
       ],
     },
   ],

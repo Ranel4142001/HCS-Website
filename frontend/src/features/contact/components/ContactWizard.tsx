@@ -104,7 +104,7 @@ export const ContactWizard: React.FC = () => {
             Ready to simplify <em>credentialing?</em>
           </h2>
           <p>
-            Share a few details about your providers and payers. A credentialing specialist will respond with a quote and a realistic timeline, with no obligation.
+            Share a few details about your providers. A credentialing specialist will respond with a quote and a realistic timeline, with no obligation.
           </p>
 
           <ul className="form-trust">

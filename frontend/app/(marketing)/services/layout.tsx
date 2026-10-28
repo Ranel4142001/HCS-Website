@@ -1,9 +1,9 @@
 import { buildMetadata } from '@/shared/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Credentialing & Enrollment Services',
+  title: 'Health Credentialing Services',
   description:
-    'Full-service medical credentialing: payer enrollment, primary source verification, recredentialing, roster management, privileging and multi-state licensing.',
+    'Health credentialing services: primary source verification, committee-ready files, CAQH management, recredentialing and ongoing sanctions monitoring.',
   path: '/services',
 });
 

@@ -2,7 +2,7 @@ import type { FaqItem } from '@/shared/lib/seo';
 import type { IconName } from '@/shared/components/ui/Icon';
 
 export interface SolutionContent {
-  /** Route path, e.g. "/solutions/provider-enrollment". */
+  /** Route path, e.g. "/solutions/cvo-credentialing". */
   path: string;
   /** Breadcrumb parent, e.g. "Solutions" or "Who we help". */
   section: string;

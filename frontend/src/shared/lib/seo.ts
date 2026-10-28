@@ -33,7 +33,7 @@ export function buildMetadata({ title, description, path, noindex }: PageMetaInp
       url: path,
       title: fullTitle,
       description,
-      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: `${SITE_NAME} — medical credentialing and payer enrollment services` }],
+      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: `${SITE_NAME} — health credentialing services` }],
     },
     twitter: {
       card: 'summary_large_image',

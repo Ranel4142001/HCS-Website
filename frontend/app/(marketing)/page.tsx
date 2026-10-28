@@ -3,8 +3,6 @@ import {
   ExpertiseSection,
   WorkflowsSection,
   DashboardPreviewSection,
-  ApplicationTrackerSection,
-  EnrollmentTimelineSection,
   BenefitsSection,
 } from '@/features/home';
 import { EstimatorCard } from '@/features/estimator';
@@ -26,8 +24,6 @@ export default function HomePage() {
         <ExpertiseSection />
         <WorkflowsSection />
         <DashboardPreviewSection />
-        <ApplicationTrackerSection />
-        <EnrollmentTimelineSection />
         <BenefitsSection />
         <EstimatorCard />
         <PricingSection />

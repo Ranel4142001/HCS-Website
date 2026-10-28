@@ -8,8 +8,8 @@ export default function ServicesPage() {
     <main>
       <PageIntro
         badge={{ icon: 'sparkle', label: 'Our services' }}
-        title={<>Medical credentialing &amp; <em>provider enrollment services</em></>}
-        lede="End-to-end support from signed offer to billing, and ongoing maintenance after. Engage us for a single service or the full process."
+        title={<>Health <em>credentialing services</em></>}
+        lede="Verification, committee-ready files, recredentialing and ongoing monitoring, handled by one team."
       />
       <SolutionsOverview />
       <WorkflowsSection />

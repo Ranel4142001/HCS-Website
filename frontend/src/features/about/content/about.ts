@@ -13,7 +13,7 @@ export const PRINCIPLES = [
   },
   {
     title: 'Get it right the first time',
-    text: 'Most delays start with an incomplete file. Every application is checked by a specialist before it reaches a payer or committee.',
+    text: 'Most delays start with an incomplete file. Every application is checked by a specialist before it reaches your committee.',
   },
   {
     title: 'Ask providers once',

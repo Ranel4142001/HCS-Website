@@ -1,13 +1,13 @@
 // What we handle end to end — shown in the scrolling strip under the hero.
 export const COVERAGE = [
-  'Medicare & PECOS enrollment',
-  'Medicaid enrollment',
-  'Commercial payer contracting',
   'CAQH ProView management',
-  'Primary source verification',
+  'Initial credentialing',
   'Recredentialing',
-  'State license applications',
-  'Hospital privileging',
-  'Sanctions & exclusion monitoring',
-  'Payer roster updates',
+  'Provider email handling',
+  'Provider follow-ups',
+  'License & DEA verification',
+  'Board certification checks',
+  'NPDB queries',
+  'Expiration tracking',
+  'Committee-ready files',
 ];

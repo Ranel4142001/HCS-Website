@@ -8,7 +8,7 @@ export default function FaqPage() {
       <PageIntro
         badge={{ icon: 'shield', label: 'FAQ' }}
         title={<>Medical credentialing <em>FAQ</em></>}
-        lede="Answers to common questions about credentialing, payer enrollment, CAQH, timelines, documents and costs."
+        lede="Answers to common questions about credentialing, verification, CAQH, timelines, documents and costs."
       />
       <FaqSection />
       <ContactWizard />

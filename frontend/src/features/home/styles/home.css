@@ -2,7 +2,7 @@
 
 .meter-val {
   font-size: 1.3rem;
-  font-weight: 800;
+  font-weight: 600;
   color: #ffffff;
 }
 
@@ -32,7 +32,7 @@
 
 .meter-val {
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: 600;
   color: #0d6efd;
   line-height: 1.1;
 }

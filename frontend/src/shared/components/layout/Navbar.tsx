@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import BrandLogo from '@/shared/components/ui/BrandLogo';
 import { envConfig } from '@/shared/config/env.config';
-import { NAV_LINKS, NAV_MENUS, PRIMARY_CTA } from '@/shared/config/navigation';
+import { NAV_LEAD_LINKS, NAV_LINKS, NAV_MENUS, PRIMARY_CTA } from '@/shared/config/navigation';
 import { NavDropdown } from './NavDropdown';
 import { SearchDialog } from './SearchDialog';
 import './Navbar.css';
@@ -103,6 +103,11 @@ export const Navbar: React.FC = () => {
             style={isMobileOpen && mobileMenuTop !== undefined ? { top: mobileMenuTop } : undefined}
           >
             <div className="mdl-nav__links">
+              {NAV_LEAD_LINKS.map((link) => (
+                <Link key={link.href} href={link.href} className="mdl-nav__plain-link" onClick={closeAll}>
+                  {link.label}
+                </Link>
+              ))}
               {NAV_MENUS.map((menu) => (
                 <NavDropdown
                   key={menu.id}

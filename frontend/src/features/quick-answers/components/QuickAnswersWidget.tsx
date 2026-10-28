@@ -149,7 +149,7 @@ export const QuickAnswersWidget: React.FC = () => {
               ref={inputRef}
               type="text"
               className="ai-input-field"
-              placeholder="Ask anything about credentialing or enrollment..."
+              placeholder="Ask anything about credentialing..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />

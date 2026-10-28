@@ -27,7 +27,7 @@
 
 .stat-big-num {
   font-size: clamp(3.6rem, 5.5vw, 5rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
   color: #2dd4bf;
 }
@@ -88,7 +88,7 @@
 
 .pillar-num {
   font-size: 0.85rem;
-  font-weight: 800;
+  font-weight: 600;
   color: #2dd4bf;
   letter-spacing: 0.06em;
   margin-bottom: 12px;
@@ -96,7 +96,7 @@
 
 .pillar-title {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #ffffff;
   margin-bottom: 10px;
 }

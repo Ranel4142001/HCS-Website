@@ -25,7 +25,7 @@ export const DashboardPreviewSection: React.FC = () => {
           </div>
           <h2>See where every provider stands, at a glance</h2>
           <p className="rtv-subtitle">
-            Credentialing progress, payer enrollment status, upcoming expirations and monitoring alerts in one place, so
+            Credentialing progress, recredentialing dates, upcoming expirations and monitoring alerts in one place, so
             you&apos;re never chasing updates by email. <em>Sample data shown.</em>
           </p>
         </div>
@@ -153,7 +153,7 @@ export const DashboardPreviewSection: React.FC = () => {
                   </div>
                   <div className="rtv-recred-list">
                     <div className="recred-item">
-                      <span>0–30 Days (Automated Packets Dispatched)</span>
+                      <span>0–30 Days (AI-Automated Packets Dispatched)</span>
                       <strong>38 Clinicians</strong>
                     </div>
                     <div className="recred-item">
@@ -164,101 +164,6 @@ export const DashboardPreviewSection: React.FC = () => {
                       <span>61–90 Days (Scheduled Workflows)</span>
                       <strong>37 Clinicians</strong>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'enroll' && (
-            <div key="enroll" className="rtv-panel">
-              <div className="rtv-grid">
-                {/* Card 1: Completed Enrollments by Payer */}
-                <div className="rtv-card rtv-card-wide">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Completed Enrollments by Health Plan</h3>
-                      <span className="rtv-sub">Active billing in-network provider contracts</span>
-                    </div>
-                    <span className="rtv-pill-green">283 Total Completed</span>
-                  </div>
-                  <div className="rtv-payer-grid">
-                    <div className="payer-chip">
-                      <div className="payer-header">
-                        <span className="payer-logo-tag">MEDICARE</span>
-                        <strong>94 Providers</strong>
-                      </div>
-                      <div className="payer-meter"><div className="payer-fill" style={{ width: '88%' }} /></div>
-                    </div>
-                    <div className="payer-chip">
-                      <div className="payer-header">
-                        <span className="payer-logo-tag">BCBS / ANTHEM</span>
-                        <strong>78 Providers</strong>
-                      </div>
-                      <div className="payer-meter"><div className="payer-fill" style={{ width: '74%' }} /></div>
-                    </div>
-                    <div className="payer-chip">
-                      <div className="payer-header">
-                        <span className="payer-logo-tag">OPTUM / UHC</span>
-                        <strong>62 Providers</strong>
-                      </div>
-                      <div className="payer-meter"><div className="payer-fill" style={{ width: '60%' }} /></div>
-                    </div>
-                    <div className="payer-chip">
-                      <div className="payer-header">
-                        <span className="payer-logo-tag">HUMANA &amp; CIGNA</span>
-                        <strong>49 Providers</strong>
-                      </div>
-                      <div className="payer-meter"><div className="payer-fill" style={{ width: '48%' }} /></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2: Enrollment Intake Pipeline */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Enrollment Pipeline Stages</h3>
-                      <span className="rtv-sub">In-flight applications</span>
-                    </div>
-                  </div>
-                  <div className="rtv-stage-rows">
-                    <div className="stage-row">
-                      <span>Requested</span>
-                      <div className="stage-val-wrap">
-                        <div className="stage-bar" style={{ width: '35%' }} />
-                        <strong>43</strong>
-                      </div>
-                    </div>
-                    <div className="stage-row">
-                      <span>Intake Complete</span>
-                      <div className="stage-val-wrap">
-                        <div className="stage-bar" style={{ width: '60%' }} />
-                        <strong>76</strong>
-                      </div>
-                    </div>
-                    <div className="stage-row">
-                      <span>Submitted to Payer</span>
-                      <div className="stage-val-wrap">
-                        <div className="stage-bar" style={{ width: '90%' }} />
-                        <strong>171</strong>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3: Pending Provider Feedback */}
-                <div className="rtv-card">
-                  <div className="rtv-card-top">
-                    <div>
-                      <h3>Pending Feedback Resolution</h3>
-                      <span className="rtv-sub">Smart nudges &amp; specialist assists</span>
-                    </div>
-                    <span className="rtv-pill-cyan">Avg 4.2h response</span>
-                  </div>
-                  <div className="rtv-metric-big-row">
-                    <span className="rtv-stat-giant">98.2%</span>
-                    <p className="rtv-text-soft">Of clinician clarifications resolved in &lt;24 hours via automated SMS and secure links.</p>
                   </div>
                 </div>
               </div>
@@ -309,7 +214,7 @@ export const DashboardPreviewSection: React.FC = () => {
                   <div className="rtv-card-top">
                     <div>
                       <h3>Live Sanctions &amp; Disciplinary Audit Log</h3>
-                      <span className="rtv-sub">Automated 24/7 registries monitoring</span>
+                      <span className="rtv-sub">AI-automated 24/7 registries monitoring</span>
                     </div>
                     <span className="rtv-pill-green">100% Audit Ready</span>
                   </div>
@@ -374,7 +279,7 @@ export const DashboardPreviewSection: React.FC = () => {
                 <div className="rtv-card">
                   <div className="rtv-card-top">
                     <div>
-                      <h3>Automated Data Imports</h3>
+                      <h3>AI-Automated Data Imports</h3>
                       <span className="rtv-sub">Zero duplicate data entry</span>
                     </div>
                     <span className="rtv-pill-cyan">CAQH Connected</span>

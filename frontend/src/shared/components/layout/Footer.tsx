@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
               <BrandLogo variant="white" width={210} height={52} className="footer-logo-img" />
             </Link>
             <p className="footer-brand-desc">
-              Medical credentialing and payer enrollment services that get providers verified, in-network and billing sooner.
+              Health credentialing services that get providers verified and ready to see patients sooner.
             </p>
             <div className="footer-accreditations">
               <span className="accred-badge">
