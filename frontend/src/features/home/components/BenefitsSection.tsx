@@ -39,16 +39,12 @@ export const BenefitsSection: React.FC = () => {
                 className={`platform-sticky-item ${isHovered ? 'is-active' : ''}`}
                 onMouseEnter={() => setActiveItem(idx)}
               >
+                {/* These are parallel benefits, not steps, so they are not numbered */}
                 <div className="item-top-row">
-                  <div className="item-num-row">
-                    <span className="item-num">{item.num}</span>
-                    <span className="item-num-line" />
+                  <div className="item-icon-wrap">
+                    <Icon name={item.icon} />
                   </div>
                   <span className="item-badge">{item.badge}</span>
-                </div>
-
-                <div className="item-icon-wrap">
-                  <Icon name={item.icon} />
                 </div>
 
                 <h3 className="item-title">{item.title}</h3>

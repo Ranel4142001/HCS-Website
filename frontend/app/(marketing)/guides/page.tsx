@@ -19,7 +19,7 @@ export default function GuidesPage() {
         lede="How credentialing works, what slows it down and how to get providers ready sooner."
       />
       <GuidesList />
-      <NextSteps links={[PAGE_LINKS.services, PAGE_LINKS.faq, PAGE_LINKS.pricing]} />
+      <NextSteps links={[PAGE_LINKS.services, PAGE_LINKS.faq, PAGE_LINKS.pricing]} band />
     </main>
   );
 }

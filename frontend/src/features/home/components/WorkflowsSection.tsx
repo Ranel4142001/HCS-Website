@@ -123,7 +123,7 @@ export const WorkflowsSection: React.FC = () => {
 
               {/* Simulated Real-Time Step Tracker */}
               <div className="wf-timeline-box">
-                <div className="wf-timeline-title">Autonomous Execution Timeline</div>
+                <div className="wf-timeline-title">Verification steps</div>
                 <div className="wf-timeline-list">
                   {active.mockData.steps.map((step, i) => (
                     <div key={i} className={`wf-timeline-step ${step.status}`}>

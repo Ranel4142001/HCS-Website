@@ -28,7 +28,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
       />
       <main>
         <section className="sol-hero" style={accent}>
-          <div className="container sol-hero-inner">
+          <div className="container sol-hero-inner sol-hero-inner--wide">
             <nav aria-label="Breadcrumb" className="sol-breadcrumb">
               <Link href="/">Home</Link>
               <span aria-hidden="true">›</span>
@@ -94,9 +94,11 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
 
         {content.checklist && (
           <section className="sol-section">
-            <div className="container sol-narrow">
-              <h2 className="sol-block-title">{content.checklist.title}</h2>
-              <p className="sol-desc-text">{content.checklist.intro}</p>
+            <div className="container sol-split">
+              <div className="sol-split-head">
+                <h2 className="sol-block-title">{content.checklist.title}</h2>
+                <p className="sol-desc-text">{content.checklist.intro}</p>
+              </div>
               <ul className="sol-benefits-list sol-checklist">
                 {content.checklist.items.map((item) => (
                   <li key={item}><span className="sol-check" aria-hidden="true">✓</span>{item}</li>
@@ -107,8 +109,10 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
         )}
 
         <section className="sol-section sol-section--tint">
-          <div className="container sol-narrow">
-            <h2 className="sol-block-title">Frequently asked questions</h2>
+          <div className="container sol-split">
+            <div className="sol-split-head">
+              <h2 className="sol-block-title">Frequently asked questions</h2>
+            </div>
             <div className="sol-faq">
               {content.faqs.map((faq) => (
                 <details key={faq.q}>
@@ -120,7 +124,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
           </div>
         </section>
 
-        <NextSteps links={content.related} />
+        <NextSteps links={content.related} band />
 
         <section className="sol-cta-banner" style={accent}>
           <div className="container sol-cta-inner">

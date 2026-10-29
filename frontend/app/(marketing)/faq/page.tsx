@@ -12,7 +12,7 @@ export default function FaqPage() {
         lede="Answers to common questions about credentialing, verification, CAQH, timelines, documents and costs."
       />
       <FaqSection />
-      <NextSteps links={[PAGE_LINKS.guides, PAGE_LINKS.pricing, PAGE_LINKS.services]} />
+      <NextSteps links={[PAGE_LINKS.guides, PAGE_LINKS.pricing, PAGE_LINKS.services]} band />
       <ContactWizard />
     </main>
   );

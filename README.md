@@ -81,7 +81,7 @@ The CI workflow in `.github/workflows/ci.yml` type-checks and builds every push 
 | Name | Value | Notes |
 | :--- | :--- | :--- |
 | `NEXT_PUBLIC_SITE_URL` | `https://healthcredstat.com` | Canonical URLs, sitemap, robots, social previews |
-| `NEXT_PUBLIC_PORTAL_URL` | e.g. `https://portal.healthcredstat.com` | Leave unset until the portal is live — "Sign In" links stay hidden |
+| `NEXT_PUBLIC_PORTAL_URL` | e.g. `https://portal.healthcredstat.com` | Leave unset until the portal is live — "Sign in" opens a holding page at `/sign-in` |
 
 Redeploy after changing variables; `NEXT_PUBLIC_*` values are baked in at build time.
 

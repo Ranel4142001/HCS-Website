@@ -50,13 +50,13 @@ export const EstimatorResult: React.FC<EstimatorResultProps> = ({
     <div className="est-result">
       <span className="est-result-badge">
         <Icon name={isPriority ? 'zap' : 'sparkle'} />
-        {isPriority ? 'Priority Track' : 'Your Estimate'}
+        {isPriority ? 'Priority track' : 'Your estimate'}
       </span>
 
       <div className="est-result-num">
         <span className="est-count">{displayLow}</span>-
         <span className="est-count">{displayHigh}</span>
-        <span className="est-result-unit">Business Days</span>
+        <span className="est-result-unit">business days</span>
       </div>
 
       <p className="est-result-copy">

@@ -23,7 +23,7 @@ export const RoleStep: React.FC<RoleStepProps> = ({ selectedRole, onSelectRole, 
             <Icon name="user" />
           </div>
           <div className="role-text">
-            <strong>Individual Clinician</strong>
+            <strong>Individual clinician</strong>
             <span>Solo MD, DO, NP, PA, or allied professional</span>
           </div>
           <span className="role-check">
@@ -40,7 +40,7 @@ export const RoleStep: React.FC<RoleStepProps> = ({ selectedRole, onSelectRole, 
             <Icon name="users" />
           </div>
           <div className="role-text">
-            <strong>Group Practice / Staffing Agency</strong>
+            <strong>Group practice or staffing agency</strong>
             <span>Medical groups, clinics, or staffing teams</span>
           </div>
           <span className="role-check">
@@ -57,7 +57,7 @@ export const RoleStep: React.FC<RoleStepProps> = ({ selectedRole, onSelectRole, 
             <Icon name="building" />
           </div>
           <div className="role-text">
-            <strong>Enterprise Health System / MSO</strong>
+            <strong>Health system or MSO</strong>
             <span>Hospitals, health systems, or telehealth</span>
           </div>
           <span className="role-check">

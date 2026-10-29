@@ -21,7 +21,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
             <Icon name="user" />
           </div>
           <div className="est-opt-text">
-            <strong>Individual Clinician</strong>
+            <strong>Individual clinician</strong>
             <span>Solo MD, DO, NP, PA, or allied professional</span>
           </div>
           <span className="est-opt-check">
@@ -38,7 +38,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
             <Icon name="users" />
           </div>
           <div className="est-opt-text">
-            <strong>Group Practice or Staffing Agency</strong>
+            <strong>Group practice or staffing agency</strong>
             <span>Multiple providers across 1 or more specialties</span>
           </div>
           <span className="est-opt-check">
@@ -55,7 +55,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
             <Icon name="building" />
           </div>
           <div className="est-opt-text">
-            <strong>Enterprise Health System / MSO</strong>
+            <strong>Health system or MSO</strong>
             <span>Large hospital system, MSO, or national platform</span>
           </div>
           <span className="est-opt-check">

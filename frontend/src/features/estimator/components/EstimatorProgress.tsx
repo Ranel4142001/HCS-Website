@@ -10,7 +10,7 @@ export const EstimatorProgress: React.FC<EstimatorProgressProps> = ({ currentSte
     <div className="est-progress">
       <div className={`est-p-step ${currentStep === 1 ? 'active' : currentStep > 1 ? 'done' : ''}`} data-ep="1">
         <span className="est-p-num">1</span>
-        <span>Practice Type</span>
+        <span>Practice type</span>
       </div>
       <div className="est-p-line" />
       <div className={`est-p-step ${currentStep === 2 ? 'active' : currentStep > 2 ? 'done' : ''}`} data-ep="2">

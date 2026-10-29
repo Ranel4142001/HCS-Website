@@ -6,6 +6,6 @@
 export const envConfig = {
   // Public production domain: canonical URLs, sitemap.xml, robots.txt and social previews.
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://healthcredstat.com',
-  // Client portal (separate app). Sign-in links stay hidden until this is set.
-  portalUrl: process.env.NEXT_PUBLIC_PORTAL_URL ?? '',
+  // Client portal (separate app). Until it is set, "Sign in" goes to a holding page at /sign-in.
+  signInUrl: process.env.NEXT_PUBLIC_PORTAL_URL || '/sign-in',
 } as const;

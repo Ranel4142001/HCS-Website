@@ -8,7 +8,6 @@ import {
 import { EstimatorCard } from '@/features/estimator';
 import { TestimonialsSection, FoundingClientsSection } from '@/features/social-proof';
 import { ContactWizard } from '@/features/contact';
-import { FloatingWidgets } from '@/features/quick-answers';
 import NextSteps, { PAGE_LINKS } from '@/shared/components/layout/NextSteps';
 
 /** Homepage: composes feature sections in reading order. Sections own their content and behavior. */
@@ -28,11 +27,9 @@ export default function HomePage() {
         {/* Renders nothing until real, approved testimonials are added */}
         <TestimonialsSection />
         <FoundingClientsSection />
-        <NextSteps links={[PAGE_LINKS.pricing, PAGE_LINKS.faq, PAGE_LINKS.guides]} tint />
+        <NextSteps links={[PAGE_LINKS.pricing, PAGE_LINKS.faq, PAGE_LINKS.guides]} band />
         <ContactWizard />
       </main>
-
-      <FloatingWidgets />
     </>
   );
 }

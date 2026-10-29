@@ -40,7 +40,7 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
       <div className="field-row">
         <Input
           id="fName"
-          label="Full Name *"
+          label="Full name *"
           placeholder=" "
           required
           autoComplete="name"
@@ -50,7 +50,7 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
 
         <Input
           id="fPhone"
-          label="Phone Number"
+          label="Phone number"
           type="tel"
           placeholder=" "
           autoComplete="tel"
@@ -60,7 +60,7 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
 
       <Input
         id="fEmail"
-        label="Email Address *"
+        label="Email address *"
         type="email"
         placeholder=" "
         required

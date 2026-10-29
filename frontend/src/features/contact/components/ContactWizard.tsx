@@ -139,14 +139,14 @@ export const ContactWizard: React.FC = () => {
             {!showSuccessPanel ? (
               <>
                 <div className="form-card-head">
-                  <h3>Get Your Free Credentialing Quote</h3>
-                  <p>Step {step} of 2 — {step === 1 ? 'Select Your Practice Type' : 'Enter Contact Details'}</p>
+                  <h3>Get your free credentialing quote</h3>
+                  <p>Step {step} of 2 — {step === 1 ? 'Choose your practice type' : 'Add your contact details'}</p>
                 </div>
 
                 <div className={`form-progress ${step === 2 ? 'step-2' : ''}`}>
                   <div className={`fp-step ${step === 1 ? 'active' : 'done'}`} data-fp="1">
                     <span className="fp-num">1</span>
-                    <span>Practice Type</span>
+                    <span>Practice type</span>
                   </div>
                   <div className="fp-line" />
                   <div className={`fp-step ${step === 2 ? 'active' : ''}`} data-fp="2">

@@ -14,7 +14,7 @@ export default function PricingPage() {
       />
       <PricingSection />
       <EstimatorCard />
-      <NextSteps links={[PAGE_LINKS.faq, PAGE_LINKS.services, PAGE_LINKS.guides]} />
+      <NextSteps links={[PAGE_LINKS.faq, PAGE_LINKS.services, PAGE_LINKS.guides]} band />
       <ContactWizard />
     </main>
   );

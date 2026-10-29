@@ -17,7 +17,7 @@ export interface QuickAnswer {
 }
 
 export interface AnswerRule {
-  /** The answer is used when the question contains any of these words (case-insensitive). */
+  /** Lowercase words or phrases; the answer is used when any appears at the start of a word in the question. */
   keywords: string[];
   answer: QuickAnswer;
 }

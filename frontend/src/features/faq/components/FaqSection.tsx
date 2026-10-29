@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Icon from '@/shared/components/ui/Icon';
 import { FAQ_DATA } from '../content/faq';
 import './FaqSection.css';
 
@@ -16,10 +15,6 @@ export const FaqSection: React.FC = () => {
     <section className="faq-section" id="faq">
       <div className="container faq-inner">
         <div className="faq-left">
-          <div className="faq-tag">
-            <Icon name="shield" />
-            <span>Credentialing FAQ</span>
-          </div>
           <h2>Credentialing questions, answered</h2>
           <p className="faq-left-desc">
             Key facts about provider credentialing, verification, timelines and costs.

@@ -22,16 +22,18 @@ export const FoundingClientsSection: React.FC = () => {
           ))}
         </ul>
 
-        <div className="founding-sources">
-          <h3>Every credential is checked with the source that issued it</h3>
-          <ul>
-            {SOURCES.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ul>
-        </div>
+        <div className="founding-footer">
+          <div className="founding-sources">
+            <h3>Every credential is checked with the source that issued it</h3>
+            <ul>
+              {SOURCES.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
+          </div>
 
-        <a className="founding-cta" href="#contact">Ask about founding-client terms</a>
+          <a className="founding-cta" href="#contact">Ask about founding-client terms</a>
+        </div>
       </div>
     </section>
   );

@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import Icon from '@/shared/components/ui/Icon';
 import type { ChatMessage } from '../types';
 import { INITIAL_MESSAGES, PRESET_QUERIES, findAnswer } from '../content/answers';
 import './QuickAnswersWidget.css';
+
+const REPLY_DELAY_MS = 600;
+const MAX_QUESTION_LENGTH = 300;
 
 let messageCount = 0;
 
@@ -25,100 +29,92 @@ export const QuickAnswersWidget: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const replyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+  // Keep the newest message in view
   useEffect(() => {
-    if (isOpen) {
-      scrollToBottom();
-      setTimeout(() => inputRef.current?.focus(), 100);
-    }
+    const list = messagesRef.current;
+    if (isOpen && list) list.scrollTop = list.scrollHeight;
   }, [isOpen, messages, isTyping]);
 
+  // Focus the input once when the panel opens; Escape closes it
+  useEffect(() => {
+    if (!isOpen) return;
+    inputRef.current?.focus();
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
+
+  useEffect(() => () => {
+    if (replyTimer.current) clearTimeout(replyTimer.current);
+  }, []);
+
+  function close() {
+    setIsOpen(false);
+    launcherRef.current?.focus();
+  }
+
   const handleSend = (textToSend?: string) => {
-    const text = (textToSend || input).trim();
-    if (!text) return;
+    const text = (textToSend ?? input).trim().slice(0, MAX_QUESTION_LENGTH);
+    if (!text || isTyping) return;
 
     setMessages((prev) => [...prev, createMessage('user', text)]);
-    if (!textToSend) setInput('');
+    setInput('');
     setIsTyping(true);
 
-    setTimeout(() => {
+    replyTimer.current = setTimeout(() => {
       const { reply, actionLink } = findAnswer(text);
       setIsTyping(false);
       setMessages((prev) => [...prev, createMessage('ai', reply, actionLink)]);
-    }, 600);
+    }, REPLY_DELAY_MS);
   };
 
   return (
     <div className="ai-advisor-container">
-      {/* Floating Toggle Button */}
       <button
+        ref={launcherRef}
         type="button"
         className={`ai-advisor-launcher ${isOpen ? 'is-open' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Open credentialing quick answers"
-        title="Credentialing quick answers"
+        onClick={() => (isOpen ? close() : setIsOpen(true))}
+        aria-expanded={isOpen}
+        aria-controls="quick-answers-dialog"
+        aria-label={isOpen ? 'Close credentialing quick answers' : 'Open credentialing quick answers'}
       >
-        <span className="ai-launcher-pulse" />
+        <span className="ai-launcher-pulse" aria-hidden="true" />
         <Icon name={isOpen ? 'x' : 'sparkle'} />
         <span className="ai-launcher-text">Quick answers</span>
       </button>
 
-      {/* Expandable Chat Dialog */}
       {isOpen && (
-        <div className="ai-advisor-dialog" role="dialog" aria-label="Credentialing quick answers">
-          {/* Header */}
+        <div id="quick-answers-dialog" className="ai-advisor-dialog" role="dialog" aria-labelledby="quick-answers-title">
           <div className="ai-dialog-header">
             <div className="ai-header-brand">
-              <span className="ai-badge-dot" />
-              <div>
-                <strong>Credentialing Quick Answers</strong>
-                <span>Quick answers to common questions</span>
+              <span className="ai-header-icon" aria-hidden="true"><Icon name="sparkle" /></span>
+              <div className="ai-header-text">
+                <strong id="quick-answers-title">Credentialing quick answers</strong>
+                <span>Instant answers to common questions</span>
               </div>
             </div>
-            <button
-              type="button"
-              className="ai-dialog-close"
-              onClick={() => setIsOpen(false)}
-              aria-label="Close assistant"
-            >
+            <button type="button" className="ai-dialog-close" onClick={close} aria-label="Close quick answers">
               <Icon name="x" />
             </button>
           </div>
 
-          {/* Quick Preset Buttons */}
-          <div className="ai-presets-scroll">
-            {PRESET_QUERIES.map((preset, idx) => (
-              <button
-                key={idx}
-                type="button"
-                className="ai-preset-chip"
-                onClick={() => handleSend(preset.query)}
-              >
-                {preset.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Message Stream */}
-          <div className="ai-messages-body">
+          <div className="ai-messages-body" ref={messagesRef} aria-live="polite">
             {messages.map((msg) => (
               <div key={msg.id} className={`ai-msg-row ${msg.sender}`}>
                 <div className="ai-msg-bubble">
                   <p>{msg.text}</p>
                   {msg.actionLink && (
-                    <a
-                      href={msg.actionLink.href}
-                      className="ai-action-link"
-                      onClick={() => setIsOpen(false)}
-                    >
+                    <Link href={msg.actionLink.href} className="ai-action-link" onClick={() => setIsOpen(false)}>
                       {msg.actionLink.text}
-                    </a>
+                    </Link>
                   )}
                   <span className="ai-msg-time">{msg.time}</span>
                 </div>
@@ -127,17 +123,29 @@ export const QuickAnswersWidget: React.FC = () => {
 
             {isTyping && (
               <div className="ai-msg-row ai">
-                <div className="ai-msg-bubble ai-typing">
+                <div className="ai-msg-bubble ai-typing" aria-label="Writing an answer">
                   <span className="typing-dot" />
                   <span className="typing-dot" />
                   <span className="typing-dot" />
                 </div>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Bar */}
+          <div className="ai-presets" role="group" aria-label="Common topics">
+            {PRESET_QUERIES.map((preset) => (
+              <button
+                key={preset.label}
+                type="button"
+                className="ai-preset-chip"
+                onClick={() => handleSend(preset.query)}
+                disabled={isTyping}
+              >
+                {preset.label}
+              </button>
+            ))}
+          </div>
+
           <form
             className="ai-dialog-input-bar"
             onSubmit={(e) => {
@@ -145,20 +153,19 @@ export const QuickAnswersWidget: React.FC = () => {
               handleSend();
             }}
           >
+            <label htmlFor="quick-answers-input" className="sr-only">Your credentialing question</label>
             <input
+              id="quick-answers-input"
               ref={inputRef}
               type="text"
               className="ai-input-field"
-              placeholder="Ask anything about credentialing..."
+              placeholder="Ask about credentialing…"
               value={input}
+              maxLength={MAX_QUESTION_LENGTH}
+              autoComplete="off"
               onChange={(e) => setInput(e.target.value)}
             />
-            <button
-              type="submit"
-              className="ai-send-btn"
-              aria-label="Send query"
-              disabled={!input.trim()}
-            >
+            <button type="submit" className="ai-send-btn" aria-label="Send question" disabled={!input.trim() || isTyping}>
               <Icon name="arrow" />
             </button>
           </form>

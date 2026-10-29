@@ -9,40 +9,57 @@
   transform: translate(40%, -30%) scale(1.5);
 }
 
-/* Stats bar */
+/* Hero: centered on the page, with the text width capped so lines stay readable */
+.sol-hero-inner.sol-hero-inner--wide {
+  max-width: var(--container);
+  align-items: center;
+  text-align: center;
+}
+
+.sol-hero-inner--wide .sol-hero-title { max-width: 20ch; }
+
+.sol-hero-inner--wide .sol-hero-tagline { max-width: 60ch; }
+
+.sol-hero-inner--wide .sol-hero-cta { justify-content: center; }
+
+/* Stats bar: an even four-column row under the centered hero, separated by thin rules */
 
 .sol-stats-bar {
   background: #fff;
-  border-bottom: 1px solid #f1f5f9;
-  padding: 24px 0;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 32px 0;
 }
 
 .sol-stats-inner {
-  display: flex;
-  gap: 0;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px 0;
 }
 
 .sol-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 12px 24px;
+  gap: 6px;
+  padding: 4px 24px;
+  border-left: 1px solid #e2e8f0;
+  text-align: center;
 }
 
+.sol-stat:first-child { border-left: 0; }
+
 .sol-stat strong {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #062459;
-  line-height: 1;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .sol-stat span {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: #64748b;
-  text-align: center;
+  line-height: 1.4;
 }
 
 /* Body section */
@@ -59,12 +76,13 @@
   align-items: start;
 }
 
+/* Same size as .sol-block-title, so every section heading on the page matches */
 .sol-section-title {
-  font-size: 1.25rem;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
   font-weight: 600;
   color: #0f172a;
-  margin: 0 0 16px;
-  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
 }
 
 .sol-benefits-list {
@@ -127,10 +145,21 @@
   margin: 0 0 28px;
 }
 
+/* The default navy button disappears on the navy banner, so invert it here */
+.sol-cta-inner .btn-sol-primary { background: #ffffff; color: #062459; }
+
+.sol-cta-inner .btn-sol-primary:hover { background: #e8eef8; }
+
+.sol-cta-inner .btn-sol-primary:focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .sol-stats-inner { grid-template-columns: 1fr 1fr; gap: 24px 32px; }
+  .sol-stat,
+  .sol-stat:first-child { padding: 0; border-left: 0; }
+}
+
 @media (max-width: 640px) {
   .sol-body-grid { grid-template-columns: 1fr; gap: 40px; }
-  .sol-stats-inner { gap: 0; }
-  .sol-stat { padding: 12px 16px; }
 }
 
 .sol-step-num {
@@ -149,7 +178,8 @@
 
 .sol-section--tint .sol-step-num { background: #062459; }
 
-.sol-checklist { margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.sol-checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 32px; }
+
 
 .sol-faq { display: flex; flex-direction: column; gap: 12px; }
 

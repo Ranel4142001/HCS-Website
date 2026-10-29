@@ -33,8 +33,6 @@
   gap: 8px;
   font-size: 0.82rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--teal-700);
   background: #eef5ff;
   padding: 6px 14px;
@@ -298,8 +296,6 @@
 .wf-timeline-title {
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--ink-faint);
   margin-bottom: 12px;
 }

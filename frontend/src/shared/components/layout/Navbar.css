@@ -229,29 +229,27 @@
   margin: 0 4px;
 }
 
-/* GET IN TOUCH outline button */
+/* Get a free quote: the one filled button in the header */
 
 .mdl-nav__btn-touch {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 18px;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #0f172a;
-  background: transparent;
-  border: 1.5px solid #0f172a;
-  border-radius: 6px;
+  padding: 9px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--teal-900);
+  border: 1.5px solid var(--teal-900);
+  border-radius: 10px;
   text-decoration: none;
   transition: all 0.15s ease;
   white-space: nowrap;
 }
 
 .mdl-nav__btn-touch:hover {
-  background: #0f172a;
-  color: #ffffff;
+  background: var(--teal-800);
+  border-color: var(--teal-800);
 }
 
 @media (max-width: 1024px) {

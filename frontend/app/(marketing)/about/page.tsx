@@ -21,7 +21,7 @@ export default function AboutPage() {
       <PrinciplesSection />
       <ExpertiseSection />
       <AudiencesSection />
-      <NextSteps links={[PAGE_LINKS.services, PAGE_LINKS.pricing, PAGE_LINKS.guides]} />
+      <NextSteps links={[PAGE_LINKS.services, PAGE_LINKS.pricing, PAGE_LINKS.guides]} band />
       <ContactWizard />
     </main>
   );

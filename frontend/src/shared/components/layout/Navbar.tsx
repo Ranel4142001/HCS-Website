@@ -142,14 +142,12 @@ export const Navbar: React.FC = () => {
 
               <div className="mdl-nav__divider" />
 
-              {envConfig.portalUrl && (
-                <a href={envConfig.portalUrl} className="mdl-nav__signin" onClick={closeAll}>
-                  Sign In
-                </a>
-              )}
-
               <Link href={PRIMARY_CTA.href} className="mdl-nav__btn-touch" onClick={closeAll}>
                 {PRIMARY_CTA.label}
+              </Link>
+
+              <Link href={envConfig.signInUrl} className="mdl-nav__signin" onClick={closeAll}>
+                Sign in
               </Link>
             </div>
           </div>

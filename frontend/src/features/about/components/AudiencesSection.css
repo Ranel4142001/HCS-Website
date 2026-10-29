@@ -1,3 +1,47 @@
-.sol-related--spaced {
-  margin-top: 24px;
+.audience-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.audience-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #062459;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.audience-links a span {
+  color: #64748b;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.audience-links a:hover {
+  border-color: #062459;
+  background: #f8faff;
+}
+
+.audience-links a:hover span {
+  color: #062459;
+  transform: translateX(3px);
+}
+
+.audience-links a:focus-visible {
+  outline: 3px solid #3f8dff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .audience-links { grid-template-columns: 1fr; }
 }

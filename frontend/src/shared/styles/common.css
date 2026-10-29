@@ -45,10 +45,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-weight: 700;
-  font-size: .98rem;
-  padding: 14px 24px;
-  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: .9375rem;
+  padding: 13px 24px;
+  border-radius: 10px;
   border: 1.5px solid transparent;
   cursor: pointer;
   white-space: nowrap;
@@ -62,14 +62,12 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--teal-600), var(--teal-700));
+  background: var(--teal-900);
   color: #fff;
-  box-shadow: 0 10px 24px -8px rgba(13,110,253,.55);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 32px -8px rgba(13,110,253,.6);
+  background: var(--teal-800);
 }
 
 .btn-primary:hover svg {
@@ -257,6 +255,36 @@
 }
 
 .sol-related a:hover { border-color: #062459; background: #f0f7ff; }
+
+/* Heading on the left, content on the right: the same columns as the solution pages' .sol-body-grid, so every section shares one left edge */
+.sol-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 64px;
+  align-items: start;
+}
+
+.sol-split > * { min-width: 0; }
+
+.sol-split-head .sol-block-title { margin-bottom: 16px; }
+
+.sol-split-head .sol-desc-text { margin: 0; color: #475569; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .sol-split { grid-template-columns: 1fr; }
+}
+
+/* Next steps as a compact band: title and links on one row, aligned to the container edge */
+.next-steps-band { padding: 40px 0; background: #ffffff; border-bottom: 1px solid #e2e8f0; }
+
+.next-steps-band-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; }
+
+.next-steps-band .sol-block-title { margin: 0; font-size: 1.25rem; }
+
+@media (max-width: 640px) {
+  .next-steps-band { padding: 32px 0; }
+  .next-steps-band-inner { flex-direction: column; align-items: flex-start; }
+}
 
 @media (max-width: 640px) {
   .sol-step {

@@ -62,15 +62,15 @@ export const NAV_MENUS: NavMenu[] = [
     ],
     spotlight: {
       background: 'linear-gradient(135deg,#0a4a47,#10c1bb)',
-      badge: { icon: 'bar', label: 'Credentialing Status' },
+      badge: { icon: 'bar', label: 'Credentialing status' },
       header: ['Provider', 'Status'],
       rows: [
         { label: 'Dr. McLogan', tag: 'Credentialed', tagTone: 'green' },
         { label: 'Dr. Ivan Mora', tag: 'Credentialed', tagTone: 'green' },
-        { label: 'Gary Smith', tag: 'In Progress', tagTone: 'teal' },
+        { label: 'Gary Smith', tag: 'In progress', tagTone: 'teal' },
       ],
       caption: 'See where every provider stands, at a glance',
-      cta: { href: '/#contact', label: 'LEARN MORE' },
+      cta: { href: '/#contact', label: 'Learn more' },
     },
   },
 ];
@@ -86,13 +86,13 @@ export const NAV_LINKS: NavLink[] = [
   { href: '/about', label: 'About' },
 ];
 
-export const PRIMARY_CTA: NavLink = { href: '/#contact', label: 'GET A FREE QUOTE' };
+export const PRIMARY_CTA: NavLink = { href: '/#contact', label: 'Get a free quote' };
 
 /** Shown in the search dialog before the visitor types. */
 export const QUICK_LINKS: NavLink[] = [
-  { href: '/solutions/cvo-credentialing', label: 'Provider Credentialing', description: 'Primary source verification', icon: 'shield' },
+  { href: '/solutions/cvo-credentialing', label: 'Provider credentialing', description: 'Primary source verification', icon: 'shield' },
   { href: '/guides/recredentialing-requirements', label: 'Recredentialing', description: 'Cycles, re-verification and avoiding lapses', icon: 'clock' },
-  { href: '/pricing', label: 'Transparent Pricing', description: 'Rates and plans', icon: 'bar' },
+  { href: '/pricing', label: 'Transparent pricing', description: 'Rates and plans', icon: 'bar' },
   { href: '/faq', label: 'Credentialing FAQ', description: 'Timelines, documents and costs', icon: 'chat' },
   { href: '/about', label: 'About HealthCredSTAT', description: 'Our approach', icon: 'building' },
 ];
@@ -126,7 +126,7 @@ export const FOOTER_COLUMNS: NavGroup[][] = [
   ],
   [
     {
-      heading: 'Who We Help',
+      heading: 'Who we help',
       links: [
         { href: '/who-we-help/provider-groups', label: 'Provider groups & MSOs' },
         { href: '/who-we-help/health-plans', label: 'Payers & health plans' },
@@ -151,8 +151,7 @@ export const FOOTER_COLUMNS: NavGroup[][] = [
       links: [
         { href: '/about', label: 'About us' },
         { href: '/contact', label: 'Contact us' },
-        // Appears once NEXT_PUBLIC_PORTAL_URL is set.
-        ...(envConfig.portalUrl ? [{ href: envConfig.portalUrl, label: 'Portal login' }] : []),
+        { href: envConfig.signInUrl, label: 'Client sign in' },
       ],
     },
   ],

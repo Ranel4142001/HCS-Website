@@ -1,9 +1,9 @@
 import type { EstimatorRole, PlanInfo } from '../types';
 
 export const PLAN_INFO_MAP: Record<EstimatorRole, PlanInfo> = {
-  individual: { name: 'Individual Clinician', price: '$599 flat rate per assignment' },
-  group: { name: 'Group Practice / Staffing Agency', price: 'Custom volume pricing' },
-  enterprise: { name: 'Enterprise Health System', price: 'Tailored pricing — contact sales' },
+  individual: { name: 'Individual clinician', price: '$599 flat rate per assignment' },
+  group: { name: 'Group practice or staffing agency', price: 'Custom volume pricing' },
+  enterprise: { name: 'Health system or MSO', price: 'Tailored pricing — contact sales' },
 };
 
 // Estimated timeline in business days, by practice type, before volume and urgency adjustments.

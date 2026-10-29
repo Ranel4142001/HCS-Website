@@ -17,15 +17,18 @@ export const PAGE_LINKS = {
 interface NextStepsProps {
   links: NextStepLink[];
   tint?: boolean;
+  /** A compact one-row band at full container width, for long pages such as the homepage. */
+  band?: boolean;
   /** Extra content under the links, such as a call to action. */
   children?: React.ReactNode;
 }
 
 /** The closing "Next steps" block on every page, so each page leads on to related credentialing content. */
-export function NextSteps({ links, tint = false, children }: NextStepsProps) {
+export function NextSteps({ links, tint = false, band = false, children }: NextStepsProps) {
+  const sectionClass = band ? 'next-steps-band' : `sol-section${tint ? ' sol-section--tint' : ''}`;
   return (
-    <section className={`sol-section${tint ? ' sol-section--tint' : ''}`} aria-labelledby="next-steps-title">
-      <div className="container sol-narrow">
+    <section className={sectionClass} aria-labelledby="next-steps-title">
+      <div className={band ? 'container next-steps-band-inner' : 'container sol-narrow'}>
         <h2 id="next-steps-title" className="sol-block-title">Next steps</h2>
         <ul className="sol-related">
           {links.map((link) => (
