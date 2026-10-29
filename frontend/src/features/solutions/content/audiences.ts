@@ -5,7 +5,7 @@ import type { SolutionContent } from '../types';
 export const providerGroups: SolutionContent = {
   path: '/who-we-help/provider-groups',
   section: 'Who we help',
-  name: 'Medical Groups & MSOs',
+  name: 'Medical groups & MSOs',
   audience: 'Medical groups, physician practices and management services organizations',
   color: '#3f8dff',
   icon: 'users',
@@ -96,7 +96,7 @@ export const providerGroups: SolutionContent = {
 export const healthPlans: SolutionContent = {
   path: '/who-we-help/health-plans',
   section: 'Who we help',
-  name: 'Health Plans',
+  name: 'Health plans',
   audience: 'Health plans and payers',
   color: '#10c1bb',
   icon: 'shield',
@@ -178,7 +178,7 @@ export const healthPlans: SolutionContent = {
 export const healthSystems: SolutionContent = {
   path: '/who-we-help/health-systems',
   section: 'Who we help',
-  name: 'Health Systems & Hospitals',
+  name: 'Health systems & hospitals',
   audience: 'Health systems, hospitals and ambulatory surgery centers',
   color: '#ef4444',
   icon: 'building',
@@ -257,7 +257,7 @@ export const healthSystems: SolutionContent = {
 export const digitalHealth: SolutionContent = {
   path: '/who-we-help/digital-health',
   section: 'Who we help',
-  name: 'Telehealth & Digital Health',
+  name: 'Telehealth & digital health',
   audience: 'Telehealth and digital health companies',
   color: '#8b5cf6',
   icon: 'globe',

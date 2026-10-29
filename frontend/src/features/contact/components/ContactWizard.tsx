@@ -21,7 +21,12 @@ const lazyResolver: Resolver<ContactFormValues> = async (values, context, option
   return zodResolver(contactFormSchema)(values, context, options);
 };
 
-export const ContactWizard: React.FC = () => {
+interface ContactWizardProps {
+  /** On /contact this section opens the page, so its heading is the page's h1 and the badge is dropped. */
+  isPageHeading?: boolean;
+}
+
+export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = false }) => {
   const [step, setStep] = useState<1 | 2>(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -108,10 +113,14 @@ export const ContactWizard: React.FC = () => {
     <section className="form-section" id="contact">
       <div className="container form-grid">
         <div className="form-copy">
-          <Badge icon={<Icon name="sparkle" />}>Request a quote</Badge>
-          <h2>
-            Ready to simplify <em>credentialing?</em>
-          </h2>
+          {isPageHeading ? (
+            <h1>Get a free credentialing quote</h1>
+          ) : (
+            <>
+              <Badge icon={<Icon name="sparkle" />}>Request a quote</Badge>
+              <h2>Ready to simplify credentialing?</h2>
+            </>
+          )}
           <p>
             Share a few details about your providers. A credentialing specialist will respond with a quote and a realistic timeline, with no obligation.
           </p>
@@ -139,7 +148,7 @@ export const ContactWizard: React.FC = () => {
             {!showSuccessPanel ? (
               <>
                 <div className="form-card-head">
-                  <h3>Get your free credentialing quote</h3>
+                  <h3>Tell us about your providers</h3>
                   <p>Step {step} of 2 — {step === 1 ? 'Choose your practice type' : 'Add your contact details'}</p>
                 </div>
 

@@ -22,3 +22,11 @@
   line-height: 1.6;
   color: var(--ink-soft);
 }
+
+/* Long centered lines are hard to read on a phone, so the intro aligns left there */
+@media (max-width: 640px) {
+  .page-intro {
+    padding-block: 48px 24px;
+    text-align: left;
+  }
+}

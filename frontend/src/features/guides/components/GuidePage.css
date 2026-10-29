@@ -52,23 +52,6 @@
   font-weight: 700;
 }
 
-.guide-faq details {
-  border-bottom: 1px solid var(--line);
-  padding: 18px 0;
-}
-
-.guide-faq summary {
-  cursor: pointer;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.guide-faq details p {
-  margin-top: 10px;
-  color: #334155;
-  line-height: 1.7;
-}
-
 .guide-cta {
   margin-top: 40px;
   padding: 28px;

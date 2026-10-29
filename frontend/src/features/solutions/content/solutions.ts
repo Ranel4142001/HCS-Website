@@ -9,7 +9,7 @@ import type { SolutionContent } from '../types';
 export const cvoCredentialing: SolutionContent = {
   path: '/solutions/cvo-credentialing',
   section: 'Services',
-  name: 'Provider Credentialing',
+  name: 'Provider credentialing',
   color: '#10c1bb',
   icon: 'shield',
   meta: {

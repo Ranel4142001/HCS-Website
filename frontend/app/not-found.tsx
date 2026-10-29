@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Navbar from '@/shared/components/layout/Navbar';
 import Footer from '@/shared/components/layout/Footer';
 
+export const metadata = { title: 'Page not found', robots: { index: false } };
+
 // Lives outside the (marketing) group, so it renders the site chrome itself.
 export default function NotFound() {
   return (

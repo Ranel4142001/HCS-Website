@@ -126,15 +126,17 @@
 
 .item-points li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   font-size: 0.85rem;
   color: var(--ink-soft);
 }
 
 .item-points li svg {
+  flex-shrink: 0;
   width: 14px;
   height: 14px;
+  margin-top: 3px;
   color: var(--teal-600);
 }
 

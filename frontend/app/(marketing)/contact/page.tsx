@@ -1,5 +1,4 @@
 import { ContactWizard } from '@/features/contact';
-import PageIntro from '@/shared/components/layout/PageIntro';
 import { buildMetadata } from '@/shared/lib/seo';
 
 export const metadata = buildMetadata({
@@ -12,11 +11,7 @@ export const metadata = buildMetadata({
 export default function ContactPage() {
   return (
     <main>
-      <PageIntro
-        title="Get a free credentialing quote"
-        lede="Request pricing and a timeline for your providers."
-      />
-      <ContactWizard />
+      <ContactWizard isPageHeading />
     </main>
   );
 }

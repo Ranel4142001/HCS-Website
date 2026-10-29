@@ -69,7 +69,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
         <section className="sol-section sol-section--tint">
           <div className="container sol-narrow">
             <h2 className="sol-block-title">Frequently asked questions</h2>
-            <div className="guide-faq">
+            <div className="sol-faq">
               {guide.faqs.map((faq) => (
                 <details key={faq.q}>
                   <summary>{faq.q}</summary>

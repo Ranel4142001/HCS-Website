@@ -181,39 +181,6 @@
 .sol-checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 32px; }
 
 
-.sol-faq { display: flex; flex-direction: column; gap: 12px; }
-
-.sol-faq details {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0 20px;
-}
-
-.sol-faq summary {
-  cursor: pointer;
-  list-style: none;
-  padding: 18px 28px 18px 0;
-  font-weight: 700;
-  color: #0f172a;
-  position: relative;
-}
-
-.sol-faq summary::-webkit-details-marker { display: none; }
-
-.sol-faq summary::after {
-  content: '+';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.25rem;
-  color: #64748b;
-}
-
-.sol-faq details[open] summary::after { content: '−'; }
-
-.sol-faq details p { margin: 0 0 18px; color: #475569; line-height: 1.7; }
 
 .sol-body-grid > * {
   min-width: 0;
