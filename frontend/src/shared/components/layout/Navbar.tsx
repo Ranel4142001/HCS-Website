@@ -1,13 +1,21 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import BrandLogo from '@/shared/components/ui/BrandLogo';
 import { envConfig } from '@/shared/config/env.config';
 import { NAV_LEAD_LINKS, NAV_LINKS, NAV_MENUS, PRIMARY_CTA } from '@/shared/config/navigation';
 import { NavDropdown } from './NavDropdown';
-import { SearchDialog } from './SearchDialog';
 import './Navbar.css';
+
+// Search opens only on demand, so its code and styles stay out of every page and load on first use.
+// Pointing at or focusing the search button starts that download early, so the dialog still opens at once.
+const loadSearchDialog = () => import('./SearchDialog');
+const SearchDialog = dynamic(loadSearchDialog, { ssr: false });
+const preloadSearchDialog = () => {
+  void loadSearchDialog();
+};
 
 const MOBILE_BREAKPOINT = 1024;
 const CLOSE_DELAY_MS = 150;
@@ -131,6 +139,8 @@ export const Navbar: React.FC = () => {
                 type="button"
                 className="mdl-nav__search-btn"
                 onClick={() => setIsSearchOpen(true)}
+                onPointerEnter={preloadSearchDialog}
+                onFocus={preloadSearchDialog}
                 aria-label="Search"
                 title="Search (Ctrl + K)"
               >
