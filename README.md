@@ -70,6 +70,16 @@ The marketing website is deployed on its own. The client portal is a separate ap
 Create a repository under the company GitHub organization and push this folder (`main` branch).
 The CI workflow in `.github/workflows/ci.yml` type-checks and builds every push and pull request.
 
+**Branches**
+
+| Branch | Purpose |
+| :--- | :--- |
+| `main` | Production. Vercel deploys it to the live site. Changes arrive only through a pull request from `development`. |
+| `development` | Work in progress. Vercel deploys each push as a preview URL; the live site is untouched. |
+
+Day to day: branch from `development` (or commit to it), push, check the preview, and open a pull request
+from `development` into `main` when the changes are ready to go live.
+
 ### 2. Import into Vercel
 - **Add New → Project →** pick the repository.
 - **Root Directory:** `frontend`

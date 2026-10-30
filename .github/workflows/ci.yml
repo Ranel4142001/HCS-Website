@@ -1,9 +1,9 @@
 name: CI
 on:
   pull_request:
-    branches: [main, develop]
+    branches: [main, development]
   push:
-    branches: [main]
+    branches: [main, development]
 # The job only reads the code, so its token gets read access and nothing else
 permissions:
   contents: read
