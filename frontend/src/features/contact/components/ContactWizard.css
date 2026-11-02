@@ -215,3 +215,12 @@
 .form-grid > * {
   min-width: 0;
 }
+
+/* Honeypot field for spam bots: kept in the form but moved off-screen. */
+.form-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

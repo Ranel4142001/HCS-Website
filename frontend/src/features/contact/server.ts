@@ -1,3 +1,4 @@
 // Server-side entry point: for route handlers only. Kept apart from index.ts, which loads client components and CSS.
-export { contactFormSchema } from './validation/contact.schema';
+export { contactSubmissionSchema } from './validation/contact.schema';
+export { leadSource } from './services/lead-source';
 export { createMondayLead, MondayConfigError } from './services/monday.server';

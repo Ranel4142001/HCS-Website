@@ -16,3 +16,15 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+/** What the browser posts to /api/contact: the form values plus spam signals and the page it was sent from. */
+export const contactSubmissionSchema = contactFormSchema.extend({
+  /** Honeypot: hidden from people, so any value means a bot filled in every field. */
+  website: z.string().max(500).optional(),
+  /** Milliseconds between the form appearing and being submitted, measured in the browser. */
+  elapsedMs: z.number().int().nonnegative(),
+  /** Path of the page the form was sent from, e.g. "/pricing". */
+  page: z.string().max(200).optional(),
+});
+
+export type ContactSubmission = z.infer<typeof contactSubmissionSchema>;

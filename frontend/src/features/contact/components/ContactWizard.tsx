@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useForm, useWatch, type Resolver } from 'react-hook-form';
 import type { ContactFormValues } from '../validation/contact.schema';
-import { submitContactForm } from '../services/contact.service';
+import { submitContactForm, type SubmissionMeta } from '../services/contact.service';
 import RoleStep from './RoleStep';
 import DetailsStep from './DetailsStep';
 import SuccessPanel from './SuccessPanel';
@@ -35,6 +35,13 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
   const [submitError, setSubmitError] = useState<string | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const rafIdRef = useRef<number | null>(null);
+  // Spam signals for the server: the hidden honeypot field and when the form first appeared.
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const shownAtRef = useRef(0);
+
+  useEffect(() => {
+    shownAtRef.current = performance.now();
+  }, []);
 
   const form = useForm<ContactFormValues>({
     resolver: lazyResolver,
@@ -53,11 +60,11 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
     form.setValue('role', role, { shouldValidate: true });
   };
 
-  const onSubmit = form.handleSubmit(async (data) => {
+  const sendRequest = async (data: ContactFormValues, meta: SubmissionMeta) => {
     setIsLoading(true);
     setSubmitError(null);
     try {
-      await submitContactForm(data);
+      await submitContactForm(data, meta);
       setIsLoading(false);
       setIsSuccess(true);
 
@@ -69,9 +76,17 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
       triggerShake();
     }
-  }, () => {
-    triggerShake();
-  });
+  };
+
+  // The spam signals are read here, at submit time, then validation runs and the request is sent.
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const meta: SubmissionMeta = {
+      website: honeypotRef.current?.value ?? '',
+      // The event's timeStamp and performance.now() share the same clock.
+      elapsedMs: Math.max(0, Math.round(e.timeStamp - shownAtRef.current)),
+    };
+    return form.handleSubmit((data) => sendRequest(data, meta), () => triggerShake())(e);
+  };
 
   const triggerShake = () => {
     setIsShaking(true);
@@ -169,6 +184,11 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
                 </div>
 
                 <form onSubmit={onSubmit} noValidate>
+                  {/* Honeypot: off-screen and skipped by keyboards and screen readers; only bots fill it in. */}
+                  <div className="form-hp" aria-hidden="true">
+                    <label htmlFor="fWebsite">Website</label>
+                    <input id="fWebsite" name="website" type="text" tabIndex={-1} autoComplete="off" ref={honeypotRef} />
+                  </div>
                   <div style={{ display: showSuccessPanel ? 'none' : 'block' }}>
                     {step === 1 && (
                       <RoleStep

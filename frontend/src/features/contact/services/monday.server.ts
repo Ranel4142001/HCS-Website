@@ -102,7 +102,7 @@ function pickStatusLabel(column: MondayColumn, candidates: string[]): string {
   return candidates.find((c) => labels.includes(c)) ?? candidates[0];
 }
 
-function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, includePhone: boolean) {
+function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, includePhone: boolean, source: string) {
   const byTitle = new Map(columns.map((c) => [c.title.trim().toLowerCase(), c]));
   const wanted: [string, string | undefined][] = [
     ['email', data.email],
@@ -110,7 +110,7 @@ function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, inc
     ['practice type', PRACTICE_TYPE_LABELS[data.role]],
     ['message', data.message],
     ['submitted', 'now'],
-    ['source', 'Website contact form'],
+    ['source', source],
   ];
   const values: Record<string, unknown> = {};
   for (const [title, value] of wanted) {
@@ -133,15 +133,15 @@ async function createItem(token: string, boardId: string, name: string, values: 
   return data.create_item.id;
 }
 
-export async function createMondayLead(data: ContactFormValues): Promise<string> {
+export async function createMondayLead(data: ContactFormValues, source = 'Website contact form'): Promise<string> {
   const { token, boardId } = getConfig();
   const columns = await getColumns(token, boardId);
   try {
-    return await createItem(token, boardId, data.name, buildColumnValues(columns, data, true));
+    return await createItem(token, boardId, data.name, buildColumnValues(columns, data, true, source));
   } catch (err) {
     // Monday rejects phone numbers it can't parse. Never lose the lead over it: retry with the phone in the message.
     if (!data.phone?.trim()) throw err;
     const message = [data.message?.trim(), `Phone: ${data.phone.trim()}`].filter(Boolean).join('\n\n');
-    return createItem(token, boardId, data.name, buildColumnValues(columns, { ...data, message }, false));
+    return createItem(token, boardId, data.name, buildColumnValues(columns, { ...data, message }, false, source));
   }
 }
