@@ -2,9 +2,10 @@ import type { ContactFormValues } from '../validation/contact.schema';
 
 /**
  * Server only: reads MONDAY_API_TOKEN, so import it from route handlers, never from client components.
- * Creates one item on the Monday "Website Leads" board per contact form submission.
- * Columns are matched by title, so the board can be edited in Monday without code changes:
- * Email, Phone, Practice type, Message, Lead status, Submitted, Source. Missing columns are skipped.
+ * Creates one item on a Monday leads board per contact form submission: the "Website Leads" work board,
+ * or the monday CRM "Leads" board. Columns are matched by title, so the board can be edited in Monday
+ * without code changes: Email, Phone, Practice type, Message, Lead status (or the CRM's Status), Submitted,
+ * Source. Missing columns are skipped.
  */
 
 const MONDAY_API_URL = 'https://api.monday.com/v2';
@@ -19,7 +20,11 @@ interface MondayColumn {
   id: string;
   title: string;
   type: string;
+  settings_str?: string;
 }
+
+// New leads get the first of these labels the status column has: "New" on our board, "New Lead" in monday CRM.
+const NEW_LEAD_LABELS = ['New', 'New Lead'];
 
 export class MondayConfigError extends Error {}
 
@@ -54,7 +59,7 @@ async function getColumns(token: string, boardId: string): Promise<MondayColumn[
   if (columnsCache?.boardId === boardId) return columnsCache.columns;
   const data = await mondayRequest<{ boards: { columns: MondayColumn[] }[] }>(
     token,
-    'query ($ids: [ID!]) { boards(ids: $ids) { columns { id title type } } }',
+    'query ($ids: [ID!]) { boards(ids: $ids) { columns { id title type settings_str } } }',
     { ids: [boardId] },
   );
   const columns = data.boards[0]?.columns;
@@ -85,6 +90,18 @@ function columnValue(column: MondayColumn, value: string): unknown {
   }
 }
 
+/** The first of `candidates` that the status column defines, or the first candidate if none match. */
+function pickStatusLabel(column: MondayColumn, candidates: string[]): string {
+  let labels: string[] = [];
+  try {
+    const parsed = JSON.parse(column.settings_str || '{}').labels;
+    labels = Array.isArray(parsed) ? parsed.map((l: { name?: string }) => l.name ?? '') : Object.values(parsed ?? {});
+  } catch {
+    // Unreadable settings: fall back to the first candidate.
+  }
+  return candidates.find((c) => labels.includes(c)) ?? candidates[0];
+}
+
 function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, includePhone: boolean) {
   const byTitle = new Map(columns.map((c) => [c.title.trim().toLowerCase(), c]));
   const wanted: [string, string | undefined][] = [
@@ -92,7 +109,6 @@ function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, inc
     ['phone', includePhone ? data.phone : undefined],
     ['practice type', PRACTICE_TYPE_LABELS[data.role]],
     ['message', data.message],
-    ['lead status', 'New'],
     ['submitted', 'now'],
     ['source', 'Website contact form'],
   ];
@@ -101,6 +117,8 @@ function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, inc
     const column = byTitle.get(title);
     if (column && value?.trim()) values[column.id] = columnValue(column, value.trim());
   }
+  const statusColumn = byTitle.get('lead status') ?? byTitle.get('status');
+  if (statusColumn) values[statusColumn.id] = columnValue(statusColumn, pickStatusLabel(statusColumn, NEW_LEAD_LABELS));
   return values;
 }
 
