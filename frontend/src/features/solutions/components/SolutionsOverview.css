@@ -1,13 +1,102 @@
-.sol-overview-title {
+.sol-overview-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sol-overview-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 40px 64px;
+  align-items: center;
+  padding: clamp(28px, 4vw, 48px);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px -16px rgba(6, 36, 89, 0.12);
+}
+
+.sol-overview-eyebrow {
   margin: 0 0 8px;
-  font-size: 1.125rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal-700);
 }
 
-.sol-overview-title a {
-  color: #062459;
-  text-decoration: none;
+.sol-overview-title {
+  margin: 0 0 12px;
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #0f172a;
 }
 
-.sol-overview-title a:hover {
-  text-decoration: underline;
+.sol-overview-lead {
+  margin: 0 0 28px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.sol-overview-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sol-overview-points {
+  list-style: none;
+  margin: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #f8faff;
+  border: 1px solid #e8eef8;
+  border-radius: 14px;
+}
+
+.sol-overview-points li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.sol-overview-points strong {
+  display: block;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.sol-overview-check {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 81, 194, 0.1);
+  color: var(--teal-700);
+}
+
+.sol-overview-check svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 900px) {
+  .sol-overview-card { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .sol-overview-cta > * { flex: 1 1 100%; justify-content: center; }
 }

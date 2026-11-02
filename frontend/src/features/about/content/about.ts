@@ -1,5 +1,9 @@
+import type { IconName } from '@/shared/components/ui/Icon';
+
 export const STORY = {
+  eyebrow: 'Our story',
   title: 'Why we exist',
+  mission: 'One dedicated team that owns credentialing, from the first application to every recredentialing date.',
   paragraphs: [
     'Credentialing is easy to overlook and costly to get wrong. A provider who is not yet credentialed cannot see most insured patients, and a missed recredentialing date can drop them from a network.',
     'The work usually falls on a small team juggling portals, spreadsheets and phone queues.',
@@ -26,13 +30,17 @@ export const PRINCIPLES = [
   },
 ];
 
-export const AUDIENCES = {
+export const AUDIENCES: {
+  title: string;
+  intro: string;
+  links: { label: string; href: string; description: string; icon: IconName }[];
+} = {
   title: 'Who we help',
   intro: 'From a single clinician starting a new assignment to health systems and health plans managing thousands of providers.',
   links: [
-    { label: 'Medical groups & MSOs', href: '/who-we-help/provider-groups' },
-    { label: 'Health plans', href: '/who-we-help/health-plans' },
-    { label: 'Health systems & hospitals', href: '/who-we-help/health-systems' },
-    { label: 'Telehealth & digital health', href: '/who-we-help/digital-health' },
+    { label: 'Medical groups & MSOs', href: '/who-we-help/provider-groups', description: 'Get new providers credentialed and billing sooner.', icon: 'users' },
+    { label: 'Health plans', href: '/who-we-help/health-plans', description: 'Network credentialing and ongoing monitoring.', icon: 'shield' },
+    { label: 'Health systems & hospitals', href: '/who-we-help/health-systems', description: 'Centralized verification across every facility.', icon: 'building' },
+    { label: 'Telehealth & digital health', href: '/who-we-help/digital-health', description: 'Multi-state licensing and credentialing.', icon: 'globe' },
   ],
 };
