@@ -16,6 +16,10 @@ function isRateLimited(ip: string): boolean {
   // Off in `next dev` so local testing isn't blocked.
   if (process.env.NODE_ENV === 'development') return false;
   const now = Date.now();
+  // Forget visitors whose window has passed, so the map doesn't grow for as long as the instance lives.
+  for (const [key, times] of recent) {
+    if (now - times[times.length - 1] >= WINDOW_MS) recent.delete(key);
+  }
   const hits = (recent.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
   hits.push(now);
   recent.set(ip, hits);
