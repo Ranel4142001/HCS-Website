@@ -13,6 +13,8 @@ export interface DetailsStepProps {
   isLoading: boolean;
   isSuccess: boolean;
   isShaking: boolean;
+  /** Shown under the submit button when sending fails. */
+  submitError?: string | null;
 }
 
 export const DetailsStep: React.FC<DetailsStepProps> = ({
@@ -21,6 +23,7 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
   isLoading,
   isSuccess,
   isShaking,
+  submitError,
 }) => {
   const { register, control, formState: { errors, touchedFields } } = form;
 
@@ -93,6 +96,12 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
           <Icon name="check" /> Success!
         </span>
       </button>
+
+      {submitError && (
+        <p className="form-submit-error" role="alert">
+          <Icon name="alert" /> {submitError}
+        </p>
+      )}
 
       <div className="form-note">
         <Icon name="lock" /> Your details stay confidential

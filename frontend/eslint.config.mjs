@@ -13,13 +13,13 @@ export default defineConfig([
     },
   },
 
-  // Architecture: app/ uses a feature only through its public index.ts.
+  // Architecture: app/ uses a feature only through its public index.ts (or server.ts, for route handlers).
   {
     files: ['app/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': ['error', {
         patterns: [{
-          group: ['@/features/*/*'],
+          group: ['@/features/*/*', '!@/features/*/server'],
           message: 'Import from the feature entry point (e.g. "@/features/pricing"), not its internal files.',
         }],
       }],

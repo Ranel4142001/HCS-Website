@@ -32,6 +32,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
   const [isSuccess, setIsSuccess] = useState(false);
   const [showSuccessPanel, setShowSuccessPanel] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const rafIdRef = useRef<number | null>(null);
 
@@ -54,6 +55,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
 
   const onSubmit = form.handleSubmit(async (data) => {
     setIsLoading(true);
+    setSubmitError(null);
     try {
       await submitContactForm(data);
       setIsLoading(false);
@@ -62,8 +64,9 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
       setTimeout(() => {
         setShowSuccessPanel(true);
       }, 550);
-    } catch {
+    } catch (err) {
       setIsLoading(false);
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
       triggerShake();
     }
   }, () => {
@@ -82,6 +85,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
     setIsSuccess(false);
     setShowSuccessPanel(false);
     setIsShaking(false);
+    setSubmitError(null);
   };
 
   // 3D Card Tilt Effect on mousemove
@@ -181,6 +185,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
                         isLoading={isLoading}
                         isSuccess={isSuccess}
                         isShaking={isShaking}
+                        submitError={submitError}
                       />
                     )}
                   </div>
