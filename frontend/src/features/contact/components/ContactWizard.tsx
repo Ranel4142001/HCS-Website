@@ -54,6 +54,9 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
     },
   });
 
+  // Headings must not skip a level: under the page's h1 on /contact the card heading is an h2, elsewhere an h3.
+  const CardHeading = isPageHeading ? 'h2' : 'h3';
+
   const selectedRole = useWatch({ control: form.control, name: 'role' });
 
   const handleSelectRole = (role: 'individual' | 'group' | 'enterprise') => {
@@ -167,7 +170,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
             {!showSuccessPanel ? (
               <>
                 <div className="form-card-head">
-                  <h3>Tell us about your providers</h3>
+                  <CardHeading>Tell us about your providers</CardHeading>
                   <p>Step {step} of 2 — {step === 1 ? 'Choose your practice type' : 'Add your contact details'}</p>
                 </div>
 

@@ -10,5 +10,6 @@
   line-height: 1.5;
   white-space: nowrap;
   vertical-align: middle;
-  opacity: 0.75;
+  /* Any lower and the small text drops below the 4.5:1 contrast that WCAG AA asks for */
+  opacity: 0.9;
 }
