@@ -35,6 +35,22 @@ function escapeHtml(value: string): string {
 
 const nl2br = (value: string) => escapeHtml(value).replace(/\r?\n/g, '<br>');
 
+const TITLES = new Set(['dr', 'mr', 'mrs', 'ms', 'miss', 'mx', 'prof']);
+
+/** "Maria Santos" → "Maria"; "Dr. Maria Santos" → "Dr. Santos". Falls back to "there" when there's no name. */
+export function greetingName(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  if (!parts.length) return 'there';
+  const title = parts[0].replace(/\.$/, '').toLowerCase();
+  // Visitors sometimes type in lowercase; greet them with a capital first letter.
+  const cap = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
+  if (TITLES.has(title) && parts.length > 1) {
+    const display = parts[0].endsWith('.') ? parts[0] : `${parts[0]}.`;
+    return `${cap(display)} ${cap(parts[parts.length - 1])}`;
+  }
+  return cap(parts[0]);
+}
+
 /** The email's HTML: tables and inline styles, which every email app renders the same way. */
 export function welcomeEmailHtml(lead: ContactFormValues, signatureUrl: string): string {
   const message = lead.message?.trim();
@@ -42,15 +58,17 @@ export function welcomeEmailHtml(lead: ContactFormValues, signatureUrl: string):
   return `<!DOCTYPE html>
 <html><body style="margin:0;padding:0;background:#ffffff;">
 <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#222222;max-width:600px;padding:8px 4px;">
-<p style="${p}">Hi ${escapeHtml(lead.name)},</p>
-<p style="${p}">Thank you for reaching out to HealthCredSTAT. We’ve received your request, and a dedicated credentialing specialist is now reviewing your details.</p>
+<p style="${p}">Hi ${escapeHtml(greetingName(lead.name))},</p>
+<p style="${p}">Thank you for reaching out to HealthCredSTAT. We’ve received your request, and one of our credentialing specialists is already looking it over.</p>
 <p style="margin:0 0 4px;"><strong>What happens next</strong></p>
 <ul style="margin:0 0 16px;padding-left:20px;">
 <li>A specialist will contact you within 1 business day with a quote and a realistic timeline.</li>
-<li>There’s no obligation. If you have questions in the meantime, just reply to this email.</li>
+<li>There’s no cost or obligation to speak with us.</li>
 </ul>
+<p style="${p}">If any questions come up in the meantime, just reply to this email. We’re always happy to help.</p>
 <p style="margin:0 0 4px;"><strong>Your request</strong></p>
 <p style="${p}">Practice type: ${escapeHtml(PRACTICE_TYPE_LABELS[lead.role])}${message ? `<br>Message: ${nl2br(message)}` : ''}</p>
+<p style="margin:0 0 16px;font-size:13px;color:#666666;">For your privacy, please don’t include patient information in email replies.</p>
 <p style="margin:0 0 18px;"><strong>Best regards,</strong></p>
 <!-- Signature: one image of the team's Canva design (public/email/signature.png). Dark mode recolours email text
      and backgrounds but never images, so this stays white and identical everywhere. The alt text carries the
