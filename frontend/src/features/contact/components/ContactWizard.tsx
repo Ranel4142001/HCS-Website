@@ -7,9 +7,9 @@ import { submitContactForm, type SubmissionMeta } from '../services/contact.serv
 import RoleStep from './RoleStep';
 import DetailsStep from './DetailsStep';
 import SuccessPanel from './SuccessPanel';
-import TurnstileWidget from './TurnstileWidget';
 import Icon from '@/shared/components/ui/Icon';
 import Badge from '@/shared/components/ui/Badge';
+import TurnstileWidget from '@/shared/components/ui/TurnstileWidget';
 import { envConfig } from '@/shared/config/env.config';
 import './ContactWizard.css';
 

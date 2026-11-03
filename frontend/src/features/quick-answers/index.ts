@@ -1,2 +1,2 @@
 export { default as FloatingWidgets } from './components/FloatingWidgets';
-export { findAnswer } from './content/answers';
+export { answerQuestion } from './content/answers';

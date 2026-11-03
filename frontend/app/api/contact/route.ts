@@ -62,7 +62,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, message: 'Please check the form and try again.' }, { status: 400 });
   }
 
-  const { website, elapsedMs, page, turnstileToken, ...lead } = parsed.data;
+  const { website, elapsedMs, page, turnstileToken, origin, ...lead } = parsed.data;
 
   // Likely a bot: reply as if it worked so it learns nothing, but don't create a lead.
   if (website?.trim() || elapsedMs < MIN_FILL_MS) {
@@ -103,7 +103,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const itemId = await createMondayLead(lead, { source: leadSource(page), submitter });
+    const itemId = await createMondayLead(lead, { source: leadSource(page, origin), submitter });
     return NextResponse.json({ success: true, message: SUCCESS_MESSAGE, submissionId: itemId });
   } catch (err) {
     console.error(err instanceof MondayConfigError ? `[contact] ${err.message}` : '[contact] Monday request failed', err);

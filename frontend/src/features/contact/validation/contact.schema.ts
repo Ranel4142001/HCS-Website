@@ -27,6 +27,8 @@ export const contactSubmissionSchema = contactFormSchema.extend({
   page: z.string().max(200).optional(),
   /** Cloudflare Turnstile token proving a person passed the human check; verified on the server. */
   turnstileToken: z.string().max(4096).optional(),
+  /** Which part of the site sent it: the contact form (default) or the Quick Answers chat. */
+  origin: z.enum(['form', 'chat']).optional(),
 });
 
 export type ContactSubmission = z.infer<typeof contactSubmissionSchema>;

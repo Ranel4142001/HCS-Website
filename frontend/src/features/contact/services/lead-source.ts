@@ -9,10 +9,14 @@ const PAGE_NAMES: Record<string, string> = {
   '/guides': 'Guides page',
 };
 
-/** The SOURCE value for a lead, e.g. "Website – Pricing page", from the path the browser reported. */
-export function leadSource(page?: string): string {
+/**
+ * The SOURCE value for a lead from the path the browser reported, e.g. "Website – Pricing page", or
+ * "Website – Pricing page (chat)" when it came from the Quick Answers chat.
+ */
+export function leadSource(page?: string, origin?: 'form' | 'chat'): string {
+  const suffix = origin === 'chat' ? ' (chat)' : '';
   const path = (page ?? '').split(/[?#]/)[0].replace(/\/+$/, '') || '/';
   // The path comes from the browser, so only accept plain site paths before writing it to the CRM.
-  if (!/^\/[a-z0-9\-/]*$/i.test(path)) return 'Website contact form';
-  return `Website – ${PAGE_NAMES[path] ?? path}`;
+  if (!/^\/[a-z0-9\-/]*$/i.test(path)) return `Website contact form${suffix}`;
+  return `Website – ${PAGE_NAMES[path] ?? path}${suffix}`;
 }

@@ -419,3 +419,165 @@
     animation: none;
   }
 }
+
+/* --- Action buttons, "Did you mean" suggestions and the specialist hand-off --- */
+
+/* The action may be a <button> (opens the hand-off form), styled like the link version */
+button.ai-action-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.ai-action-link:disabled {
+  opacity: 0.55;
+  cursor: default;
+  text-decoration: none;
+}
+
+.ai-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.ai-suggestions-label {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+.ai-preset-chip.is-selected {
+  border-color: #062459;
+  background: #062459;
+  color: #ffffff;
+}
+
+.qa-handoff {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 70%;
+  overflow-y: auto;
+  padding: 14px 16px 16px;
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+}
+
+.qa-handoff-head strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #062459;
+}
+
+.qa-handoff-head span {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.qa-handoff-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.qa-handoff-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.qa-handoff-field input {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #cdd6e2;
+  border-radius: 10px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.qa-handoff-field input:focus {
+  outline: none;
+  border-color: #3f8dff;
+  box-shadow: 0 0 0 3px rgba(63, 141, 255, 0.18);
+}
+
+/* Honeypot field for spam bots: kept in the form but moved off-screen */
+.qa-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.qa-handoff-note {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+.qa-handoff-error {
+  margin: 0;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  border-radius: 8px;
+}
+
+.qa-handoff-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.qa-handoff-cancel,
+.qa-handoff-send {
+  flex: 1;
+  height: 40px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.qa-handoff-cancel {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink-soft);
+}
+
+.qa-handoff-send {
+  border: 0;
+  background: #062459;
+  color: #ffffff;
+}
+
+.qa-handoff-send:hover:not(:disabled) {
+  background: #0a3a8f;
+}
+
+.qa-handoff-cancel:disabled,
+.qa-handoff-send:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.qa-handoff-cancel:focus-visible,
+.qa-handoff-send:focus-visible {
+  outline: 2px solid #3f8dff;
+  outline-offset: 2px;
+}
