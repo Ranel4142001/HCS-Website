@@ -1,5 +1,12 @@
 import { NextResponse } from 'next/server';
-import { contactSubmissionSchema, createMondayLead, leadSource, MondayConfigError } from '@/features/contact/server';
+import {
+  checkRepeatSubmission,
+  contactSubmissionSchema,
+  createMondayLead,
+  leadSource,
+  MondayConfigError,
+  submitterFingerprint,
+} from '@/features/contact/server';
 
 const SUCCESS_MESSAGE = 'Your inquiry has been received. A dedicated credentialing specialist will reach out shortly.';
 
@@ -62,8 +69,32 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, message: SUCCESS_MESSAGE });
   }
 
+  // Repeat checks against the leads already on the board (see lead-guard.ts)
+  const submitter = submitterFingerprint(ip);
+  const verdict = await checkRepeatSubmission(lead.email, submitter);
+  if (verdict === 'duplicate') {
+    return NextResponse.json(
+      {
+        success: false,
+        message:
+          'We already received a request from this email address. A credentialing specialist will contact you soon. To add details, reply to the confirmation email we sent you.',
+      },
+      { status: 409 },
+    );
+  }
+  if (verdict === 'too_many') {
+    console.warn('[contact] Refused: too many requests from one network today');
+    return NextResponse.json(
+      {
+        success: false,
+        message: "We've received several requests from your network today. Please try again tomorrow, or reply to your confirmation email.",
+      },
+      { status: 429 },
+    );
+  }
+
   try {
-    const itemId = await createMondayLead(lead, leadSource(page));
+    const itemId = await createMondayLead(lead, { source: leadSource(page), submitter });
     return NextResponse.json({ success: true, message: SUCCESS_MESSAGE, submissionId: itemId });
   } catch (err) {
     console.error(err instanceof MondayConfigError ? `[contact] ${err.message}` : '[contact] Monday request failed', err);
