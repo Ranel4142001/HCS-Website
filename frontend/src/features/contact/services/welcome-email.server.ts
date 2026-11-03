@@ -36,7 +36,7 @@ function escapeHtml(value: string): string {
 const nl2br = (value: string) => escapeHtml(value).replace(/\r?\n/g, '<br>');
 
 /** The email's HTML: tables and inline styles, which every email app renders the same way. */
-export function welcomeEmailHtml(lead: ContactFormValues, logoUrl: string): string {
+export function welcomeEmailHtml(lead: ContactFormValues, signatureUrl: string): string {
   const message = lead.message?.trim();
   const p = 'margin:0 0 16px;';
   return `<!DOCTYPE html>
@@ -52,17 +52,10 @@ export function welcomeEmailHtml(lead: ContactFormValues, logoUrl: string): stri
 <p style="margin:0 0 4px;"><strong>Your request</strong></p>
 <p style="${p}">Practice type: ${escapeHtml(PRACTICE_TYPE_LABELS[lead.role])}${message ? `<br>Message: ${nl2br(message)}` : ''}</p>
 <p style="margin:0 0 18px;">Best regards,</p>
-<!-- Signature, laid out like the team's Canva design. The logo has its own white background so it stays
-     readable when an email app shows the message in dark mode (dark mode recolours text, never images). -->
-<table cellpadding="0" cellspacing="0" border="0" width="520" style="border-collapse:collapse;width:520px;max-width:100%;font-family:Arial,Helvetica,sans-serif;color:#111111;">
-<tr><td colspan="2" align="center" style="padding:0 0 10px;font-size:26px;letter-spacing:4px;white-space:nowrap;">${SIGNATURE.name}</td></tr>
-<tr><td colspan="2" style="border-top:3px solid #111111;font-size:0;line-height:0;height:10px;">&nbsp;</td></tr>
-<tr>
-<td width="55%" style="padding:2px 14px 2px 4px;font-size:15px;white-space:nowrap;">&#9993;&nbsp; <a href="mailto:${SIGNATURE.email}" style="color:#111111;text-decoration:none;">${SIGNATURE.email}</a></td>
-<td width="45%" style="padding:2px 0 2px 18px;border-left:3px solid #111111;font-size:15px;white-space:nowrap;">&#9742;&nbsp; <a href="tel:${SIGNATURE.phoneLink}" style="color:#111111;text-decoration:none;">${SIGNATURE.phone}</a></td>
-</tr>
-<tr><td colspan="2" align="center" style="padding-top:14px;"><img src="${escapeHtml(logoUrl)}" alt="HealthCredSTAT – Credentialing. Simplified. Accelerated. Secured." width="340" style="display:block;margin:0 auto;border:0;width:340px;max-width:100%;height:auto;"></td></tr>
-</table>
+<!-- Signature: one image of the team's Canva design (public/email/signature.png). Dark mode recolours email text
+     and backgrounds but never images, so this stays white and identical everywhere. The alt text carries the
+     details when images are blocked, and the image links to the reply address. -->
+<a href="mailto:${SIGNATURE.email}" style="text-decoration:none;"><img src="${escapeHtml(signatureUrl)}" alt="${SIGNATURE.name} · ${SIGNATURE.email} · ${SIGNATURE.phone}" width="520" style="display:block;border:0;width:520px;max-width:100%;height:auto;"></a>
 </div>
 </body></html>`;
 }
@@ -85,7 +78,7 @@ async function graphToken(tenantId: string, clientId: string, clientSecret: stri
 }
 
 /** Sends the welcome email. Does nothing while the Microsoft 365 settings are missing. */
-export async function sendWelcomeEmail(lead: ContactFormValues, logoUrl: string): Promise<void> {
+export async function sendWelcomeEmail(lead: ContactFormValues, signatureUrl: string): Promise<void> {
   const config = welcomeConfig();
   if (!config) return;
 
@@ -96,7 +89,7 @@ export async function sendWelcomeEmail(lead: ContactFormValues, logoUrl: string)
     body: JSON.stringify({
       message: {
         subject: SUBJECT,
-        body: { contentType: 'HTML', content: welcomeEmailHtml(lead, logoUrl) },
+        body: { contentType: 'HTML', content: welcomeEmailHtml(lead, signatureUrl) },
         toRecipients: [{ emailAddress: { address: lead.email, name: lead.name } }],
         replyTo: [{ emailAddress: { address: SIGNATURE.email, name: SIGNATURE.name } }],
       },
