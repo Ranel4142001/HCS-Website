@@ -51,11 +51,11 @@ export function welcomeEmailHtml(lead: ContactFormValues, signatureUrl: string):
 </ul>
 <p style="margin:0 0 4px;"><strong>Your request</strong></p>
 <p style="${p}">Practice type: ${escapeHtml(PRACTICE_TYPE_LABELS[lead.role])}${message ? `<br>Message: ${nl2br(message)}` : ''}</p>
-<p style="margin:0 0 18px;">Best regards,</p>
+<p style="margin:0 0 18px;"><strong>Best regards,</strong></p>
 <!-- Signature: one image of the team's Canva design (public/email/signature.png). Dark mode recolours email text
      and backgrounds but never images, so this stays white and identical everywhere. The alt text carries the
      details when images are blocked, and the image links to the reply address. -->
-<a href="mailto:${SIGNATURE.email}" style="text-decoration:none;"><img src="${escapeHtml(signatureUrl)}" alt="${SIGNATURE.name} · ${SIGNATURE.email} · ${SIGNATURE.phone}" width="520" style="display:block;border:0;width:520px;max-width:100%;height:auto;"></a>
+<a href="mailto:${SIGNATURE.email}" style="text-decoration:none;"><img src="${escapeHtml(signatureUrl)}" alt="${SIGNATURE.name} · ${SIGNATURE.email} · ${SIGNATURE.phone}" width="400" height="200" style="display:block;border:0;width:400px;max-width:100%;height:auto;"></a>
 </div>
 </body></html>`;
 }
