@@ -10,7 +10,7 @@ import type { ContactFormValues } from '../validation/contact.schema';
 
 const MONDAY_API_URL = 'https://api.monday.com/v2';
 
-const PRACTICE_TYPE_LABELS: Record<ContactFormValues['role'], string> = {
+export const PRACTICE_TYPE_LABELS: Record<ContactFormValues['role'], string> = {
   individual: 'Individual clinician',
   group: 'Group practice or staffing agency',
   enterprise: 'Health system or MSO',
