@@ -107,7 +107,8 @@ export async function POST(request: Request) {
     const itemId = await createMondayLead(lead, { source: leadSource(page, origin), submitter });
     // The welcome email goes out after the reply, so the visitor never waits on it, and a mail problem never
     // loses the lead. The signature image is loaded from this site's own address (the request's origin).
-    const signatureUrl = `${new URL(request.url).origin}/email/signature.png`;
+    // Bump ?v= whenever signature.png changes: email apps cache images by address and would keep the old one.
+    const signatureUrl = `${new URL(request.url).origin}/email/signature.png?v=2`;
     after(() => sendWelcomeEmail(lead, signatureUrl).catch((err) => console.error('[contact] Welcome email failed', err)));
     return NextResponse.json({ success: true, message: SUCCESS_MESSAGE, submissionId: itemId });
   } catch (err) {
