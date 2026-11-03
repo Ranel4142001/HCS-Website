@@ -12,8 +12,7 @@ const SUBJECT = 'We’ve received your credentialing quote request';
 
 /** Signature on the welcome email: the team, with the contact details people can reply to. */
 const SIGNATURE = {
-  name: 'The HealthCredSTAT Team',
-  title: 'Credentialing Specialists',
+  name: 'HealthCredSTAT Team',
   email: 'ranel@healthcredstat.com',
   phone: '+63930-107-1994',
   phoneLink: '+639301071994',
@@ -53,17 +52,16 @@ export function welcomeEmailHtml(lead: ContactFormValues, logoUrl: string): stri
 <p style="margin:0 0 4px;"><strong>Your request</strong></p>
 <p style="${p}">Practice type: ${escapeHtml(PRACTICE_TYPE_LABELS[lead.role])}${message ? `<br>Message: ${nl2br(message)}` : ''}</p>
 <p style="margin:0 0 18px;">Best regards,</p>
-<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#111111;">
+<!-- Signature, laid out like the team's Canva design. The logo has its own white background so it stays
+     readable when an email app shows the message in dark mode (dark mode recolours text, never images). -->
+<table cellpadding="0" cellspacing="0" border="0" width="520" style="border-collapse:collapse;width:520px;max-width:100%;font-family:Arial,Helvetica,sans-serif;color:#111111;">
+<tr><td colspan="2" align="center" style="padding:0 0 10px;font-size:26px;letter-spacing:4px;white-space:nowrap;">${SIGNATURE.name}</td></tr>
+<tr><td colspan="2" style="border-top:3px solid #111111;font-size:0;line-height:0;height:10px;">&nbsp;</td></tr>
 <tr>
-<td style="padding:0 18px 6px 0;font-size:22px;letter-spacing:1px;white-space:nowrap;">${SIGNATURE.name}</td>
-<td style="padding:0 0 6px 14px;border-left:3px solid #111111;font-size:11px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;vertical-align:bottom;">${SIGNATURE.title}</td>
+<td width="55%" style="padding:2px 14px 2px 4px;font-size:15px;white-space:nowrap;">&#9993;&nbsp; <a href="mailto:${SIGNATURE.email}" style="color:#111111;text-decoration:none;">${SIGNATURE.email}</a></td>
+<td width="45%" style="padding:2px 0 2px 18px;border-left:3px solid #111111;font-size:15px;white-space:nowrap;">&#9742;&nbsp; <a href="tel:${SIGNATURE.phoneLink}" style="color:#111111;text-decoration:none;">${SIGNATURE.phone}</a></td>
 </tr>
-<tr><td colspan="2" style="border-top:3px solid #111111;font-size:0;line-height:0;height:8px;">&nbsp;</td></tr>
-<tr>
-<td style="padding:2px 18px 0 0;font-size:14px;white-space:nowrap;">&#9993;&nbsp; <a href="mailto:${SIGNATURE.email}" style="color:#111111;text-decoration:none;">${SIGNATURE.email}</a></td>
-<td style="padding:2px 0 0 14px;border-left:3px solid #111111;font-size:14px;white-space:nowrap;">&#9742;&nbsp; <a href="tel:${SIGNATURE.phoneLink}" style="color:#111111;text-decoration:none;">${SIGNATURE.phone}</a></td>
-</tr>
-<tr><td colspan="2" style="padding-top:16px;"><img src="${escapeHtml(logoUrl)}" alt="HealthCredSTAT – Credentialing. Simplified. Accelerated. Secured." width="300" style="display:block;border:0;width:300px;max-width:100%;height:auto;"></td></tr>
+<tr><td colspan="2" align="center" style="padding-top:14px;"><img src="${escapeHtml(logoUrl)}" alt="HealthCredSTAT – Credentialing. Simplified. Accelerated. Secured." width="340" style="display:block;margin:0 auto;border:0;width:340px;max-width:100%;height:auto;"></td></tr>
 </table>
 </div>
 </body></html>`;
