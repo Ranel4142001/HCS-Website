@@ -8,13 +8,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // statically generated pages (nonces would force every page to render on each request), and for styles
 // because components set some values (accent colors, measured positions) as inline styles.
 // When a third-party service is added (CRM form endpoint, analytics), add its origin to connect-src/script-src.
+// challenges.cloudflare.com serves the contact form's Turnstile human check (a script plus an iframe).
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' https://challenges.cloudflare.com",
+  "frame-src https://challenges.cloudflare.com",
   "frame-ancestors 'self'",
   "form-action 'self'",
   "base-uri 'self'",

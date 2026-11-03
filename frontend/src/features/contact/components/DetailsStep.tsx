@@ -15,6 +15,8 @@ export interface DetailsStepProps {
   isShaking: boolean;
   /** Shown under the submit button when sending fails. */
   submitError?: string | null;
+  /** The human-check widget, shown just above the submit button. */
+  verification?: React.ReactNode;
 }
 
 export const DetailsStep: React.FC<DetailsStepProps> = ({
@@ -24,6 +26,7 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
   isSuccess,
   isShaking,
   submitError,
+  verification,
 }) => {
   const { register, control, formState: { errors, touchedFields } } = form;
 
@@ -80,6 +83,8 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
         placeholder=" "
         {...register('message')}
       />
+
+      {verification}
 
       <button
         type="submit"

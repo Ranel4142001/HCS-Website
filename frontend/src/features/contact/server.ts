@@ -3,3 +3,4 @@ export { contactSubmissionSchema } from './validation/contact.schema';
 export { leadSource } from './services/lead-source';
 export { createMondayLead, MondayConfigError } from './services/monday.server';
 export { checkRepeatSubmission, submitterFingerprint } from './services/lead-guard';
+export { verifyTurnstile } from './services/turnstile.server';

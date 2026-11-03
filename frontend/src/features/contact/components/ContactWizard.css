@@ -224,3 +224,9 @@
   height: 1px;
   overflow: hidden;
 }
+
+/* Cloudflare Turnstile: usually invisible; when Cloudflare asks for a click, the checkbox sits centred above the submit button. */
+.form-turnstile {
+  display: flex;
+  justify-content: center;
+}

@@ -8,4 +8,6 @@ export const envConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://healthcredstat.com',
   // Client portal (separate app). Until it is set, "Sign in" goes to a holding page at /sign-in.
   signInUrl: process.env.NEXT_PUBLIC_PORTAL_URL || '/sign-in',
+  // Cloudflare Turnstile site key for the contact form's human check. While empty, the check is off.
+  turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '',
 } as const;

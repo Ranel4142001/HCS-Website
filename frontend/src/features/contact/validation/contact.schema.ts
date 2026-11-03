@@ -25,6 +25,8 @@ export const contactSubmissionSchema = contactFormSchema.extend({
   elapsedMs: z.number().int().nonnegative(),
   /** Path of the page the form was sent from, e.g. "/pricing". */
   page: z.string().max(200).optional(),
+  /** Cloudflare Turnstile token proving a person passed the human check; verified on the server. */
+  turnstileToken: z.string().max(4096).optional(),
 });
 
 export type ContactSubmission = z.infer<typeof contactSubmissionSchema>;

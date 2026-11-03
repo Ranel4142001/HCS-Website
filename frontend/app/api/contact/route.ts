@@ -6,6 +6,7 @@ import {
   leadSource,
   MondayConfigError,
   submitterFingerprint,
+  verifyTurnstile,
 } from '@/features/contact/server';
 
 const SUCCESS_MESSAGE = 'Your inquiry has been received. A dedicated credentialing specialist will reach out shortly.';
@@ -61,12 +62,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, message: 'Please check the form and try again.' }, { status: 400 });
   }
 
-  const { website, elapsedMs, page, ...lead } = parsed.data;
+  const { website, elapsedMs, page, turnstileToken, ...lead } = parsed.data;
 
   // Likely a bot: reply as if it worked so it learns nothing, but don't create a lead.
   if (website?.trim() || elapsedMs < MIN_FILL_MS) {
     console.warn(`[contact] Dropped likely spam (${website?.trim() ? 'honeypot filled' : `sent after ${elapsedMs}ms`})`);
     return NextResponse.json({ success: true, message: SUCCESS_MESSAGE });
+  }
+
+  // Cloudflare Turnstile human check (off until TURNSTILE_SECRET_KEY is set)
+  if ((await verifyTurnstile(turnstileToken, ip)) === 'failed') {
+    return NextResponse.json(
+      { success: false, message: "We couldn't confirm you're not a bot. Please complete the verification and try again." },
+      { status: 403 },
+    );
   }
 
   // Repeat checks against the leads already on the board (see lead-guard.ts)

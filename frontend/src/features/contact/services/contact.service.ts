@@ -12,6 +12,8 @@ export interface SubmissionMeta {
   website: string;
   /** Milliseconds since the form appeared. */
   elapsedMs: number;
+  /** Cloudflare Turnstile token, when the human check is configured. */
+  turnstileToken?: string;
 }
 
 /** Sends the form to /api/contact, which creates a lead on the Monday board. Throws with a readable message on failure. */

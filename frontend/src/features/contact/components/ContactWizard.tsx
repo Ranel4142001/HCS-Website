@@ -7,8 +7,10 @@ import { submitContactForm, type SubmissionMeta } from '../services/contact.serv
 import RoleStep from './RoleStep';
 import DetailsStep from './DetailsStep';
 import SuccessPanel from './SuccessPanel';
+import TurnstileWidget from './TurnstileWidget';
 import Icon from '@/shared/components/ui/Icon';
 import Badge from '@/shared/components/ui/Badge';
+import { envConfig } from '@/shared/config/env.config';
 import './ContactWizard.css';
 
 // The validation library is only needed once someone fills in the form, so it loads on first validation
@@ -38,6 +40,10 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
   // Spam signals for the server: the hidden honeypot field and when the form first appeared.
   const honeypotRef = useRef<HTMLInputElement>(null);
   const shownAtRef = useRef(0);
+  // Cloudflare Turnstile token; tokens are single-use, so bumping turnstileReset fetches a new one.
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileReset, setTurnstileReset] = useState(0);
+  const turnstileSiteKey = envConfig.turnstileSiteKey;
 
   useEffect(() => {
     shownAtRef.current = performance.now();
@@ -77,16 +83,24 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
     } catch (err) {
       setIsLoading(false);
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      setTurnstileReset((n) => n + 1);
       triggerShake();
     }
   };
 
   // The spam signals are read here, at submit time, then validation runs and the request is sent.
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (turnstileSiteKey && !turnstileToken) {
+      e.preventDefault();
+      setSubmitError("Please wait a moment while we confirm you're not a bot, then submit again.");
+      triggerShake();
+      return;
+    }
     const meta: SubmissionMeta = {
       website: honeypotRef.current?.value ?? '',
       // The event's timeStamp and performance.now() share the same clock.
       elapsedMs: Math.max(0, Math.round(e.timeStamp - shownAtRef.current)),
+      turnstileToken: turnstileToken || undefined,
     };
     return form.handleSubmit((data) => sendRequest(data, meta), () => triggerShake())(e);
   };
@@ -104,6 +118,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
     setShowSuccessPanel(false);
     setIsShaking(false);
     setSubmitError(null);
+    setTurnstileReset((n) => n + 1);
   };
 
   // 3D Card Tilt Effect on mousemove
@@ -209,6 +224,11 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
                         isSuccess={isSuccess}
                         isShaking={isShaking}
                         submitError={submitError}
+                        verification={
+                          turnstileSiteKey ? (
+                            <TurnstileWidget siteKey={turnstileSiteKey} onToken={setTurnstileToken} resetSignal={turnstileReset} />
+                          ) : null
+                        }
                       />
                     )}
                   </div>
