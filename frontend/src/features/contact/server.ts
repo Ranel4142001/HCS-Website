@@ -4,4 +4,4 @@ export { leadSource } from './services/lead-source';
 export { createMondayLead, MondayConfigError } from './services/monday.server';
 export { checkRepeatSubmission, submitterFingerprint } from './services/lead-guard';
 export { verifyTurnstile } from './services/turnstile.server';
-export { sendWelcomeEmail } from './services/welcome-email.server';
+export { sendLeadBackupEmail, sendWelcomeEmail } from './services/welcome-email.server';

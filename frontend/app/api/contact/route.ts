@@ -5,6 +5,7 @@ import {
   createMondayLead,
   leadSource,
   MondayConfigError,
+  sendLeadBackupEmail,
   sendWelcomeEmail,
   submitterFingerprint,
   verifyTurnstile,
@@ -64,6 +65,11 @@ export async function POST(request: Request) {
   }
 
   const { website, elapsedMs, page, turnstileToken, origin, ...lead } = parsed.data;
+  // The form hides organization and team size for individual clinicians; drop anything left from another choice.
+  if (lead.role === 'individual') {
+    delete lead.organization;
+    delete lead.providers;
+  }
 
   // Likely a bot: reply as if it worked so it learns nothing, but don't create a lead.
   if (website?.trim() || elapsedMs < MIN_FILL_MS) {
@@ -103,19 +109,34 @@ export async function POST(request: Request) {
     );
   }
 
-  try {
-    const itemId = await createMondayLead(lead, { source: leadSource(page, origin), submitter });
-    // The welcome email goes out after the reply, so the visitor never waits on it, and a mail problem never
-    // loses the lead. The signature image is loaded from this site's own address (the request's origin).
-    // Bump ?v= whenever signature.png changes: email apps cache images by address and would keep the old one.
-    const signatureUrl = `${new URL(request.url).origin}/email/signature.png?v=4`;
+  const source = leadSource(page, origin);
+  // The welcome email goes out after the reply, so the visitor never waits on it, and a mail problem never
+  // loses the lead. The signature image is loaded from this site's own address (the request's origin).
+  // Bump ?v= whenever signature.png changes: email apps cache images by address and would keep the old one.
+  const signatureUrl = `${new URL(request.url).origin}/email/signature.png?v=4`;
+  const sendWelcome = () =>
     after(() => sendWelcomeEmail(lead, signatureUrl).catch((err) => console.error('[contact] Welcome email failed', err)));
+
+  try {
+    const itemId = await createMondayLead(lead, { source, submitter });
+    sendWelcome();
     return NextResponse.json({ success: true, message: SUCCESS_MESSAGE, submissionId: itemId });
   } catch (err) {
     console.error(err instanceof MondayConfigError ? `[contact] ${err.message}` : '[contact] Monday request failed', err);
-    return NextResponse.json(
-      { success: false, message: 'We could not send your request. Please try again, or email us directly.' },
-      { status: 502 },
-    );
   }
+
+  // Monday couldn't save it: email the lead to the team instead, so it isn't lost.
+  try {
+    if (await sendLeadBackupEmail(lead, source)) {
+      console.warn('[contact] Lead emailed to the team as a backup');
+      sendWelcome();
+      return NextResponse.json({ success: true, message: SUCCESS_MESSAGE });
+    }
+  } catch (err) {
+    console.error('[contact] Backup lead email failed', err);
+  }
+  return NextResponse.json(
+    { success: false, message: 'We could not send your request. Please try again, or email us directly.' },
+    { status: 502 },
+  );
 }

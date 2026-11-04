@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { UseFormReturn, useWatch } from 'react-hook-form';
-import type { ContactFormValues } from '../validation/contact.schema';
+import { PROVIDER_COUNTS, type ContactFormValues } from '../validation/contact.schema';
 import Input from '@/shared/components/forms/Input';
 import TextArea from '@/shared/components/forms/TextArea';
 import Icon from '@/shared/components/ui/Icon';
@@ -31,6 +31,9 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
   const { register, control, formState: { errors, touchedFields } } = form;
 
   const emailValue = useWatch({ control, name: 'email' }) || '';
+  // Organization and team size only apply to groups and health systems.
+  const role = useWatch({ control, name: 'role' });
+  const isOrganization = role === 'group' || role === 'enterprise';
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isEmailValid = emailValue.trim().length > 0 && emailRegex.test(emailValue.trim());
   const isEmailInvalid = (touchedFields.email || errors.email) && !isEmailValid && emailValue.trim().length > 0;
@@ -76,6 +79,31 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
         isShaking={isShaking}
         {...register('email')}
       />
+
+      {isOrganization && (
+        <div className="field-row">
+          <Input
+            id="fOrganization"
+            label="Organization name"
+            placeholder=" "
+            autoComplete="organization"
+            maxLength={150}
+            {...register('organization')}
+          />
+
+          <div className="field field-select">
+            <select id="fProviders" defaultValue="" {...register('providers')}>
+              <option value="">Select…</option>
+              {PROVIDER_COUNTS.map((count) => (
+                <option key={count} value={count}>
+                  {count === '200+' ? 'More than 200' : `${count.replace('-', '–')} providers`}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="fProviders">How many providers?</label>
+          </div>
+        </div>
+      )}
 
       <TextArea
         id="fMessage"

@@ -57,6 +57,8 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
       phone: '',
       email: '',
       message: '',
+      organization: '',
+      providers: '',
     },
   });
 

@@ -1,11 +1,12 @@
 import type { ContactFormValues } from '../validation/contact.schema';
+import { mondayPhone } from './phone';
 
 /**
  * Server only: reads MONDAY_API_TOKEN, so import it from route handlers, never from client components.
  * Creates one item on a Monday leads board per contact form submission: the "Website Leads" work board,
  * or the monday CRM "Leads" board. Columns are matched by title, so the board can be edited in Monday
  * without code changes: Email, Phone, Practice type, Message, Lead status (or the CRM's Status), Submitted,
- * Source, Submitter. Missing columns are skipped.
+ * Source, Submitter, Company, Providers. Missing columns are skipped.
  */
 
 const MONDAY_API_URL = 'https://api.monday.com/v2';
@@ -74,7 +75,7 @@ function columnValue(column: MondayColumn, value: string): unknown {
     case 'email':
       return { email: value, text: value };
     case 'phone':
-      return { phone: value.replace(/[^\d+]/g, ''), countryShortName: 'US' };
+      return mondayPhone(value);
     case 'status':
     case 'color':
     case 'dropdown':
@@ -115,6 +116,8 @@ function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, inc
     ['phone', includePhone ? data.phone : undefined],
     ['practice type', PRACTICE_TYPE_LABELS[data.role]],
     ['message', data.message],
+    ['company', data.organization],
+    ['providers', data.providers],
     ['submitted', 'now'],
     ['source', meta.source],
     ['submitter', meta.submitter],

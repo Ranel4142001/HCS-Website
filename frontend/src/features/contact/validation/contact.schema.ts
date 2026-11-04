@@ -1,6 +1,9 @@
 import { z } from 'zod';
 
 // Length caps are well above any real entry; they stop oversized input before it reaches the CRM.
+/** Options for "How many providers?". */
+export const PROVIDER_COUNTS = ['2-5', '6-20', '21-50', '51-200', '200+'] as const;
+
 export const contactFormSchema = z.object({
   role: z.enum(['individual', 'group', 'enterprise'], {
     error: 'Please select a practice role.',
@@ -13,6 +16,9 @@ export const contactFormSchema = z.object({
     .max(254, 'Please enter a valid email address')
     .pipe(z.email('Please enter a valid email address')),
   message: z.string().max(2000, 'Please keep your message under 2,000 characters').optional(),
+  /** Groups and health systems only (the form hides both for individual clinicians). */
+  organization: z.string().max(150, 'Please keep the organization name under 150 characters').optional(),
+  providers: z.enum(PROVIDER_COUNTS).or(z.literal('')).optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;

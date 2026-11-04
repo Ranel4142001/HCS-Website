@@ -20,7 +20,7 @@ export const howLongDoesCredentialingTake: Guide = {
     {
       heading: 'The short answer',
       paragraphs: [
-        'Most health plans take three to six months. Medicare is often faster, and Medicaid timelines vary by state.',
+        'Most health plans take 90 to 120 days. Medicare is often faster, and Medicaid timelines vary by state.',
         'Hospitals work to their credentials committee’s meeting dates. A file that misses a meeting can wait another month.',
       ],
     },
@@ -187,7 +187,7 @@ export const howToGetCredentialed: Guide = {
   faqs: [
     {
       q: 'How long does it take to get credentialed?',
-      a: 'Commonly three to six months from a complete application. See our timeline guide for what affects it.',
+      a: 'Commonly 90 to 120 days from a complete application. See our timeline guide for what affects it.',
     },
     {
       q: 'Can I see patients before I am credentialed with their insurer?',
