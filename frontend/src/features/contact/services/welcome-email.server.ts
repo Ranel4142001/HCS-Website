@@ -69,7 +69,7 @@ export function welcomeEmailHtml(lead: ContactFormValues, signatureUrl: string):
 <p style="margin:0 0 4px;"><strong>Your request</strong></p>
 <p style="${p}">Practice type: ${escapeHtml(PRACTICE_TYPE_LABELS[lead.role])}${message ? `<br>Message: ${nl2br(message)}` : ''}</p>
 <p style="margin:0 0 16px;font-size:13px;color:#666666;">For your privacy, please don’t include patient information in email replies.</p>
-<p style="margin:0 0 18px;"><strong>Best regards,</strong></p>
+<p style="margin:0 0 18px;"><strong>Best Regards,</strong></p>
 <!-- Signature: one image of the team's Canva design (public/email/signature.png). Dark mode recolours email text
      and backgrounds but never images, so this stays white and identical everywhere. The alt text carries the
      details when images are blocked, and the image links to the reply address. -->
