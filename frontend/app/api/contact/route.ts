@@ -16,7 +16,7 @@ const SUCCESS_MESSAGE = 'Your inquiry has been received. A dedicated credentiali
 // Simple per-IP limit so the form can't be used to flood the Monday board. Each server instance keeps its
 // own count, so on Vercel it only slows a flood down; the spam checks below do most of the work.
 const WINDOW_MS = 10 * 60 * 1000;
-const MAX_PER_WINDOW = 5;
+const MAX_PER_WINDOW = 3;
 const recent = new Map<string, number[]>();
 
 // People take longer than this to pick a practice type and fill in their details; scripts don't.

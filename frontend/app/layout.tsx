@@ -125,6 +125,8 @@ const jsonLd = {
   ],
 };
 
+const SECTION_JUMP_SCRIPT = `(function(){var h=document.documentElement;function off(){h.setAttribute('data-cv','off')}if(location.hash)off();document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="#"]');if(a)off()},true)})();`;
+
 export default function RootLayout({
   children,
 }: {
@@ -132,8 +134,17 @@ export default function RootLayout({
 }) {
   return (
     // data-scroll-behavior: Next.js turns smooth scrolling off during route changes, so pages open at the top instantly.
-    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} data-scroll-behavior="smooth">
+    // suppressHydrationWarning: the inline script below may add data-cv="off" to <html> before React hydrates.
+    <html
+      lang="en"
+      className={`${inter.variable} ${plusJakartaSans.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
+        {/* Off-screen sections skip layout (content-visibility in globals.css), so jumps to #anchors would land on
+            estimated heights. Before any such jump, lay the page out fully so it lands exactly. */}
+        <script dangerouslySetInnerHTML={{ __html: SECTION_JUMP_SCRIPT }} />
         <JsonLd data={jsonLd} />
       </head>
       <body>

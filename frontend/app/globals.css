@@ -423,3 +423,16 @@ img, video, iframe, svg {
   justify-content: center;
   min-height: 60vh;
 }
+
+/* Page speed: sections after the first are laid out and painted only as they near the screen, so the first
+   render on phones doesn't lay out the whole page. "auto" remembers each section's real height once seen,
+   which keeps the scrollbar and #anchor links steady. */
+main > section ~ section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
+/* Set by the script in app/layout.tsx when following a #link, so the jump lands on the real position. */
+html[data-cv="off"] main > section ~ section {
+  content-visibility: visible;
+}
