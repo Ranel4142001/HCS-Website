@@ -91,6 +91,16 @@
   color: var(--ink-faint);
 }
 
+.form-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-note a:hover {
+  color: var(--teal-700);
+}
+
 .form-note svg {
   width: 15px;
   height: 15px;

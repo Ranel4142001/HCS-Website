@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import TurnstileWidget from '@/shared/components/ui/TurnstileWidget';
 import { envConfig } from '@/shared/config/env.config';
 
@@ -134,7 +135,9 @@ export function HandoffForm({ questions, onSent, onCancel }: HandoffFormProps) {
 
       {siteKey && <TurnstileWidget siteKey={siteKey} onToken={setTurnstileToken} resetSignal={turnstileReset} />}
 
-      <p className="qa-handoff-note">Please don’t include patient or other health information here.</p>
+      <p className="qa-handoff-note">
+        Please don’t include patient or other health information here. See our <Link href="/privacy">Privacy Policy</Link>.
+      </p>
 
       {error && (
         <p className="qa-handoff-error" role="alert">

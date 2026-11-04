@@ -527,6 +527,11 @@ button.ai-action-link:disabled {
   color: var(--ink-faint);
 }
 
+.qa-handoff-note a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 .qa-handoff-error {
   margin: 0;
   padding: 8px 10px;

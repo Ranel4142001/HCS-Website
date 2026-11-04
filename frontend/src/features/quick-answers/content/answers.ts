@@ -185,10 +185,10 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     id: 'security',
     label: 'Data security',
     question: 'How do you protect provider data?',
-    keywords: ['hipaa', 'secur', 'privacy', 'confidential', 'safe', 'protect', 'data'],
+    keywords: ['hipaa', 'secur', 'privacy', 'confidential', 'safe', 'protect', 'data', 'baa', 'business associate'],
     answer: {
-      reply: 'Provider information is sensitive. We handle it with HIPAA-aligned safeguards, role-based access and an audit trail that cannot be edited.',
-      action: { text: 'About HealthCredSTAT →', href: '/about' },
+      reply: 'Provider information is sensitive. We handle it with HIPAA-aligned safeguards, role-based access and an audit trail that cannot be edited, and we sign a Business Associate Agreement (BAA) when an engagement involves protected health information.',
+      action: { text: 'Read our Privacy Policy →', href: '/privacy' },
     },
   },
   {

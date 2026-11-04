@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import Link from 'next/link';
 import { UseFormReturn, useWatch } from 'react-hook-form';
 import { PROVIDER_COUNTS, type ContactFormValues } from '../validation/contact.schema';
 import Input from '@/shared/components/forms/Input';
@@ -137,7 +138,10 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
       )}
 
       <div className="form-note">
-        <Icon name="lock" /> Your details stay confidential
+        <Icon name="lock" />
+        <span>
+          Your details stay confidential. See our <Link href="/privacy">Privacy Policy</Link>.
+        </span>
       </div>
     </div>
   );

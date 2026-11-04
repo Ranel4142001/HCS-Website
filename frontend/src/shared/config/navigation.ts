@@ -157,9 +157,8 @@ export const FOOTER_COLUMNS: NavGroup[][] = [
   ],
 ];
 
-/** Placeholder targets until the client supplies the documents (see launch questions). */
 export const LEGAL_LINKS: NavLink[] = [
-  { href: '#faq', label: 'Privacy Policy' },
-  { href: '#faq', label: 'Terms of Service' },
-  { href: '#faq', label: 'HIPAA Business Associate (BAA)' },
+  { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms of Service' },
+  { href: '/privacy#baa', label: 'HIPAA Business Associate (BAA)' },
 ];

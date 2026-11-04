@@ -14,6 +14,8 @@ const CORE_PAGES: { path: string; priority: number; changeFrequency: ChangeFrequ
   { path: '/services', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/faq', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/guides', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

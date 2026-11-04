@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
             {LEGAL_LINKS.map((link) => (
               <React.Fragment key={link.label}>
                 <span className="legal-sep">&bull;</span>
-                <a href={link.href} className="legal-link">{link.label}</a>
+                <Link href={link.href} className="legal-link">{link.label}</Link>
               </React.Fragment>
             ))}
           </div>

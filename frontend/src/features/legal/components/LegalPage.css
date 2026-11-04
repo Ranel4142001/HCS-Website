@@ -1,0 +1,132 @@
+.legal-updated {
+  margin-top: 16px;
+  font-size: .875rem;
+  color: var(--ink-soft);
+}
+
+/* Contents box above the text: a quick map of a long page, and links to each section. */
+.legal-toc {
+  margin-bottom: 44px;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #f8fafd;
+}
+
+.legal-toc-title {
+  margin-bottom: 12px;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.legal-toc ol {
+  columns: 2;
+  column-gap: 32px;
+  padding-left: 1.4em;
+  list-style: decimal;
+}
+
+.legal-toc li {
+  break-inside: avoid;
+  padding: 3px 0;
+  color: var(--ink-soft);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+
+.legal-toc a {
+  color: var(--teal-700);
+  text-decoration: none;
+}
+
+.legal-toc a:hover,
+.legal-toc a:focus-visible {
+  text-decoration: underline;
+}
+
+/* Section links land below the sticky navigation bar, not under it. */
+.legal-section {
+  scroll-margin-top: 96px;
+}
+
+.legal-section + .legal-section {
+  margin-top: 36px;
+}
+
+.legal-section h2 {
+  font-size: 1.375rem;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.legal-section p,
+.legal-list {
+  color: #334155;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.legal-section p + p,
+.legal-section p + .legal-list,
+.legal-list + p {
+  margin-top: 12px;
+}
+
+.legal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: disc;
+  padding-left: 1.4em;
+}
+
+.legal-list li::marker {
+  color: var(--teal-700);
+}
+
+.legal-section a {
+  color: var(--teal-700);
+  font-weight: 600;
+}
+
+.legal-contact {
+  margin-top: 48px;
+  padding: 28px;
+  border-radius: var(--radius-md);
+  background: #f0f7ff;
+}
+
+.legal-contact p {
+  color: #334155;
+  line-height: 1.6;
+}
+
+.legal-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.legal-other {
+  color: var(--teal-700);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .legal-toc {
+    padding: 20px;
+  }
+
+  .legal-toc ol {
+    columns: 1;
+  }
+
+  .legal-section {
+    scroll-margin-top: 80px;
+  }
+}
