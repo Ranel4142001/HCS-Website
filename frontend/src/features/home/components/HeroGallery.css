@@ -1,4 +1,4 @@
-/* Homepage photo banner: one large photo with a verification card, two smaller photos beside it. */
+/* Homepage banner: a large video with a verification card, two smaller photos beside it. */
 .hero-gallery {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -38,11 +38,11 @@
   pointer-events: none;
 }
 
-/* Verification card on the large photo */
+/* Verification card on the video, top right where the footage is plain wall */
 .hero-gallery-card {
   position: absolute;
-  left: 22px;
-  bottom: 22px;
+  right: 22px;
+  top: 22px;
   z-index: 1;
   width: min(330px, calc(100% - 44px));
   padding: 16px 18px;
@@ -66,6 +66,22 @@
   width: 18px;
   height: 18px;
   color: var(--teal-700);
+}
+
+.hero-gallery-progress {
+  height: 5px;
+  margin-bottom: 6px;
+  border-radius: 999px;
+  background: #e6edf6;
+  overflow: hidden;
+}
+
+.hero-gallery-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--teal-700), #15803d);
+  transition: width .6s ease;
 }
 
 .hero-gallery-card ul {
@@ -99,6 +115,51 @@
   height: 14px;
 }
 
+.hero-gallery-card li.is-done .hero-gallery-ok {
+  animation: hero-gallery-pop .35s ease-out;
+}
+
+.hero-gallery-pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: .78rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.hero-gallery-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  animation: hero-gallery-pulse 1s ease-in-out infinite;
+}
+
+@keyframes hero-gallery-pop {
+  from { opacity: 0; transform: scale(.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hero-gallery-pulse {
+  50% { opacity: .35; }
+}
+
+/* Slow drift on the photos, like a documentary camera */
+.hero-gallery-img--drift {
+  animation: hero-gallery-drift 16s ease-in-out infinite alternate;
+}
+
+.hero-gallery-tile:last-child .hero-gallery-img--drift {
+  animation-delay: -8s;
+}
+
+@keyframes hero-gallery-drift {
+  from { transform: scale(1.02) translate(0, 0); }
+  to { transform: scale(1.1) translate(-2%, -1%); }
+}
+
 /* Labels on the smaller photos */
 .hero-gallery-pill {
   position: absolute;
@@ -115,6 +176,17 @@
   font-size: .85rem;
   font-weight: 700;
   color: var(--teal-900);
+}
+
+.hero-gallery-pill {
+  opacity: 0;
+  transform: translateY(8px) scale(.96);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+.hero-gallery-pill.is-on {
+  opacity: 1;
+  transform: none;
 }
 
 .hero-gallery-pill svg {
@@ -155,8 +227,10 @@
   }
 
   /* A compact card with two checks, so it stays clear of the face in the photo */
+  /* Bottom right on phones: the narrow crop puts the physician's face near the top */
   .hero-gallery-card {
-    left: 10px;
+    top: auto;
+    right: 10px;
     bottom: 10px;
     width: min(250px, calc(100% - 20px));
     padding: 10px 12px;
@@ -191,5 +265,18 @@
     bottom: 8px;
     padding: 6px 10px;
     font-size: .74rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gallery-img--drift,
+  .hero-gallery-dot,
+  .hero-gallery-card li.is-done .hero-gallery-ok {
+    animation: none;
+  }
+
+  .hero-gallery-progress span,
+  .hero-gallery-pill {
+    transition: none;
   }
 }
