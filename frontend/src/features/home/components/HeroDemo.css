@@ -1,10 +1,13 @@
-/* Homepage banner: the portal walkthrough video, full width at 16:9. */
+/* Homepage banner: the walkthrough video at 16:9, sized so the whole video fits on screen below the navigation bar
+   (at most 1080px wide, and never taller than the window minus room for the bar). */
 .hero-demo {
   position: relative;
+  width: min(100%, 1080px, calc((100svh - 170px) * 16 / 9));
+  margin-inline: auto;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 24px;
-  background: #cfd6d8; /* close to the video's blurred office, shown until the poster loads */
+  background: #e8eff7; /* close to the video's light background, shown until the poster loads */
   box-shadow: 0 30px 70px -20px rgba(6, 36, 89, 0.28);
   border: 1px solid rgba(226, 232, 240, 0.85);
 }
