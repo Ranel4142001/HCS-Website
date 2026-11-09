@@ -18,8 +18,51 @@
   display: block;
 }
 
+/* Call to action in the bottom-right corner, clear of the video's own captions on the left */
+.hero-demo-cta {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  background: var(--teal-900);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 16px 34px -12px rgba(6, 36, 89, 0.55);
+  transition: transform .15s ease, background-color .15s ease;
+}
+
+.hero-demo-cta:hover,
+.hero-demo-cta:focus-visible {
+  background: #0b2f73;
+  transform: translateY(-2px);
+}
+
+.hero-demo-cta svg {
+  width: 18px;
+  height: 18px;
+}
+
 @media (max-width: 720px) {
   .hero-demo {
     border-radius: 16px;
+  }
+
+  .hero-demo-cta {
+    right: 10px;
+    bottom: 10px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: .72rem;
+  }
+
+  .hero-demo-cta svg {
+    width: 14px;
+    height: 14px;
   }
 }

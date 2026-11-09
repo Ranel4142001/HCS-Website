@@ -1,18 +1,21 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Icon from '@/shared/components/ui/Icon';
 import './HeroDemo.css';
 
 /*
- * Homepage banner: a 20-second walkthrough of the HCStat Credentialing portal on a laptop. An admin opens the
- * providers list and sends an invite, a provider's file reaches 100%, and it goes to committee.
+ * Homepage banner, about 25 seconds: a physician typing on a laptop, a zoom into the screen, a walkthrough of the
+ * HCStat Credentialing portal (an admin sends an invite, a provider's file reaches 100%, it goes to committee), then
+ * a physician smiling to camera with a "free quote" call to action.
  *
- * Made by scripts/hero-video/portal-render.mjs from portal-demo.html (the portal screens, with the demo's synthetic
- * names), laid over blurred office footage from Pexels (free licence, no attribution required):
- *   https://www.pexels.com/video/a-senior-doctor-writing-on-a-clipboard-8375665/
+ * Made with scripts/hero-video: portal-render.mjs renders portal-demo.html (the portal screens, with the demo's
+ * synthetic names), and compose.mjs joins it with two Pexels clips (free licence, no attribution required):
+ *   https://www.pexels.com/video/man-in-white-lab-coat-using-a-laptop-5030437/
+ *   https://www.pexels.com/video/female-doctor-posing-on-camera-7904584/
  * Browsers cache these files by address: bump VERSION whenever they're replaced.
  */
-const VERSION = '3';
+const VERSION = '4';
 const VIDEO = { webm: `/media/hero/story.webm?v=${VERSION}`, mp4: `/media/hero/story.mp4?v=${VERSION}` };
 const POSTER = `/media/hero/story-poster.webp?v=${VERSION}`;
 
@@ -51,8 +54,12 @@ export const HeroDemo: React.FC = () => {
         loop
         playsInline
         preload="none"
-        aria-label="A walkthrough of the HealthCredSTAT credentialing portal: see every provider's status, invite a provider, the provider completes their file, and it is sent to committee."
+        aria-label="A physician at his laptop, then a walkthrough of the HealthCredSTAT credentialing portal: see every provider's status, invite a provider, the provider completes their file, and it is sent to committee."
       />
+      {/* The video ends on a "free quote" call to action; this is the real, clickable one. */}
+      <a href="#contact" className="hero-demo-cta">
+        Get a free quote <Icon name="arrow" />
+      </a>
     </div>
   );
 };
