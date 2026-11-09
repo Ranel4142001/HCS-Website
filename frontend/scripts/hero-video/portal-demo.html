@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HCStat portal demo scene</title>
+<!--
+  Homepage hero: the HCStat Credentialing portal on a laptop, walking through one provider's file.
+  Rendered frame by frame by portal-render.mjs (window.render(t) draws the moment t seconds into the loop) on a
+  transparent background, then laid over blurred office footage. All names are the portal demo's synthetic data.
+-->
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; background: transparent; overflow: hidden; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color: #10303a; }
+
+  /* ---------- laptop ---------- */
+  .stage { position: absolute; inset: 0; perspective: 2600px; }
+  .laptop { position: absolute; left: 250px; top: 40px; width: 1460px; transform-style: preserve-3d; transform-origin: 50% 60%; }
+  .lid { position: relative; width: 1460px; height: 930px; padding: 26px 26px 34px; border-radius: 30px 30px 10px 10px;
+         background: linear-gradient(160deg, #2b2f36, #121418); box-shadow: 0 60px 120px -30px rgba(0,0,0,.55), inset 0 0 0 2px #3a3f47; }
+  .lid::before { content: ''; position: absolute; top: 10px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: #3d434c; }
+  .screen { position: relative; width: 1408px; height: 870px; border-radius: 8px; overflow: hidden; background: #efece6; }
+  .glare { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.10), rgba(255,255,255,0) 40%); }
+  .base { width: 1640px; height: 34px; margin: -2px 0 0 -90px; border-radius: 0 0 40px 40px;
+          background: linear-gradient(#d9dce1, #a9aeb6); box-shadow: 0 40px 70px -20px rgba(0,0,0,.6); position: relative; }
+  .base::before { content: ''; position: absolute; left: 50%; top: 0; width: 240px; height: 12px; margin-left: -120px; border-radius: 0 0 12px 12px; background: #9ba0a8; }
+
+  /* ---------- portal chrome ---------- */
+  .app { position: absolute; inset: 0; display: flex; }
+  .side { width: 250px; background: #13505c; color: #d7e7ea; padding: 20px 14px; flex-shrink: 0; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #fff; font-size: 17px; padding: 4px 8px 22px; }
+  .brand i { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, #2c8a9c, #1d6d7c); display: block; }
+  .group { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; padding: 6px 10px 10px; }
+  .nav a { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border-radius: 8px; font-size: 15px; color: #e3eff1; margin-bottom: 3px; }
+  .nav a.on { background: #2a6b77; color: #fff; font-weight: 600; }
+  .nav small { font-size: 11px; background: rgba(255,255,255,.12); padding: 2px 8px; border-radius: 10px; }
+  .nav .dot { width: 8px; height: 8px; border-radius: 50%; background: #e8a33b; }
+  .nav .dot.ok { background: #5cc06a; }
+  .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .top { height: 60px; background: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; border-bottom: 1px solid #e3e0d8; font-size: 15px; }
+  .crumb { color: #13505c; font-weight: 600; }
+  .crumb span { color: #8a9a9e; font-weight: 400; margin-right: 8px; }
+  .who { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .who b { display: block; font-size: 15px; }
+  .who i { width: 34px; height: 34px; border-radius: 50%; background: #1f5f6c; color: #fff; display: grid; place-items: center; font-style: normal; font-weight: 700; font-size: 13px; }
+  .body { position: relative; flex: 1; overflow: hidden; }
+  .view { position: absolute; inset: 0; padding: 28px 30px; }
+  h1 { font-size: 34px; color: #134654; margin-bottom: 22px; letter-spacing: -.01em; }
+
+  /* dashboard */
+  .stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-bottom: 18px; }
+  .stat { background: #fff; border: 1px solid #e3e0d8; border-radius: 12px; padding: 18px 18px 16px; }
+  .stat b { font-size: 34px; display: block; color: #134654; }
+  .stat span { font-size: 14px; color: #4b5d62; }
+  .panel { background: #fff; border: 1px solid #e3e0d8; border-radius: 12px; padding: 20px 22px; margin-bottom: 16px; }
+  .panel h3 { font-size: 17px; color: #134654; margin-bottom: 14px; }
+  .bar { height: 12px; border-radius: 6px; background: #ebe8e1; overflow: hidden; display: flex; }
+  .bar i { display: block; height: 100%; }
+  .legend { display: flex; gap: 22px; margin-top: 12px; font-size: 13px; color: #4b5d62; }
+  .legend em { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; font-style: normal; }
+  .activity div { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid #f0ede6; font-size: 14px; color: #33474c; }
+  .activity div:first-child { border-top: 0; }
+  .activity small { color: #8a9a9e; }
+
+  /* providers */
+  .search { display: flex; gap: 10px; margin-bottom: 14px; }
+  .search div { flex: 1; height: 44px; border: 2px solid #2a6b77; border-radius: 8px; background: #fff; padding: 11px 14px; color: #8a9a9e; font-size: 15px; }
+  .btn { height: 44px; padding: 0 18px; border-radius: 8px; background: #2a6b77; color: #fff; font-weight: 600; display: inline-flex; align-items: center; font-size: 15px; }
+  .btn.ghost { background: #fff; color: #4b5d62; border: 1px solid #d6d2c8; }
+  .chips { display: flex; gap: 8px; margin-bottom: 16px; }
+  .chips span { padding: 6px 14px; border: 1px solid #d6d2c8; border-radius: 16px; font-size: 13px; background: #fff; color: #33474c; }
+  .chips span:first-child { background: #2a6b77; color: #fff; border-color: #2a6b77; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e3e0d8; }
+  th { text-align: left; font-size: 12px; letter-spacing: .08em; color: #4b5d62; padding: 13px 18px; background: #f7f6f2; font-weight: 600; }
+  td { padding: 14px 18px; border-top: 1px solid #f0ede6; font-size: 14px; color: #33474c; }
+  td b { display: block; color: #1f5f6c; font-size: 15px; }
+  td small { color: #6b7c80; font-size: 12px; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 12px; font-size: 12px; font-weight: 600; background: #eef1f1; color: #4b5d62; }
+  .pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .pill.inv { background: #e6f1fb; color: #1d63b0; }
+  .pill.prog { background: #fdf3e2; color: #a76a0b; }
+  .pill.done { background: #e5f5e7; color: #24813a; }
+  .meter { width: 90px; height: 6px; border-radius: 3px; background: #ebe8e1; display: inline-block; vertical-align: middle; margin-right: 10px; overflow: hidden; }
+  .meter i { display: block; height: 100%; background: #2a6b77; }
+  .small-btn { padding: 6px 14px; border-radius: 6px; background: #2a6b77; color: #fff; font-size: 13px; font-weight: 600; display: inline-block; min-width: 74px; text-align: center; }
+  .small-btn.sent { background: #e5f5e7; color: #24813a; }
+  tr.hl td { background: #f3f8f8; }
+
+  /* provider file */
+  .hero { background: #134c57; border-radius: 14px; padding: 24px 28px; display: flex; align-items: center; gap: 26px; color: #fff; margin-bottom: 18px; transition: none; }
+  .ring { width: 104px; height: 104px; position: relative; flex-shrink: 0; }
+  .ring svg { width: 104px; height: 104px; transform: rotate(-90deg); }
+  .ring b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 24px; }
+  .hero h2 { font-size: 25px; margin-bottom: 4px; }
+  .hero p { opacity: .85; font-size: 15px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card { background: #fff; border: 1px solid #e3e0d8; border-radius: 12px; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; }
+  .card b { font-size: 16px; color: #134654; display: block; }
+  .card small { font-size: 12px; color: #6b7c80; }
+
+  /* modal + toast */
+  .shade { position: absolute; inset: 0; background: rgba(16,40,46,.42); }
+  .modal { position: absolute; left: 50%; top: 50%; width: 520px; margin: -190px 0 0 -260px; background: #fff; border-radius: 16px; padding: 28px 30px; box-shadow: 0 30px 80px -20px rgba(0,0,0,.45); }
+  .modal h3 { font-size: 22px; color: #134654; margin-bottom: 6px; }
+  .modal p { font-size: 14px; color: #4b5d62; margin-bottom: 18px; }
+  .check { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid #f0ede6; font-size: 15px; color: #33474c; }
+  .tick { width: 22px; height: 22px; border-radius: 50%; background: #2f9a4a; display: grid; place-items: center; flex-shrink: 0; }
+  .modal .row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+  .toast { position: absolute; right: 30px; bottom: 26px; background: #10303a; color: #fff; padding: 14px 20px; border-radius: 10px; font-size: 15px; display: flex; align-items: center; gap: 10px; box-shadow: 0 18px 40px -12px rgba(0,0,0,.5); }
+
+  /* cursor */
+  .cursor { position: absolute; left: 0; top: 0; width: 30px; height: 30px; z-index: 5; }
+  .ripple { position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; border: 3px solid rgba(42,107,119,.7); z-index: 4; }
+
+  /* caption chip beside the laptop */
+  .chip { position: absolute; left: 120px; bottom: 76px; display: flex; align-items: center; gap: 14px; padding: 16px 26px 16px 18px; border-radius: 18px;
+          background: rgba(255,255,255,.95); box-shadow: 0 24px 60px -18px rgba(0,0,0,.45); font-size: 26px; font-weight: 700; color: #0f3440; }
+  .chip em { font-style: normal; width: 40px; height: 40px; border-radius: 50%; background: #16a34a; color: #fff; display: grid; place-items: center; font-size: 19px; }
+</style>
+</head>
+<body>
+<div class="stage"><div class="laptop" id="laptop">
+  <div class="lid"><div class="screen" id="screen">
+    <div class="app">
+      <aside class="side" id="side"></aside>
+      <div class="main">
+        <div class="top"><div class="crumb" id="crumb"></div><div class="who" id="who"></div></div>
+        <div class="body">
+          <div class="view" id="vDash"></div>
+          <div class="view" id="vList"></div>
+          <div class="view" id="vFile"></div>
+          <div id="modalWrap"><div class="shade"></div><div class="modal" id="modal"></div></div>
+          <div class="toast" id="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="ripple" id="ripple"></div>
+    <svg class="cursor" id="cursor" viewBox="0 0 24 24"><path d="M4 2l14 9-6.2 1.3L15.5 20l-3 1.4-3.6-7.6L4 18z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <div class="glare"></div>
+  </div></div>
+  <div class="base"></div>
+</div>
+<div class="chip" id="chip"><em id="chipN">1</em><span id="chipT"></span></div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const span = (t, a, b) => clamp((t - a) / (b - a));
+const TICK = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+const DUR = 20;
+// Chapters: dashboard → providers → provider file → committee
+const CH = [0, 4.9, 10.2, 15.6];
+const CHIPS = ['See every provider’s status at a glance', 'Invite providers in one click', 'Providers complete their file online', 'Committee-ready, sooner'];
+
+// ---------- static markup ----------
+const ADMIN_NAV = [['Dashboard'], ['Providers'], ['Assignments', 'Soon'], ['Businesses', 'Soon'], ['Partners', 'Soon'], ['Users'], ['Audit trail']];
+const sideAdmin = (on) => `<div class="brand"><i></i>HCStat Credentialing</div><div class="group">Console</div><nav class="nav">${ADMIN_NAV.map(([n, s]) => `<a id="nav-${n}" class="${n === on ? 'on' : ''}">${n}${s ? `<small>${s}</small>` : ''}</a>`).join('')}</nav>`;
+const SECTIONS = ['Profile', 'Upcoming assignment', 'Military service', 'Personal IDs', 'Education', 'Immunizations', 'Certifications & licenses', 'Work history', 'References', 'Malpractice insurance', 'NPI', 'Payroll information'];
+const sideFile = (doneCount) => `<div class="brand"><i></i>HCStat Credentialing</div><div class="group">Provider file</div><nav class="nav">${SECTIONS.slice(0, 11).map((n, i) => `<a class="${i === 0 ? 'on' : ''}">${n}<span class="dot ${i < doneCount || i >= 3 ? 'ok' : ''}"></span></a>`).join('')}</nav>`;
+
+$('vDash').innerHTML = `<h1>Credentialing overview</h1>
+  <div class="stats">${['Total providers', 'Awaiting acceptance', 'Ready for delivery', 'Needs review', 'In progress', 'Action needed'].map((l, i) => `<div class="stat"><b id="s${i}">0</b><span>${l}</span></div>`).join('')}</div>
+  <div class="panel"><h3>Provider status</h3><div class="bar"><i id="b0" style="background:#2f9a4a"></i><i id="b1" style="background:#2a6b77"></i><i id="b2" style="background:#e8a33b"></i></div>
+  <div class="legend"><span><em style="background:#2f9a4a"></em>Ready for delivery</span><span><em style="background:#2a6b77"></em>In progress</span><span><em style="background:#e8a33b"></em>Needs review</span></div></div>
+  <div class="panel activity"><h3>Recent activity</h3>
+    <div><span>Board certification verified · Priya Raman</span><small>2 min ago</small></div>
+    <div><span>License verified with the state board · Alex Okafor</span><small>14 min ago</small></div>
+    <div><span>Work history section completed · Dana Reyes</span><small>1 hr ago</small></div></div>`;
+
+const PEOPLE = [['Jordan Alvarez', 'jordan.alvarez@example.test', 'ready', 0], ['Marcus Bell', 'marcus.bell@example.test', 'ready', 0], ['Alex Okafor', 'alex.okafor@example.test', 'prog', 46], ['Priya Raman', 'priya.raman@example.test', 'prog', 62], ['Dana Reyes', 'dana.reyes@example.test', 'prog', 75], ['Sam Whitfield', 'sam.whitfield@example.test', 'done', 100]];
+$('vList').innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><h1>Providers</h1><div style="display:flex;gap:10px;margin-top:-20px"><span class="btn ghost">Import CSV</span><span class="btn">Add provider</span></div></div>
+  <div class="search"><div>Search by name or email</div><span class="btn">Search</span></div>
+  <div class="chips">${['All', 'Needs verifying', 'Ready to invite', 'In progress', 'Needs review', 'Invited'].map((c) => `<span>${c}</span>`).join('')}</div>
+  <table><tr><th>NAME</th><th>STATUS</th><th>COMPLETION</th><th>UPDATED</th><th></th></tr>
+  ${PEOPLE.map(([n, e, s, p], i) => `<tr id="row${i}"><td><b id="name${i}">${n}</b><small>${e}</small></td><td><span class="pill ${s === 'ready' ? '' : s}" id="pill${i}">${s === 'ready' ? 'Ready to invite' : s === 'prog' ? 'In progress' : 'Committee-ready'}</span></td>
+  <td><span class="meter"><i style="width:${p}%"></i></span>${p}%</td><td>Nov ${3 + i}, 2026</td><td>${s === 'ready' ? `<span class="small-btn" id="inv${i}">Invite</span>` : ''}</td></tr>`).join('')}</table>`;
+
+$('vFile').innerHTML = `<h1 style="margin-bottom:16px">Dana Reyes · Credentialing file</h1>
+  <div class="hero" id="fileHero"><div class="ring"><svg viewBox="0 0 104 104"><circle cx="52" cy="52" r="44" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="10"/><circle id="arc" cx="52" cy="52" r="44" fill="none" stroke="#e8b04a" stroke-width="10" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="276.5"/></svg><b id="ringPct">75%</b></div>
+  <div><h2 id="heroTitle">75% of the way there</h2><p id="heroSub">9 of 12 sections complete</p></div></div>
+  <div class="cards">${SECTIONS.map((n, i) => `<div class="card"><div><b>${n}</b><small>~${[5, 2, 2, 2, 6, 4, 8, 5, 4, 3, 1, 3][i]} min</small></div><span class="pill done" id="sec${i}">Complete</span></div>`).join('')}</div>`;
+
+// ---------- cursor path: [time, target, click?]; a target is [x, y] in screen pixels or an element id ----------
+const PATH = [[0, [900, 640]], [2.6, [900, 640]], [4.3, 'nav-Providers', 1], [5.6, [820, 560]], [6.5, 'inv0', 1], [8.3, [1000, 600]], [9.6, 'name4', 1], [11, [900, 720]], [15.9, [880, 700]], [17.2, 'sendBtn', 1], [19, [1180, 780]], [20, [900, 640]]];
+// Layout position (ignores the laptop's 3D tilt, which the cursor shares), centre of the element.
+function posOf(target) {
+  if (Array.isArray(target)) return target;
+  const el = $(target); if (!el) return [900, 640];
+  let x = el.offsetWidth / 2, y = el.offsetHeight / 2, n = el;
+  while (n && n.id !== 'screen') { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+  // the modal is centred with a transform-free negative margin, so offsets are exact
+  return [x, y];
+}
+function cursorAt(t) {
+  for (let i = 0; i < PATH.length - 1; i++) {
+    const [t0, a] = PATH[i], [t1, b] = PATH[i + 1];
+    const [x0, y0] = posOf(a), [x1, y1] = posOf(b);
+    if (t >= t0 && t <= t1) { const k = ease(span(t, t0, t1)); return [x0 + (x1 - x0) * k, y0 + (y1 - y0) * k]; }
+  }
+  return posOf(PATH[0][1]);
+}
+const CLICKS = PATH.filter((p) => p[3]).map((p) => p[0]);
+
+function render(t) {
+  const ch = t >= CH[3] ? 3 : t >= CH[2] ? 2 : t >= CH[1] ? 1 : 0;
+  // gentle camera move: the laptop turns slightly and drifts closer over the loop
+  const k = t / DUR;
+  $('laptop').style.transform = `rotateY(${-9 + 6 * k}deg) rotateX(${5 - 2 * k}deg) scale(${0.88 + 0.04 * k})`;
+
+  // whole-screen fade at the loop seam
+  const seam = Math.min(ease(span(t, 0, 0.5)), 1 - ease(span(t, DUR - 0.6, DUR)));
+  $('screen').querySelector('.app').style.opacity = 0.15 + 0.85 * seam;
+
+  // views
+  const show = (id, a, b) => { const o = Math.min(ease(span(t, a, a + 0.45)), 1 - ease(span(t, b - 0.35, b))); $(id).style.opacity = o; $(id).style.transform = `translateY(${(1 - o) * 14}px)`; };
+  show('vDash', -1, CH[1]); show('vList', CH[1], CH[2]); show('vFile', CH[2], DUR + 1);
+  if (ch === 0) { $('side').innerHTML = sideAdmin(t > 4.35 ? 'Providers' : 'Dashboard'); $('crumb').innerHTML = '<span>⌂ |</span>Dashboard'; }
+  else if (ch === 1) { $('side').innerHTML = sideAdmin('Providers'); $('crumb').innerHTML = '<span>⌂ |</span>Providers'; }
+  else { $('side').innerHTML = sideFile(0); $('crumb').innerHTML = '<span>⌂ | Providers |</span>Dana Reyes'; }
+  $('who').innerHTML = '<i>CA</i><div><b>Credentialing admin</b>Administrator</div>';
+
+  // dashboard counters
+  const VALUES = [24, 3, 5, 2, 14, 0];
+  VALUES.forEach((v, i) => { $('s' + i).textContent = Math.round(v * ease(span(t, 0.5 + i * 0.12, 2.2 + i * 0.12))); });
+  const fill = ease(span(t, 1, 2.8));
+  $('b0').style.width = 21 * fill + '%'; $('b1').style.width = 58 * fill + '%'; $('b2').style.width = 8 * fill + '%';
+
+  // providers: invite Jordan
+  const invited = t >= 6.55;
+  $('inv0').textContent = invited ? '✓ Invited' : 'Invite'; $('inv0').className = 'small-btn' + (invited ? ' sent' : '');
+  $('pill0').textContent = invited ? 'Invited' : 'Ready to invite'; $('pill0').className = 'pill' + (invited ? ' inv' : '');
+  $('row4').className = t >= 9.2 && ch === 1 ? 'hl' : '';
+
+  // provider file: last three sections finish, ring fills to 100%
+  const DONE_AT = [11.4, 12.5, 13.6];
+  let pct = 75;
+  DONE_AT.forEach((d, i) => { pct += 25 / 3 * ease(span(t, d, d + 0.6)); });
+  [0, 1, 2].forEach((i) => { const done = t >= DONE_AT[i]; $('sec' + i).className = 'pill ' + (done ? 'done' : 'prog'); $('sec' + i).textContent = done ? 'Complete' : 'In progress'; });
+  const r = Math.round(pct);
+  $('arc').style.strokeDashoffset = 276.5 * (1 - pct / 100);
+  $('arc').style.stroke = r >= 100 ? '#5cc06a' : '#e8b04a';
+  $('ringPct').textContent = r + '%';
+  const complete = t >= 14.3;
+  $('heroTitle').textContent = complete ? 'File complete, ready for committee' : `${r}% of the way there`;
+  $('heroSub').textContent = complete ? 'All 12 sections done · primary sources verified' : `${9 + DONE_AT.filter((d) => t >= d + 0.3).length} of 12 sections complete`;
+  $('fileHero').style.background = complete ? '#1d6b3f' : '#134c57';
+  if (ch === 2 || ch === 3) $('side').innerHTML = sideFile(DONE_AT.filter((d) => t >= d).length);
+
+  // committee modal
+  const mIn = ease(span(t, CH[3] + 0.1, CH[3] + 0.6)) * (1 - ease(span(t, 19.1, 19.5)));
+  $('modalWrap').style.opacity = mIn;
+  const sent = t >= 17.25;
+  $('modal').style.transform = `scale(${0.94 + 0.06 * mIn})`;
+  $('modal').innerHTML = `<h3>Send to committee</h3><p>Dana Reyes · Initial credentialing</p>
+    ${['All 12 sections complete', 'Primary sources verified', 'Specialist review signed off'].map((c) => `<div class="check"><span class="tick">${TICK}</span>${c}</div>`).join('')}
+    <div class="row"><span class="btn ghost">Cancel</span><span class="btn" id="sendBtn" style="${sent ? 'background:#2f9a4a' : ''}">${sent ? '✓ Sent to committee' : 'Send to committee'}</span></div>`;
+
+  // toast
+  const toastText = t < 10 ? 'Invitation sent to Jordan Alvarez' : 'Dana Reyes is committee-ready';
+  const toastA = t < 10 ? Math.min(ease(span(t, 6.7, 7.1)), 1 - ease(span(t, 8.9, 9.3))) : Math.min(ease(span(t, 17.4, 17.8)), 1 - ease(span(t, 19.2, 19.6)));
+  $('toast').innerHTML = `<span class="tick">${TICK}</span>${toastText}`;
+  $('toast').style.opacity = toastA; $('toast').style.transform = `translateY(${(1 - toastA) * 16}px)`;
+
+  // cursor and click ripples
+  const [cx, cy] = cursorAt(t).map((v, i) => v - (i === 0 ? 6 : 4));
+  $('cursor').style.transform = `translate(${cx}px, ${cy}px)`;
+  const c = CLICKS.find((ct) => t >= ct && t < ct + 0.5);
+  if (c !== undefined) { const p = span(t, c, c + 0.5); $('ripple').style.opacity = 1 - p; $('ripple').style.left = cx + 4 + 'px'; $('ripple').style.top = cy + 4 + 'px'; $('ripple').style.transform = `scale(${0.4 + p})`; }
+  else $('ripple').style.opacity = 0;
+
+  // caption chip, one per chapter
+  const start = CH[ch], end = ch < 3 ? CH[ch + 1] : DUR;
+  const chipA = Math.min(ease(span(t, start + 0.2, start + 0.7)), 1 - ease(span(t, end - 0.45, end - 0.05)));
+  $('chipN').textContent = ch + 1; $('chipT').textContent = CHIPS[ch];
+  $('chip').style.opacity = chipA; $('chip').style.transform = `translateY(${(1 - chipA) * 20}px)`;
+}
+window.render = render;
+window.DUR = DUR;
+render(0);
+</script>
+</body>
+</html>

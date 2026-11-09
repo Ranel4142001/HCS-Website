@@ -1,0 +1,25 @@
+/* Homepage banner: the portal walkthrough video, full width at 16:9. */
+.hero-demo {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #cfd6d8; /* close to the video's blurred office, shown until the poster loads */
+  box-shadow: 0 30px 70px -20px rgba(6, 36, 89, 0.28);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.hero-demo-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .hero-demo {
+    border-radius: 16px;
+  }
+}
