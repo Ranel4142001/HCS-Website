@@ -1,0 +1,29 @@
+name: Warm CDN cache
+# After Vercel finishes a production deploy, request every page once so the CDN already holds a copy
+# when the first real visitor arrives. Vercel reports each deploy to GitHub, which triggers this workflow.
+on:
+  deployment_status:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  warm:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: frontend/.nvmrc
+      # Production address: set the SITE_BASE_URL repository variable once the custom domain is live.
+      - run: node scripts/warm-cache.mjs
+        env:
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL || 'https://hcs-website-ashen.vercel.app' }}
