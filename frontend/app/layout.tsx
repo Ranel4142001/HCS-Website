@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import '@/shared/styles/common.css';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
 import JsonLd from '@/shared/components/seo/JsonLd';
 import { BRAND_VERSION } from '@/shared/components/ui/BrandLogo';
+import { envConfig } from '@/shared/config/env.config';
 
 // Both are variable fonts: omitting `weight` loads one file covering every weight.
 // 'swap' keeps text visible while the font loads. ('optional' was measured too: Chrome treats a preloaded
@@ -85,6 +87,8 @@ export const metadata: Metadata = {
     },
   },
   category: 'Healthcare',
+  // Google Search Console ownership check (HTML tag method). Not needed when the domain is verified through DNS.
+  ...(envConfig.googleSiteVerification && { verification: { google: envConfig.googleSiteVerification } }),
 };
 
 // Site-wide structured data. Page-specific schema (FAQ, services, breadcrumbs) lives on each page.
@@ -149,6 +153,9 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        {/* Vercel Web Analytics: anonymous page-view counts, no cookies (see the Privacy Policy). Turn it on in the
+            Vercel project's Analytics tab; on other hosts and in development it sends nothing. */}
+        <Analytics />
       </body>
     </html>
   );

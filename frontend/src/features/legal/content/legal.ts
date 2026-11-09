@@ -13,7 +13,7 @@ export const PRIVACY_POLICY: LegalDoc = {
   description:
     'How HealthCredSTAT collects, uses and protects the information you share through our website, contact form and Quick Answers chat.',
   lead: 'This policy explains what information our website collects, why we collect it, who helps us process it and the choices you have.',
-  updated: '2026-11-05',
+  updated: '2026-11-10',
   sections: [
     {
       id: 'scope',
@@ -39,6 +39,7 @@ export const PRIVACY_POLICY: LegalDoc = {
       heading: 'Information collected automatically',
       paragraphs: [
         'Like every website, our servers receive your IP address and basic browser details when you visit. We use your IP address only to protect the contact form from spam and abuse: we keep a one-way, scrambled code made from it with your request, so we can limit how many requests come from one network without storing the address itself.',
+        'To understand how the site is used, we count visits with Vercel Web Analytics, which reports totals such as page views and the countries and devices visitors use. It does not use cookies or identify individual visitors.',
         'We do not use advertising cookies or tracking pixels, and we do not run analytics that follow you across other websites. If you close the announcement banner, your browser remembers that choice until you close the tab.',
       ],
     },
@@ -50,6 +51,7 @@ export const PRIVACY_POLICY: LegalDoc = {
         'To send you a confirmation email when we receive your request.',
         'To keep a record of our conversation with you as a prospective client.',
         'To protect the website and our team from spam, fraud and abuse.',
+        'To see, in total, which pages are read most, so we can improve the site.',
       ],
       after: ['We do not sell your information, and we do not share it with anyone for their own marketing.'],
     },
@@ -58,7 +60,7 @@ export const PRIVACY_POLICY: LegalDoc = {
       heading: 'Service providers we use',
       paragraphs: ['A small number of trusted companies process information on our behalf, only to provide their service to us:'],
       list: [
-        'Vercel, which hosts this website.',
+        'Vercel, which hosts this website and provides its anonymous visit statistics.',
         'monday.com, where we keep track of requests and client conversations.',
         'Microsoft 365, which we use to send and receive email.',
         'Cloudflare Turnstile, which checks that a form is sent by a person and not an automated program.',

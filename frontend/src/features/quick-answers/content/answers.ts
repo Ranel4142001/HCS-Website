@@ -61,6 +61,96 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     },
   },
   {
+    id: 'start-when',
+    label: 'When to start',
+    question: 'When should we start credentialing a new provider?',
+    keywords: ['when should', 'when to start', 'when do we start', 'start credentialing', 'new hire', 'onboarding', 'onboard', 'in advance', 'before they start', 'start date'],
+    answer: {
+      reply: 'As soon as the offer is signed, ideally 90 to 120 days before the provider’s start date. Collect documents and update CAQH first, then apply to every health plan at the same time.',
+      action: { text: 'Estimate your timeline →', href: '/#estimator' },
+    },
+  },
+  {
+    id: 'npdb',
+    label: 'NPDB query',
+    question: 'What is the NPDB query?',
+    keywords: ['npdb', 'national practitioner data bank', 'data bank', 'adverse action'],
+    answer: {
+      reply: 'The National Practitioner Data Bank (NPDB) is a federal database of malpractice payments and adverse actions, such as license discipline or lost privileges. Hospitals and health plans query it during credentialing, and it is part of every file we verify.',
+      action: { text: 'Primary source verification explained →', href: '/guides/primary-source-verification' },
+    },
+  },
+  {
+    id: 'privileges',
+    label: 'Hospital privileges',
+    question: 'How do hospital privileges work?',
+    keywords: ['privilege', 'hospital privileges', 'medical staff', 'admitting', 'privileging', 'temporary privileges'],
+    answer: {
+      reply: 'Hospital privileges let a provider treat patients at a specific hospital. The hospital verifies the provider’s credentials, then its committees and board approve the specific privileges. It is separate from health plan credentialing, and many providers need both.',
+      action: { text: 'Read the hospital privileges guide →', href: '/guides/hospital-privileges' },
+    },
+  },
+  {
+    id: 'gaps',
+    label: 'Work history gaps',
+    question: 'How do I explain a gap in my work history?',
+    keywords: ['gap', 'gaps', 'time off', 'break in', 'career break', 'leave of absence', 'unemployed'],
+    answer: {
+      reply: 'Most hospitals and health plans ask about gaps, commonly any longer than six months. A short signed note with the dates and the reason, such as training, family leave or relocation, avoids back-and-forth requests.',
+      action: { text: 'See the documents checklist →', href: '/guides/credentialing-documents-checklist' },
+    },
+  },
+  {
+    id: 'multi-state',
+    label: 'Licenses in several states',
+    question: 'Do I need a license in every state where I see patients?',
+    keywords: ['multiple states', 'multi-state', 'multistate', 'another state', 'other states', 'several states', 'interstate', 'compact', 'imlc', 'telehealth license'],
+    answer: {
+      reply: 'Yes. A provider needs a license in each state where their patients are located, including for telehealth. Licensure compacts can make additional licenses faster to get. Each license is verified and tracked separately.',
+      action: { text: 'Credentialing for digital health →', href: '/who-we-help/digital-health' },
+    },
+  },
+  {
+    id: 'npi-what',
+    label: 'NPI numbers',
+    question: 'What is an NPI and which type do I need?',
+    keywords: ['npi', 'nppes', 'national provider identifier', 'npi number', 'type 1', 'type 2'],
+    answer: {
+      reply: 'An NPI is the 10-digit National Provider Identifier, issued free through NPPES. Every provider needs an individual (Type 1) NPI; a group or organization billing under its own name also needs a Type 2 NPI. Keep your NPPES details matching your applications.',
+      action: { text: 'See the documents checklist →', href: '/guides/credentialing-documents-checklist' },
+    },
+  },
+  {
+    id: 'panel-closed',
+    label: 'Closed panels and denials',
+    question: 'What if a health plan’s panel is closed or the application is denied?',
+    keywords: ['closed panel', 'panel closed', 'panel is closed', 'closed network', 'not accepting', 'denied', 'denial', 'rejected', 'declined'],
+    answer: {
+      reply: 'Health plans sometimes close their network to new providers in an area or specialty. Options include showing a network need, such as a specialty or access gap, applying to other plans first, or asking again later. A specialist can look at your case.',
+      action: SPECIALIST,
+    },
+  },
+  {
+    id: 'committee',
+    label: 'Credentialing committee',
+    question: 'What does the credentialing committee do?',
+    keywords: ['committee', 'credentials committee', 'committee ready', 'committee-ready', 'medical executive'],
+    answer: {
+      reply: 'After verification, the file goes to the credentialing committee, which approves providers at scheduled meetings, often monthly. A complete, verified file is ready for the next meeting; a file that misses it can wait another month.',
+      action: { text: 'How long does credentialing take? →', href: '/guides/how-long-does-credentialing-take' },
+    },
+  },
+  {
+    id: 'ncqa',
+    label: 'NCQA standards',
+    question: 'What are NCQA credentialing standards?',
+    keywords: ['ncqa', 'urac', 'joint commission', 'accreditation', 'standard'],
+    answer: {
+      reply: 'NCQA sets the credentialing standards most health plans follow, including which credentials are verified and recredentialing at least every 36 months. Hospitals follow similar Joint Commission standards. We build every file to NCQA standards.',
+      action: { text: 'Primary source verification explained →', href: '/guides/primary-source-verification' },
+    },
+  },
+  {
     id: 'missed-recredentialing',
     label: 'Missed recredentialing',
     question: 'What happens if a provider misses recredentialing?',
@@ -148,7 +238,7 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     keywords: ['document', 'requirement', 'required', 'checklist', 'what do i need', 'what do we need', 'cv', 'resume', 'npi', 'license', 'dea', 'malpractice'],
     answer: {
       reply: 'Usually: an NPI, state license, DEA registration (if applicable), board certification, a CV with month/year dates, malpractice insurance and claims history, education certificates and a current CAQH ProView profile.',
-      action: { text: 'Start your credentialing intake →', href: '/contact' },
+      action: { text: 'See the full documents checklist →', href: '/guides/credentialing-documents-checklist' },
     },
   },
   {
@@ -158,7 +248,7 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     keywords: ['primary source', 'psv', 'verif'],
     answer: {
       reply: 'Primary source verification confirms each credential directly with the organization that issued it, such as the state medical board, instead of relying on copies from the provider. Every file we build is verified this way.',
-      action: { text: 'See how we work →', href: '/#workflows' },
+      action: { text: 'Primary source verification explained →', href: '/guides/primary-source-verification' },
     },
   },
   {

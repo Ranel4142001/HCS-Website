@@ -273,9 +273,238 @@ export const recredentialingRequirements: Guide = {
   ],
 };
 
+export const documentsChecklist: Guide = {
+  slug: 'credentialing-documents-checklist',
+  meta: {
+    title: 'Credentialing Documents Checklist for Providers',
+    description:
+      'The documents providers need for credentialing: licenses, DEA, board certification, education, work history, malpractice and practice details, plus tips that prevent delays.',
+  },
+  title: 'Credentialing documents checklist',
+  lead: 'Most applications ask for the same core documents. Having them ready, current and consistent before the first application goes out is the simplest way to avoid delays.',
+  updated: '2026-11-10',
+  sections: [
+    {
+      heading: 'Identity and licensing',
+      list: [
+        'Government-issued photo ID',
+        'Individual (Type 1) NPI, with NPPES details that match your applications',
+        'A state license for every state where you practice, including for telehealth',
+        'DEA registration and any state controlled substance registration, if you prescribe controlled substances',
+        'Board certification, or details of your board eligibility',
+      ],
+    },
+    {
+      heading: 'Education and training',
+      list: [
+        'Professional school diploma',
+        'Internship, residency and fellowship certificates',
+        'ECFMG certificate, for international medical graduates',
+      ],
+    },
+    {
+      heading: 'Work history and references',
+      list: [
+        'A CV with the month and year for every position',
+        'A short written explanation of any gap in work history, commonly any gap longer than six months',
+        'Professional references, usually two or three peers who know your recent work',
+      ],
+    },
+    {
+      heading: 'Malpractice and disclosures',
+      list: [
+        'Current malpractice insurance certificate showing limits and policy dates',
+        'Malpractice claims history, often for the past five to ten years',
+        'Answers to the disclosure questions about license actions, lost privileges, sanctions and lawsuits',
+      ],
+    },
+    {
+      heading: 'Practice details',
+      list: [
+        'Practice locations, phone numbers and office hours',
+        'Group tax ID and W-9, if you bill through a group',
+        'Hospital affiliations or admitting arrangements, where required',
+        'Your CAQH ProView ID, with the profile complete and attested',
+      ],
+    },
+    {
+      heading: 'Tips that prevent delays',
+      list: [
+        'Send clear, complete scans of current documents.',
+        'Use the same name, addresses and dates everywhere: NPPES, CAQH and each application.',
+        'Note every expiration date and send renewals as soon as you have them.',
+        'Sign and date every page that asks for it.',
+      ],
+    },
+  ],
+  faqs: [
+    {
+      q: 'Do I need a DEA registration to be credentialed?',
+      a: 'Only if you prescribe controlled substances. Plans then ask for a DEA registration for each state where you prescribe them, and a note explaining why if you do not hold one.',
+    },
+    {
+      q: 'How do I explain a gap in my work history?',
+      a: 'A short signed note with the dates and the reason, such as further training, family leave or relocation, is usually enough. Sending it up front avoids a request later.',
+    },
+    {
+      q: 'Can I send documents that expire soon?',
+      a: 'Yes, but plan the renewal. If a license or malpractice policy expires during credentialing, send the renewed copy as soon as you have it so the file stays current.',
+    },
+  ],
+  related: [
+    { label: 'CAQH ProView guide', href: '/guides/caqh-proview-guide' },
+    { label: 'Primary source verification explained', href: '/guides/primary-source-verification' },
+    { label: 'Start your credentialing intake', href: '/contact' },
+  ],
+};
+
+export const primarySourceVerification: Guide = {
+  slug: 'primary-source-verification',
+  meta: {
+    title: 'Primary Source Verification (PSV) Explained',
+    description:
+      'What primary source verification is, which credentials are verified and where, why it takes time and how a CVO handles it.',
+  },
+  title: 'Primary source verification, explained',
+  lead: 'Primary source verification (PSV) confirms each credential directly with the organization that issued it. It is the core of credentialing, and the reason a file takes weeks rather than days.',
+  updated: '2026-11-10',
+  sections: [
+    {
+      heading: 'What it means',
+      paragraphs: [
+        'A copy of a license or diploma from the provider is not enough. The credentialing organization confirms each item with the source that issued it, or with a source approved for that purpose.',
+        'This protects patients and the organization: it catches expired licenses, discipline and falsified documents before a provider starts.',
+      ],
+    },
+    {
+      heading: 'What is verified, and where',
+      list: [
+        'State license: the licensing board in every state where the provider holds a license',
+        'DEA registration: the DEA or an approved database',
+        'Board certification: the specialty board, for example through ABMS for physician boards',
+        'Education and training: the school or training program, or an approved source such as the AMA Physician Profile or ECFMG',
+        'Malpractice payments and adverse actions: the National Practitioner Data Bank (NPDB)',
+        'Sanctions and exclusions: the OIG exclusions list, SAM.gov and state Medicaid lists',
+        'Work history: reviewed from the CV and application, with any gaps explained',
+      ],
+    },
+    {
+      heading: 'Why it takes time',
+      paragraphs: [
+        'Some sources answer online the same day. Others, such as schools, training programs and past employers, reply by mail, fax or email and can take weeks.',
+        'The slowest source sets the pace, so steady follow-up matters more than anything else.',
+      ],
+    },
+    {
+      heading: 'Verifications have a shelf life',
+      paragraphs: [
+        'Verifications must be recent when the credentialing committee makes its decision. A file that waits too long may need some checks repeated.',
+      ],
+    },
+    {
+      heading: 'Who performs it',
+      paragraphs: [
+        'Hospitals, medical groups and health plans can verify credentials themselves or use a Credentials Verification Organization (CVO). A CVO performs the verification, while the organization keeps the final credentialing decision.',
+      ],
+    },
+  ],
+  faqs: [
+    {
+      q: 'Is a copy of my license enough?',
+      a: 'No. A copy helps start the file, but the license is still confirmed directly with the state board.',
+    },
+    {
+      q: 'How long does primary source verification take?',
+      a: 'Online sources can be checked the same day. Schools, training programs and past employers can take days to weeks to respond.',
+    },
+    {
+      q: 'Is the NPDB query part of primary source verification?',
+      a: 'Yes. Hospitals and health plans query the National Practitioner Data Bank for malpractice payments and adverse actions as part of credentialing.',
+    },
+  ],
+  related: [
+    { label: 'Credentialing documents checklist', href: '/guides/credentialing-documents-checklist' },
+    { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
+    { label: 'Provider credentialing', href: '/solutions/cvo-credentialing' },
+  ],
+};
+
+export const hospitalPrivileges: Guide = {
+  slug: 'hospital-privileges',
+  meta: {
+    title: 'Hospital Privileges vs. Health Plan Credentialing',
+    description:
+      'How hospital privileges work, how they differ from health plan credentialing, the steps from application to board approval, and temporary privileges.',
+  },
+  title: 'Hospital privileges: how they differ from health plan credentialing',
+  lead: 'Hospital privileges let a provider treat patients at a specific hospital. They involve their own credentialing process, separate from health plan credentialing, and many providers need both.',
+  updated: '2026-11-10',
+  sections: [
+    {
+      heading: 'Credentialing and privileging',
+      paragraphs: [
+        'Credentialing confirms that a provider is qualified. Privileging decides what that provider may do at that hospital, based on their training, experience and current competence.',
+        'A health plan’s approval does not give hospital privileges, and hospital privileges do not put a provider in a health plan’s network.',
+      ],
+    },
+    {
+      heading: 'How the process works',
+      ordered: true,
+      list: [
+        'The provider applies to the medical staff office and requests specific privileges.',
+        'Credentials, references and the NPDB are verified with their primary sources.',
+        'The department chair reviews the file and the privileges requested.',
+        'The credentials committee and the medical executive committee recommend approval.',
+        'The hospital’s governing board grants the appointment and privileges.',
+        'New privileges usually start with a focused review period of the provider’s early cases.',
+      ],
+    },
+    {
+      heading: 'How long it takes',
+      paragraphs: [
+        'Timelines follow the committee and board meeting dates. A complete file can be approved at the next meetings; a file that misses one can wait another month.',
+      ],
+    },
+    {
+      heading: 'Temporary privileges',
+      paragraphs: [
+        'Many hospitals can grant temporary privileges for an urgent patient care need, or while a complete application awaits final approval. The limits are set by the hospital’s bylaws.',
+      ],
+    },
+    {
+      heading: 'Reappointment',
+      paragraphs: [
+        'Privileges are renewed on the cycle set by the hospital’s bylaws, commonly every two years, with updated verification and a review of the provider’s performance.',
+      ],
+    },
+  ],
+  faqs: [
+    {
+      q: 'Do I need hospital privileges to join a health plan?',
+      a: 'It depends on the plan and specialty. Some plans ask for a hospital affiliation or a covering arrangement with a provider who has admitting privileges.',
+    },
+    {
+      q: 'Do telehealth providers need privileges at every hospital they serve?',
+      a: 'Often not in full. A hospital receiving telemedicine services can rely on the credentialing decisions of the distant site under a written agreement, often called credentialing by proxy.',
+    },
+    {
+      q: 'Can privileges be granted before the committee meets?',
+      a: 'Sometimes, as temporary privileges, within limits set by the hospital’s bylaws.',
+    },
+  ],
+  related: [
+    { label: 'Primary source verification explained', href: '/guides/primary-source-verification' },
+    { label: 'How long does credentialing take?', href: '/guides/how-long-does-credentialing-take' },
+    { label: 'Credentialing for health systems', href: '/who-we-help/health-systems' },
+  ],
+};
+
 export const GUIDES = [
   howToGetCredentialed,
   howLongDoesCredentialingTake,
+  documentsChecklist,
   caqhProviewGuide,
+  primarySourceVerification,
+  hospitalPrivileges,
   recredentialingRequirements,
 ];

@@ -10,4 +10,6 @@ export const envConfig = {
   signInUrl: process.env.NEXT_PUBLIC_PORTAL_URL || '/sign-in',
   // Cloudflare Turnstile site key for the contact form's human check. While empty, the check is off.
   turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '',
+  // Google Search Console verification code (the content of its HTML meta tag). Optional; DNS verification is simpler.
+  googleSiteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
 } as const;
