@@ -1,18 +1,19 @@
 name: Warm CDN cache
-# After Vercel finishes a production deploy, request every page once so the CDN already holds a copy
-# when the first real visitor arrives. Vercel reports each deploy to GitHub, which triggers this workflow.
+# After a push to main, wait until Vercel serves the new commit, then request every page once so the CDN already
+# holds a copy when the first real visitor arrives (cached pages answer in about 60–90 ms instead of 500+ ms).
 on:
-  deployment_status:
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   warm:
-    if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
+    env:
+      # Production address: set the SITE_BASE_URL repository variable once the custom domain is live.
+      SITE_BASE_URL: ${{ vars.SITE_BASE_URL || 'https://hcs-website-ashen.vercel.app' }}
     defaults:
       run:
         working-directory: frontend
@@ -23,7 +24,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: frontend/.nvmrc
-      # Production address: set the SITE_BASE_URL repository variable once the custom domain is live.
+      # The site reports its commit in the X-Build-Version header (next.config.mjs). Skipped for manual runs.
+      - name: Wait for the deploy to go live
+        if: github.event_name == 'push'
+        run: |
+          for i in $(seq 1 60); do
+            live=$(curl -sI "$SITE_BASE_URL/" | tr -d '\r' | awk -F': ' 'tolower($1)=="x-build-version"{print $2}')
+            if [ "$live" = "$GITHUB_SHA" ]; then echo "Live: $live"; exit 0; fi
+            echo "Waiting for $GITHUB_SHA (live: ${live:-unknown})"; sleep 15
+          done
+          echo "The new deploy did not go live within 15 minutes"; exit 1
       - run: node scripts/warm-cache.mjs
-        env:
-          SITE_BASE_URL: ${{ vars.SITE_BASE_URL || 'https://hcs-website-ashen.vercel.app' }}

@@ -60,6 +60,11 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
+          // Which commit is live; the cache-warming workflow waits for it after a push to main.
+          {
+            key: 'X-Build-Version',
+            value: process.env.VERCEL_GIT_COMMIT_SHA || 'local',
+          },
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff',
