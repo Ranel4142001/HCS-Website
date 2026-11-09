@@ -38,11 +38,56 @@
   pointer-events: none;
 }
 
-/* Verification card on the video, top right where the footage is plain wall */
+/* Darker, taller shade on the video for the captions */
+.hero-gallery-tile--main::after {
+  inset: 35% 0 0;
+  background: linear-gradient(to top, rgba(6, 24, 61, 0.78), rgba(6, 24, 61, 0.35) 45%, transparent);
+}
+
+/* Caption for each scene, bottom left of the video */
+.hero-gallery-caption {
+  position: absolute;
+  left: 28px;
+  bottom: 26px;
+  z-index: 1;
+  max-width: min(560px, calc(100% - 56px));
+  color: #ffffff;
+  animation: hero-gallery-rise .6s ease-out both;
+}
+
+.hero-gallery-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #16a34a;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.hero-gallery-line {
+  font-size: clamp(1.25rem, 2.3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+@keyframes hero-gallery-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Verification card on the video, top left; it appears only during the verification scenes */
 .hero-gallery-card {
   position: absolute;
-  right: 22px;
+  left: 22px;
   top: 22px;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .5s ease, transform .5s ease;
   z-index: 1;
   width: min(330px, calc(100% - 44px));
   padding: 16px 18px;
@@ -51,6 +96,11 @@
   backdrop-filter: blur(8px);
   box-shadow: 0 18px 40px -12px rgba(6, 36, 89, 0.35);
   color: var(--teal-900);
+}
+
+.hero-gallery-card.is-on {
+  opacity: 1;
+  transform: none;
 }
 
 .hero-gallery-card-title {
@@ -226,38 +276,25 @@
     aspect-ratio: 4 / 3.4;
   }
 
-  /* A compact card with two checks, so it stays clear of the face in the photo */
-  /* Bottom right on phones: the narrow crop puts the physician's face near the top */
+  /* Phones: the captions tell the story; the card would cover the people in the narrow crop */
   .hero-gallery-card {
-    top: auto;
-    right: 10px;
-    bottom: 10px;
-    width: min(250px, calc(100% - 20px));
-    padding: 10px 12px;
-    border-radius: 12px;
-  }
-
-  .hero-gallery-card-title {
-    margin-bottom: 6px;
-    font-size: .8rem;
-  }
-
-  .hero-gallery-card-title svg {
-    width: 15px;
-    height: 15px;
-  }
-
-  .hero-gallery-card li {
-    padding: 4px 0;
-    font-size: .74rem;
-  }
-
-  .hero-gallery-card li:nth-child(n + 3) {
     display: none;
   }
 
-  .hero-gallery-ok {
-    font-size: .7rem;
+  .hero-gallery-caption {
+    left: 14px;
+    bottom: 14px;
+    max-width: calc(100% - 28px);
+  }
+
+  .hero-gallery-kicker {
+    margin-bottom: 6px;
+    padding: 4px 10px;
+    font-size: .68rem;
+  }
+
+  .hero-gallery-line {
+    font-size: 1.1rem;
   }
 
   .hero-gallery-pill {
@@ -270,12 +307,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-gallery-img--drift,
+  .hero-gallery-caption,
   .hero-gallery-dot,
   .hero-gallery-card li.is-done .hero-gallery-ok {
     animation: none;
   }
 
   .hero-gallery-progress span,
+  .hero-gallery-card,
   .hero-gallery-pill {
     transition: none;
   }
