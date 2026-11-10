@@ -15,7 +15,7 @@ import './HeroDemo.css';
  *   https://www.pexels.com/video/female-doctor-posing-on-camera-7904584/
  * Browsers cache these files by address: bump VERSION whenever they're replaced.
  */
-const VERSION = '4';
+const VERSION = '5';
 const VIDEO = { webm: `/media/hero/story.webm?v=${VERSION}`, mp4: `/media/hero/story.mp4?v=${VERSION}` };
 const POSTER = `/media/hero/story-poster.webp?v=${VERSION}`;
 
@@ -46,6 +46,9 @@ export const HeroDemo: React.FC = () => {
 
   return (
     <div className="hero-demo">
+      {/* On wider screens the poster is the largest thing on first paint, so fetch it early (React moves this
+          tag into <head>). On phones the headline text is, so the poster isn't preloaded there. */}
+      <link rel="preload" as="image" href={POSTER} fetchPriority="high" media="(min-width: 721px)" />
       <video
         ref={videoRef}
         className="hero-demo-video"

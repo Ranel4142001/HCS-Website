@@ -1,5 +1,10 @@
 import { z } from 'zod';
 
+// zod normally probes for eval-style code generation to speed up validation. The site's Content Security Policy
+// blocks eval, so the probe only logs a policy violation in the browser; jitless mode skips it. Our schemas are
+// tiny, so there's no noticeable speed difference.
+z.config({ jitless: true });
+
 // Length caps are well above any real entry; they stop oversized input before it reaches the CRM.
 /** Options for "How many providers?". */
 export const PROVIDER_COUNTS = ['2-5', '6-20', '21-50', '51-200', '200+'] as const;

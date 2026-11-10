@@ -108,6 +108,18 @@ const nextConfig = {
           },
         ],
       },
+      {
+        // Logos, icons and the hero video are always linked with a ?v= version (BRAND_VERSION in BrandLogo.tsx,
+        // VERSION in HeroDemo.tsx), so a replaced file gets a new address and these can be cached for a year.
+        // Bump the version whenever one of these files changes, or browsers keep the old copy.
+        source: '/:dir(brand|media)/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ];
   },
 };
