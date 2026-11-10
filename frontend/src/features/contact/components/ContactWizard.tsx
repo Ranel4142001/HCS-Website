@@ -9,6 +9,7 @@ import DetailsStep from './DetailsStep';
 import SuccessPanel from './SuccessPanel';
 import Icon from '@/shared/components/ui/Icon';
 import Badge from '@/shared/components/ui/Badge';
+import { GuillocheSeal } from '@/shared/components/ui/Guilloche';
 import TurnstileWidget from '@/shared/components/ui/TurnstileWidget';
 import { envConfig } from '@/shared/config/env.config';
 import './ContactWizard.css';
@@ -175,6 +176,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
               <Icon name="check" /> A dedicated credentialing specialist
             </li>
           </ul>
+          <GuillocheSeal className="form-seal" label="VERIFIED AT THE SOURCE · HEALTHCREDSTAT ·" />
         </div>
 
         <div className="form-card-wrap reveal">

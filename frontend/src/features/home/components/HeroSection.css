@@ -10,6 +10,45 @@
   overflow: hidden;
 }
 
+/* Guilloché watermarks (the line pattern on diplomas and licenses), faint and behind the content */
+.hero-guilloche {
+  position: absolute;
+  z-index: 0;
+  color: var(--teal-700);
+}
+
+.hero-guilloche--right {
+  width: 760px;
+  top: -210px;
+  right: -230px;
+  opacity: .1;
+}
+
+.hero-guilloche--left {
+  width: 420px;
+  top: 40px;
+  left: -230px;
+  opacity: .06;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 720px) {
+  .hero-guilloche--right {
+    width: 440px;
+    top: -150px;
+    right: -210px;
+    opacity: .09;
+  }
+
+  .hero-guilloche--left {
+    display: none;
+  }
+}
+
 .hero-centered-content {
   display: flex;
   flex-direction: column;

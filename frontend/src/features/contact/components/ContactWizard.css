@@ -35,6 +35,20 @@
   margin-bottom: 30px;
 }
 
+/* Verification seal under the trust points: stamps in once as it scrolls into view (Guilloche.css) */
+.form-seal {
+  width: 172px;
+  margin: 4px 0 0 6px;
+  color: var(--teal-900);
+}
+
+@media (max-width: 900px) {
+  .form-seal {
+    width: 112px;
+    margin-bottom: 8px;
+  }
+}
+
 .form-trust {
   display: flex;
   flex-direction: column;

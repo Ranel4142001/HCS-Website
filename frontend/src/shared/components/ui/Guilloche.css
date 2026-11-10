@@ -1,0 +1,52 @@
+.guilloche {
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.guilloche-rosette ellipse,
+.guilloche-rosette circle {
+  stroke-width: .55px;
+}
+
+/* ---------- seal ---------- */
+.guilloche-seal-text {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.guilloche-seal-core {
+  fill: #16a34a;
+}
+
+/* A stamp, pressed once as the seal scrolls into view (scroll-driven, so no JavaScript). Browsers without
+   scroll-driven animations, and visitors who prefer reduced motion, see it already in place. */
+.guilloche-seal {
+  transform: rotate(-8deg);
+}
+
+@keyframes guilloche-stamp {
+  0% {
+    opacity: 0;
+    transform: scale(1.45) rotate(-24deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(.94) rotate(-6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .guilloche-seal {
+      animation: guilloche-stamp linear both;
+      animation-timeline: view();
+      animation-range: entry 40% cover 38%;
+    }
+  }
+}
