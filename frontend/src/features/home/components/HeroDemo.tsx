@@ -17,7 +17,13 @@ import './HeroDemo.css';
  */
 const VERSION = '5';
 const VIDEO = { webm: `/media/hero/story.webm?v=${VERSION}`, mp4: `/media/hero/story.mp4?v=${VERSION}` };
-const POSTER = `/media/hero/story-poster.webp?v=${VERSION}`;
+// The still shown until the video plays (and instead of it, for reduced motion): a normal <img> under the video, so
+// the browser can choose its size. The banner is at most 1080px wide, less on smaller screens.
+const POSTER = {
+  src: `/media/hero/story-poster-1280.webp?v=${VERSION}`,
+  srcSet: `/media/hero/story-poster-720.webp?v=${VERSION} 720w, /media/hero/story-poster-1280.webp?v=${VERSION} 1280w`,
+  sizes: '(max-width: 1112px) calc(100vw - 32px), 1080px',
+};
 
 export const HeroDemo: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -46,13 +52,25 @@ export const HeroDemo: React.FC = () => {
 
   return (
     <div className="hero-demo">
-      {/* On wider screens the poster is the largest thing on first paint, so fetch it early (React moves this
+      {/* From tablet width up, the poster is the largest thing on first paint, so fetch it early (React moves this
           tag into <head>). On phones the headline text is, so the poster isn't preloaded there. */}
-      <link rel="preload" as="image" href={POSTER} fetchPriority="high" media="(min-width: 721px)" />
+      <link
+        rel="preload"
+        as="image"
+        href={POSTER.src}
+        imageSrcSet={POSTER.srcSet}
+        imageSizes={POSTER.sizes}
+        fetchPriority="high"
+        media="(min-width: 560px)"
+      />
+      {/* Already-compressed WebP at two widths, so next/image's resizing service isn't needed. Decorative: the
+          video's label describes the banner. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="hero-demo-poster" src={POSTER.src} srcSet={POSTER.srcSet} sizes={POSTER.sizes} alt="" decoding="async" />
+      {/* No poster attribute: until its first frame the video is transparent and the image above shows through. */}
       <video
         ref={videoRef}
         className="hero-demo-video"
-        poster={POSTER}
         muted
         loop
         playsInline

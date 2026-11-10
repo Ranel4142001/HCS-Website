@@ -4,7 +4,7 @@
 //   CHROME=<chrome or chrome-headless-shell exe> FFMPEG=<ffmpeg exe> node portal-render.mjs <outDir> <background.mp4> [stills]
 // The background is any calm, bright office clip (the current one is Pexels 8375665, free licence).
 // Then run compose.mjs to add the opening and closing footage. Its story.mp4, story.webm and poster.png go to
-// public/media/hero (poster as story-poster.webp)
+// public/media/hero (poster as story-poster-720.webp and story-poster-1280.webp, WebP at those widths)
 // and bump VERSION in src/features/home/components/HeroDemo.tsx.
 import puppeteer from 'puppeteer-core';
 import { spawn } from 'node:child_process';
