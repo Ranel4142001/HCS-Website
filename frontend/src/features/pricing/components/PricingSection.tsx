@@ -1,5 +1,6 @@
 import { PRICING_PLANS } from '../content/plans';
 import FeatureText, { featureText } from '@/shared/components/ui/FeatureText';
+import { GuillocheBand, GuillocheRosette } from '@/shared/components/ui/Guilloche';
 import './PricingSection.css';
 ﻿import React from 'react';
 
@@ -32,6 +33,8 @@ export const PricingSection: React.FC = () => {
               className={`fee-col${plan.featured ? ' is-featured' : ''}`}
               aria-labelledby={`plan-${plan.id}`}
             >
+              {/* Certificate-style watermark behind the recommended plan; positioned, so it takes no grid row */}
+              {plan.featured && <GuillocheRosette className="fee-rosette" />}
               <h3 id={`plan-${plan.id}`} className="fee-name">{plan.name}</h3>
               <p className="fee-audience">{plan.audience}</p>
               <p className="fee-price">
@@ -52,6 +55,8 @@ export const PricingSection: React.FC = () => {
               </div>
             </article>
           ))}
+          {/* Security-print edge along the bottom of the sheet, like a certificate's; positioned, takes no cell */}
+          <GuillocheBand className="fee-band" />
         </div>
 
         <p className="fee-footnote">

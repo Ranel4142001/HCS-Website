@@ -31,6 +31,57 @@
   margin-bottom: 24px;
 }
 
+/* Topic menu: jumps to each group; the topic being read is highlighted */
+.faq-topics {
+  margin-bottom: 24px;
+}
+
+.faq-topics ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 2px solid var(--line);
+}
+
+.faq-topics a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-left: -2px;
+  padding: 9px 12px 9px 16px;
+  border-left: 2px solid transparent;
+  border-radius: 0 10px 10px 0;
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: .95rem;
+  text-decoration: none;
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+.faq-topics a:hover {
+  color: var(--teal-700);
+  background: #f5f8fe;
+}
+
+.faq-topics a.is-active {
+  color: var(--teal-900);
+  border-left-color: var(--teal-700);
+  background: #eef4ff;
+}
+
+.faq-topic-count {
+  min-width: 24px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  font-size: .78rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink-faint);
+}
+
 .faq-contact-cta {
   background: #f8fbff;
   border: 1px solid var(--line);
@@ -50,6 +101,34 @@
   color: var(--teal-700);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* One group per topic; menu links land just below the sticky navigation bar */
+.faq-group {
+  scroll-margin-top: 100px;
+}
+
+.faq-group + .faq-group {
+  margin-top: 48px;
+}
+
+.faq-group-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--teal-700);
+}
+
+/* A short rule after the topic name, echoing the topic menu's accent line */
+.faq-group-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #c9d8f2, transparent);
 }
 
 .faq-list {
@@ -153,6 +232,39 @@
   }
   .faq-left {
     position: static;
+  }
+  /* Narrow screens: the topic menu becomes a 2 x 2 grid of buttons (counts hidden to save room) */
+  .faq-topics ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    border-left: 0;
+  }
+  .faq-topics a {
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .faq-topic-count {
+    display: none;
+  }
+  .faq-topics a {
+    margin-left: 0;
+    padding: 9px 10px;
+    font-size: .85rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #ffffff;
+  }
+  .faq-topics a.is-active {
+    border-color: var(--teal-700);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-topics a {
+    transition: none;
   }
 }
 

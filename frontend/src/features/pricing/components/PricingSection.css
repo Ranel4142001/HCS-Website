@@ -52,6 +52,29 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(6, 36, 89, 0.04), 0 28px 56px -32px rgba(6, 36, 89, 0.28);
+  position: relative;
+}
+
+/* Guilloché details (see Guilloche.tsx). Both are absolutely positioned, so the subgrid rows are untouched. */
+.fee-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 16px;
+  color: var(--teal-700);
+  opacity: .28;
+}
+
+.fee-rosette {
+  position: absolute;
+  z-index: -1; /* above the column's tint, below its text (the column isolates its own stacking) */
+  width: 300px;
+  top: -110px;
+  right: -110px;
+  color: var(--teal-700);
+  opacity: .12;
 }
 
 .fee-col {
@@ -64,6 +87,9 @@
 }
 
 .fee-col.is-featured {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background: #f6f9fd;
   box-shadow: inset 0 3px 0 #062459;
 }
