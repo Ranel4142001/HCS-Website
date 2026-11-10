@@ -2,8 +2,17 @@
    PAGE PRIMITIVES — shared intro block, overview grid, status pages
    ========================================================================== */
 
+/* Same soft gradient as the solution-page header (.sol-hero), with the guilloché decoration behind the text */
+.page-intro-band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(150deg, #f8faff 0%, #eef4ff 60%, #f0fdfb 100%);
+}
+
 .page-intro {
-  padding-block: 72px 32px;
+  position: relative;
+  z-index: 1;
+  padding-block: 72px 56px;
   text-align: center;
 }
 
@@ -26,7 +35,7 @@
 /* Long centered lines are hard to read on a phone, so the intro aligns left there */
 @media (max-width: 640px) {
   .page-intro {
-    padding-block: 48px 24px;
+    padding-block: 48px 44px;
     text-align: left;
   }
 }

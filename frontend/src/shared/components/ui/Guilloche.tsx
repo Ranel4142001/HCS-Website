@@ -59,3 +59,36 @@ export function GuillocheSeal({ className, label }: { className?: string; label:
     </svg>
   );
 }
+
+/** Interlaced sine waves, like the security print along the edge of a certificate. Built once at module load. */
+const BAND_PATHS = Array.from({ length: 6 }, (_, k) => {
+  const points: string[] = [];
+  for (let x = 0; x <= 1440; x += 8) {
+    const y = 14 + 9 * Math.sin(x / 46 + (k * Math.PI) / 3) * Math.cos(x / 310);
+    points.push(`${x},${y.toFixed(2)}`);
+  }
+  return `M${points.join(' L')}`;
+});
+
+export function GuillocheBand({ className }: { className?: string }) {
+  return (
+    <svg className={`guilloche guilloche-band ${className ?? ''}`} viewBox="0 0 1440 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="currentColor">
+        {BAND_PATHS.map((d) => <path key={d} d={d} />)}
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * The shared page-header decoration: a faint rosette watermark on the right and the security band along the
+ * bottom edge. Place it inside a header with `position: relative; overflow: hidden`.
+ */
+export function HeaderGuilloche() {
+  return (
+    <>
+      <GuillocheRosette className="header-guilloche-rosette" />
+      <GuillocheBand className="header-guilloche-band" />
+    </>
+  );
+}

@@ -50,3 +50,40 @@
     }
   }
 }
+
+/* ---------- band ---------- */
+.guilloche-band path {
+  stroke-width: .7px;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---------- page-header decoration (HeaderGuilloche) ---------- */
+.header-guilloche-rosette {
+  position: absolute;
+  z-index: 0;
+  width: 560px;
+  top: -190px;
+  right: -170px;
+  color: var(--teal-700);
+  opacity: .1;
+}
+
+.header-guilloche-band {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 28px;
+  color: var(--teal-700);
+  opacity: .22;
+}
+
+@media (max-width: 720px) {
+  .header-guilloche-rosette {
+    width: 340px;
+    top: -130px;
+    right: -150px;
+    opacity: .08;
+  }
+}

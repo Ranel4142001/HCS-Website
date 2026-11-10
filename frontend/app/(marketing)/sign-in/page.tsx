@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { HeaderGuilloche } from '@/shared/components/ui/Guilloche';
 import { buildMetadata } from '@/shared/lib/seo';
 
 // Holding page until the client portal is live. Once NEXT_PUBLIC_PORTAL_URL is set, every
@@ -14,6 +15,7 @@ export default function SignInPage() {
   return (
     <main>
       <section className="sol-hero">
+        <HeaderGuilloche />
         <div className="container sol-hero-inner">
           <h1 className="sol-hero-title">Client sign in</h1>
           <p className="sol-hero-tagline">

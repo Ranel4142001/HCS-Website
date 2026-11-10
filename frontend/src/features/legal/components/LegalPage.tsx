@@ -1,4 +1,5 @@
 import React from 'react';
+import { HeaderGuilloche } from '@/shared/components/ui/Guilloche';
 import Link from 'next/link';
 import JsonLd from '@/shared/components/seo/JsonLd';
 import { breadcrumbSchema } from '@/shared/lib/seo';
@@ -36,6 +37,7 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
       <JsonLd data={[breadcrumbSchema([{ name: 'Home', path: '/' }, { name: doc.title, path: doc.path }])]} />
       <main>
         <section className="sol-hero">
+          <HeaderGuilloche />
           <div className="container sol-hero-inner">
             <nav aria-label="Breadcrumb" className="sol-breadcrumb">
               <Link href="/">Home</Link>

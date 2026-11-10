@@ -1,4 +1,5 @@
 import React from 'react';
+import { HeaderGuilloche } from '@/shared/components/ui/Guilloche';
 import Link from 'next/link';
 import JsonLd from '@/shared/components/seo/JsonLd';
 import Icon from '@/shared/components/ui/Icon';
@@ -28,6 +29,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
       />
       <main>
         <section className="sol-hero" style={accent}>
+          <HeaderGuilloche />
           <div className="container sol-hero-inner sol-hero-inner--wide">
             <nav aria-label="Breadcrumb" className="sol-breadcrumb">
               <Link href="/">Home</Link>

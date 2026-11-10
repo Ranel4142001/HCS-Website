@@ -1,4 +1,5 @@
 import React from 'react';
+import { HeaderGuilloche } from '@/shared/components/ui/Guilloche';
 import Link from 'next/link';
 import NextSteps from '@/shared/components/layout/NextSteps';
 import JsonLd from '@/shared/components/seo/JsonLd';
@@ -44,6 +45,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
       />
       <main>
         <section className="sol-hero">
+          <HeaderGuilloche />
           <div className="container sol-hero-inner">
             <nav aria-label="Breadcrumb" className="sol-breadcrumb">
               <Link href="/">Home</Link>

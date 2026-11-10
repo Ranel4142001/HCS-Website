@@ -1,26 +1,62 @@
+.guides-wrap {
+  max-width: 1120px;
+}
+
 .guides-list {
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.guides-list > li {
+  display: flex;
 }
 
 .guides-card {
-  display: block;
-  padding: 24px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 28px 30px 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: #ffffff;
-  transition: border-color .2s ease, box-shadow .2s ease;
+  overflow: hidden;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 
-.guides-card:hover {
-  border-color: var(--teal-600);
-  box-shadow: var(--shadow-sm);
+/* A thin rule along the top in the brand blue, drawn in from the left on hover */
+.guides-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal-700), var(--cyan-400));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s var(--ease);
+}
+
+.guides-card:hover,
+.guides-card:focus-visible {
+  border-color: #c9d8f2;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.guides-card:hover::before,
+.guides-card:focus-visible::before {
+  transform: scaleX(1);
 }
 
 .guides-card h2 {
   font-size: 1.25rem;
+  line-height: 1.3;
   color: #0f172a;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  text-wrap: balance;
 }
 
 .guides-card p {
@@ -28,9 +64,57 @@
   line-height: 1.6;
 }
 
+.guides-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.guides-card-time {
+  font-size: .875rem;
+  color: var(--ink-faint);
+}
+
 .guides-card-more {
-  display: inline-block;
-  margin-top: 12px;
   font-weight: 700;
   color: var(--teal-700);
+}
+
+/* The first guide leads the library across the full width (with seven guides, this also leaves even rows) */
+.guides-list > li:first-child {
+  grid-column: 1 / -1;
+}
+
+.guides-list > li:first-child .guides-card {
+  padding: 32px 36px 28px;
+  background: linear-gradient(150deg, #ffffff 40%, #f0f6ff 100%);
+}
+
+.guides-list > li:first-child .guides-card h2 {
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+}
+
+.guides-list > li:first-child .guides-card p {
+  max-width: 640px;
+}
+
+@media (max-width: 820px) {
+  .guides-list {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .guides-card {
+    padding: 22px 22px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guides-card,
+  .guides-card::before {
+    transition: none;
+  }
 }
