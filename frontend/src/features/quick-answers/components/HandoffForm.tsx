@@ -10,7 +10,7 @@ type Role = 'individual' | 'group' | 'enterprise';
 const ROLES: { value: Role; label: string }[] = [
   { value: 'individual', label: 'Individual clinician' },
   { value: 'group', label: 'Group or staffing agency' },
-  { value: 'enterprise', label: 'Health system or MSO' },
+  { value: 'enterprise', label: 'Health system, hospital and surgery center' },
 ];
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

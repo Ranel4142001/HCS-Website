@@ -335,9 +335,9 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     id: 'who',
     label: 'Who we help',
     question: 'Who do you work with?',
-    keywords: ['who do you', 'telehealth', 'digital health', 'health plan', 'insurance', 'medical group', 'group practice', 'mso', 'locum', 'travel', 'nurse', 'physician', 'doctor'],
+    keywords: ['who do you', 'telehealth', 'digital health', 'hospital', 'surgery center', 'asc', 'medical group', 'group practice', 'mso', 'locum', 'travel', 'nurse', 'physician', 'doctor'],
     answer: {
-      reply: 'We work with individual clinicians (including locum tenens and travel professionals), medical groups and MSOs, hospitals and health systems, health plans, and telehealth and digital health companies.',
+      reply: 'We work with individual clinicians (including locum tenens and travel professionals), medical groups and MSOs, hospitals, health systems and surgery centers, and telehealth and digital health companies.',
       action: { text: 'See who we help →', href: '/about' },
     },
   },

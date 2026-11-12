@@ -50,6 +50,8 @@ const nextConfig = {
         (slug) => ({ source: `/solutions/${slug}`, destination: '/services', permanent: true }),
       ),
       { source: '/guides/medicare-pecos-enrollment', destination: '/guides', permanent: true },
+      // Health plans and payers are no longer a served audience.
+      { source: '/who-we-help/health-plans', destination: '/services', permanent: true },
       // Former placeholder pages, removed until they have real content.
       ...['blog', 'case-studies', 'library'].map((slug) => ({ source: `/resources/${slug}`, destination: '/guides', permanent: true })),
       ...['careers', 'compliance', 'experts', 'newsroom'].map((slug) => ({ source: `/company/${slug}`, destination: '/about', permanent: true })),

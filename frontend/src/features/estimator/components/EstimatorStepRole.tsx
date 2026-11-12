@@ -55,7 +55,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
             <Icon name="building" />
           </div>
           <div className="est-opt-text">
-            <strong>Health system or MSO</strong>
+            <strong>Health system, hospital and surgery center</strong>
             <span>Large hospital system, MSO, or national platform</span>
           </div>
           <span className="est-opt-check">

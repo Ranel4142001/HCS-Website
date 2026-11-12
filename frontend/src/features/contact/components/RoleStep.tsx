@@ -57,7 +57,7 @@ export const RoleStep: React.FC<RoleStepProps> = ({ selectedRole, onSelectRole, 
             <Icon name="building" />
           </div>
           <div className="role-text">
-            <strong>Health system or MSO</strong>
+            <strong>Health system, hospital and surgery center</strong>
             <span>Hospitals, health systems, or telehealth</span>
           </div>
           <span className="role-check">

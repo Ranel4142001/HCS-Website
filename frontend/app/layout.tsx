@@ -34,7 +34,7 @@ export const viewport: Viewport = {
 
 const DEFAULT_TITLE = 'Health Credentialing Services | HealthCredSTAT';
 const DEFAULT_DESCRIPTION =
-  'Health credentialing services for practices, health systems and health plans. Specialists and AI automation verify, recredential and monitor your providers.';
+  'Health credentialing services for medical practices, hospitals, health systems and surgery centers. Specialists and AI automation verify, recredential and monitor your providers.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

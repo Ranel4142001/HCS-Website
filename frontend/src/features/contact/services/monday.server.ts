@@ -14,7 +14,7 @@ const MONDAY_API_URL = 'https://api.monday.com/v2';
 export const PRACTICE_TYPE_LABELS: Record<ContactFormValues['role'], string> = {
   individual: 'Individual clinician',
   group: 'Group practice or staffing agency',
-  enterprise: 'Health system or MSO',
+  enterprise: 'Health system, hospital and surgery center',
 };
 
 interface MondayColumn {

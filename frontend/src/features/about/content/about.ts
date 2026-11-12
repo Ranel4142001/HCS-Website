@@ -36,11 +36,10 @@ export const AUDIENCES: {
   links: { label: string; href: string; description: string; icon: IconName }[];
 } = {
   title: 'Who we help',
-  intro: 'From a single clinician starting a new assignment to health systems and health plans managing thousands of providers.',
+  intro: 'From a single clinician starting a new assignment to health systems managing thousands of providers.',
   links: [
     { label: 'Medical groups & MSOs', href: '/who-we-help/provider-groups', description: 'Get new providers credentialed and billing sooner.', icon: 'users' },
-    { label: 'Health plans', href: '/who-we-help/health-plans', description: 'Network credentialing and ongoing monitoring.', icon: 'shield' },
-    { label: 'Health systems & hospitals', href: '/who-we-help/health-systems', description: 'Centralized verification across every facility.', icon: 'building' },
+    { label: 'Health systems, hospitals & surgery centers', href: '/who-we-help/health-systems', description: 'Centralized verification across every facility.', icon: 'building' },
     { label: 'Telehealth & digital health', href: '/who-we-help/digital-health', description: 'Multi-state licensing and credentialing.', icon: 'globe' },
   ],
 };

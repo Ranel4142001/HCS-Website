@@ -93,92 +93,10 @@ export const providerGroups: SolutionContent = {
   },
 };
 
-export const healthPlans: SolutionContent = {
-  path: '/who-we-help/health-plans',
-  section: 'Who we help',
-  name: 'Health plans',
-  audience: 'Health plans and payers',
-  color: '#10c1bb',
-  icon: 'shield',
-  meta: {
-    title: 'Credentialing Services for Health Plans',
-    description:
-      'Credentialing, recredentialing and ongoing monitoring for health plan networks, with committee-ready files that follow NCQA standards.',
-  },
-  h1: 'Network credentialing services for health plans',
-  lead:
-    'Credential and recredential network providers and monitor them between cycles, with files that follow NCQA standards and are ready for audit.',
-  primaryCta: 'Talk to our team',
-  highlights: [
-    { title: 'Credentialing', text: 'Initial & recredentialing files' },
-    { title: 'Monitoring', text: 'Sanctions & license actions' },
-    { title: 'NCQA standards', text: 'Built into every file' },
-    { title: 'Reporting', text: 'Ready for committee & audit' },
-  ],
-  problem: {
-    title: 'Network growth meets regulatory pressure',
-    paragraphs: [
-      'Health plans have to credential every network provider, recredential them on schedule and monitor sanctions in between, while network adequacy goals push for faster onboarding.',
-      'We add verification capacity without adding headcount, and give your credentialing team consistent, audit-ready files and clear reporting.',
-    ],
-  },
-  included: {
-    title: 'What is included',
-    items: [
-      'Initial credentialing and recredentialing with primary source verification',
-      'Committee-ready files following NCQA standards',
-      'Ongoing sanctions, exclusion and license monitoring',
-      'Reporting for credentialing committees and compliance',
-    ],
-  },
-  process: {
-    title: 'How we support your credentialing team',
-    steps: [
-      { title: 'Align', text: 'We map your credentialing policies, verification sources and committee requirements.' },
-      { title: 'Verify', text: 'Providers are verified at the primary source and files are assembled to your standard.' },
-      { title: 'Monitor', text: 'Sanctions, exclusions and license actions are monitored between credentialing cycles.' },
-      { title: 'Report', text: 'You receive the reporting your committee, compliance team and auditors need.' },
-    ],
-  },
-  checklist: {
-    title: 'Credentialing work a health plan can hand off',
-    intro: 'Plans can outsource some or all of these while keeping final decisions with their credentialing committee:',
-    items: [
-      'Initial credentialing and recredentialing files',
-      'Primary source verification',
-      'Ongoing sanction, exclusion and license monitoring',
-      'Committee-ready file summaries',
-    ],
-  },
-  faqs: [
-    {
-      q: 'Can you work within our credentialing policies?',
-      a: 'Yes. We follow your policies and verification requirements, and your credentialing committee keeps every decision.',
-    },
-    {
-      q: 'How often must providers be recredentialed?',
-      a: 'Health plans commonly recredential every three years, in line with widely used accreditation standards, with ongoing monitoring in between.',
-    },
-    {
-      q: 'What should be monitored between credentialing cycles?',
-      a: 'License actions, Medicare and Medicaid sanctions, OIG, SAM.gov and Medicare opt-out status. Issues are caught when they happen, not at the next cycle.',
-    },
-  ],
-  related: [
-    { label: 'Provider credentialing & primary source verification', href: '/solutions/cvo-credentialing' },
-    { label: 'Recredentialing requirements', href: '/guides/recredentialing-requirements' },
-    { label: 'Pricing', href: '/pricing' },
-  ],
-  cta: {
-    title: 'Add credentialing capacity without adding headcount',
-    text: 'Tell us your network size and credentialing volume, and we will scope a program that fits.',
-  },
-};
-
 export const healthSystems: SolutionContent = {
   path: '/who-we-help/health-systems',
   section: 'Who we help',
-  name: 'Health systems & hospitals',
+  name: 'Health systems, hospitals & surgery centers',
   audience: 'Health systems, hospitals and ambulatory surgery centers',
   color: '#ef4444',
   icon: 'building',
@@ -333,4 +251,4 @@ export const digitalHealth: SolutionContent = {
   },
 };
 
-export const AUDIENCES = [providerGroups, healthPlans, healthSystems, digitalHealth];
+export const AUDIENCES = [providerGroups, healthSystems, digitalHealth];

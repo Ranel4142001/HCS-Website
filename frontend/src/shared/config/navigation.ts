@@ -54,8 +54,7 @@ export const NAV_MENUS: NavMenu[] = [
         heading: 'Industries we help',
         links: [
           { href: '/who-we-help/provider-groups', label: 'Provider Groups & MSOs', description: 'Practices adding providers', icon: 'users', iconBg: '#eff6ff' },
-          { href: '/who-we-help/health-plans', label: 'Health Plans & Payers', description: 'Network credentialing and monitoring', icon: 'shield', iconBg: '#f0fdfa' },
-          { href: '/who-we-help/health-systems', label: 'Health Systems & Hospitals', description: 'Centralized verification', icon: 'building', iconBg: '#faf5ff' },
+          { href: '/who-we-help/health-systems', label: 'Health Systems, Hospitals & Surgery Centers', description: 'Centralized verification', icon: 'building', iconBg: '#faf5ff' },
           { href: '/who-we-help/digital-health', label: 'Digital Health & Telehealth', description: 'Multi-state credentialing', icon: 'globe', iconBg: '#f0fdfa' },
         ],
       },
@@ -129,8 +128,7 @@ export const FOOTER_COLUMNS: NavGroup[][] = [
       heading: 'Who we help',
       links: [
         { href: '/who-we-help/provider-groups', label: 'Provider groups & MSOs' },
-        { href: '/who-we-help/health-plans', label: 'Payers & health plans' },
-        { href: '/who-we-help/health-systems', label: 'Health systems' },
+        { href: '/who-we-help/health-systems', label: 'Health systems, hospitals & surgery centers' },
         { href: '/who-we-help/digital-health', label: 'Digital health' },
       ],
     },
