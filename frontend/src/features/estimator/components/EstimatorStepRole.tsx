@@ -22,7 +22,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
           </div>
           <div className="est-opt-text">
             <strong>Individual clinician</strong>
-            <span>Solo MD, DO, NP, PA, or allied professional</span>
+            <span>MD, DO, CRNA, NP, PA, or allied professional</span>
           </div>
           <span className="est-opt-check">
             <Icon name="check-circle" />

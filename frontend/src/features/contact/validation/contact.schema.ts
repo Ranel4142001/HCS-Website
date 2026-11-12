@@ -6,7 +6,7 @@ import { z } from 'zod';
 z.config({ jitless: true });
 
 // Length caps are well above any real entry; they stop oversized input before it reaches the CRM.
-/** Options for "How many providers?". */
+/** Options for "How many providers to credential?". */
 export const PROVIDER_COUNTS = ['2-5', '6-20', '21-50', '51-200', '200+'] as const;
 
 export const contactFormSchema = z.object({

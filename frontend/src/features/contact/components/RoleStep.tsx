@@ -24,7 +24,7 @@ export const RoleStep: React.FC<RoleStepProps> = ({ selectedRole, onSelectRole, 
           </div>
           <div className="role-text">
             <strong>Individual clinician</strong>
-            <span>Solo MD, DO, NP, PA, or allied professional</span>
+            <span>MD, DO, CRNA, NP, PA, or allied professional</span>
           </div>
           <span className="role-check">
             <Icon name="check-circle" />

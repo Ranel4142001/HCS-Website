@@ -101,7 +101,7 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
                 </option>
               ))}
             </select>
-            <label htmlFor="fProviders">How many providers?</label>
+            <label htmlFor="fProviders">How many providers to credential?</label>
           </div>
         </div>
       )}
