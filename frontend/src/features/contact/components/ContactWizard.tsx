@@ -36,8 +36,6 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
   const [showSuccessPanel, setShowSuccessPanel] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const rafIdRef = useRef<number | null>(null);
   // Spam signals for the server: the hidden honeypot field and when the form first appeared.
   const honeypotRef = useRef<HTMLInputElement>(null);
   const shownAtRef = useRef(0);
@@ -124,31 +122,6 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
     setTurnstileReset((n) => n + 1);
   };
 
-  // 3D Card Tilt Effect on mousemove
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
-    if (reduceMotion || isTouch || !cardRef.current) return;
-
-    const rect = cardRef.current.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-
-    if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-    rafIdRef.current = requestAnimationFrame(() => {
-      if (cardRef.current) {
-        cardRef.current.style.transform = `perspective(1000px) rotateY(${px * 4}deg) rotateX(${py * -4}deg) translateY(-2px)`;
-      }
-    });
-  };
-
-  const handleMouseLeave = () => {
-    if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-    if (cardRef.current) {
-      cardRef.current.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-    }
-  };
-
   return (
     <section className="form-section" id="contact">
       <div className="container form-grid">
@@ -180,12 +153,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
         </div>
 
         <div className="form-card-wrap reveal">
-          <div
-            className="form-card"
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
+          <div className="form-card">
             {!showSuccessPanel ? (
               <>
                 <div className="form-card-head">
