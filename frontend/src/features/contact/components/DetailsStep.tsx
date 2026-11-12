@@ -108,7 +108,7 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
 
       <TextArea
         id="fMessage"
-        label="Tell us about your practice or specific payors (optional)"
+        label="Tell us about your practice (optional)"
         placeholder=" "
         {...register('message')}
       />
