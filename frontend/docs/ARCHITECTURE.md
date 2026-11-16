@@ -6,6 +6,8 @@ lives together, and routes in `app/` only compose features into pages.
 
 ## Folder map
 
+For a plain-language explanation of every folder, see [FOLDER-STRUCTURE.md](FOLDER-STRUCTURE.md).
+
 ```text
 frontend/
 ├── app/                        Routes only: compose features into pages, set metadata

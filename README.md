@@ -16,6 +16,7 @@ hcs-website/
 │   │   └── shared/              # UI components, layout, navigation config, SEO helpers
 │   ├── public/                  # Images and original logo artwork (brand/: generated, sized copies)
 │   ├── scripts/                 # brand-assets.mjs: regenerates public/brand from the logos
+│   ├── docs/FOLDER-STRUCTURE.md # Plain-language guide to every folder and what it is for
 │   ├── docs/ARCHITECTURE.md     # How the code is organized and the rules that keep it that way
 │   ├── .env.example             # Environment variables template
 │   ├── next.config.mjs          # Next.js config, security headers
@@ -24,6 +25,7 @@ hcs-website/
 └── .github/workflows/           # CI: type-check, lint, build (runs in frontend/)
 ```
 
+New to the project? Start with [frontend/docs/FOLDER-STRUCTURE.md](frontend/docs/FOLDER-STRUCTURE.md).
 Read [frontend/docs/ARCHITECTURE.md](frontend/docs/ARCHITECTURE.md) before adding features: it explains where code goes,
 and ESLint enforces the dependency rules.
 
