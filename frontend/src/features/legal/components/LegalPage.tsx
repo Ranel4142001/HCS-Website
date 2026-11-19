@@ -6,6 +6,13 @@ import { breadcrumbSchema } from '@/shared/lib/seo';
 import type { LegalDoc, LegalSection } from '../types';
 import './LegalPage.css';
 
+/** Links shown after particular sections, keyed by "<page>#<section id>": each points at the related text on the other page. */
+const CROSS_LINKS: Record<string, React.ReactNode> = {
+  '/terms#privacy': <p><Link href="/privacy">Read the Privacy Policy</Link></p>,
+  '/terms#sms-terms': <p><Link href="/privacy#sms">How we handle your mobile number</Link></p>,
+  '/privacy#sms': <p><Link href="/terms#sms-terms">Read the SMS Text Messaging Terms</Link></p>,
+};
+
 /** One numbered section; `crossLink` adds a link after the text (used to point Terms at the Privacy Policy). */
 function Section({ section, crossLink }: { section: LegalSection; crossLink?: React.ReactNode }) {
   return (
@@ -68,11 +75,7 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
                 <Section
                   key={section.id}
                   section={section}
-                  crossLink={
-                    section.id === 'privacy' ? (
-                      <p><Link href="/privacy">Read the Privacy Policy</Link></p>
-                    ) : undefined
-                  }
+                  crossLink={CROSS_LINKS[`${doc.path}#${section.id}`]}
                 />
               ))}
 

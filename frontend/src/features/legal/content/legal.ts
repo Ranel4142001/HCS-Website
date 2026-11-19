@@ -13,7 +13,7 @@ export const PRIVACY_POLICY: LegalDoc = {
   description:
     'How HealthCredSTAT collects, uses and protects the information you share through our website, contact form and Quick Answers chat.',
   lead: 'This policy explains what information our website collects, why we collect it, who helps us process it and the choices you have.',
-  updated: '2026-11-10',
+  updated: '2026-11-19',
   sections: [
     {
       id: 'scope',
@@ -67,6 +67,15 @@ export const PRIVACY_POLICY: LegalDoc = {
       ],
     },
     {
+      id: 'sms',
+      heading: 'Text messages and your mobile number',
+      paragraphs: [
+        'If you give us your mobile number and agree to receive text messages from HealthCredSTAT Inc., we use your number only to send the credentialing, service or support messages you asked for.',
+        'Mobile phone numbers, SMS opt-in data and text messaging consent are never shared with or sold to third parties or affiliates for marketing or promotional purposes. Service providers that help us deliver text messages process this information only to provide that service.',
+        'You can stop text messages at any time by replying STOP. Our SMS Text Messaging Terms are part of our Terms of Service.',
+      ],
+    },
+    {
       id: 'health-information',
       heading: 'Please don’t send patient information',
       paragraphs: [
@@ -110,7 +119,7 @@ export const TERMS_OF_SERVICE: LegalDoc = {
   title: 'Terms of Service',
   description: 'The terms that apply when you use the HealthCredSTAT website, its guides, cost estimator and Quick Answers chat.',
   lead: 'These terms apply to your use of this website. By using it, you agree to them.',
-  updated: '2026-11-05',
+  updated: '2026-11-19',
   sections: [
     {
       id: 'website-and-services',
@@ -167,6 +176,23 @@ export const TERMS_OF_SERVICE: LegalDoc = {
       id: 'privacy',
       heading: 'Privacy',
       paragraphs: ['Our Privacy Policy explains how we handle the information you share through this site.'],
+    },
+    {
+      id: 'sms-terms',
+      heading: 'SMS Text Messaging Terms',
+      paragraphs: [
+        'HealthCredSTAT Inc. may send you credentialing, service or support text messages related to your inquiry or account, if you have agreed to receive them.',
+      ],
+      list: [
+        'Message frequency varies based on your interaction with us.',
+        'Msg & data rates may apply.',
+        'Reply STOP at any time to opt out. You will receive one message confirming that you have been unsubscribed.',
+        'Reply HELP for assistance, or contact us through the contact page.',
+        'Mobile carriers are not liable for delayed or undelivered messages.',
+      ],
+      after: [
+        'We never share or sell your mobile number or text messaging consent for marketing purposes.',
+      ],
     },
     {
       id: 'changes',
