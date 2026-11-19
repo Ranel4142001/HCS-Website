@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import TurnstileWidget from '@/shared/components/ui/TurnstileWidget';
+import SmsConsent from '@/shared/components/forms/SmsConsent';
 import { envConfig } from '@/shared/config/env.config';
 
 type Role = 'individual' | 'group' | 'enterprise';
@@ -39,6 +40,7 @@ export function HandoffForm({ questions, onSent, onCancel }: HandoffFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [smsConsent, setSmsConsent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState('');
@@ -58,6 +60,7 @@ export function HandoffForm({ questions, onSent, onCancel }: HandoffFormProps) {
     if (sending) return;
     if (name.trim().length < 2) return setError('Please enter your full name.');
     if (!EMAIL_PATTERN.test(email.trim())) return setError('Please enter a valid email address.');
+    if (smsConsent && !phone.trim()) return setError('Please enter your mobile number so we can text you.');
     if (siteKey && !turnstileToken) return setError("Please wait a moment while we confirm you're not a bot, then try again.");
 
     const payload = {
@@ -65,6 +68,7 @@ export function HandoffForm({ questions, onSent, onCancel }: HandoffFormProps) {
       name: name.trim(),
       email: email.trim(),
       phone: phone.trim(),
+      smsConsent,
       message: buildMessage(questions),
       website: honeypotRef.current?.value ?? '',
       // The event's timeStamp and performance.now() share the same clock.
@@ -126,6 +130,7 @@ export function HandoffForm({ questions, onSent, onCancel }: HandoffFormProps) {
         <span>Phone (optional)</span>
         <input type="tel" autoComplete="tel" maxLength={30} value={phone} onChange={(e) => setPhone(e.target.value)} />
       </label>
+      <SmsConsent id="qaSmsConsent" className="qa-sms-consent" checked={smsConsent} onChange={(e) => setSmsConsent(e.target.checked)} />
 
       {/* Honeypot: off-screen and skipped by keyboards and screen readers; only bots fill it in. */}
       <div className="qa-hp" aria-hidden="true">

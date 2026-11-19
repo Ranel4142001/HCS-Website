@@ -17,11 +17,11 @@ import './ContactWizard.css';
 // The validation library is only needed once someone fills in the form, so it loads on first validation
 // instead of with every page that shows the form.
 const lazyResolver: Resolver<ContactFormValues> = async (values, context, options) => {
-  const [{ zodResolver }, { contactFormSchema }] = await Promise.all([
+  const [{ zodResolver }, { contactFormRules }] = await Promise.all([
     import('@hookform/resolvers/zod'),
     import('../validation/contact.schema'),
   ]);
-  return zodResolver(contactFormSchema)(values, context, options);
+  return zodResolver(contactFormRules)(values, context, options);
 };
 
 interface ContactWizardProps {
@@ -58,6 +58,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
       message: '',
       organization: '',
       providers: '',
+      smsConsent: false,
     },
   });
 

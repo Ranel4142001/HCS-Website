@@ -586,3 +586,16 @@ button.ai-action-link:disabled {
   outline: 2px solid #3f8dff;
   outline-offset: 2px;
 }
+
+/* The SMS opt-in sits in a narrow chat panel: tighter than on the quote form. */
+.sms-consent.qa-sms-consent {
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 0.72rem;
+  font-weight: 400;
+}
+
+.sms-consent.qa-sms-consent input {
+  width: 16px;
+  height: 16px;
+}

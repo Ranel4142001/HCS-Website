@@ -129,3 +129,52 @@
   font-weight: 700;
   color: var(--teal-600);
 }
+
+/* Optional text-message opt-in (SmsConsent) */
+.sms-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 2px 0 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f7faff;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  text-align: left;
+}
+
+.sms-consent input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  accent-color: var(--teal-700);
+  cursor: pointer;
+}
+
+.sms-consent label {
+  cursor: pointer;
+}
+
+.sms-consent strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.sms-consent a {
+  color: var(--teal-700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Message under a field that needs fixing */
+.field .error-text {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: #c03333;
+}

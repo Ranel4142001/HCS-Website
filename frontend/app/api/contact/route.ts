@@ -70,6 +70,8 @@ export async function POST(request: Request) {
     delete lead.organization;
     delete lead.providers;
   }
+  // Texting consent only counts with a number to text (the forms already ask for one).
+  if (!lead.phone?.trim()) lead.smsConsent = false;
 
   // Likely a bot: reply as if it worked so it learns nothing, but don't create a lead.
   if (website?.trim() || elapsedMs < MIN_FILL_MS) {

@@ -24,9 +24,17 @@ export const contactFormSchema = z.object({
   /** Groups and health systems only (the form hides both for individual clinicians). */
   organization: z.string().max(150, 'Please keep the organization name under 150 characters').optional(),
   providers: z.enum(PROVIDER_COUNTS).or(z.literal('')).optional(),
+  /** The visitor ticked the optional "text me" box (SMS opt-in, needed for our 10DLC texting campaign). */
+  smsConsent: z.boolean().optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+/** The form's own checks: the schema plus "a phone number is needed when the visitor asks for texts". */
+export const contactFormRules = contactFormSchema.refine((d) => !d.smsConsent || !!d.phone?.trim(), {
+  path: ['phone'],
+  message: 'Please enter your mobile number so we can text you.',
+});
 
 /** What the browser posts to /api/contact: the form values plus spam signals and the page it was sent from. */
 export const contactSubmissionSchema = contactFormSchema.extend({

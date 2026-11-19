@@ -1,5 +1,5 @@
 import type { ContactFormValues } from '../validation/contact.schema';
-import { PRACTICE_TYPE_LABELS } from './monday.server';
+import { PRACTICE_TYPE_LABELS, smsConsentText } from './monday.server';
 
 /**
  * Server only: emails each new lead a branded "we've received your request" confirmation through
@@ -154,6 +154,7 @@ export async function sendLeadBackupEmail(lead: ContactFormValues, source: strin
     ['Name', lead.name],
     ['Email', lead.email],
     ['Phone', lead.phone],
+    ['SMS consent', smsConsentText(lead)],
     ['Practice type', PRACTICE_TYPE_LABELS[lead.role]],
     ['Organization', lead.organization],
     ['Providers', lead.providers],

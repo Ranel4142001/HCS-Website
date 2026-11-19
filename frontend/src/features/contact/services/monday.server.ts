@@ -109,18 +109,32 @@ interface LeadMeta {
   submitter?: string;
 }
 
+/** "SMS consent: Yes …" with the time it was given, or '' when the visitor didn't tick the box. */
+export function smsConsentText(data: ContactFormValues): string {
+  return data.smsConsent
+    ? `SMS consent: Yes. Ticked the text-message opt-in on the website form (${new Date().toISOString()}).`
+    : '';
+}
+
 function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, includePhone: boolean, meta: LeadMeta) {
   const byTitle = new Map(columns.map((c) => [c.title.trim().toLowerCase(), c]));
+  // Record of the visitor's texting opt-in (10DLC): an "SMS consent" column if the board has one, otherwise a
+  // dated line in the message so the consent is never lost.
+  const hasConsentColumn = byTitle.has('sms consent');
+  const consent = smsConsentText(data);
+  const message = hasConsentColumn || !consent ? data.message : [data.message?.trim(), consent].filter(Boolean).join('\n\n');
   const wanted: [string, string | undefined][] = [
     ['email', data.email],
     ['phone', includePhone ? data.phone : undefined],
     ['practice type', PRACTICE_TYPE_LABELS[data.role]],
-    ['message', data.message],
+    ['message', message],
     ['company', data.organization],
     ['providers', data.providers],
     ['submitted', 'now'],
     ['source', meta.source],
     ['submitter', meta.submitter],
+    // A plain Yes/No suits a status or text column; the item's creation time dates it.
+    ['sms consent', hasConsentColumn ? (data.smsConsent ? 'Yes' : 'No') : undefined],
   ];
   const values: Record<string, unknown> = {};
   for (const [title, value] of wanted) {

@@ -4,6 +4,7 @@ import { UseFormReturn, useWatch } from 'react-hook-form';
 import { PROVIDER_COUNTS, type ContactFormValues } from '../validation/contact.schema';
 import Input from '@/shared/components/forms/Input';
 import TextArea from '@/shared/components/forms/TextArea';
+import SmsConsent from '@/shared/components/forms/SmsConsent';
 import Icon from '@/shared/components/ui/Icon';
 import Spinner from '@/shared/components/ui/Spinner';
 import './DetailsStep.css';
@@ -64,9 +65,13 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
           type="tel"
           placeholder=" "
           autoComplete="tel"
+          isInvalid={!!errors.phone}
+          error={errors.phone?.message}
           {...register('phone')}
         />
       </div>
+
+      <SmsConsent id="fSmsConsent" {...register('smsConsent')} />
 
       <Input
         id="fEmail"
