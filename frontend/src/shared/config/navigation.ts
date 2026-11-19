@@ -83,6 +83,7 @@ export const NAV_LINKS: NavLink[] = [
   { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQ' },
   { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export const PRIMARY_CTA: NavLink = { href: '/#contact', label: 'Get a free quote' };

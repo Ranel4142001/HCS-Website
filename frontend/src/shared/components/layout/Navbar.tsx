@@ -17,7 +17,7 @@ const preloadSearchDialog = () => {
   void loadSearchDialog();
 };
 
-const MOBILE_BREAKPOINT = 1024;
+const MOBILE_BREAKPOINT = 1180; // keep in step with the max-width: 1180px rules in Navbar.css and NavDropdown.css
 const CLOSE_DELAY_MS = 150;
 
 // Locks the page behind the open mobile menu. This must be set on <html>, not <body>: html and body

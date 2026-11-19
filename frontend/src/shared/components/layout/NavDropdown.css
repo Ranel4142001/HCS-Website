@@ -251,7 +251,7 @@
   text-decoration: underline;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
   .mdl-nav__item { width: 100%; }
   .mdl-nav__trigger { width: 100%; border-radius: 10px; padding: 12px 16px; }
   .mdl-panel {
