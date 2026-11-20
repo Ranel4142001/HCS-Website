@@ -9,9 +9,17 @@ import Icon from '@/shared/components/ui/Icon';
 import Spinner from '@/shared/components/ui/Spinner';
 import './DetailsStep.css';
 
+/** Same choices as the practice-type step (RoleStep). */
+const ROLE_LABELS: Record<ContactFormValues['role'], string> = {
+  individual: 'Individual clinician',
+  group: 'Group practice or staffing agency',
+  enterprise: 'Health system, hospital and surgery center',
+};
+
 export interface DetailsStepProps {
   form: UseFormReturn<ContactFormValues>;
-  onBack: () => void;
+  /** Back to the practice-type step. Without it (single-step form on /contact), practice type is a dropdown here. */
+  onBack?: () => void;
   isLoading: boolean;
   isSuccess: boolean;
   isShaking: boolean;
@@ -42,11 +50,22 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
 
   return (
     <div className="form-step" id="stepDetails">
-      <div className="form-card-head-back">
-        <button type="button" className="step-back" onClick={onBack}>
-          <Icon name="arrow" /> Back to Role Selection
-        </button>
-      </div>
+      {onBack ? (
+        <div className="form-card-head-back">
+          <button type="button" className="step-back" onClick={onBack}>
+            <Icon name="arrow" /> Back to Role Selection
+          </button>
+        </div>
+      ) : (
+        <div className="field field-select">
+          <select id="fRole" {...register('role')}>
+            {(Object.keys(ROLE_LABELS) as ContactFormValues['role'][]).map((value) => (
+              <option key={value} value={value}>{ROLE_LABELS[value]}</option>
+            ))}
+          </select>
+          <label htmlFor="fRole">Practice type *</label>
+        </div>
+      )}
 
       <div className="field-row">
         <Input

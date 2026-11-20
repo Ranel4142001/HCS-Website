@@ -30,7 +30,11 @@ interface ContactWizardProps {
 }
 
 export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = false }) => {
-  const [step, setStep] = useState<1 | 2>(1);
+  // On /contact the whole form shows at once (practice type is a dropdown), so the phone field and SMS opt-in are
+  // visible as soon as the page opens: carriers reviewing our 10DLC texting campaign check this page without clicking.
+  const singleStep = isPageHeading;
+  const firstStep = singleStep ? 2 : 1;
+  const [step, setStep] = useState<1 | 2>(firstStep);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [showSuccessPanel, setShowSuccessPanel] = useState(false);
@@ -114,7 +118,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
 
   const handleReset = () => {
     form.reset();
-    setStep(1);
+    setStep(firstStep);
     setIsLoading(false);
     setIsSuccess(false);
     setShowSuccessPanel(false);
@@ -159,9 +163,14 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
               <>
                 <div className="form-card-head">
                   <CardHeading>Tell us about your providers</CardHeading>
-                  <p>Step {step} of 2 — {step === 1 ? 'Choose your practice type' : 'Add your contact details'}</p>
+                  <p>
+                    {singleStep
+                      ? 'Add your details and a credentialing specialist will reply within 1 business day.'
+                      : `Step ${step} of 2 — ${step === 1 ? 'Choose your practice type' : 'Add your contact details'}`}
+                  </p>
                 </div>
 
+                {!singleStep && (
                 <div className={`form-progress ${step === 2 ? 'step-2' : ''}`}>
                   <div className={`fp-step ${step === 1 ? 'active' : 'done'}`} data-fp="1">
                     <span className="fp-num">1</span>
@@ -173,6 +182,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
                     <span>Details</span>
                   </div>
                 </div>
+                )}
 
                 <form onSubmit={onSubmit} noValidate>
                   {/* Honeypot: off-screen and skipped by keyboards and screen readers; only bots fill it in. */}
@@ -192,7 +202,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
                     {step === 2 && (
                       <DetailsStep
                         form={form}
-                        onBack={() => setStep(1)}
+                        onBack={singleStep ? undefined : () => setStep(1)}
                         isLoading={isLoading}
                         isSuccess={isSuccess}
                         isShaking={isShaking}

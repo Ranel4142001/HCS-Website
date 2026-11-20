@@ -18,7 +18,7 @@ export const SmsConsent = React.forwardRef<HTMLInputElement, SmsConsentProps>(({
     <label htmlFor={id}>
       <strong>Yes, text me (optional).</strong> I agree to receive text messages from HealthCredSTAT Inc. at the
       phone number above about my credentialing request, status updates, document follow-ups and appointment
-      scheduling. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help.
+      scheduling. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help. Reply STOP to unsubscribe.
       Consent is not a condition of service. See our{' '}
       <Link href="/terms#sms-terms">SMS Terms</Link> and <Link href="/privacy#sms">Privacy Policy</Link>.
     </label>
