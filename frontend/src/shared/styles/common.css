@@ -20,13 +20,14 @@
 ===================================================== */
 
 /* Scroll reveal, set off by REVEAL_SCRIPT in app/layout.tsx: a block fades up once as it comes into view, and the
-   children of a .reveal-stagger group follow one another about a tenth of a second apart. Until the script marks a
+   children of a .reveal-stagger group follow one another about 0.16s apart; it starts once the block is
+   about 15% into the screen, so the motion is seen rather than finished below the fold. Until the script marks a
    block [data-shown] it stays invisible; without the script (or with reduced motion) <html> has no data-reveal, so
    nothing is hidden. "backwards" fill only holds the start state during the delay, so hover effects keep working. */
 @keyframes reveal-rise {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(36px);
   }
 }
 
@@ -35,8 +36,8 @@ html[data-reveal] :is(.reveal, .reveal-stagger > *):not([data-shown]) {
 }
 
 html[data-reveal] :is(.reveal, .reveal-stagger > *)[data-shown] {
-  animation: reveal-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  animation-delay: calc(var(--reveal-i, 0) * 110ms);
+  animation: reveal-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--reveal-i, 0) * 160ms);
 }
 
 .reveal-stagger > :nth-child(2) { --reveal-i: 1; }

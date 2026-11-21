@@ -79,7 +79,7 @@ export const FaqSection: React.FC = () => {
           {FAQ_TOPICS.map((topic) => (
             <div key={topic.id} className="faq-group" id={topicAnchor(topic.id)}>
               <h3 className="faq-group-title">{topic.label}</h3>
-              <div className="faq-list">
+              <div className="faq-list reveal-stagger">
                 {FAQ_DATA.filter((item) => item.topic === topic.id).map((item) => {
                   const isOpen = openQuestion === item.q;
                   return (

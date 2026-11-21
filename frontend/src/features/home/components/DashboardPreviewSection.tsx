@@ -208,7 +208,7 @@ export const DashboardPreviewSection: React.FC = () => {
       </div>
 
       <div className="container rtv-inner">
-        <div className="rtv-header">
+        <div className="rtv-header reveal-stagger">
           <div className="rtv-tag">
             <Icon name="bar" />
             <span>The HCStat credentialing portal</span>
@@ -219,7 +219,7 @@ export const DashboardPreviewSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="rtv-tabs-wrapper" role="tablist" aria-label="Portal views">
+        <div className="rtv-tabs-wrapper reveal" role="tablist" aria-label="Portal views">
           {TABS.map((tab) => {
             const isActive = tab.id === activeTab;
             return (
@@ -239,8 +239,11 @@ export const DashboardPreviewSection: React.FC = () => {
           })}
         </div>
 
-        <div key={activeTab} id="rtv-panel" className="rtv-panel" role="tabpanel" aria-labelledby={`rtv-tab-${activeTab}`}>
-          <Panel />
+        {/* The wrapper rises in once on scroll; the panel inside keeps its own quick fade when the tab changes. */}
+        <div className="reveal">
+          <div key={activeTab} id="rtv-panel" className="rtv-panel" role="tabpanel" aria-labelledby={`rtv-tab-${activeTab}`}>
+            <Panel />
+          </div>
         </div>
       </div>
     </section>

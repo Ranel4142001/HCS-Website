@@ -22,7 +22,7 @@ export const FoundingClientsSection: React.FC = () => {
           ))}
         </ul>
 
-        <div className="founding-footer">
+        <div className="founding-footer reveal">
           <div className="founding-sources">
             <h3>Every credential is checked with the source that issued it</h3>
             <ul>

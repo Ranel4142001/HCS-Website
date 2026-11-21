@@ -61,7 +61,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
         </section>
 
         <section className="sol-body">
-          <div className="container sol-body-grid">
+          <div className="container sol-body-grid reveal-stagger">
             <div className="sol-desc-col">
               <h2 className="sol-section-title">{content.problem.title}</h2>
               {content.problem.paragraphs.map((p, i) => (

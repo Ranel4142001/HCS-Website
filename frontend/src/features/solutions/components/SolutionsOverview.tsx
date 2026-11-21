@@ -9,7 +9,7 @@ export function SolutionsOverview() {
   return (
     <section className="sol-section" aria-label="Our services">
       <div className="container">
-        <ul className="sol-overview-list">
+        <ul className="sol-overview-list reveal-stagger">
           {SOLUTIONS.map((s) => (
             <li key={s.path} className="sol-overview-card">
               <div className="sol-overview-main">

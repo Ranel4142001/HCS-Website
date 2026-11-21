@@ -12,7 +12,7 @@ export function AudiencesSection() {
           <h2 id="audiences-title" className="sol-block-title">{AUDIENCES.title}</h2>
           <p className="sol-desc-text">{AUDIENCES.intro}</p>
         </div>
-        <ul className="audience-links">
+        <ul className="audience-links reveal-stagger">
           {AUDIENCES.links.map((a) => (
             <li key={a.href}>
               <Link href={a.href} className="audience-card">

@@ -69,7 +69,7 @@ export const EstimatorCard: React.FC = () => {
             )}
           </div>
 
-          <div className="est-side">
+          <div className="est-side reveal-stagger">
             <div className="est-side-card">
               <div className="fc-icon">
                 <Icon name="clock" />
