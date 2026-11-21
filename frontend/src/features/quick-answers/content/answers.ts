@@ -277,7 +277,7 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     question: 'How do you protect provider data?',
     keywords: ['hipaa', 'secur', 'privacy', 'confidential', 'safe', 'protect', 'data', 'baa', 'business associate'],
     answer: {
-      reply: 'Provider information is sensitive. We handle it with HIPAA-aligned safeguards, role-based access and an audit trail that cannot be edited, and we sign a Business Associate Agreement (BAA) when an engagement involves protected health information.',
+      reply: 'Provider information is sensitive. We handle it with HIPAA-aligned safeguards, role-based access and an audit trail that cannot be edited or removed, and we sign a Business Associate Agreement (BAA) when an engagement involves protected health information.',
       action: { text: 'Read our Privacy Policy →', href: '/privacy' },
     },
   },
@@ -317,7 +317,7 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     question: 'What do you offer health systems and large networks?',
     keywords: ['enterprise', 'health system', 'large network', 'hospital', 'audit trail', 'compliance team', 'ehr', 'integration'],
     answer: {
-      reply: 'For health systems and large networks, the Enterprise plan builds on the Group plan with an audit trail that cannot be edited and a dedicated compliance team, with pricing tailored to your network.',
+      reply: 'For health systems and large networks, the Enterprise plan builds on the Group plan with an audit trail that cannot be edited or removed and a dedicated compliance team, with pricing tailored to your network.',
       action: SPECIALIST,
     },
   },

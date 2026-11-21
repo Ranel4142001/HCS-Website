@@ -47,7 +47,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     ctaHref: '#contact',
     buildsOn: 'Group',
     features: [
-      'Audit trail that cannot be edited',
+      'Audit trail that cannot be edited or removed',
       'Dedicated compliance team',
       { text: 'API and EHR integration', soon: true },
       { text: 'White-label portal option', soon: true },

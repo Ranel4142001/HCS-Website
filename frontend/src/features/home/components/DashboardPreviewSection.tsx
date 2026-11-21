@@ -152,7 +152,7 @@ function AuditTrail() {
             <tr>
               <th scope="col">When</th>
               <th scope="col">Who</th>
-              <th scope="col">Event</th>
+              <th scope="col">What happened</th>
               <th scope="col">Record</th>
             </tr>
           </thead>
@@ -176,6 +176,7 @@ function AuditTrail() {
         <ul className="rtv-checks">
           <li><Icon name="check" /> Recorded the moment each action happens</li>
           <li><Icon name="check" /> Viewing the log is logged too</li>
+          <li><Icon name="check" /> Each entry shows who, their role, when and from where</li>
           <li><Icon name="check" /> Filter by date range and event</li>
         </ul>
       </Card>

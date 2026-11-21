@@ -82,6 +82,6 @@ export const FAQ_DATA: FaqEntry[] = [
   {
     topic: 'working-with-us',
     q: 'How is my personal information protected?',
-    a: 'Social Security and bank account numbers are encrypted, and only the last four digits are ever shown. Photo IDs open only for you and our credentialing staff, and every time our staff view your personal IDs it is recorded. We never ask for your passwords to other systems.',
+    a: 'Social Security and bank account numbers are encrypted, and only the last four digits are ever shown. Photo IDs open only for you and our credentialing staff, and every time our staff view your personal IDs it is recorded in an audit trail that no one can edit or remove. We never ask for your passwords to other systems.',
   },
 ];
