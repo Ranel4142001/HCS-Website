@@ -48,6 +48,13 @@ html[data-reveal] :is(.reveal, .reveal-stagger > *)[data-shown] {
    BUTTONS
 ===================================================== */
 
+/* Every call-to-action uses the heading face (Inter Tight), so buttons and headings read as one family.
+   "html" lifts the rule above the components' own single-class font settings. */
+html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-sol-ghost, .mdl-nav__btn-touch,
+  .hero-demo-cta, .founding-cta, .fee-cta, .mdl-panel__spotlight-cta, .qa-handoff-send, .ai-advisor-launcher) {
+  font-family: var(--font-heading);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
