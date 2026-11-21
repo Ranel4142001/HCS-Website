@@ -34,7 +34,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
             <nav aria-label="Breadcrumb" className="sol-breadcrumb">
               <Link href="/">Home</Link>
               <span aria-hidden="true">›</span>
-              <span>{content.section}</span>
+              {content.section === 'Services' ? <Link href="/services">Services</Link> : <span>{content.section}</span>}
               <span aria-hidden="true">›</span>
               <span aria-current="page">{content.name}</span>
             </nav>

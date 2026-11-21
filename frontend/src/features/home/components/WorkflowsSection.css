@@ -55,33 +55,63 @@
 }
 
 .wf-card {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 5;
   row-gap: 0;
   align-content: start;
-  padding: 28px;
+  padding: 32px 28px 28px;
   border: 1px solid #dde4ee;
-  border-radius: 14px;
-  background: #ffffff;
+  border-radius: 16px;
+  /* A soft tint behind the icon and title, fading to white */
+  background: linear-gradient(180deg, #f3f8ff 0, #ffffff 140px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Brand accent along the top edge */
+.wf-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal-700), var(--cyan-400));
+}
+
+.wf-card:hover {
+  transform: translateY(-4px);
+  border-color: #c5d6f2;
+  box-shadow: 0 22px 44px -24px rgba(6, 36, 89, 0.35);
+}
+
+.wf-card:hover .wf-card-link svg {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wf-card,
+  .wf-card-link svg { transition: none; }
+  .wf-card:hover { transform: none; }
 }
 
 .wf-card-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-bottom: 18px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
   justify-self: start;
-  border-radius: 11px;
-  background: var(--mint-100);
-  color: var(--teal-700);
+  border-radius: 13px;
+  background: linear-gradient(135deg, var(--teal-700), var(--cyan-400));
+  color: #ffffff;
+  box-shadow: 0 10px 20px -10px rgba(13, 81, 194, 0.6);
 }
 
 .wf-card-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 
 .wf-card h3 {
@@ -143,6 +173,7 @@
 .wf-card-link svg {
   width: 16px;
   height: 16px;
+  transition: transform 0.2s ease;
 }
 
 .wf-card-link:focus-visible {

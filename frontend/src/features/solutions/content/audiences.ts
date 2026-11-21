@@ -35,7 +35,7 @@ export const providerGroups: SolutionContent = {
     title: 'What your group gets',
     items: [
       'Credentialing for new providers with primary source verification',
-      'CAQH ProView management and re-attestation',
+      'CAQH ProView kept current, with re-attestation tracked',
       'Recredentialing tracked and started before it is due',
       'License, DEA, board certification and malpractice expiration alerts',
       'Sanctions and exclusion monitoring',
@@ -60,7 +60,7 @@ export const providerGroups: SolutionContent = {
       'Board certification and training certificates',
       'CV with month-and-year work history',
       'Malpractice insurance certificate',
-      'CAQH ProView login',
+      'CAQH ProView ID',
       'Hospital affiliation letters, if any',
     ],
   },

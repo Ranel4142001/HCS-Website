@@ -15,6 +15,8 @@ interface NavDropdownProps {
   onToggle: () => void;
   /** Any link inside the panel was followed. */
   onNavigate: () => void;
+  /** The visitor is on one of this menu's pages. */
+  isCurrent?: boolean;
 }
 
 function Spotlight({ spotlight, onNavigate }: { spotlight: NavSpotlight; onNavigate: () => void }) {
@@ -51,12 +53,12 @@ function Spotlight({ spotlight, onNavigate }: { spotlight: NavSpotlight; onNavig
 }
 
 /** One top-level menu in the navbar: trigger button plus its mega-menu panel. */
-export function NavDropdown({ menu, isOpen, onOpen, onClose, onToggle, onNavigate }: NavDropdownProps) {
+export function NavDropdown({ menu, isOpen, onOpen, onClose, onToggle, onNavigate, isCurrent = false }: NavDropdownProps) {
   return (
     <div className="mdl-nav__item" onMouseEnter={onOpen} onMouseLeave={onClose}>
       <button
         type="button"
-        className={`mdl-nav__trigger ${isOpen ? 'mdl-nav__trigger--active' : ''}`}
+        className={`mdl-nav__trigger ${isOpen ? 'mdl-nav__trigger--active' : ''} ${isCurrent ? 'mdl-nav__trigger--current' : ''}`}
         aria-expanded={isOpen}
         onClick={onToggle}
       >

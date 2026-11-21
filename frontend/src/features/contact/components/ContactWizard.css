@@ -233,3 +233,16 @@
   display: flex;
   justify-content: center;
 }
+
+/* /contact only: an email address for visitors who would rather not use the form */
+.form-alt-contact {
+  margin: 20px 0 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.form-alt-contact a {
+  color: var(--teal-700);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}

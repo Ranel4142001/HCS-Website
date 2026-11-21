@@ -14,6 +14,7 @@ export default function GuidesPage() {
   return (
     <main>
       <PageIntro
+        crumb="Guides"
         badge={{ icon: 'shield', label: 'Guides' }}
         title={<>Credentialing <em>guides</em></>}
         lede="How credentialing works, what slows it down and how to get providers ready sooner."

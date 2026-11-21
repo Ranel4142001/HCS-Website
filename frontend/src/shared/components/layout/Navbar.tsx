@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import BrandLogo from '@/shared/components/ui/BrandLogo';
 import { envConfig } from '@/shared/config/env.config';
 import { NAV_LEAD_LINKS, NAV_LINKS, NAV_MENUS, PRIMARY_CTA } from '@/shared/config/navigation';
@@ -35,6 +36,12 @@ export const Navbar: React.FC = () => {
   // The mobile panel starts where the nav ends, which moves when the announcement bar is shown above it.
   const [mobileMenuTop, setMobileMenuTop] = useState<number | undefined>();
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname() ?? '/';
+  // The menu marks the page the visitor is on. Service pages live under /solutions but belong to Services.
+  const isCurrent = (href: string) =>
+    href === '/'
+      ? pathname === '/'
+      : pathname === href || pathname.startsWith(`${href}/`) || (href === '/services' && pathname.startsWith('/solutions/'));
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -112,7 +119,13 @@ export const Navbar: React.FC = () => {
           >
             <div className="mdl-nav__links">
               {NAV_LEAD_LINKS.map((link) => (
-                <Link key={link.href} href={link.href} className="mdl-nav__plain-link" onClick={closeAll}>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`mdl-nav__plain-link${isCurrent(link.href) ? ' is-current' : ''}`}
+                  aria-current={isCurrent(link.href) ? 'page' : undefined}
+                  onClick={closeAll}
+                >
                   {link.label}
                 </Link>
               ))}
@@ -125,10 +138,17 @@ export const Navbar: React.FC = () => {
                   onClose={closeMenuSoon}
                   onToggle={() => setActiveMenu(activeMenu === menu.id ? null : menu.id)}
                   onNavigate={closeAll}
+                  isCurrent={menu.groups.some((g) => g.links.some((l) => isCurrent(l.href)))}
                 />
               ))}
               {NAV_LINKS.map((link) => (
-                <Link key={link.href} href={link.href} className="mdl-nav__plain-link" onClick={closeAll}>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`mdl-nav__plain-link${isCurrent(link.href) ? ' is-current' : ''}`}
+                  aria-current={isCurrent(link.href) ? 'page' : undefined}
+                  onClick={closeAll}
+                >
                   {link.label}
                 </Link>
               ))}

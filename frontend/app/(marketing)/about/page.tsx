@@ -8,6 +8,7 @@ export default function AboutPage() {
   return (
     <main>
       <PageIntro
+        crumb="About"
         badge={{ icon: 'shield', label: 'About HealthCredSTAT' }}
         title={<>We get providers credentialed and <em>ready sooner</em></>}
         lede={

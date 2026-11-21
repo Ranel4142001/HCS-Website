@@ -8,6 +8,7 @@ export default function PricingPage() {
   return (
     <main>
       <PageIntro
+        crumb="Pricing"
         badge={{ icon: 'sparkle', label: 'Pricing' }}
         title={<>Credentialing services <em>pricing</em></>}
         lede="Transparent rates for individual clinicians and tailored pricing for groups and health systems."

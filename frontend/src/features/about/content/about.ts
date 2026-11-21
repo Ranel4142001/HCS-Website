@@ -26,7 +26,7 @@ export const PRINCIPLES = [
   },
   {
     title: 'Protect your data',
-    text: 'Provider information is sensitive. We handle it with HIPAA-aligned safeguards, role-based access and an audit trail that cannot be edited or removed. Social Security and bank account numbers are encrypted, only the last four digits are ever shown, and every time our staff view personal IDs it is recorded.',
+    text: 'HIPAA-aligned safeguards, role-based access and an audit trail that cannot be edited or removed. Social Security and bank numbers are encrypted, and only the last four digits are ever shown.',
   },
 ];
 

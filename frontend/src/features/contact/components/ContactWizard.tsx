@@ -139,6 +139,11 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
               <Icon name="check" /> A dedicated credentialing specialist
             </li>
           </ul>
+          {isPageHeading && (
+            <p className="form-alt-contact">
+              Prefer email? Write to <a href="mailto:info@healthcredstat.com">info@healthcredstat.com</a>
+            </p>
+          )}
           <GuillocheSeal className="form-seal" label="VERIFIED AT THE SOURCE · HEALTHCREDSTAT ·" />
         </div>
 

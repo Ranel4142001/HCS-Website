@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { HeaderGuilloche } from '@/shared/components/ui/Guilloche';
+import NextSteps, { PAGE_LINKS } from '@/shared/components/layout/NextSteps';
 import { buildMetadata } from '@/shared/lib/seo';
 
 // Holding page until the client portal is live. Once NEXT_PUBLIC_PORTAL_URL is set, every
@@ -28,6 +29,14 @@ export default function SignInPage() {
           </div>
         </div>
       </section>
+      <NextSteps
+        links={[
+          PAGE_LINKS.faq,
+          { label: 'Documents checklist', href: '/guides/credentialing-documents-checklist', description: 'What to have ready' },
+          PAGE_LINKS.services,
+        ]}
+        band
+      />
     </main>
   );
 }

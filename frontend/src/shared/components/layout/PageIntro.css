@@ -16,6 +16,12 @@
   text-align: center;
 }
 
+.page-intro .sol-breadcrumb {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
 .page-intro h1 {
   margin: 16px 0;
   font-size: clamp(2.4rem, 4vw, 3.4rem);

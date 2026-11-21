@@ -8,6 +8,7 @@ export default function ServicesPage() {
   return (
     <main>
       <PageIntro
+        crumb="Services"
         badge={{ icon: 'sparkle', label: 'Our services' }}
         title={<>Health <em>credentialing services</em></>}
         lede="Verification, committee-ready files, recredentialing and ongoing monitoring, handled by one team."
