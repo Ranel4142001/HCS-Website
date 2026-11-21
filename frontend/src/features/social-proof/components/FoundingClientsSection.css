@@ -73,49 +73,61 @@
   color: var(--ink-soft);
 }
 
+/* Same card family as the commitments above. Two columns: the heading with its action, then the sources
+   as an even grid of tiles (9 sources = 3 full rows), so nothing wraps unevenly. */
 .founding-footer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px 48px;
-  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 3fr);
+  align-items: center;
+  gap: 28px 48px;
+  padding: 32px;
   border: 1px solid #dde4ee;
   border-radius: 14px;
   background: #ffffff;
 }
 
-.founding-sources {
-  flex: 1;
-  min-width: 0;
-}
-
-.founding-sources h3 {
-  margin: 0 0 14px;
-  font-size: 1rem;
+.founding-sources-intro h3 {
+  margin: 0 0 20px;
+  font-size: 1.25rem;
   font-weight: 600;
+  line-height: 1.3;
   color: var(--ink);
+  text-wrap: balance;
 }
 
-.founding-sources ul {
+.founding-sources {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Every tile the same height, even when a long name wraps */
+  grid-auto-rows: 1fr;
+  gap: 12px;
 }
 
 .founding-sources li {
-  padding: 7px 14px;
-  border: 1px solid #dde4ee;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid #e6ecf4;
+  border-radius: 10px;
   background: #f7f9fc;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  line-height: 1.35;
   color: #334155;
 }
 
-.founding-cta {
+.founding-sources svg {
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
+  color: var(--teal-600);
+}
+
+.founding-cta {
   display: inline-flex;
   align-items: center;
   padding: 13px 24px;
@@ -137,16 +149,19 @@
   outline-offset: 2px;
 }
 
-@media (max-width: 900px) {
-  .founding-footer { flex-direction: column; align-items: stretch; }
-  .founding-cta { align-self: flex-start; }
+/* Tablets: heading above, sources still three across so every row is full */
+@media (max-width: 1100px) {
+  .founding-footer { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 640px) {
   .founding { padding: 64px 0; }
   .founding-inner { gap: 36px; }
-  .founding-footer { padding: 20px; }
+  .founding-footer { padding: 22px 20px; gap: 22px; }
   .founding-commitments { gap: 16px; }
   .founding-commitments li { padding: 22px 20px 24px; }
-  .founding-cta { align-self: stretch; justify-content: center; }
+  /* Phones: a light checklist instead of nine stacked boxes */
+  .founding-sources { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; gap: 12px; }
+  .founding-sources li { min-height: 0; padding: 0; border: 0; background: none; font-size: 0.95rem; }
+  .founding-cta { display: flex; justify-content: center; }
 }

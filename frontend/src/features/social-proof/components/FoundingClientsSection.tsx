@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from '@/shared/components/ui/Icon';
 import { COMMITMENTS, SOURCES } from '../content/founding';
 import './FoundingClientsSection.css';
 
@@ -22,17 +23,21 @@ export const FoundingClientsSection: React.FC = () => {
           ))}
         </ul>
 
+        {/* Heading and action on the left, the nine sources as an even 3 x 3 grid on the right */}
         <div className="founding-footer reveal">
-          <div className="founding-sources">
+          <div className="founding-sources-intro">
             <h3>Every credential is checked with the source that issued it</h3>
-            <ul>
-              {SOURCES.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ul>
+            <a className="founding-cta" href="#contact">Ask about founding-client terms</a>
           </div>
 
-          <a className="founding-cta" href="#contact">Ask about founding-client terms</a>
+          <ul className="founding-sources" aria-label="Sources we verify with">
+            {SOURCES.map((s) => (
+              <li key={s}>
+                <Icon name="check-circle" />
+                <span>{s}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
