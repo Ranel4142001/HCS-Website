@@ -158,6 +158,11 @@
   .sol-stat:first-child { padding: 0; border-left: 0; }
 }
 
+/* Two columns are too narrow for the longer stat titles on the smallest phones */
+@media (max-width: 360px) {
+  .sol-stats-inner { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 640px) {
   .sol-body-grid { grid-template-columns: 1fr; gap: 40px; }
 }
