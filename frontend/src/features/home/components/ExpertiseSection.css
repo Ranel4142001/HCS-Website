@@ -43,21 +43,29 @@
 .stats-seg-bar {
   display: flex;
   gap: 8px;
-  margin-top: 24px;
+  margin-top: 14px;
 }
 
 .stat-seg-btn {
+  /* A 24px tall tap area with the 4px bar drawn in the middle */
+  position: relative;
   flex: 1;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.15);
+  height: 24px;
+  background: none;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
   padding: 0;
-  overflow: hidden;
 }
 
-.stat-seg-btn.is-selected {
+.stat-seg-btn::before {
+  content: '';
+  position: absolute;
+  inset: 10px 0;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.stat-seg-btn.is-selected::before {
   background: #2dd4bf;
 }
 

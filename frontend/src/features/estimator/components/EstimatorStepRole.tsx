@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import Icon from '@/shared/components/ui/Icon';
+import { PRACTICE_TYPES } from '@/shared/lib/contact/practice-types';
 import { EstimatorRole } from '../types';
 
 export interface EstimatorStepRoleProps {
@@ -21,7 +22,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
             <Icon name="user" />
           </div>
           <div className="est-opt-text">
-            <strong>Individual clinician</strong>
+            <strong>{PRACTICE_TYPES.individual}</strong>
             <span>MD, DO, CRNA, NP, PA, or allied professional</span>
           </div>
           <span className="est-opt-check">
@@ -38,7 +39,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
             <Icon name="users" />
           </div>
           <div className="est-opt-text">
-            <strong>Group practice or staffing agency</strong>
+            <strong>{PRACTICE_TYPES.group}</strong>
             <span>Multiple providers across 1 or more specialties</span>
           </div>
           <span className="est-opt-check">
@@ -55,7 +56,7 @@ export const EstimatorStepRole: React.FC<EstimatorStepRoleProps> = ({ selectedRo
             <Icon name="building" />
           </div>
           <div className="est-opt-text">
-            <strong>Health system, hospital and surgery center</strong>
+            <strong>{PRACTICE_TYPES.enterprise}</strong>
             <span>Large hospital system, MSO, or national platform</span>
           </div>
           <span className="est-opt-check">

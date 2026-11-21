@@ -178,3 +178,12 @@
   line-height: 1.35;
   color: #c03333;
 }
+
+/* Honeypot field for spam bots (useSpamSignals): kept off-screen rather than hidden, so bots still fill it in */
+.form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

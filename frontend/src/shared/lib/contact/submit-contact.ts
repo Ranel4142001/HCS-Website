@@ -1,4 +1,4 @@
-import type { ContactFormValues } from '../validation/contact.schema';
+import type { ContactFormValues } from './contact.schema';
 
 export interface SubmitContactResponse {
   success: boolean;
@@ -14,6 +14,8 @@ export interface SubmissionMeta {
   elapsedMs: number;
   /** Cloudflare Turnstile token, when the human check is configured. */
   turnstileToken?: string;
+  /** Which part of the site sent it; the server assumes the contact form when absent. */
+  origin?: 'form' | 'chat';
 }
 
 /** Sends the form to /api/contact, which creates a lead on the Monday board. Throws with a readable message on failure. */

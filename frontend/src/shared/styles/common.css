@@ -33,6 +33,20 @@
       animation-timeline: view();
       animation-range: entry 0% entry 60%;
     }
+
+    /* Cards in a group rise one after another: each starts a little later as it scrolls in */
+    .reveal-stagger > * {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--reveal-i, 0) * 12%) entry calc(60% + var(--reveal-i, 0) * 12%);
+    }
+
+    /* Only while the cards sit side by side; stacked on phones, each simply rises as it scrolls in */
+    @media (min-width: 769px) {
+      .reveal-stagger > :nth-child(2) { --reveal-i: 1; }
+      .reveal-stagger > :nth-child(3) { --reveal-i: 2; }
+      .reveal-stagger > :nth-child(n + 4) { --reveal-i: 3; }
+    }
   }
 }
 

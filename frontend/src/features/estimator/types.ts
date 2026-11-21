@@ -1,4 +1,6 @@
-export type EstimatorRole = 'individual' | 'group' | 'enterprise';
+import type { PracticeType as EstimatorRole } from '@/shared/lib/contact/practice-types';
+
+export type { EstimatorRole };
 export type EstimatorUrgency = 'yes' | 'no';
 
 export interface EstimatorState {

@@ -61,7 +61,7 @@ export const ExpertiseSection: React.FC = () => {
 
         {/* Right Cards Showcase */}
         <div className="stats-gallery-stage">
-          <div className="stats-card-grid">
+          <div className="stats-card-grid reveal-stagger">
             {EXPERTISE_ITEMS.map((item, idx) => {
               const isActive = idx === activeIdx;
               return (

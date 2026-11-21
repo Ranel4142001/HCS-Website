@@ -402,6 +402,38 @@
   }
 }
 
+/* On phones the label folds away once the visitor scrolls, leaving the round icon, so the button stops covering
+   the text being read. Browsers without scroll-driven animations keep the label. */
+@supports (animation-timeline: scroll()) {
+  @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .ai-advisor-launcher:not(.is-open) {
+      animation: launcher-compact linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 320px;
+    }
+
+    .ai-advisor-launcher:not(.is-open) .ai-launcher-text {
+      /* A set width the fold can shrink from ("none" can't be animated), and the icon's height so the
+         folded button is a circle */
+      max-width: 8em;
+      line-height: 18px;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: launcher-label-fold linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 320px;
+    }
+  }
+}
+
+@keyframes launcher-compact {
+  to { padding: 14px; gap: 0; }
+}
+
+@keyframes launcher-label-fold {
+  to { max-width: 0; opacity: 0; }
+}
+
 @media (max-width: 375px) {
   .ai-launcher-text {
     display: none;
@@ -510,15 +542,6 @@ button.ai-action-link:disabled {
   outline: none;
   border-color: #3f8dff;
   box-shadow: 0 0 0 3px rgba(63, 141, 255, 0.18);
-}
-
-/* Honeypot field for spam bots: kept in the form but moved off-screen */
-.qa-hp {
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
 }
 
 .qa-handoff-note {

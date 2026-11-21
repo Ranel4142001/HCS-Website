@@ -1,5 +1,6 @@
-import type { ContactFormValues } from '../validation/contact.schema';
-import { PRACTICE_TYPE_LABELS, smsConsentText } from './monday.server';
+import type { ContactFormValues } from '@/shared/lib/contact/contact.schema';
+import { PRACTICE_TYPES } from '@/shared/lib/contact/practice-types';
+import { smsConsentText } from './monday.server';
 
 /**
  * Server only: emails each new lead a branded "we've received your request" confirmation through
@@ -54,7 +55,7 @@ export function greetingName(fullName: string): string {
 /** The email's HTML: tables and inline styles, which every email app renders the same way. */
 /** The "Your request" lines, HTML-escaped: practice type, then whatever else the visitor filled in. */
 function requestSummary(lead: ContactFormValues): string {
-  const lines = [`Practice type: ${escapeHtml(PRACTICE_TYPE_LABELS[lead.role])}`];
+  const lines = [`Practice type: ${escapeHtml(PRACTICE_TYPES[lead.role])}`];
   if (lead.organization?.trim()) lines.push(`Organization: ${escapeHtml(lead.organization.trim())}`);
   if (lead.providers) lines.push(`Providers: ${lead.providers === '200+' ? 'More than 200' : escapeHtml(lead.providers.replace('-', '–'))}`);
   if (lead.message?.trim()) lines.push(`Message: ${nl2br(lead.message.trim())}`);
@@ -155,7 +156,7 @@ export async function sendLeadBackupEmail(lead: ContactFormValues, source: strin
     ['Email', lead.email],
     ['Phone', lead.phone],
     ['SMS consent', smsConsentText(lead)],
-    ['Practice type', PRACTICE_TYPE_LABELS[lead.role]],
+    ['Practice type', PRACTICE_TYPES[lead.role]],
     ['Organization', lead.organization],
     ['Providers', lead.providers],
     ['Message', lead.message],

@@ -41,6 +41,9 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  /* Taller tap area without making the bar taller */
+  padding: 4px 0;
+  margin: -4px 0;
   color: #60a5fa;
   font-weight: 600;
   font-size: 0.86rem;

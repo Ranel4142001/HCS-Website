@@ -1,17 +1,17 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm, useWatch, type Resolver } from 'react-hook-form';
-import type { ContactFormValues } from '../validation/contact.schema';
-import { submitContactForm, type SubmissionMeta } from '../services/contact.service';
+import type { ContactFormValues } from '@/shared/lib/contact/contact.schema';
+import { submitContactForm, type SubmissionMeta } from '@/shared/lib/contact/submit-contact';
+import type { PracticeType } from '@/shared/lib/contact/practice-types';
+import { useSpamSignals } from '@/shared/components/forms/useSpamSignals';
 import RoleStep from './RoleStep';
 import DetailsStep from './DetailsStep';
 import SuccessPanel from './SuccessPanel';
 import Icon from '@/shared/components/ui/Icon';
 import Badge from '@/shared/components/ui/Badge';
 import { GuillocheSeal } from '@/shared/components/ui/Guilloche';
-import TurnstileWidget from '@/shared/components/ui/TurnstileWidget';
-import { envConfig } from '@/shared/config/env.config';
 import './ContactWizard.css';
 
 // The validation library is only needed once someone fills in the form, so it loads on first validation
@@ -19,7 +19,7 @@ import './ContactWizard.css';
 const lazyResolver: Resolver<ContactFormValues> = async (values, context, options) => {
   const [{ zodResolver }, { contactFormRules }] = await Promise.all([
     import('@hookform/resolvers/zod'),
-    import('../validation/contact.schema'),
+    import('@/shared/lib/contact/contact.schema'),
   ]);
   return zodResolver(contactFormRules)(values, context, options);
 };
@@ -40,17 +40,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
   const [showSuccessPanel, setShowSuccessPanel] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  // Spam signals for the server: the hidden honeypot field and when the form first appeared.
-  const honeypotRef = useRef<HTMLInputElement>(null);
-  const shownAtRef = useRef(0);
-  // Cloudflare Turnstile token; tokens are single-use, so bumping turnstileReset fetches a new one.
-  const [turnstileToken, setTurnstileToken] = useState('');
-  const [turnstileReset, setTurnstileReset] = useState(0);
-  const turnstileSiteKey = envConfig.turnstileSiteKey;
-
-  useEffect(() => {
-    shownAtRef.current = performance.now();
-  }, []);
+  const spam = useSpamSignals('fWebsite');
 
   const form = useForm<ContactFormValues>({
     resolver: lazyResolver,
@@ -71,7 +61,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
 
   const selectedRole = useWatch({ control: form.control, name: 'role' });
 
-  const handleSelectRole = (role: 'individual' | 'group' | 'enterprise') => {
+  const handleSelectRole = (role: PracticeType) => {
     form.setValue('role', role, { shouldValidate: true });
   };
 
@@ -89,25 +79,20 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
     } catch (err) {
       setIsLoading(false);
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
-      setTurnstileReset((n) => n + 1);
+      spam.resetTurnstile();
       triggerShake();
     }
   };
 
   // The spam signals are read here, at submit time, then validation runs and the request is sent.
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (turnstileSiteKey && !turnstileToken) {
+    if (!spam.ready) {
       e.preventDefault();
       setSubmitError("Please wait a moment while we confirm you're not a bot, then submit again.");
       triggerShake();
       return;
     }
-    const meta: SubmissionMeta = {
-      website: honeypotRef.current?.value ?? '',
-      // The event's timeStamp and performance.now() share the same clock.
-      elapsedMs: Math.max(0, Math.round(e.timeStamp - shownAtRef.current)),
-      turnstileToken: turnstileToken || undefined,
-    };
+    const meta: SubmissionMeta = spam.meta(e);
     return form.handleSubmit((data) => sendRequest(data, meta), () => triggerShake())(e);
   };
 
@@ -124,7 +109,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
     setShowSuccessPanel(false);
     setIsShaking(false);
     setSubmitError(null);
-    setTurnstileReset((n) => n + 1);
+    spam.resetTurnstile();
   };
 
   return (
@@ -185,11 +170,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
                 )}
 
                 <form onSubmit={onSubmit} noValidate>
-                  {/* Honeypot: off-screen and skipped by keyboards and screen readers; only bots fill it in. */}
-                  <div className="form-hp" aria-hidden="true">
-                    <label htmlFor="fWebsite">Website</label>
-                    <input id="fWebsite" name="website" type="text" tabIndex={-1} autoComplete="off" ref={honeypotRef} />
-                  </div>
+                  {spam.honeypot}
                   <div style={{ display: showSuccessPanel ? 'none' : 'block' }}>
                     {step === 1 && (
                       <RoleStep
@@ -207,11 +188,7 @@ export const ContactWizard: React.FC<ContactWizardProps> = ({ isPageHeading = fa
                         isSuccess={isSuccess}
                         isShaking={isShaking}
                         submitError={submitError}
-                        verification={
-                          turnstileSiteKey ? (
-                            <TurnstileWidget siteKey={turnstileSiteKey} onToken={setTurnstileToken} resetSignal={turnstileReset} />
-                          ) : null
-                        }
+                        verification={spam.turnstile}
                       />
                     )}
                   </div>

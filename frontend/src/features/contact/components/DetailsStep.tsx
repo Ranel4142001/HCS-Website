@@ -1,20 +1,14 @@
 ﻿import React from 'react';
 import Link from 'next/link';
 import { UseFormReturn, useWatch } from 'react-hook-form';
-import { PROVIDER_COUNTS, type ContactFormValues } from '../validation/contact.schema';
+import { PROVIDER_COUNTS, type ContactFormValues } from '@/shared/lib/contact/contact.schema';
+import { PRACTICE_TYPES, type PracticeType } from '@/shared/lib/contact/practice-types';
 import Input from '@/shared/components/forms/Input';
 import TextArea from '@/shared/components/forms/TextArea';
 import SmsConsent from '@/shared/components/forms/SmsConsent';
 import Icon from '@/shared/components/ui/Icon';
 import Spinner from '@/shared/components/ui/Spinner';
 import './DetailsStep.css';
-
-/** Same choices as the practice-type step (RoleStep). */
-const ROLE_LABELS: Record<ContactFormValues['role'], string> = {
-  individual: 'Individual clinician',
-  group: 'Group practice or staffing agency',
-  enterprise: 'Health system, hospital and surgery center',
-};
 
 export interface DetailsStepProps {
   form: UseFormReturn<ContactFormValues>;
@@ -59,8 +53,8 @@ export const DetailsStep: React.FC<DetailsStepProps> = ({
       ) : (
         <div className="field field-select">
           <select id="fRole" {...register('role')}>
-            {(Object.keys(ROLE_LABELS) as ContactFormValues['role'][]).map((value) => (
-              <option key={value} value={value}>{ROLE_LABELS[value]}</option>
+            {(Object.keys(PRACTICE_TYPES) as PracticeType[]).map((value) => (
+              <option key={value} value={value}>{PRACTICE_TYPES[value]}</option>
             ))}
           </select>
           <label htmlFor="fRole">Practice type *</label>

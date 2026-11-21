@@ -36,7 +36,7 @@ export function NextSteps({ links, tint = false, band = false, children }: NextS
               <h2 id="next-steps-title" className="sol-block-title">Next steps</h2>
               <p>Keep exploring how we can help.</p>
             </div>
-            <ul className="next-steps-links">
+            <ul className="next-steps-links reveal-stagger">
               {links.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}>

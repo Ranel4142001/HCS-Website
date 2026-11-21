@@ -26,7 +26,7 @@ export const PricingSection: React.FC = () => {
           </p>
         </header>
 
-        <div className="fee-schedule">
+        <div className="fee-schedule reveal-stagger">
           {PRICING_PLANS.map((plan) => (
             <article
               key={plan.id}

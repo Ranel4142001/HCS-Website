@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import Icon from '@/shared/components/ui/Icon';
+import { PRACTICE_TYPES } from '@/shared/lib/contact/practice-types';
 import Button from '@/shared/components/ui/Button';
 import { ContactRole } from '../types';
 import './RoleStep.css';
@@ -23,7 +24,7 @@ export const RoleStep: React.FC<RoleStepProps> = ({ selectedRole, onSelectRole, 
             <Icon name="user" />
           </div>
           <div className="role-text">
-            <strong>Individual clinician</strong>
+            <strong>{PRACTICE_TYPES.individual}</strong>
             <span>MD, DO, CRNA, NP, PA, or allied professional</span>
           </div>
           <span className="role-check">
@@ -40,7 +41,7 @@ export const RoleStep: React.FC<RoleStepProps> = ({ selectedRole, onSelectRole, 
             <Icon name="users" />
           </div>
           <div className="role-text">
-            <strong>Group practice or staffing agency</strong>
+            <strong>{PRACTICE_TYPES.group}</strong>
             <span>Medical groups, clinics, or staffing teams</span>
           </div>
           <span className="role-check">
@@ -57,7 +58,7 @@ export const RoleStep: React.FC<RoleStepProps> = ({ selectedRole, onSelectRole, 
             <Icon name="building" />
           </div>
           <div className="role-text">
-            <strong>Health system, hospital and surgery center</strong>
+            <strong>{PRACTICE_TYPES.enterprise}</strong>
             <span>Hospitals, health systems, or telehealth</span>
           </div>
           <span className="role-check">

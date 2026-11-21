@@ -1,4 +1,5 @@
-import type { ContactFormValues } from '../validation/contact.schema';
+import type { ContactFormValues } from '@/shared/lib/contact/contact.schema';
+import { PRACTICE_TYPES } from '@/shared/lib/contact/practice-types';
 import { mondayPhone } from './phone';
 
 /**
@@ -10,12 +11,6 @@ import { mondayPhone } from './phone';
  */
 
 const MONDAY_API_URL = 'https://api.monday.com/v2';
-
-export const PRACTICE_TYPE_LABELS: Record<ContactFormValues['role'], string> = {
-  individual: 'Individual clinician',
-  group: 'Group practice or staffing agency',
-  enterprise: 'Health system, hospital and surgery center',
-};
 
 interface MondayColumn {
   id: string;
@@ -126,7 +121,7 @@ function buildColumnValues(columns: MondayColumn[], data: ContactFormValues, inc
   const wanted: [string, string | undefined][] = [
     ['email', data.email],
     ['phone', includePhone ? data.phone : undefined],
-    ['practice type', PRACTICE_TYPE_LABELS[data.role]],
+    ['practice type', PRACTICE_TYPES[data.role]],
     ['message', message],
     ['company', data.organization],
     ['providers', data.providers],

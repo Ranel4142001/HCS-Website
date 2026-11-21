@@ -13,7 +13,7 @@ export const FoundingClientsSection: React.FC = () => {
           </p>
         </header>
 
-        <ul className="founding-commitments">
+        <ul className="founding-commitments reveal-stagger">
           {COMMITMENTS.map((c) => (
             <li key={c.title}>
               <h3>{c.title}</h3>

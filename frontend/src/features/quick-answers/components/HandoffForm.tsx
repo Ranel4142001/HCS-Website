@@ -2,19 +2,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import TurnstileWidget from '@/shared/components/ui/TurnstileWidget';
 import SmsConsent from '@/shared/components/forms/SmsConsent';
-import { envConfig } from '@/shared/config/env.config';
+import { useSpamSignals } from '@/shared/components/forms/useSpamSignals';
+import { PRACTICE_TYPES, type PracticeType } from '@/shared/lib/contact/practice-types';
+import { submitContactForm } from '@/shared/lib/contact/submit-contact';
 
-type Role = 'individual' | 'group' | 'enterprise';
-
-const ROLES: { value: Role; label: string }[] = [
-  { value: 'individual', label: 'Individual clinician' },
-  { value: 'group', label: 'Group or staffing agency' },
-  { value: 'enterprise', label: 'Health system, hospital and surgery center' },
-];
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MESSAGE_LENGTH = 2000;
 
 /** The visitor's chat questions, so the specialist sees what they already asked. */
@@ -36,62 +28,46 @@ interface HandoffFormProps {
  * the lead lands on the Monday board with the usual spam, repeat and Turnstile checks, marked as from the chat.
  */
 export function HandoffForm({ questions, onSent, onCancel }: HandoffFormProps) {
-  const [role, setRole] = useState<Role>('individual');
+  const [role, setRole] = useState<PracticeType>('individual');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [smsConsent, setSmsConsent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState('');
-  const [turnstileReset, setTurnstileReset] = useState(0);
-  const honeypotRef = useRef<HTMLInputElement>(null);
+  const spam = useSpamSignals('qaWebsite');
   const nameRef = useRef<HTMLInputElement>(null);
-  const shownAtRef = useRef(0);
-  const siteKey = envConfig.turnstileSiteKey;
 
   useEffect(() => {
-    shownAtRef.current = performance.now();
     nameRef.current?.focus();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (sending) return;
-    if (name.trim().length < 2) return setError('Please enter your full name.');
-    if (!EMAIL_PATTERN.test(email.trim())) return setError('Please enter a valid email address.');
-    if (smsConsent && !phone.trim()) return setError('Please enter your mobile number so we can text you.');
-    if (siteKey && !turnstileToken) return setError("Please wait a moment while we confirm you're not a bot, then try again.");
-
-    const payload = {
+    // Same rules as the contact form, so the server never refuses what the chat accepted. Loaded on submit,
+    // like the contact form's, to keep the validation library out of the chat's first load.
+    const { contactFormRules } = await import('@/shared/lib/contact/contact.schema');
+    const parsed = contactFormRules.safeParse({
       role,
       name: name.trim(),
       email: email.trim(),
       phone: phone.trim(),
       smsConsent,
       message: buildMessage(questions),
-      website: honeypotRef.current?.value ?? '',
-      // The event's timeStamp and performance.now() share the same clock.
-      elapsedMs: Math.max(0, Math.round(e.timeStamp - shownAtRef.current)),
-      page: window.location.pathname,
-      turnstileToken: turnstileToken || undefined,
-      origin: 'chat' as const,
-    };
+    });
+    if (!parsed.success) return setError(parsed.error.issues[0].message);
+    if (!spam.ready) return setError("Please wait a moment while we confirm you're not a bot, then try again.");
+    const meta = { ...spam.meta(e), origin: 'chat' as const };
 
     setSending(true);
     setError(null);
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const result = (await res.json().catch(() => null)) as { success?: boolean; message?: string } | null;
-      if (!res.ok || !result?.success) throw new Error(result?.message || 'Something went wrong. Please try again.');
-      onSent(payload.name);
+      await submitContactForm(parsed.data, meta);
+      onSent(parsed.data.name);
     } catch (err) {
-      setError(err instanceof Error && err.message !== 'Failed to fetch' ? err.message : 'Could not reach the server. Please try again.');
-      setTurnstileReset((n) => n + 1);
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      spam.resetTurnstile();
       setSending(false);
     }
   };
@@ -104,16 +80,16 @@ export function HandoffForm({ questions, onSent, onCancel }: HandoffFormProps) {
       </div>
 
       <div className="qa-handoff-roles" role="radiogroup" aria-label="Practice type">
-        {ROLES.map((r) => (
+        {(Object.keys(PRACTICE_TYPES) as PracticeType[]).map((value) => (
           <button
-            key={r.value}
+            key={value}
             type="button"
             role="radio"
-            aria-checked={role === r.value}
-            className={`ai-preset-chip ${role === r.value ? 'is-selected' : ''}`}
-            onClick={() => setRole(r.value)}
+            aria-checked={role === value}
+            className={`ai-preset-chip ${role === value ? 'is-selected' : ''}`}
+            onClick={() => setRole(value)}
           >
-            {r.label}
+            {PRACTICE_TYPES[value]}
           </button>
         ))}
       </div>
@@ -132,13 +108,9 @@ export function HandoffForm({ questions, onSent, onCancel }: HandoffFormProps) {
       </label>
       <SmsConsent id="qaSmsConsent" className="qa-sms-consent" checked={smsConsent} onChange={(e) => setSmsConsent(e.target.checked)} />
 
-      {/* Honeypot: off-screen and skipped by keyboards and screen readers; only bots fill it in. */}
-      <div className="qa-hp" aria-hidden="true">
-        <label htmlFor="qaWebsite">Website</label>
-        <input id="qaWebsite" name="website" type="text" tabIndex={-1} autoComplete="off" ref={honeypotRef} />
-      </div>
+      {spam.honeypot}
 
-      {siteKey && <TurnstileWidget siteKey={siteKey} onToken={setTurnstileToken} resetSignal={turnstileReset} />}
+      {spam.turnstile}
 
       <p className="qa-handoff-note">
         Please don’t include patient or other health information here. See our <Link href="/privacy">Privacy Policy</Link>.
