@@ -128,7 +128,7 @@
   font-size: clamp(2.5rem, 4vw, 3.25rem);
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.025em;
   font-variant-numeric: lining-nums tabular-nums;
   color: #062459;
 }

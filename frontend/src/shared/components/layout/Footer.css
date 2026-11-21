@@ -92,11 +92,14 @@
   height: 14px;
 }
 
-.footer-heading {
-  font-size: 0.82rem;
+.footer .footer-heading {
+  /* Small, uppercase and widely spaced: column labels, so the links below stand out */
+  font-size: 0.72rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 18px;
 }
 
 .footer-links {

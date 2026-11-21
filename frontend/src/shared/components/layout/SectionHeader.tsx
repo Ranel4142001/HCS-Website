@@ -21,7 +21,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`section-head reveal ${className}`}>
+    <div className={`section-head reveal-stagger ${className}`}>
       {eyebrow && (
         <Badge variant={eyebrowVariant} icon={<Icon name={eyebrowIcon} />}>
           {eyebrow}

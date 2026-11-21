@@ -6,7 +6,7 @@ export const FoundingClientsSection: React.FC = () => {
   return (
     <section className="founding" id="why-us" aria-labelledby="founding-title">
       <div className="container founding-inner">
-        <header className="founding-head">
+        <header className="founding-head reveal-stagger">
           <h2 id="founding-title">Our commitments to founding clients</h2>
           <p>
             HealthCredSTAT is now onboarding its first clients. These are the commitments every client can hold us to.

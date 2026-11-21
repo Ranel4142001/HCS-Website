@@ -34,7 +34,7 @@ export const WorkflowsSection: React.FC = () => {
     >
       <div className="container">
         {/* Header */}
-        <div className="workflows-head">
+        <div className="workflows-head reveal-stagger">
           <div className="workflows-eyebrow">
             <span className="eyebrow-sparkle">
               <Icon name="sparkle" />

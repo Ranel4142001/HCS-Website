@@ -20,7 +20,7 @@ export function GuidesList() {
   return (
     <section className="sol-section">
       <div className="container guides-wrap">
-        <ul className="guides-list">
+        <ul className="guides-list reveal-stagger">
           {GUIDES.map((guide) => (
             <li key={guide.slug}>
               <Link href={guidePath(guide.slug)} className="guides-card">

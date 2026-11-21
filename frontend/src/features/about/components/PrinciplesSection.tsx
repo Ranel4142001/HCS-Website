@@ -6,7 +6,7 @@ export function PrinciplesSection() {
     <section className="sol-section sol-section--tint">
       <div className="container">
         <h2 className="sol-block-title">How we work</h2>
-        <ul className="sol-steps">
+        <ul className="sol-steps reveal-stagger">
           {PRINCIPLES.map((p) => (
             <li key={p.title} className="sol-step">
               <h3>{p.title}</h3>

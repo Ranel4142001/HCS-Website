@@ -6,7 +6,7 @@ export function OurStorySection() {
   return (
     <section className="sol-section">
       <div className="container sol-split">
-        <div className="sol-split-head">
+        <div className="sol-split-head reveal-stagger">
           <p className="story-eyebrow">{STORY.eyebrow}</p>
           <h2 className="sol-block-title">{STORY.title}</h2>
           <p className="story-mission">{STORY.mission}</p>

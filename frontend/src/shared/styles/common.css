@@ -19,36 +19,30 @@
    never hidden while JavaScript loads, and browsers without support simply show it without the effect.
 ===================================================== */
 
+/* Scroll reveal, set off by REVEAL_SCRIPT in app/layout.tsx: a block fades up once as it comes into view, and the
+   children of a .reveal-stagger group follow one another about a tenth of a second apart. Until the script marks a
+   block [data-shown] it stays invisible; without the script (or with reduced motion) <html> has no data-reveal, so
+   nothing is hidden. "backwards" fill only holds the start state during the delay, so hover effects keep working. */
 @keyframes reveal-rise {
   from {
     opacity: 0;
-    transform: translateY(24px) scale(.98);
+    transform: translateY(24px);
   }
 }
 
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation: reveal-rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 60%;
-    }
-
-    /* Cards in a group rise one after another: each starts a little later as it scrolls in */
-    .reveal-stagger > * {
-      animation: reveal-rise linear both;
-      animation-timeline: view();
-      animation-range: entry calc(var(--reveal-i, 0) * 12%) entry calc(60% + var(--reveal-i, 0) * 12%);
-    }
-
-    /* Only while the cards sit side by side; stacked on phones, each simply rises as it scrolls in */
-    @media (min-width: 769px) {
-      .reveal-stagger > :nth-child(2) { --reveal-i: 1; }
-      .reveal-stagger > :nth-child(3) { --reveal-i: 2; }
-      .reveal-stagger > :nth-child(n + 4) { --reveal-i: 3; }
-    }
-  }
+html[data-reveal] :is(.reveal, .reveal-stagger > *):not([data-shown]) {
+  opacity: 0;
 }
+
+html[data-reveal] :is(.reveal, .reveal-stagger > *)[data-shown] {
+  animation: reveal-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--reveal-i, 0) * 110ms);
+}
+
+.reveal-stagger > :nth-child(2) { --reveal-i: 1; }
+.reveal-stagger > :nth-child(3) { --reveal-i: 2; }
+.reveal-stagger > :nth-child(4) { --reveal-i: 3; }
+.reveal-stagger > :nth-child(n + 5) { --reveal-i: 4; }
 
 /* =====================================================
    BUTTONS
@@ -153,7 +147,7 @@
   font-weight: 600;
   color: #0f172a;
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
   margin: 0 0 16px;
 }
 

@@ -13,7 +13,7 @@ export const BenefitsSection: React.FC = () => {
     <section className="platform-sticky-section" id="platform">
       <div className="container platform-sticky-inner">
         {/* Left Sticky Header Column */}
-        <div className="platform-sticky-head">
+        <div className="platform-sticky-head reveal-stagger">
           <div className="platform-eyebrow">
             <Icon name="cpu" />
             <span>Why HealthCredSTAT</span>
@@ -30,7 +30,7 @@ export const BenefitsSection: React.FC = () => {
         </div>
 
         {/* Right Scrolling/Interactive Process Items */}
-        <div className="platform-sticky-list">
+        <div className="platform-sticky-list reveal-stagger">
           {BENEFITS.map((item, idx) => {
             const isHovered = activeItem === idx;
             return (

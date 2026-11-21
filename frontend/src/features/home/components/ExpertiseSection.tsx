@@ -28,7 +28,7 @@ export const ExpertiseSection: React.FC = () => {
     >
       <div className="container stats-gallery-inner">
         {/* Left Stats Counter Panel */}
-        <div className="stats-gallery-lead">
+        <div className="stats-gallery-lead reveal-stagger">
           <h2>Credentialing experts, backed by AI automation</h2>
           
           <div className="stats-active-metric-box">

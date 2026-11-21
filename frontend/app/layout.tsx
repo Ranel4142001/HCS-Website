@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/next';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter, Inter_Tight } from 'next/font/google';
 import './globals.css';
 import '@/shared/styles/common.css';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
@@ -17,9 +17,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-// Headings, including the homepage H1 (the largest text on first paint), so it is preloaded too.
-// Its rounded geometric shapes match the logo's wordmark.
-const plusJakartaSans = Plus_Jakarta_Sans({
+// Headings and buttons, including the homepage H1 (the largest text on first paint), so it is preloaded too.
+// Inter's tighter display cut: pairs with the Inter body text for one clean, consistent look.
+const interTight = Inter_Tight({
   subsets: ['latin'],
   variable: '--font-heading',
   display: 'swap',
@@ -131,6 +131,12 @@ const jsonLd = {
 
 const SECTION_JUMP_SCRIPT = `(function(){var h=document.documentElement;function off(){h.setAttribute('data-cv','off')}if(location.hash)off();document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="#"]');if(a)off()},true)})();`;
 
+// Scroll reveal (the .reveal / .reveal-stagger styles in common.css): each block fades up once as it comes into view,
+// the children of a .reveal-stagger group one after another. Plain inline script, so it starts before React loads and
+// nothing waits on hydration. It marks <html data-reveal> first; without the script (or with reduced motion) nothing is
+// ever hidden. Pages opened by client-side navigation are picked up by the MutationObserver.
+const REVEAL_SCRIPT = `(function(){if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var h=document.documentElement;h.setAttribute('data-reveal','');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.setAttribute('data-shown','');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});var q=0;function scan(){q=0;document.querySelectorAll('.reveal,.reveal-stagger>*').forEach(function(el){if(!el.__rv){el.__rv=1;io.observe(el)}})}function later(){if(!q){q=1;requestAnimationFrame(scan)}}document.addEventListener('DOMContentLoaded',function(){scan();new MutationObserver(later).observe(document.body,{childList:true,subtree:true})})})();`;
+
 export default function RootLayout({
   children,
 }: {
@@ -141,7 +147,7 @@ export default function RootLayout({
     // suppressHydrationWarning: the inline script below may add data-cv="off" to <html> before React hydrates.
     <html
       lang="en"
-      className={`${inter.variable} ${plusJakartaSans.variable}`}
+      className={`${inter.variable} ${interTight.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -149,6 +155,7 @@ export default function RootLayout({
         {/* Off-screen sections skip layout (content-visibility in globals.css), so jumps to #anchors would land on
             estimated heights. Before any such jump, lay the page out fully so it lands exactly. */}
         <script dangerouslySetInnerHTML={{ __html: SECTION_JUMP_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_SCRIPT }} />
         <JsonLd data={jsonLd} />
       </head>
       <body>

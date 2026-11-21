@@ -8,7 +8,7 @@ export function AudiencesSection() {
   return (
     <section className="sol-section" aria-labelledby="audiences-title">
       <div className="container">
-        <div className="audience-head">
+        <div className="audience-head reveal-stagger">
           <h2 id="audiences-title" className="sol-block-title">{AUDIENCES.title}</h2>
           <p className="sol-desc-text">{AUDIENCES.intro}</p>
         </div>

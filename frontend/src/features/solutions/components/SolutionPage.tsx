@@ -50,7 +50,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
         </section>
 
         <section className="sol-stats-bar" aria-label="Highlights">
-          <div className="container sol-stats-inner">
+          <div className="container sol-stats-inner reveal-stagger">
             {content.highlights.map((h) => (
               <div key={h.title} className="sol-stat">
                 <strong>{h.title}</strong>
@@ -82,7 +82,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
         <section className="sol-section sol-section--tint">
           <div className="container">
             <h2 className="sol-block-title">{content.process.title}</h2>
-            <ol className="sol-steps">
+            <ol className="sol-steps reveal-stagger">
               {content.process.steps.map((step, i) => (
                 <li key={step.title} className="sol-step">
                   <span className="sol-step-num" aria-hidden="true">{i + 1}</span>
@@ -97,7 +97,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
         {content.checklist && (
           <section className="sol-section">
             <div className="container sol-split">
-              <div className="sol-split-head">
+              <div className="sol-split-head reveal-stagger">
                 <h2 className="sol-block-title">{content.checklist.title}</h2>
                 <p className="sol-desc-text">{content.checklist.intro}</p>
               </div>
@@ -112,7 +112,7 @@ export function SolutionPage({ content }: { content: SolutionContent }) {
 
         <section className="sol-section sol-section--tint">
           <div className="container sol-split">
-            <div className="sol-split-head">
+            <div className="sol-split-head reveal-stagger">
               <h2 className="sol-block-title">Frequently asked questions</h2>
             </div>
             <div className="sol-faq">

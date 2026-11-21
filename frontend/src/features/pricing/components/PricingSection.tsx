@@ -18,7 +18,7 @@ export const PricingSection: React.FC = () => {
   return (
     <section className="pricing" id="pricing" aria-labelledby="pricing-title">
       <div className="container">
-        <header className="pricing-head">
+        <header className="pricing-head reveal-stagger">
           <h2 id="pricing-title">Pricing that scales with your providers</h2>
           <p>
             A flat rate for individual clinicians. Groups and health systems get a custom quote based on how many

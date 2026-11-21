@@ -32,7 +32,7 @@ export function NextSteps({ links, tint = false, band = false, children }: NextS
       <section className="next-steps-band" aria-labelledby="next-steps-title">
         <div className="container">
           <div className="next-steps-panel">
-            <div className="next-steps-head">
+            <div className="next-steps-head reveal-stagger">
               <h2 id="next-steps-title" className="sol-block-title">Next steps</h2>
               <p>Keep exploring how we can help.</p>
             </div>
