@@ -8,7 +8,8 @@ export const BENEFITS: BenefitItem[] = [
     badge: 'Less paperwork',
     icon: 'sparkle',
     detailPoints: [
-      'Secure document collection through the provider portal',
+      'A guided checklist of 12 short sections, about 45 minutes in all',
+      'Documents uploaded securely, even as a photo from a phone',
       { text: 'Provider history pulled from CAQH ProView', soon: true },
       'No repeat requests for information you have already sent',
     ],

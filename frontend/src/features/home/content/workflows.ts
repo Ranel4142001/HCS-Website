@@ -19,7 +19,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     icon: 'clock',
     highlights: [
       'Due dates tracked for every provider and every organization',
-      'CAQH ProView kept current and re-attested every 120 days',
+      'CAQH ProView re-attestation tracked every 120 days',
     ],
   },
   {

@@ -61,8 +61,8 @@ export const EstimatorResult: React.FC<EstimatorResultProps> = ({
 
       <p className="est-result-copy">
         {isPriority
-          ? "Since you flagged an upcoming deadline, we'll prioritize your file and keep you posted in real time so nothing slips."
-          : "We'll manage every form, deadline, and follow-up on your behalf — with real-time updates the whole way."}
+          ? "Since you flagged an upcoming deadline, we'll prioritize your file and keep you posted so nothing slips."
+          : "We'll manage every form, deadline and follow-up on your behalf, and you can see your file's status in the portal at any time."}
       </p>
 
       <div className="est-result-plan">

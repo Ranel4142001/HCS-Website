@@ -74,4 +74,14 @@ export const FAQ_DATA: FaqEntry[] = [
     q: 'Can you take over credentialing files already in progress?',
     a: 'Yes. We review where each file stands and take over the remaining verification and follow-up, so no work already done is lost.',
   },
+  {
+    topic: 'working-with-us',
+    q: 'What does the provider portal ask for?',
+    a: 'A guided checklist of 12 short sections, from profile and education to licenses, immunizations, references and malpractice insurance. Most providers finish in about 45 minutes, a section at a time, and can upload documents from a phone or computer. When every section is complete, our team takes it from there.',
+  },
+  {
+    topic: 'working-with-us',
+    q: 'How is my personal information protected?',
+    a: 'Social Security and bank account numbers are encrypted, and only the last four digits are ever shown. Photo IDs open only for you and our credentialing staff, and every time our staff view your personal IDs it is recorded. We never ask for your passwords to other systems.',
+  },
 ];
