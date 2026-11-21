@@ -75,12 +75,18 @@ export const NAV_MENUS: NavMenu[] = [
 ];
 
 /** Shown before the dropdown menus. */
-export const NAV_LEAD_LINKS: NavLink[] = [{ href: '/services', label: 'Services' }];
+export const NAV_LEAD_LINKS: NavLink[] = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+];
 
-/** Top-level links shown after the menus. Resources and Company menus return once those pages have content. */
+/**
+ * Top-level links shown after the menus, in the order visitors decide: what we offer and for whom (above), then price,
+ * then learning resources, then the company. Resources and Company menus return once those pages have content.
+ */
 export const NAV_LINKS: NavLink[] = [
-  { href: '/guides', label: 'Guides' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/guides', label: 'Guides' },
   { href: '/faq', label: 'FAQ' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },

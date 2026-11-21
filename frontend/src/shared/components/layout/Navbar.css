@@ -261,11 +261,23 @@
   }
 }
 
-/* Laptop widths: the full menu fits once the spacing tightens a little. Below 1181px the menu collapses (above). */
-@media (min-width: 1181px) and (max-width: 1360px) {
+/* Full menu: always keep a clear gap between the last link and the search / quote buttons */
+@media (min-width: 1181px) {
+  .mdl-nav__actions { padding-left: 16px; }
+}
+
+/* Laptop widths (including the common 1366px): the full menu fits once the spacing tightens a little.
+   Below 1181px the menu collapses (above). */
+@media (min-width: 1181px) and (max-width: 1439px) {
   .mdl-nav__logo { margin-right: 16px; }
   .mdl-nav__logo-img { height: 50px; max-height: 50px; }
   .mdl-nav__plain-link,
   .mdl-nav__trigger { padding-left: 10px; padding-right: 10px; }
   .mdl-nav__signin { padding-left: 10px; padding-right: 10px; }
+}
+
+/* Narrowest laptops: a little tighter still */
+@media (min-width: 1181px) and (max-width: 1279px) {
+  .mdl-nav__plain-link,
+  .mdl-nav__trigger { padding-left: 8px; padding-right: 8px; }
 }
