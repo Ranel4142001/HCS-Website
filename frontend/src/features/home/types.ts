@@ -15,14 +15,7 @@ export interface WorkflowItem {
   title: string;
   description: string;
   icon: IconName;
-  tag: string;
-  highlights: Feature[];
-  mockData: {
-    statusBadge: string;
-    subtext: string;
-    stats: { label: string; value: string; trend?: string }[];
-    steps: { name: string; status: 'completed' | 'in-progress' | 'pending'; time: string }[];
-  };
+  highlights: string[];
 }
 
 export type TabId = 'provider' | 'team' | 'audit';
