@@ -186,7 +186,7 @@ export const TERMS_OF_SERVICE: LegalDoc = {
       list: [
         'Message frequency varies based on your interaction with us.',
         'Msg & data rates may apply.',
-        'Reply STOP at any time to opt out. You will receive one message confirming that you have been unsubscribed.',
+        'Reply STOP at any time to opt out. You will receive one message confirming that you have been unsubscribed, and no further messages will be sent. Reply START to resubscribe.',
         'Reply HELP for assistance, or contact us through the contact page.',
         'Mobile carriers are not liable for delayed or undelivered messages.',
       ],
