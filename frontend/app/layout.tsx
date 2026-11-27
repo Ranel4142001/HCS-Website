@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/next';
-import { Inter, Inter_Tight } from 'next/font/google';
+import { Inter, Inter_Tight, Source_Serif_4 } from 'next/font/google';
 import './globals.css';
 import '@/shared/styles/common.css';
 import { SITE_URL, SITE_NAME } from '@/shared/lib/seo';
@@ -22,6 +22,13 @@ const inter = Inter({
 const interTight = Inter_Tight({
   subsets: ['latin'],
   variable: '--font-heading',
+  display: 'swap',
+});
+
+// Serif for the homepage hero headline (Option 2 theme test).
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  variable: '--font-serif',
   display: 'swap',
 });
 
@@ -147,7 +154,7 @@ export default function RootLayout({
     // suppressHydrationWarning: the inline script below may add data-cv="off" to <html> before React hydrates.
     <html
       lang="en"
-      className={`${inter.variable} ${interTight.variable}`}
+      className={`${inter.variable} ${interTight.variable} ${sourceSerif.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

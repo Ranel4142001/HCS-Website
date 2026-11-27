@@ -25,8 +25,8 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.97);
-  border-bottom: 1px solid #f1f5f9;
+  background: rgba(232, 243, 245, 0.97);
+  border-bottom: 1px solid rgba(18, 48, 71, 0.06);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   transition: box-shadow 0.2s ease;
@@ -170,7 +170,7 @@
   .mdl-nav {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    background: #ffffff;
+    background: var(--mint-100);
   }
   /* The open menu covers the page, including the floating widgets (z-index 1000). */
   .mdl-nav--menu-open { z-index: 1001; }
@@ -241,7 +241,7 @@
   color: #ffffff;
   background: var(--teal-900);
   border: 1.5px solid var(--teal-900);
-  border-radius: 10px;
+  border-radius: 999px;
   text-decoration: none;
   transition: all 0.15s ease;
   white-space: nowrap;

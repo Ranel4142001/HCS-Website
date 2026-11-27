@@ -1,7 +1,6 @@
 import React from 'react';
 import { COVERAGE } from '../content/coverage';
 import HeroDemo from './HeroDemo';
-import { GuillocheRosette } from '@/shared/components/ui/Guilloche';
 import './HeroSection.css';
 
 const CoverageItem: React.FC<{ label: string }> = ({ label }) => (
@@ -17,9 +16,6 @@ const CoverageItem: React.FC<{ label: string }> = ({ label }) => (
 export const HeroSection: React.FC = () => {
   return (
     <section className="hero-section hero-section--hcs" id="top">
-      {/* Certificate-style watermarks behind the headline */}
-      <GuillocheRosette className="hero-guilloche hero-guilloche--right" />
-      <GuillocheRosette className="hero-guilloche hero-guilloche--left" />
       <div className="container hero-container">
         <div className="hero-panel">
           <div className="hero-centered-content">
@@ -48,7 +44,7 @@ export const HeroSection: React.FC = () => {
             className="hero-person"
             src="/media/hero/nurse.webp"
             srcSet="/media/hero/nurse-440.webp 440w, /media/hero/nurse.webp 783w"
-            sizes="(max-width: 900px) 240px, 360px"
+            sizes="(max-width: 900px) 260px, 440px"
             width={783}
             height={1400}
             alt=""
