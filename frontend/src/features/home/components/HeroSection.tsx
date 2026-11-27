@@ -21,7 +21,7 @@ export const HeroSection: React.FC = () => {
         <div className="container hero-panel-inner">
           <div className="hero-centered-content">
             <h1 className="hero-main-headline">
-              Credentialing without the Complexity.
+              Health Credentialing
             </h1>
 
             <p className="hero-lead-text">
