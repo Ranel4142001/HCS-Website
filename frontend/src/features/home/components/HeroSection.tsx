@@ -21,7 +21,7 @@ export const HeroSection: React.FC = () => {
         <div className="container hero-panel-inner">
           <div className="hero-centered-content">
             <h1 className="hero-main-headline">
-              Health Credentialing
+              Credentialing without the Complexity.
             </h1>
 
             <p className="hero-lead-text">
@@ -36,15 +36,15 @@ export const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Decorative stock photo (Unsplash License), background removed; already-compressed WebP at two widths */}
+          {/* Decorative photo from the Z Media visual direction; already-compressed WebP at two widths */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="hero-person"
-            src="/media/hero/nurse.webp"
-            srcSet="/media/hero/nurse-440.webp 440w, /media/hero/nurse.webp 783w"
+            src="/media/hero/clinician.webp"
+            srcSet="/media/hero/clinician-440.webp 440w, /media/hero/clinician.webp 460w"
             sizes="(max-width: 900px) 260px, 480px"
-            width={783}
-            height={1400}
+            width={460}
+            height={745}
             alt=""
             fetchPriority="high"
             decoding="async"
