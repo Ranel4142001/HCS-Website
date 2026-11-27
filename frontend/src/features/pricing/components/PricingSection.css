@@ -42,7 +42,7 @@
 
 .fee-schedule {
   --fee-pad: 36px;
-  --fee-rule: #e3e9f2;
+  --fee-rule: #e8f3f5;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   max-width: 1120px;
@@ -90,7 +90,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: #f6f9fd;
+  background: #f4f6f7;
   box-shadow: inset 0 3px 0 #123047;
 }
 
@@ -144,7 +144,7 @@
   align-items: center;
   justify-content: center;
   padding: 13px 20px;
-  border: 1.5px solid #c6d0de;
+  border: 1.5px solid #c9d8de;
   border-radius: 10px;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -155,7 +155,7 @@
 
 .fee-cta:hover {
   border-color: #123047;
-  background: #eef3fa;
+  background: #f4f6f7;
 }
 
 .fee-cta:focus-visible {
@@ -202,7 +202,7 @@
   gap: 12px;
   font-size: 0.9375rem;
   line-height: 1.5;
-  color: #334155;
+  color: #2c4356;
 }
 
 .fee-list svg {

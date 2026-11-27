@@ -24,7 +24,7 @@
 .rtv-blob-teal {
   width: 450px;
   height: 450px;
-  background: #12b3a6;
+  background: #70c5c9;
   top: -100px;
   right: -50px;
 }
@@ -40,7 +40,7 @@
 .rtv-blob-indigo {
   width: 500px;
   height: 500px;
-  background: #2941f3;
+  background: #168c96;
   top: 40%;
   left: 30%;
   opacity: 0.15;
@@ -89,7 +89,7 @@
 
 /* The standard accent blue is too dark to read on this navy background. */
 .rtv-subtitle em {
-  color: #8cbcff;
+  color: #a3dadd;
 }
 
 .rtv-tabs-wrapper {
@@ -223,7 +223,7 @@
   display: grid;
   place-items: center;
   background:
-    radial-gradient(closest-side, #0b2236 78%, transparent 80%),
+    radial-gradient(closest-side, #0c2233 78%, transparent 80%),
     conic-gradient(var(--gold) calc(var(--p) * 1%), rgba(255, 255, 255, 0.12) 0);
 }
 

@@ -84,7 +84,7 @@
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 18px;
-  box-shadow: 0 24px 60px -12px rgba(14, 27, 48, 0.3);
+  box-shadow: 0 24px 60px -12px rgba(18, 48, 71, 0.3);
   animation: dialogSlideUp 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -189,7 +189,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 18px 16px;
-  background: #f7f9fc;
+  background: #f4f6f7;
 }
 
 .ai-msg-row {
@@ -265,7 +265,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #94a3b8;
+  background: #94a7b3;
   animation: typingBounce 1.2s infinite ease-in-out;
 }
 
@@ -336,7 +336,7 @@
   min-width: 0;
   height: 42px;
   padding: 0 14px;
-  border: 1px solid #cdd6e2;
+  border: 1px solid #c9d8de;
   border-radius: 10px;
   background: #ffffff;
   color: var(--ink);
@@ -530,7 +530,7 @@ button.ai-action-link:disabled {
 .qa-handoff-field input {
   height: 38px;
   padding: 0 12px;
-  border: 1px solid #cdd6e2;
+  border: 1px solid #c9d8de;
   border-radius: 10px;
   color: var(--ink);
   font-family: inherit;

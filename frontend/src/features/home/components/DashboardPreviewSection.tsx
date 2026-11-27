@@ -216,7 +216,7 @@ export const DashboardPreviewSection: React.FC = () => {
           </div>
           <h2>See where every provider stands, at a glance</h2>
           <p className="rtv-subtitle">
-            Providers complete a guided checklist. Your team tracks every file in one console. <em>Sample data shown.</em>
+            One checklist for providers. One console for your team. <em>Sample data shown.</em>
           </p>
         </div>
 

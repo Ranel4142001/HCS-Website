@@ -65,7 +65,7 @@
 .tv2-title {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 600;
-  color: #0f172a;
+  color: #123047;
   line-height: 1.25;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
@@ -78,7 +78,7 @@
 
 .tv2-desc {
   font-size: 1.0625rem;
-  color: #64748b;
+  color: #5a6b79;
   max-width: 560px;
   margin: 0 auto;
   line-height: 1.6;
@@ -108,7 +108,7 @@
 .tv2-card {
   background: #fff;
   border-radius: 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #dde7ea;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
@@ -296,7 +296,7 @@
 .tv2-company-name {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #0f172a;
+  color: #123047;
   white-space: nowrap;
 }
 
@@ -333,7 +333,7 @@
 
 .tv2-quote {
   font-size: 0.9375rem;
-  color: #0f172a;
+  color: #123047;
   line-height: 1.55;
   margin: 0 0 16px;
   font-style: italic;
@@ -371,13 +371,13 @@
 .tv2-author-name {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0f172a;
+  color: #123047;
   display: block;
 }
 
 .tv2-author-role {
   font-size: 0.75rem;
-  color: #64748b;
+  color: #5a6b79;
   display: block;
 }
 
@@ -387,9 +387,9 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #dde7ea;
   background: #ffffff;
-  color: #475569;
+  color: #4a5d6c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -420,7 +420,7 @@
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: #cbd5e1;
+  background: #c9d8de;
   cursor: pointer;
   transition: all 0.25s ease;
   padding: 0;

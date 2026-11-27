@@ -11,7 +11,7 @@
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
-  border-color: #e5e7eb;
+  border-color: #dde7ea;
 }
 html,
 :host {
@@ -180,7 +180,7 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   opacity: 1;
-  color: #9ca3af;
+  color: #94a7b3;
 }
 button,
 [role="button"] {
@@ -217,8 +217,8 @@ video {
   --bg: #f4f6f7;
   --surface: #ffffff;
   --ink: #10283b;
-  --ink-soft: #4d5c78;
-  --ink-faint: #66738b; /* 4.5:1 on white and the light tints */
+  --ink-soft: #4a5d6c;
+  --ink-faint: #5a6b79; /* 4.5:1 on white and the light tints */
   --teal-900: #123047;
   --teal-800: #144a5e;
   --teal-700: #11707a;
@@ -235,9 +235,9 @@ video {
   --radius-lg: 28px;
   --radius-pill: 16px;
 
-  --shadow-sm: 0 2px 10px rgba(14,27,48,.07);
-  --shadow-md: 0 14px 34px -10px rgba(14,27,48,.22);
-  --shadow-lg: 0 30px 70px -16px rgba(14,27,48,.32);
+  --shadow-sm: 0 2px 10px rgba(18, 48, 71,.07);
+  --shadow-md: 0 14px 34px -10px rgba(18, 48, 71,.22);
+  --shadow-lg: 0 30px 70px -16px rgba(18, 48, 71,.32);
 
   --container: 1680px;
   --ease: cubic-bezier(.22,1,.36,1);

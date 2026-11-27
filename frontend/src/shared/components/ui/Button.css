@@ -11,12 +11,12 @@
 }
 
 .btn-ghost {
-  background: rgba(14,27,48,.05);
+  background: rgba(18, 48, 71,.05);
   color: var(--ink);
 }
 
 .btn-ghost:hover {
-  background: rgba(14,27,48,.09);
+  background: rgba(18, 48, 71,.09);
 }
 
 .btn-onDark {

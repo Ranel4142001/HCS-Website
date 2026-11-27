@@ -3,12 +3,10 @@ import {
   ExpertiseSection,
   WorkflowsSection,
   DashboardPreviewSection,
-  BenefitsSection,
 } from '@/features/home';
 import { EstimatorCard } from '@/features/estimator';
 import { TestimonialsSection, FoundingClientsSection } from '@/features/social-proof';
 import { ContactWizard } from '@/features/contact';
-import NextSteps, { PAGE_LINKS } from '@/shared/components/layout/NextSteps';
 
 /** Homepage: composes feature sections in reading order. Sections own their content and behavior. */
 export default function HomePage() {
@@ -20,14 +18,12 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <ExpertiseSection />
-        <WorkflowsSection />
+        <WorkflowsSection compact />
         <DashboardPreviewSection />
-        <BenefitsSection />
         <EstimatorCard />
         {/* Renders nothing until real, approved testimonials are added */}
         <TestimonialsSection />
         <FoundingClientsSection />
-        <NextSteps links={[PAGE_LINKS.pricing, PAGE_LINKS.faq, PAGE_LINKS.guides]} band />
         <ContactWizard />
       </main>
     </>

@@ -3,15 +3,15 @@
 export const COMMITMENTS = [
   {
     title: 'Work directly with the founders',
-    text: 'Your providers’ files are handled by the people who run the company. You get a direct line to them, not a ticket queue.',
+    text: 'The people who run the company handle your files. No ticket queue.',
   },
   {
     title: 'A written update on every application, every week',
-    text: 'Until each file is complete, you get a weekly status for every provider: what was verified, what is outstanding and what happens next.',
+    text: 'A weekly status for every provider until each file is done.',
   },
   {
     title: 'Founding-client terms',
-    text: 'Our first clients get founding-client pricing in exchange for honest feedback as we grow. Ask us what that looks like for your practice.',
+    text: 'Founding-client pricing in exchange for honest feedback.',
   },
 ];
 

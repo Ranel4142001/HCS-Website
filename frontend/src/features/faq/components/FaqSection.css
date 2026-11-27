@@ -61,7 +61,7 @@
 
 .faq-topics a:hover {
   color: var(--teal-700);
-  background: #f5f8fe;
+  background: #f4f6f7;
 }
 
 .faq-topics a.is-active {
@@ -83,7 +83,7 @@
 }
 
 .faq-contact-cta {
-  background: #f8fbff;
+  background: #f4f6f7;
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 16px;
@@ -128,7 +128,7 @@
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, #c9d8f2, transparent);
+  background: linear-gradient(90deg, #b9dfe2, transparent);
 }
 
 .faq-list {

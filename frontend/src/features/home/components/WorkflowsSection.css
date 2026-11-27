@@ -63,10 +63,10 @@
   row-gap: 0;
   align-content: start;
   padding: 32px 28px 28px;
-  border: 1px solid #dde4ee;
+  border: 1px solid #dde7ea;
   border-radius: 16px;
   /* A soft tint behind the icon and title, fading to white */
-  background: linear-gradient(180deg, #f3f8ff 0, #ffffff 140px);
+  background: linear-gradient(180deg, #f4f6f7 0, #ffffff 140px);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
@@ -81,7 +81,7 @@
 
 .wf-card:hover {
   transform: translateY(-4px);
-  border-color: #c5d6f2;
+  border-color: #b9dfe2;
   box-shadow: 0 22px 44px -24px rgba(18, 48, 71, 0.35);
 }
 

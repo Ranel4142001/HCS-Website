@@ -10,7 +10,7 @@
   padding: 24px 28px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: #f8fafd;
+  background: #f4f6f7;
 }
 
 .legal-toc-title {
@@ -58,13 +58,13 @@
 
 .legal-section h2 {
   font-size: 1.375rem;
-  color: #0f172a;
+  color: #123047;
   margin-bottom: 12px;
 }
 
 .legal-section p,
 .legal-list {
-  color: #334155;
+  color: #2c4356;
   font-size: 1.0625rem;
   line-height: 1.75;
 }
@@ -100,7 +100,7 @@
 }
 
 .legal-contact p {
-  color: #334155;
+  color: #2c4356;
   line-height: 1.6;
 }
 

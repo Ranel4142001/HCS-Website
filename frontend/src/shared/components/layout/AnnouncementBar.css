@@ -1,7 +1,7 @@
 /* --- Announcement Bar  --- */
 
 .announcement-bar {
-  background: #081d38;
+  background: #0c2233;
   color: #ffffff;
   padding: 10px clamp(24px, 4vw, 64px);
   font-size: 0.875rem;
@@ -34,7 +34,7 @@
 .announcement-msg-full {
   font-size: 0.86rem;
   font-weight: 500;
-  color: #e2e8f0;
+  color: #dde7ea;
 }
 
 .announcement-cta {

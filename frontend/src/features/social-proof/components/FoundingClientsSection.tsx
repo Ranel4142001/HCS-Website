@@ -9,9 +9,7 @@ export const FoundingClientsSection: React.FC = () => {
       <div className="container founding-inner">
         <header className="founding-head reveal-stagger">
           <h2 id="founding-title">Our commitments to founding clients</h2>
-          <p>
-            HealthCredSTAT is now onboarding its first clients. These are the commitments every client can hold us to.
-          </p>
+          <p>We’re onboarding our first clients. Here’s what you can hold us to.</p>
         </header>
 
         <ul className="founding-commitments reveal-stagger">

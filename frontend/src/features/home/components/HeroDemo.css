@@ -7,7 +7,7 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 24px;
-  background: #e8eff7; /* close to the video's light background, shown until the poster loads */
+  background: #e8f3f5; /* close to the video's light background, shown until the poster loads */
   box-shadow: 0 30px 70px -20px rgba(18, 48, 71, 0.28);
   border: 1px solid rgba(226, 232, 240, 0.85);
 }
@@ -43,7 +43,7 @@
 
 .hero-demo-cta:hover,
 .hero-demo-cta:focus-visible {
-  background: #0b2f73;
+  background: #123047;
   transform: translateY(-2px);
 }
 

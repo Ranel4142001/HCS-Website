@@ -5,7 +5,7 @@ export const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'credentialing',
     title: 'Initial credentialing',
-    description: 'Complete, committee-ready credentialing files built on primary source verification: licenses, board certification, education, sanctions and malpractice history.',
+    description: 'Committee-ready files, verified at the primary source.',
     icon: 'shield',
     highlights: [
       'Verification against NPDB, OIG, SAM.gov and state licensing boards',
@@ -15,7 +15,7 @@ export const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'recredentialing',
     title: 'Recredentialing',
-    description: 'Every provider re-verified on schedule, with the work started well before the 36-month cycle comes due, so no one falls out of compliance.',
+    description: 'Every provider re-verified on time, well before the 36-month deadline.',
     icon: 'clock',
     highlights: [
       'Due dates tracked for every provider and every organization',
@@ -25,7 +25,7 @@ export const WORKFLOWS: WorkflowItem[] = [
   {
     id: 'monitoring',
     title: 'Continuous monitoring',
-    description: 'Ongoing checks against federal exclusion lists and state licensing boards, with alerts before a lapse or sanction becomes a problem.',
+    description: 'Ongoing license and exclusion checks, with alerts before anything lapses.',
     icon: 'bell',
     highlights: [
       'Exclusion and license actions flagged to a specialist right away',

@@ -98,7 +98,7 @@ export const healthSystems: SolutionContent = {
   section: 'Who we help',
   name: 'Health systems, hospitals & surgery centers',
   audience: 'Health systems, hospitals and ambulatory surgery centers',
-  color: '#ef4444',
+  color: '#11707a',
   icon: 'building',
   meta: {
     title: 'Credentialing Services for Health Systems',
@@ -177,7 +177,7 @@ export const digitalHealth: SolutionContent = {
   section: 'Who we help',
   name: 'Telehealth & digital health',
   audience: 'Telehealth and digital health companies',
-  color: '#8b5cf6',
+  color: '#144a5e',
   icon: 'globe',
   meta: {
     title: 'Credentialing for Telehealth Companies',

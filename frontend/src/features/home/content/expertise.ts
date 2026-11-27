@@ -6,7 +6,7 @@ export const EXPERTISE_ITEMS: ExpertiseItem[] = [
     label: 'step in the moment AI automation hits a snag',
     num: '01',
     title: 'Specialists in the loop',
-    body: 'When a source goes quiet or a document is missing, a specialist steps in right away, so files keep moving.',
+    body: 'A real person steps in the moment a file stalls.',
     iconName: 'users',
   },
   {
@@ -14,7 +14,7 @@ export const EXPERTISE_ITEMS: ExpertiseItem[] = [
     label: 'reviewed before anything reaches your committee',
     num: '02',
     title: 'Checkpoint review',
-    body: 'Applications are checked for completeness and accuracy at each stage. Complete files mean fewer follow-up requests and fewer weeks lost.',
+    body: 'Every file is checked at each stage, so nothing comes back.',
     iconName: 'check-circle',
   },
   {
@@ -22,7 +22,7 @@ export const EXPERTISE_ITEMS: ExpertiseItem[] = [
     label: 'verification standards built into every file',
     num: '03',
     title: 'Compliance built in',
-    body: 'Primary source verification follows NCQA credentialing standards from the start, so every file is ready for a committee — or an audit.',
+    body: 'NCQA standards from day one. Ready for committee or audit.',
     iconName: 'shield',
   },
   {
@@ -30,7 +30,7 @@ export const EXPERTISE_ITEMS: ExpertiseItem[] = [
     label: 'with changing accreditation and state requirements',
     num: '04',
     title: 'Rules that keep up',
-    body: 'Accreditation standards and state board rules change constantly. Our team tracks those changes and updates our workflows, so you never have to.',
+    body: 'We track changing state and accreditation rules for you.',
     iconName: 'cpu',
   },
 ];

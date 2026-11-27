@@ -1,6 +1,5 @@
 import React from 'react';
 import { COVERAGE } from '../content/coverage';
-import HeroDemo from './HeroDemo';
 import './HeroSection.css';
 
 const CoverageItem: React.FC<{ label: string }> = ({ label }) => (
@@ -78,10 +77,6 @@ export const HeroSection: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="hcs-hero-banner">
-          <HeroDemo />
         </div>
       </div>
     </section>

@@ -54,13 +54,13 @@ export const NAV_MENUS: NavMenu[] = [
         heading: 'Industries we help',
         links: [
           { href: '/who-we-help/provider-groups', label: 'Provider Groups & MSOs', description: 'Practices adding providers', icon: 'users', iconBg: '#e8f3f5' },
-          { href: '/who-we-help/health-systems', label: 'Health Systems, Hospitals & Surgery Centers', description: 'Centralized verification', icon: 'building', iconBg: '#faf5ff' },
-          { href: '/who-we-help/digital-health', label: 'Digital Health & Telehealth', description: 'Multi-state credentialing', icon: 'globe', iconBg: '#f0fdfa' },
+          { href: '/who-we-help/health-systems', label: 'Health Systems, Hospitals & Surgery Centers', description: 'Centralized verification', icon: 'building', iconBg: '#e8f3f5' },
+          { href: '/who-we-help/digital-health', label: 'Digital Health & Telehealth', description: 'Multi-state credentialing', icon: 'globe', iconBg: '#e8f3f5' },
         ],
       },
     ],
     spotlight: {
-      background: 'linear-gradient(135deg,#0a4a47,#70c5c9)',
+      background: 'linear-gradient(135deg,#123047,#70c5c9)',
       badge: { icon: 'bar', label: 'Credentialing status' },
       header: ['Provider', 'Status'],
       rows: [
@@ -86,7 +86,6 @@ export const NAV_LEAD_LINKS: NavLink[] = [
  */
 export const NAV_LINKS: NavLink[] = [
   { href: '/pricing', label: 'Pricing' },
-  { href: '/guides', label: 'Guides' },
   { href: '/faq', label: 'FAQ' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },

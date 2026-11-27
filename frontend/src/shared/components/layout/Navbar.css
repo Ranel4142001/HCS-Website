@@ -13,7 +13,7 @@
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(225, 232, 244, 0.85);
-  box-shadow: 0 4px 20px -6px rgba(14, 27, 48, 0.05);
+  box-shadow: 0 4px 20px -6px rgba(18, 48, 71, 0.05);
   transition: background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
 }
 
@@ -108,7 +108,7 @@
   padding: 8px 14px;
   font-size: 0.9375rem;
   font-weight: 400;
-  color: #374151;
+  color: #2c4356;
   text-decoration: none;
   border-radius: 8px;
   transition: color 0.15s ease, background 0.15s ease;
@@ -117,7 +117,7 @@
 
 .mdl-nav__plain-link:hover {
   color: #123047;
-  background: #f1f5f9;
+  background: #f4f6f7;
 }
 
 /* Right actions */
@@ -134,7 +134,7 @@
   padding: 8px 16px;
   font-size: 0.9375rem;
   font-weight: 400;
-  color: #374151;
+  color: #2c4356;
   text-decoration: none;
   border-radius: 8px;
   transition: color 0.15s ease, background 0.15s ease;
@@ -142,7 +142,7 @@
 
 .mdl-nav__signin:hover {
   color: #123047;
-  background: #f1f5f9;
+  background: #f4f6f7;
 }
 
 /* Hamburger */
@@ -153,13 +153,13 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #374151;
+  color: #2c4356;
   border-radius: 8px;
   margin-left: auto;
 }
 
 .mdl-nav__hamburger:hover {
-  background: #f1f5f9;
+  background: #f4f6f7;
 }
 
 /* Responsive — Mobile nav */
@@ -184,7 +184,7 @@
     padding: 16px;
     overflow-y: auto;
     z-index: 998;
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid #f4f6f7;
   }
   .mdl-nav__menu--open { display: flex; }
   .mdl-nav__links { flex-direction: column; align-items: stretch; gap: 4px; }
@@ -210,13 +210,13 @@
   border-radius: 50%;
   border: none;
   background: transparent;
-  color: #4b5563;
+  color: #4a5d6c;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .mdl-nav__search-btn:hover {
-  background: #f1f5f9;
+  background: #f4f6f7;
   color: #123047;
 }
 
@@ -225,7 +225,7 @@
 .mdl-nav__divider {
   width: 1px;
   height: 22px;
-  background: #e2e8f0;
+  background: #dde7ea;
   margin: 0 4px;
 }
 
