@@ -7,7 +7,7 @@ export const providerGroups: SolutionContent = {
   section: 'Who we help',
   name: 'Medical groups & MSOs',
   audience: 'Medical groups, physician practices and management services organizations',
-  color: '#3f8dff',
+  color: '#168c96',
   icon: 'users',
   meta: {
     title: 'Credentialing for Medical Groups & MSOs',

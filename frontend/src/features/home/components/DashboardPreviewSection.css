@@ -2,7 +2,7 @@
 
 .rtv-section {
   padding: 96px 0;
-  background: #06182b;
+  background: #0c2233;
   color: #ffffff;
   position: relative;
   overflow: hidden;
@@ -32,7 +32,7 @@
 .rtv-blob-cyan {
   width: 400px;
   height: 400px;
-  background: #10c1bb;
+  background: #70c5c9;
   bottom: -50px;
   left: -50px;
 }
@@ -64,7 +64,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--cyan-300);
-  background: rgba(16, 193, 187, 0.15);
+  background: rgba(112, 197, 201, 0.15);
   padding: 6px 14px;
   border-radius: 20px;
   margin-bottom: 16px;
@@ -119,7 +119,7 @@
 
 .rtv-tab-btn.is-active {
   background: #ffffff;
-  color: #06182b;
+  color: #0c2233;
   border-color: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }

@@ -67,7 +67,7 @@
 .faq-topics a.is-active {
   color: var(--teal-900);
   border-left-color: var(--teal-700);
-  background: #eef4ff;
+  background: #e8f3f5;
 }
 
 .faq-topic-count {

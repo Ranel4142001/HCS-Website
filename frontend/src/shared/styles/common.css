@@ -113,7 +113,7 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
   position: relative;
   padding: 80px 0 64px;
   overflow: hidden;
-  background: linear-gradient(150deg, #f8faff 0%, #eef4ff 60%, #f0fdfb 100%);
+  background: linear-gradient(150deg, #f4f6f7 0%, #e8f3f5 60%, #f0fdfb 100%);
 }
 
 .sol-hero-inner {
@@ -136,13 +136,13 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
   transition: color 0.15s;
 }
 
-.sol-breadcrumb:hover { color: #062459; }
+.sol-breadcrumb:hover { color: #123047; }
 
 .sol-icon-badge {
   width: 56px;
   height: 56px;
   border-radius: 16px;
-  background: rgba(6, 36, 89, 0.07);
+  background: rgba(18, 48, 71, 0.07);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,7 +179,7 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
   font-size: 0.9375rem;
   font-weight: 600;
   color: #ffffff;
-  background: #062459;
+  background: #123047;
   border-radius: 10px;
   text-decoration: none;
   transition: background 0.15s, transform 0.1s;
@@ -193,7 +193,7 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
   padding: 13px 28px;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #062459;
+  color: #123047;
   background: transparent;
   border: 1.5px solid #cbd5e1;
   border-radius: 10px;
@@ -201,7 +201,7 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
   transition: border-color 0.15s, background 0.15s;
 }
 
-.btn-sol-ghost:hover { border-color: #062459; background: #f0f7ff; }
+.btn-sol-ghost:hover { border-color: #123047; background: #e8f3f5; }
 
 .sol-desc-text {
   font-size: 1.0625rem;
@@ -218,7 +218,7 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
 
 .sol-breadcrumb a { color: inherit; text-decoration: none; }
 
-.sol-breadcrumb a:hover { color: #062459; }
+.sol-breadcrumb a:hover { color: #123047; }
 
 .sol-breadcrumb [aria-current='page'] { color: #0f172a; font-weight: 600; }
 
@@ -226,7 +226,7 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
 
 .sol-section { padding: 72px 0; background: #ffffff; }
 
-.sol-section--tint { background: #f8faff; }
+.sol-section--tint { background: #f4f6f7; }
 
 .sol-narrow { max-width: 820px; }
 
@@ -265,12 +265,12 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
   padding: 10px 18px;
   border: 1.5px solid #cbd5e1;
   border-radius: 999px;
-  color: #062459;
+  color: #123047;
   font-weight: 600;
   text-decoration: none;
 }
 
-.sol-related a:hover { border-color: #062459; background: #f0f7ff; }
+.sol-related a:hover { border-color: #123047; background: #e8f3f5; }
 
 /* Heading on the left, content on the right: the same columns as the solution pages' .sol-body-grid, so every section shares one left edge */
 .sol-split {
@@ -334,8 +334,8 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
   gap: 24px 40px;
   align-items: center;
   padding: clamp(24px, 3vw, 36px);
-  background: #f8faff;
-  border: 1px solid #e8eef8;
+  background: #f4f6f7;
+  border: 1px solid #dbe9ec;
   border-radius: 20px;
 }
 
@@ -370,7 +370,7 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
 
 .next-steps-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 
-.next-steps-label { font-size: 1rem; font-weight: 600; color: #062459; }
+.next-steps-label { font-size: 1rem; font-weight: 600; color: #123047; }
 
 .next-steps-desc { font-size: 0.8125rem; color: #64748b; line-height: 1.45; }
 
@@ -382,23 +382,23 @@ html :is(.btn, .btn-hcs-get-touch, .btn-hcs-secondary, .btn-sol-primary, .btn-so
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(13, 81, 194, 0.08);
+  background: rgba(17, 112, 122, 0.08);
   color: var(--teal-700);
   transition: background 0.15s, color 0.15s, transform 0.15s;
 }
 
 .next-steps-links a:hover {
   border-color: #bfd3f5;
-  box-shadow: 0 10px 24px -16px rgba(6, 36, 89, 0.3);
+  box-shadow: 0 10px 24px -16px rgba(18, 48, 71, 0.3);
 }
 
 .next-steps-links a:hover .next-steps-arrow {
-  background: #062459;
+  background: #123047;
   color: #ffffff;
   transform: translateX(2px);
 }
 
-.next-steps-links a:focus-visible { outline: 3px solid #3f8dff; outline-offset: 2px; }
+.next-steps-links a:focus-visible { outline: 3px solid #168c96; outline-offset: 2px; }
 
 @media (max-width: 900px) {
   .next-steps-panel { grid-template-columns: 1fr; }

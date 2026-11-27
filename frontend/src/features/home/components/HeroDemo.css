@@ -8,7 +8,7 @@
   overflow: hidden;
   border-radius: 24px;
   background: #e8eff7; /* close to the video's light background, shown until the poster loads */
-  box-shadow: 0 30px 70px -20px rgba(6, 36, 89, 0.28);
+  box-shadow: 0 30px 70px -20px rgba(18, 48, 71, 0.28);
   border: 1px solid rgba(226, 232, 240, 0.85);
 }
 
@@ -37,7 +37,7 @@
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
-  box-shadow: 0 16px 34px -12px rgba(6, 36, 89, 0.55);
+  box-shadow: 0 16px 34px -12px rgba(18, 48, 71, 0.55);
   transition: transform .15s ease, background-color .15s ease;
 }
 

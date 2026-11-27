@@ -21,7 +21,7 @@ export default async function OpengraphImage() {
           flexDirection: 'column',
           justifyContent: 'center',
           padding: '0 96px',
-          background: 'linear-gradient(135deg, #07192f 0%, #062459 60%, #0a3a8f 100%)',
+          background: 'linear-gradient(135deg, #0c2233 0%, #123047 60%, #144a5e 100%)',
           color: '#ffffff',
           fontFamily: 'sans-serif',
         }}
@@ -31,7 +31,7 @@ export default async function OpengraphImage() {
         <div style={{ marginTop: 48, fontSize: 56, fontWeight: 700, lineHeight: 1.15, maxWidth: 980 }}>
           Health Credentialing
         </div>
-        <div style={{ marginTop: 24, fontSize: 30, color: '#6fe0da' }}>
+        <div style={{ marginTop: 24, fontSize: 30, color: '#a3dadd' }}>
           Credentialing specialists with AI automation, so revenue starts sooner.
         </div>
       </div>

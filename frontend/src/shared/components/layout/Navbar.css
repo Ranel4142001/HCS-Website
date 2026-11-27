@@ -116,7 +116,7 @@
 }
 
 .mdl-nav__plain-link:hover {
-  color: #062459;
+  color: #123047;
   background: #f1f5f9;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .mdl-nav__signin:hover {
-  color: #062459;
+  color: #123047;
   background: #f1f5f9;
 }
 
@@ -217,7 +217,7 @@
 
 .mdl-nav__search-btn:hover {
   background: #f1f5f9;
-  color: #062459;
+  color: #123047;
 }
 
 /* Divider line between Search and Sign In */
@@ -286,7 +286,7 @@
 .mdl-nav__plain-link.is-current,
 .mdl-nav__trigger--current {
   position: relative;
-  color: #062459;
+  color: #123047;
 }
 
 @media (min-width: 1181px) {
@@ -299,7 +299,7 @@
     width: 20px;
     height: 2px;
     border-radius: 2px;
-    background: #0d6efd;
+    background: #127a84;
     transform: translateX(-50%);
   }
 }
@@ -307,7 +307,7 @@
 @media (max-width: 1180px) {
   .mdl-nav__plain-link.is-current,
   .mdl-nav__trigger--current {
-    background: #eef5ff;
+    background: #e8f3f5;
     font-weight: 500;
   }
 }

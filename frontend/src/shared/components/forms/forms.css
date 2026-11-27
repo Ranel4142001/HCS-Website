@@ -40,7 +40,7 @@
 .field input:focus, .field textarea:focus {
   outline: none;
   border-color: var(--teal-500);
-  box-shadow: 0 0 0 4px rgba(63,141,255,.14);
+  box-shadow: 0 0 0 4px rgba(22, 140, 150,.14);
 }
 
 .field input:focus + label,
@@ -120,7 +120,7 @@
 .field select:focus {
   outline: none;
   border-color: var(--teal-500);
-  box-shadow: 0 0 0 4px rgba(63,141,255,.14);
+  box-shadow: 0 0 0 4px rgba(22, 140, 150,.14);
 }
 
 .field.field-select label {

@@ -22,11 +22,11 @@
 }
 
 .back-to-top-btn:hover {
-  background: #0d6efd;
+  background: #127a84;
   color: #ffffff;
-  border-color: #0d6efd;
+  border-color: #127a84;
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(13, 110, 253, 0.35);
+  box-shadow: 0 12px 28px rgba(22, 140, 150, 0.35);
 }
 
 @media (max-width: 768px) {

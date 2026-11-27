@@ -26,7 +26,7 @@ const interTight = Inter_Tight({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#07192f',
+  themeColor: '#0c2233',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,

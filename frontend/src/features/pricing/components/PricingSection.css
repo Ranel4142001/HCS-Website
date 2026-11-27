@@ -51,7 +51,7 @@
   border: 1px solid var(--fee-rule);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(6, 36, 89, 0.04), 0 28px 56px -32px rgba(6, 36, 89, 0.28);
+  box-shadow: 0 1px 2px rgba(18, 48, 71, 0.04), 0 28px 56px -32px rgba(18, 48, 71, 0.28);
   position: relative;
 }
 
@@ -91,7 +91,7 @@
   isolation: isolate;
   overflow: hidden;
   background: #f6f9fd;
-  box-shadow: inset 0 3px 0 #062459;
+  box-shadow: inset 0 3px 0 #123047;
 }
 
 .fee-name,
@@ -130,7 +130,7 @@
   line-height: 1;
   letter-spacing: -0.025em;
   font-variant-numeric: lining-nums tabular-nums;
-  color: #062459;
+  color: #123047;
 }
 
 .fee-unit {
@@ -148,30 +148,30 @@
   border-radius: 10px;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #062459;
+  color: #123047;
   text-decoration: none;
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .fee-cta:hover {
-  border-color: #062459;
+  border-color: #123047;
   background: #eef3fa;
 }
 
 .fee-cta:focus-visible {
-  outline: 3px solid #3f8dff;
+  outline: 3px solid #168c96;
   outline-offset: 2px;
 }
 
 .is-featured .fee-cta {
-  background: #062459;
-  border-color: #062459;
+  background: #123047;
+  border-color: #123047;
   color: #ffffff;
 }
 
 .is-featured .fee-cta:hover {
-  background: #0a3a8f;
-  border-color: #0a3a8f;
+  background: #144a5e;
+  border-color: #144a5e;
 }
 
 .fee-body {
@@ -208,7 +208,7 @@
 .fee-list svg {
   flex-shrink: 0;
   margin-top: 2px;
-  color: #0a3a8f;
+  color: #144a5e;
 }
 
 .fee-footnote {

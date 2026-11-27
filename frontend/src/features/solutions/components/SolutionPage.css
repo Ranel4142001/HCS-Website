@@ -51,7 +51,7 @@
 .sol-stat strong {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #062459;
+  color: #123047;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
@@ -110,7 +110,7 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #062459;
+  background: #123047;
   color: #fff;
   font-size: 0.7rem;
   font-weight: 700;
@@ -121,7 +121,7 @@
 /* CTA Banner */
 
 .sol-cta-banner {
-  background: #062459;
+  background: #123047;
   padding: 72px 0;
   text-align: center;
 }
@@ -146,9 +146,9 @@
 }
 
 /* The default navy button disappears on the navy banner, so invert it here */
-.sol-cta-inner .btn-sol-primary { background: #ffffff; color: #062459; }
+.sol-cta-inner .btn-sol-primary { background: #ffffff; color: #123047; }
 
-.sol-cta-inner .btn-sol-primary:hover { background: #e8eef8; }
+.sol-cta-inner .btn-sol-primary:hover { background: #dbe9ec; }
 
 .sol-cta-inner .btn-sol-primary:focus-visible { outline: 3px solid #ffffff; outline-offset: 3px; }
 
@@ -174,14 +174,14 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--sol-color, #062459);
+  background: var(--sol-color, #123047);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.875rem;
   margin-bottom: 14px;
 }
 
-.sol-section--tint .sol-step-num { background: #062459; }
+.sol-section--tint .sol-step-num { background: #123047; }
 
 .sol-checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 32px; }
 

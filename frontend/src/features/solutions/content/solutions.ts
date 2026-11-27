@@ -10,7 +10,7 @@ export const cvoCredentialing: SolutionContent = {
   path: '/solutions/cvo-credentialing',
   section: 'Services',
   name: 'Provider credentialing',
-  color: '#10c1bb',
+  color: '#70c5c9',
   icon: 'shield',
   meta: {
     title: 'Provider Credentialing & Verification',

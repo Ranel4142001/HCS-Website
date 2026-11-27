@@ -21,24 +21,40 @@ export const HeroSection: React.FC = () => {
       <GuillocheRosette className="hero-guilloche hero-guilloche--right" />
       <GuillocheRosette className="hero-guilloche hero-guilloche--left" />
       <div className="container hero-container">
-        <div className="hero-centered-content">
-          <h1 className="hero-main-headline">
-            Health Credentialing
-          </h1>
+        <div className="hero-panel">
+          <div className="hero-centered-content">
+            <h1 className="hero-main-headline">
+              Health Credentialing
+            </h1>
 
-          <p className="hero-lead-text">
-            HealthCredSTAT combines dedicated credentialing specialists with AI automation to credential providers, so
-            revenue starts sooner.
-          </p>
+            <p className="hero-lead-text">
+              HealthCredSTAT combines dedicated credentialing specialists with AI automation to credential providers, so
+              revenue starts sooner.
+            </p>
 
-          <div className="hero-actions-row">
-            <a href="#contact" className="btn-hcs-get-touch">
-              Get a free credentialing quote
-            </a>
-            <a href="#estimator" className="btn-hcs-secondary">
-              Estimate your timeline
-            </a>
+            <div className="hero-actions-row">
+              <a href="#contact" className="btn-hcs-get-touch">
+                Get a free credentialing quote
+              </a>
+              <a href="#estimator" className="btn-hcs-secondary">
+                Estimate your timeline
+              </a>
+            </div>
           </div>
+
+          {/* Decorative stock photo (Unsplash License), background removed; already-compressed WebP at two widths */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="hero-person"
+            src="/media/hero/nurse.webp"
+            srcSet="/media/hero/nurse-440.webp 440w, /media/hero/nurse.webp 783w"
+            sizes="(max-width: 900px) 240px, 360px"
+            width={783}
+            height={1400}
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+          />
         </div>
 
         <div className="hcs-partner-strip">

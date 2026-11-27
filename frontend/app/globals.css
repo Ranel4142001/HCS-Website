@@ -214,20 +214,20 @@ video {
 ===================================================== */
 
 :root {
-  --bg: #f5f8fc;
+  --bg: #f4f6f7;
   --surface: #ffffff;
-  --ink: #0e1b30;
+  --ink: #10283b;
   --ink-soft: #4d5c78;
   --ink-faint: #66738b; /* 4.5:1 on white and the light tints */
-  --teal-900: #062459;
-  --teal-800: #0a3a8f;
-  --teal-700: #0d51c2;
-  --teal-600: #0d6efd;
-  --teal-500: #3f8dff;
-  --cyan-400: #10c1bb;
-  --cyan-300: #6fe0da;
-  --mint-100: #e7faf8;
-  --line: #e1e8f4;
+  --teal-900: #123047;
+  --teal-800: #144a5e;
+  --teal-700: #11707a;
+  --teal-600: #127a84;
+  --teal-500: #168c96;
+  --cyan-400: #70c5c9;
+  --cyan-300: #a3dadd;
+  --mint-100: #e8f3f5;
+  --line: #dde7ea;
   --gold: #f5b942;
 
   --radius-sm: 12px;

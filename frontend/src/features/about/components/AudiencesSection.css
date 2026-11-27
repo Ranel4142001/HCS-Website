@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(13, 81, 194, 0.08);
+  background: rgba(17, 112, 122, 0.08);
   color: var(--teal-700);
 }
 
@@ -71,14 +71,14 @@
 
 .audience-card:hover {
   border-color: #bfd3f5;
-  box-shadow: 0 12px 28px -16px rgba(6, 36, 89, 0.25);
+  box-shadow: 0 12px 28px -16px rgba(18, 48, 71, 0.25);
   transform: translateY(-2px);
 }
 
 .audience-card:hover .audience-more span { transform: translateX(3px); }
 
 .audience-card:focus-visible {
-  outline: 3px solid #3f8dff;
+  outline: 3px solid #168c96;
   outline-offset: 2px;
 }
 
