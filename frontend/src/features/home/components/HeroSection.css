@@ -3,7 +3,7 @@
 ===================================================== */
 
 .hero-section {
-  padding-top: 24px;
+  padding-top: 0;
   background: var(--mint-100);
   padding-bottom: 72px;
   position: relative;
@@ -17,18 +17,20 @@
 }
 
 
-/* Rounded navy-to-teal panel: text on the left, a standing clinician on the right */
+/* Full-width navy-to-teal panel with rounded top corners, filling the first screen below the header */
 .hero-panel {
   position: relative;
+  margin-top: clamp(64px, 9vw, 150px);
+  border-radius: clamp(36px, 5vw, 80px) clamp(36px, 5vw, 80px) 0 0;
+  background: linear-gradient(180deg, #0c2233 0%, var(--teal-900) 30%, var(--teal-600) 100%);
+}
+
+.hero-panel-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 440px);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 480px);
   align-items: center;
   gap: 24px;
-  margin-top: clamp(48px, 8vw, 130px);
-  padding: 0 clamp(28px, 5vw, 72px);
-  border-radius: 56px;
-  background: linear-gradient(180deg, #0c2233 0%, var(--teal-900) 30%, var(--teal-600) 100%);
-  box-shadow: var(--shadow-lg);
+  min-height: clamp(520px, calc(100svh - 260px), 760px);
 }
 
 .hero-centered-content {
@@ -36,7 +38,7 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  max-width: 680px;
+  max-width: 640px;
   padding: clamp(44px, 6vw, 84px) 0;
 }
 
@@ -93,20 +95,19 @@
 .hero-person {
   display: block;
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
   height: auto;
-  margin-top: clamp(-130px, -8vw, -48px);
+  margin-top: clamp(-150px, -9vw, -56px);
   align-self: end;
   justify-self: center;
   filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.25));
+  /* may rise above the panel, but never hang below it */
+  clip-path: inset(-200px -60px 0 -60px);
 }
 
 @media (max-width: 900px) {
-  .hero-panel {
-    grid-template-columns: 1fr;
-    padding-bottom: 0;
-    margin-top: 28px;
-  }
+  .hero-panel { margin-top: 32px; }
+  .hero-panel-inner { grid-template-columns: 1fr; min-height: 0; }
   .hero-centered-content { padding-bottom: 8px; }
   .hero-person { max-width: 260px; margin-top: 0; }
 }

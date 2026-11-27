@@ -1,5 +1,6 @@
 import React from 'react';
 import { COVERAGE } from '../content/coverage';
+import HeroDemo from './HeroDemo';
 import './HeroSection.css';
 
 const CoverageItem: React.FC<{ label: string }> = ({ label }) => (
@@ -15,11 +16,12 @@ const CoverageItem: React.FC<{ label: string }> = ({ label }) => (
 export const HeroSection: React.FC = () => {
   return (
     <section className="hero-section hero-section--hcs" id="top">
-      <div className="container hero-container">
-        <div className="hero-panel">
+      {/* Full-width panel under the header; the clinician rises above its rounded top edge */}
+      <div className="hero-panel">
+        <div className="container hero-panel-inner">
           <div className="hero-centered-content">
             <h1 className="hero-main-headline">
-              Health Credentialing
+              Credentialing without the Complexity.
             </h1>
 
             <p className="hero-lead-text">
@@ -29,10 +31,7 @@ export const HeroSection: React.FC = () => {
 
             <div className="hero-actions-row">
               <a href="#contact" className="btn-hcs-get-touch">
-                Get a free credentialing quote
-              </a>
-              <a href="#estimator" className="btn-hcs-secondary">
-                Estimate your timeline
+                Get started
               </a>
             </div>
           </div>
@@ -43,7 +42,7 @@ export const HeroSection: React.FC = () => {
             className="hero-person"
             src="/media/hero/nurse.webp"
             srcSet="/media/hero/nurse-440.webp 440w, /media/hero/nurse.webp 783w"
-            sizes="(max-width: 900px) 260px, 440px"
+            sizes="(max-width: 900px) 260px, 480px"
             width={783}
             height={1400}
             alt=""
@@ -51,6 +50,9 @@ export const HeroSection: React.FC = () => {
             decoding="async"
           />
         </div>
+      </div>
+
+      <div className="container hero-container">
 
         <div className="hcs-partner-strip">
           <div className="hcs-partner-heading">
@@ -77,6 +79,10 @@ export const HeroSection: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="hcs-hero-banner">
+          <HeroDemo />
         </div>
       </div>
     </section>
